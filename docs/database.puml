@@ -1,17 +1,102 @@
 @startuml
-' definitions'
+' definitions
 !define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
 !define primary_key(x) <b>x</b>
 !define unique(x) <color:green>x</color>
 !define not_null(x) <u>x</u>
+!define fk(x) <i>x  - FK</i>
 hide methods
 hide stereotypes
 ' entities
 Table(user, "user") {
 primary_key(id) INTEGER
 not_null(unique(username)) VARCHAR[32]
+not_null(unique(email)) VARCHAR[255]
 not_null(password) VARCHAR[64]
 not_null(admin) TINYINT
+not_null(fk(language)) INTEGER
+}
+Table(actions, "actions") {
+primary_key(id) INTEGER
+not_null(location) VARCHAR[255]
+not_null(start_time) DATETIME
+not_null(end_time) DATETIME
+not_null(fk(user)) INTEGER
+}
+Table(categories, "categories") {
+primary_key(id) INTEGER
+not_null(name) VARCHAR[255]
+not_null(position) INTEGER
+not_null(pages) INTEGER
+}
+Table(categories_has_layouts, "categories_has_layouts") {
+  primary_key(fk(categories_id)) INTEGER
+  primary_key(fk(layouts_id)) INTEGER
+}
+Table(layouts, "layouts") {
+primary_key(id) INTEGER
+not_null(name) VARCHAR[255]
+not_null(unique(filename)) VARCHAR[255]
+not_null(fk(language_id)) INTEGER
+}
+Table(action_has_layouts, "action_has_layouts") {
+primary_key(id) INTEGER
+not_null(fk(action_id)) INTEGER
+not_null(fk(layout_id)) INTEGER
+not_null(page) INTEGER
+not_null(fk(categories_id) INTEGER
+}
+Table(action_page_images, "action_page_images") {
+primary_key(id) INTEGER
+not_null(fk(images_id)) INTEGER
+not_null(fk(action_has_layouts_id)) INTEGER
+}
+Table(positions, "positions") {
+primary_key(id) INTEGER
+not_null(name) VARCHAR[255]
+not_null(unique(x)) INTEGER
+not_null(unique(y)) INTEGER
+not_null(unique(width)) INTEGER
+not_null(unique(height)) INTEGER
+not_null(fk(layout_id)) INTEGER
+}
+Table(images, "images") {
+primary_key(id) INTEGER
+not_null(filename) VARCHAR[255]
+}
+Table(actions_images, "actions_images") {
+primary_key(fk(action_id)) INTEGER
+primary_key(fk(images_id)) INTEGER
+}
+Table(languages, "languages") {
+primary_key(id) INTEGER
+not_null(name) VARCHAR[255]
+not_null(unique(lang_key)) VARCHAR[5]
+}
+Table(strings, "strings") {
+primary_key(id) INTEGER
+not_null(description) VARCHAR[255]
+not_null(unique(string_key)) VARCHAR[5]
+}
+Table(translations, "translations") {
+primary_key(fk(language_id)) INTEGER
+primary_key(fk(string_id)) INTEGER
+not_null(translation) TEXT
 }
 ' relationships
+user --> actions
+actions --> actions_images
+images --> actions_images
+languages --> user
+languages --> translations
+languages --> layouts
+strings --> translations
+categories --> categories_has_layouts
+layouts --> categories_has_layouts
+layouts --> positions
+layouts --> action_has_layouts
+actions --> action_has_layouts
+categories --> action_has_layouts
+action_has_layouts --> action_page_images
+images --> action_page_images
 @enduml
