@@ -1,0 +1,36 @@
+{
+  "name": "resilienz-app",
+  "version": "0.1.0",
+  "private": true,
+  "config": {
+    "port":8080,
+    "database": {
+      "server":"",
+      "user":"",
+      "password":"",
+      "database":""
+    }
+  },
+  "scripts": {
+    "preinstall":"sh scripts/preinstall.sh",
+    "postinstall":"sh scripts/postinstall.sh",
+    
+    "configure":"sh scripts/configure.sh",
+    
+    "test":"sh scripts/test.sh",
+    
+    "createui":"sh scripts/createui.sh",
+    
+    "prestart":"sh scripts/preflight.sh",
+    "start":"node app.js"
+    
+  },
+  "dependencies": {
+    "express": "*",
+    "mysql":"*",
+    "body-parser":"*",
+    "multer":"*",
+    "helmet":"*",
+    "gm":"*",
+  }
+}

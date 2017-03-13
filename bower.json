@@ -1,0 +1,29 @@
+{
+  "name": "resilienz-app",
+  "version": "0.1.0",
+  "description": "The one and only",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "*",
+    "angular-bootstrap": "*",
+    "angular-dropzone":"*",
+    "bootstrap": "*",
+    "font-awesome": "*",
+    "flag-icon-css": "*",
+    "caman":"*"
+  },
+  "resolutions": {
+    "angular": "*"
+  }
+}

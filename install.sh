@@ -1,0 +1,1 @@
+# node.js, imagemagcik, then npm install
