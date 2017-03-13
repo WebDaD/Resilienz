@@ -1,0 +1,17 @@
+@startuml
+' definitions'
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+hide methods
+hide stereotypes
+' entities
+Table(user, "user") {
+primary_key(id) INTEGER
+not_null(unique(username)) VARCHAR[32]
+not_null(password) VARCHAR[64]
+not_null(admin) TINYINT
+}
+' relationships
+@enduml

@@ -1,1 +1,1 @@
-# cssmin, copy, jsmin, combine, 
+# cssmin, copy, jsmin, combine, bower install

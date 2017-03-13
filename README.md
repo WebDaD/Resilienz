@@ -1,6 +1,6 @@
 # Resilienz-App
 Eine Webseite mit Backend-Service zur Erstellung der Bücher für das Projekt "Resilienz".
-Erstellung von Druckbare PDFs (auch ebooks?) aus Vorlagen und Bildern, in verschiedenen Sprachen.
+Erstellung von Druckbaren PDFs (auch ebooks?) aus Vorlagen und Bildern, in verschiedenen Sprachen.
 
 
 ## Steps Aktionsleiter

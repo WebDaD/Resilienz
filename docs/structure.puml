@@ -1,0 +1,29 @@
+@startuml
+
+HTMLHead ..> [Page:Index] : import
+HTMLScripts ..> [Page:Index] : import
+HTMLFooter ..> [Page:Index] : import
+
+HTMLHead  ..> [Page:Impressum] : import
+HTMLFooter ..> [Page:Impressum] : import
+
+HTMLHead  ..> [Page:Datenschutz] : import
+HTMLFooter ..> [Page:Datenschutz] : import
+
+HTMLHead ..> [Page:Register] : import
+HTMLFooter ..> [Page:Register] : import
+
+[Page:Index] --> [Page:Impressum] : Link
+[Page:Index] --> [Page:Datenschutz] : Link
+[Page:Impressum] --> [Page:Datenschutz] : Link
+
+[Page:Index] --> [Modal:Login/Language] : If not logged in
+[Modal:Login/Language] --> [Page:Register] : Link
+
+[Page:Index] --> [Container:Welcome] : Router/Navbar
+[Page:Index] --> [Container:Upload] : Router/Navbar
+[Page:Index] --> [Container:Layouter] : Router/Navbar
+[Page:Index] --> [Container:Finish] : Router/Navbar
+
+
+@enduml

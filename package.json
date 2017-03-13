@@ -9,7 +9,9 @@
       "user":"",
       "password":"",
       "database":""
-    }
+    },
+    "images":"",
+    "books":""
   },
   "scripts": {
     "preinstall":"sh scripts/preinstall.sh",

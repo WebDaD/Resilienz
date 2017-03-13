@@ -37,8 +37,8 @@ console.log('Creating Objects...')
 var database = new Database(pack.config.database)
 var language = new Language(database)
 var login = new Login(database)
-var layouter = new Layouter(database)
-var bookGenerator = new BookGenerator(database)
+var layouter = new Layouter(pack.config.images, database)
+var bookGenerator = new BookGenerator(pack.config.books, pack.config.images, database)
 
 //Routes
 console.log('Loading Routes...')
