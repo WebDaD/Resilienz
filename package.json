@@ -17,7 +17,7 @@
     "preinstall":"sh scripts/preinstall.sh",
     "postinstall":"sh scripts/postinstall.sh",
     
-    "configure":"sh scripts/configure.sh",
+    "config":"sh scripts/configure.sh",
     
     "test":"sh scripts/test.sh",
     

@@ -17,8 +17,8 @@ HTMLFooter ..> [Page:Register] : import
 [Page:Index] --> [Page:Datenschutz] : Link
 [Page:Impressum] --> [Page:Datenschutz] : Link
 
-[Page:Index] --> [Modal:Login/Language] : If not logged in
-[Modal:Login/Language] --> [Page:Register] : Link
+[Page:Index] --> [Page:Login/Language] : If not logged in
+[Page:Login/Language] --> [Page:Register] : Link
 
 [Page:Index] --> [Container:Welcome] : Router/Navbar
 [Page:Index] --> [Container:Upload] : Router/Navbar

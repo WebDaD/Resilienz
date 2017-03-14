@@ -11,10 +11,13 @@ hide stereotypes
 Table(user, "user") {
 primary_key(id) INTEGER
 not_null(unique(username)) VARCHAR[32]
+not_null(name) VARCHAR[255]
+not_null(vorname) VARCHAR[255]
 not_null(unique(email)) VARCHAR[255]
 not_null(password) VARCHAR[64]
 not_null(admin) TINYINT
 not_null(fk(language)) INTEGER
+not_null(active) TINYINT
 }
 Table(actions, "actions") {
 primary_key(id) INTEGER
@@ -22,6 +25,7 @@ not_null(location) VARCHAR[255]
 not_null(start_time) DATETIME
 not_null(end_time) DATETIME
 not_null(fk(user)) INTEGER
+not_null(finalized) TINYINT
 }
 Table(categories, "categories") {
 primary_key(id) INTEGER
