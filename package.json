@@ -16,16 +16,22 @@
   "scripts": {
     "preinstall":"sh scripts/preinstall.sh",
     "postinstall":"sh scripts/postinstall.sh",
-    
+    "devinstall":"sh scripts/devinstall.sh",
+
     "config":"sh scripts/configure.sh",
-    
+
     "test":"sh scripts/test.sh",
-    
+    "docs":"sh scripts/docs.sh",
+
     "createui":"sh scripts/createui.sh",
-    
+    "minifyui":"sh scripts/minifyui.sh",
+
     "prestart":"sh scripts/preflight.sh",
-    "start":"node app.js"
-    
+    "start":"node app.js",
+
+    "predebug":"sh scripts/preflight.sh",
+    "debug":"node app.js --debug"
+
   },
   "dependencies": {
     "express": "*",
@@ -33,6 +39,6 @@
     "body-parser":"*",
     "multer":"*",
     "helmet":"*",
-    "gm":"*",
+    "gm":"*"
   }
 }
