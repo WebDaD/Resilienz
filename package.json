@@ -5,10 +5,10 @@
   "config": {
     "port":8080,
     "database": {
-      "server":"",
-      "user":"",
-      "password":"",
-      "database":""
+      "server":"localhost",
+      "user":"resilienz",
+      "password":"resilienz",
+      "database":"resilienz"
     },
     "images":"",
     "books":""
@@ -16,7 +16,6 @@
   "scripts": {
     "preinstall":"sh scripts/preinstall.sh",
     "postinstall":"sh scripts/postinstall.sh",
-    "devinstall":"sh scripts/devinstall.sh",
 
     "config":"sh scripts/configure.sh",
 
@@ -25,6 +24,8 @@
 
     "createui":"sh scripts/createui.sh",
     "minifyui":"sh scripts/minifyui.sh",
+
+    "deploy":"sh scripts/deploy.sh",
 
     "prestart":"sh scripts/preflight.sh",
     "start":"node app.js",

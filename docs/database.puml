@@ -1,6 +1,7 @@
 @startuml
 ' definitions
 !define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define View(name,desc) class name as "desc" << (V,#99DDFF) >>
 !define primary_key(x) <b>x</b>
 !define unique(x) <color:green>x</color>
 !define not_null(x) <u>x</u>
@@ -30,7 +31,6 @@ not_null(finalized) TINYINT
 Table(categories, "categories") {
 primary_key(id) INTEGER
 not_null(name) VARCHAR[255]
-not_null(position) INTEGER
 not_null(pages) INTEGER
 not_null(ordering) INTEGER
 }
@@ -41,15 +41,19 @@ Table(categories_has_layouts, "categories_has_layouts") {
 Table(layouts, "layouts") {
 primary_key(id) INTEGER
 not_null(name) VARCHAR[255]
-not_null(unique(filename)) VARCHAR[255]
-not_null(fk(language_id)) INTEGER
+}
+Table(layout_has_languages, "layout_has_languages") {
+  primary_key(fk(languages_key)) INTEGER
+  primary_key(fk(layouts_id)) INTEGER
+  not_null(unique(filename)) VARCHAR[255]
+  not_null(fk(language_id)) INTEGER
 }
 Table(action_has_layouts, "action_has_layouts") {
 primary_key(id) INTEGER
 not_null(fk(action_id)) INTEGER
 not_null(fk(layout_id)) INTEGER
 not_null(page) INTEGER
-not_null(fk(categories_id) INTEGER
+not_null(fk(categories_id)) INTEGER
 }
 Table(action_page_images, "action_page_images") {
 primary_key(id) INTEGER
@@ -69,10 +73,6 @@ Table(images, "images") {
 primary_key(id) INTEGER
 not_null(filename) VARCHAR[255]
 }
-Table(actions_images, "actions_images") {
-primary_key(fk(action_id)) INTEGER
-primary_key(fk(images_id)) INTEGER
-}
 Table(languages, "languages") {
 primary_key(id) INTEGER
 not_null(name) VARCHAR[255]
@@ -88,20 +88,30 @@ primary_key(fk(language_id)) INTEGER
 primary_key(fk(string_id)) INTEGER
 not_null(translation) TEXT
 }
+View(language_translations, "language_translations") {
+  lang_key VARCHAR[10]
+  language VARCHAR[255]
+  string_key VARCHAR[255]
+  translation TEXT
+}
 ' relationships
 user --> actions
-actions --> actions_images
-images --> actions_images
 languages --> user
 languages --> translations
-languages --> layouts
 strings --> translations
 categories --> categories_has_layouts
 layouts --> categories_has_layouts
+layouts --> layout_has_languages
+languages --> layout_has_languages
 layouts --> positions
 layouts --> action_has_layouts
 actions --> action_has_layouts
 categories --> action_has_layouts
 action_has_layouts --> action_page_images
 images --> action_page_images
+
+' Views
+language_translations <.. languages
+language_translations <.. strings
+language_translations <.. translations
 @enduml
