@@ -1,44 +1,16 @@
 doctype html
-html(lang=lang.key, ng-app='resilienzManager')
+html(lang=lang.key)
   head
     if debug
       include ../includes/head-debug.pug
     else
       include ../includes/head.pug
   body.no-skin
-    nav.navbar.navbar-default
-      .container
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-            span.sr-only #{lang.toogle_navigation}
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#')
-            img(src="images/android-chrome-72x72.png")
-            #{lang.title}  
-        #navbar.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/welcome')}")
-              a(href='#!/welcome') #{lang.nav_welcome}
-            li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/layout')}")
-              a(href='#!/layout') #{lang.nav_layout}
-            li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/finish')}")
-              a(href='#!/finish') #{lang.nav_finish}
-            li(ng-show="admin" ng-class="{ active: isActive('/actions')}")
-              a(href='#!/actions') Actions
-            li(ng-show="admin" ng-class="{ active: isActive('/users')}")
-              a(href='#!/users') Users
-          button.navbar-right.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="username !== ''" style="margin-left:10px;") #{lang.nav.logout}
-          p.navbar-text.navbar-right(ng-show="username !== ''" style="margin-left:10px;") #{lang.nav.logged_in_as} {{username}}
-        // /.nav-collapse
-    div.fluid-container
-      #ng-view(ng-view='')
+    // Here be the content:
+    // Main TEXT
+    // Download Manuals
+    // Link to App (app.xxx.de)
     if debug
       include ../includes/footer-debug.pug
     else
       include ../includes/footer.pug
-    if debug
-      include ../includes/scripts-debug.pug
-    else
-      include ../includes/scripts.pug

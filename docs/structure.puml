@@ -1,8 +1,11 @@
 @startuml
 
 HTMLHead ..> [Page:Index] : import
-HTMLScripts ..> [Page:Index] : import
 HTMLFooter ..> [Page:Index] : import
+
+HTMLHead ..> [Page:App] : import
+HTMLScripts ..> [Page:App] : import
+HTMLFooter ..> [Page:App] : import
 
 HTMLHead  ..> [Page:Impressum] : import
 HTMLFooter ..> [Page:Impressum] : import
@@ -15,14 +18,17 @@ HTMLFooter ..> [Page:Register] : import
 
 [Page:Index] --> [Page:Impressum] : Link
 [Page:Index] --> [Page:Datenschutz] : Link
+[Page:Index] --> [Page:App] : Link
+[Page:App] --> [Page:Impressum] : Link
+[Page:App] --> [Page:Datenschutz] : Link
 [Page:Impressum] --> [Page:Datenschutz] : Link
 
-[Page:Index] --> [Page:Login/Language] : If not logged in
+[Page:App] --> [Page:Login/Language] : If not logged in
 [Page:Login/Language] --> [Page:Register] : Link
 
-[Page:Index] --> [Container:Welcome] : Router/Navbar
-[Page:Index] --> [Container:Layouter] : Router/Navbar
-[Page:Index] --> [Container:Finish] : Router/Navbar
+[Page:App] --> [Container:Welcome] : Router/Navbar
+[Page:App] --> [Container:Layouter] : Router/Navbar
+[Page:App] --> [Container:Finish] : Router/Navbar
 
 
 @enduml
