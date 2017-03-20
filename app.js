@@ -20,11 +20,19 @@ var Language = require('./lib/language.js')
 var Login = require('./lib/login.js')
 var Layouter = require('./lib/layouter.js')
 var BookGenerator = require('./lib/book-generator.js')
+var path = require('path')
+var cookieParser = require('cookie-parser')
 
 console.log('Setting Static paths...')
 // Send public and docs
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/docs', express.static(path.join(__dirname, 'doc')))
+
+// Add rendering Engine
+app.set('view engine', 'pug')
+
+// Add Cookie Cababilities
+app.use(cookieParser())
 
 // Accept JSON Body
 app.use(bodyParser.json())
@@ -37,10 +45,10 @@ console.log('Creating Objects...')
 var database = new Database(pack.config.database)
 var language = new Language(database)
 var login = new Login(database)
-var layouter = new Layouter(pack.config.images, database)
-var bookGenerator = new BookGenerator(pack.config.books, pack.config.images, database)
+var layouter = new Layouter(pack.config.images, pack.config.pages, database)
+var bookGenerator = new BookGenerator(layouter, pack.config.pages, pack.config.books, pack.config.bookpages)
 
-//Routes
+// Routes
 console.log('Loading Routes...')
 require('./routes')(app, database, language, login, layouter, bookGenerator)
 

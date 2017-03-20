@@ -1,9 +1,9 @@
 /**
- * @overview 	Route Index File
+ * @overview Route Index File
  * @module index
  * @author Dominik Sigmund
  * @version 1.0
- * @description	Exports all Routes
+ * @description Exports all Routes
  * @memberof resilienz
  */
 
@@ -35,13 +35,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
 
   // Sends status information
   app.get('/status', function (req, res) {
-    vks.getStatus(function (error, status) {
-      if (error) {
-        res.status(404).json(error)
-      } else {
-        res.json(status)
-      }
-    })
+    // TODO get status
   })
   /** Middleware to Catch Errors
   * @param {object} err - Express.err Object

@@ -11,7 +11,9 @@
       "database":"resilienz"
     },
     "images":"",
-    "books":""
+    "books":"",
+    "pages":"",
+    "bookpages":46
   },
   "scripts": {
     "preinstall":"sh scripts/preinstall.sh",
@@ -40,6 +42,7 @@
     "body-parser":"*",
     "multer":"*",
     "helmet":"*",
-    "gm":"*"
+    "pug":"*",
+    "cookie-parser":"*"
   }
 }
