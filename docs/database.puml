@@ -25,7 +25,7 @@ primary_key(id) INTEGER
 not_null(location) VARCHAR[255]
 not_null(start_time) DATETIME
 not_null(end_time) DATETIME
-not_null(fk(user)) INTEGER
+not_null(fk(user_id)) INTEGER
 not_null(finalized) TINYINT
 }
 Table(categories, "categories") {
@@ -67,7 +67,7 @@ not_null(unique(x)) INTEGER
 not_null(unique(y)) INTEGER
 not_null(unique(width)) INTEGER
 not_null(unique(height)) INTEGER
-not_null(fk(layout_id)) INTEGER
+not_null(fk(layouts_id)) INTEGER
 }
 Table(images, "images") {
 primary_key(id) INTEGER
@@ -81,11 +81,11 @@ not_null(unique(lang_key)) VARCHAR[5]
 Table(strings, "strings") {
 primary_key(id) INTEGER
 not_null(description) VARCHAR[255]
-not_null(unique(string_key)) VARCHAR[5]
+not_null(unique(string_key)) VARCHAR[50]
 }
 Table(translations, "translations") {
-primary_key(fk(language_id)) INTEGER
-primary_key(fk(string_id)) INTEGER
+primary_key(fk(languages_id)) INTEGER
+primary_key(fk(strings_id)) INTEGER
 not_null(translation) TEXT
 }
 View(language_translations, "language_translations") {
