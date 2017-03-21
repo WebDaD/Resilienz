@@ -66,6 +66,7 @@ console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.p
 */
 function exitHandler (options, err) {
   console.log('Exiting...')
+  database.close()
   process.exit()
 }
 // catches ctrl+c event

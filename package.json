@@ -5,7 +5,7 @@
   "config": {
     "port":8080,
     "database": {
-      "server":"localhost",
+      "host":"localhost",
       "user":"resilienz",
       "password":"resilienz",
       "database":"resilienz"
