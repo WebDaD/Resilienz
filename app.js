@@ -43,22 +43,28 @@ app.use(bodyParser.urlencoded({
 // Objects
 console.log('Creating Objects...')
 var database = new Database(pack.config.database)
-var language = new Language(database)
-var login = new Login(database)
-var layouter = new Layouter(pack.config.images, pack.config.pages, database)
-var bookGenerator = new BookGenerator(layouter, pack.config.pages, pack.config.books, pack.config.bookpages)
+Language(database, function (error, language) {
+  if (error) {
+    console.error(error)
+    database.close()
+    process.exit()
+  } else {
+    var login = new Login(database)
+    var layouter = new Layouter(pack.config.images, pack.config.pages, database)
+    var bookGenerator = new BookGenerator(layouter, pack.config.pages, pack.config.books, pack.config.bookpages)
 
-// Routes
-console.log('Loading Routes...')
-require('./routes')(app, database, language, login, layouter, bookGenerator)
+    // Routes
+    console.log('Loading Routes...')
+    require('./routes')(app, database, language, login, layouter, bookGenerator)
 
-// Listen to Port
-server.listen(pack.config.port)
+    // Listen to Port
+    server.listen(pack.config.port)
 
-console.log('Startup Complete')
-console.log('Using Database ' + pack.config.database)
-
-console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.port)
+    console.log('Startup Complete')
+    console.log('Using Database ' + pack.config.database)
+    console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.port)
+  }
+})
 
 /** Handles exitEvents by destroying vks first
 * @param {object} options - Some Options
