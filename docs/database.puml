@@ -43,17 +43,15 @@ primary_key(id) INTEGER
 not_null(name) VARCHAR[255]
 }
 Table(layout_has_languages, "layout_has_languages") {
-  primary_key(fk(languages_key)) INTEGER
+  primary_key(fk(languages_id)) INTEGER
   primary_key(fk(layouts_id)) INTEGER
   not_null(unique(filename)) VARCHAR[255]
-  not_null(fk(language_id)) INTEGER
 }
 Table(action_has_layouts, "action_has_layouts") {
 primary_key(id) INTEGER
 not_null(fk(action_id)) INTEGER
 not_null(fk(layout_id)) INTEGER
 not_null(page) INTEGER
-not_null(fk(categories_id)) INTEGER
 }
 Table(action_page_images, "action_page_images") {
 primary_key(id) INTEGER
