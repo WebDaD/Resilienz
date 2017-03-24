@@ -1,5 +1,6 @@
 FROM node:argon
 
+MAINTAINER dominik.sigmund@webdad.eu
 # Create app directory
 RUN mkdir -p /opt/resilienz-app
 WORKDIR /opt/resilienz-app
