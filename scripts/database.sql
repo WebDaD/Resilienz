@@ -1,5 +1,4 @@
 CREATE SCHEMA `resilienz` ;
-
 CREATE USER resilienz;
 GRANT ALL PRIVILEGES ON `resilienz`.* TO 'resilienz'@'%' IDENTIFIED BY 'resilienz';
 
@@ -11,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema resilienz
 -- -----------------------------------------------------
-
+USE `resilienz` ;
 -- -----------------------------------------------------
 -- Table `languages`
 -- -----------------------------------------------------
