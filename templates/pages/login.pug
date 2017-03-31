@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    include ../includes/head.pug
+    link(rel='stylesheet', href='css/login.min.css')
+  body
+    .container
+      #pwd-container.row
+        .col-md-4
+        .col-md-4
+          section.login-form
+            form(method='post', action='#', role='login')
+              img.img-responsive(src='http://i.imgur.com/RcmcLv4.png', alt='')
+              input.form-control.input-lg(type='email', name='email', placeholder=lang.login_email, required='', value='joestudent@gmail.com')
+              input#password.form-control.input-lg(type='password', placeholder=lang.login_password, required='')
+              .pwstrength_viewport_progress
+              button.btn.btn-lg.btn-primary.btn-block(type='submit', name='go') #{lang.login_signin}
+              div
+                a(href='/register') #{lang.login_link_register}
+                |  or 
+                a(href='/reset') #{lang.login_link_reset_pwd}
+            .form-links
+              a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
+    include ../includes/footer.pug

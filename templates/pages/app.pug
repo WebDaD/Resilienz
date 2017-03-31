@@ -34,10 +34,7 @@ html(lang=lang.key, ng-app='resilienzManager')
         // /.nav-collapse
     div.fluid-container
       #ng-view(ng-view='')
-    if debug
-      include ../includes/footer-debug.pug
-    else
-      include ../includes/footer.pug
+    include ../includes/footer.pug
     if debug
       include ../includes/scripts-debug.pug
     else
