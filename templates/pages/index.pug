@@ -6,8 +6,7 @@ html(lang=lang.key)
     else
       include ../includes/head.pug
   body.no-skin
-    // Here be the content:
-    // Main TEXT
-    // Download Manuals
-    // Link to App (app.xxx.de)
+    h1 #{lang.title}
+    p #{lang.welcome}
+    a(href="http://resilienz.prixjeunesse.de/login") #{lang.link_app}
     include ../includes/footer.pug
