@@ -2,6 +2,24 @@ doctype html
 html
   head
     include ../includes/head.pug
+    link(rel='stylesheet', href='css/login.min.css')
   body
-    // content
+    .container
+      #pwd-container.row
+        .col-md-4
+        .col-md-4
+          section.login-form
+            form(method='post', action='#', role='register')
+              img.img-responsive(src='http://i.imgur.com/RcmcLv4.png', alt='')
+              select.form-control
+                option Language 1
+                option Language 2
+              input.form-control.input-lg(type='email', name='email', placeholder=lang.login_email, required='', value='joestudent@gmail.com')
+              input.form-control.input-lg(type='text', name='name', placeholder=lang.login_name, required='', value='Joe')
+              input.form-control.input-lg(type='text', name='vorname', placeholder=lang.login_vorname, required='', value='Student')  
+              input#password_1.form-control.input-lg(type='password', placeholder=lang.login_password_1, required='')
+              input#password_2.form-control.input-lg(type='password', placeholder=lang.login_password_2, required='')
+              button.btn.btn-lg.btn-primary.btn-block(type='submit', name='go') #{lang.login_register}
+            .form-links
+              a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
     include ../includes/footer.pug

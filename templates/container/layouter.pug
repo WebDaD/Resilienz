@@ -1,0 +1,40 @@
+.row
+  .col-md-3
+    button.btn.btn-default.btn-block
+      i.fa.fa-chevron-left
+      |  Previous Category
+  .col-md-6.text-center
+    h2 Active Category
+  .col-md-3
+    button.btn.btn-default.btn-block
+      | Next Category 
+      i.fa.fa-chevron-right
+.row
+  .col-md-3
+    button.btn.btn-default.btn-block 1
+  .col-md-3
+    button.btn.btn-default.btn-block.btn-success(disabled='') 2
+  .col-md-3
+    button.btn.btn-default.btn-block 3
+  .col-md-3
+    button.btn.btn-default.btn-block 4
+.row
+  .col-xs-6.text-center
+    img.img-responsive(src='http://placekitten.com/300/450')
+  .col-xs-6
+    .row
+      .col-md-12
+        select#layoutSelect.form-control
+          option Layout 1
+          option Layout 2
+    .row
+      .col-md-6.has-image
+        img(src='//placehold.it/100x100')
+        span.edit-overlay Click to Edit
+      .col-md-6.dropzone Drop file or click to upload
+      .col-md-6.dropzone Drop file or click to upload
+.row
+  .col-md-12
+    button.btn.btn-default.btn-primary.pull-right
+      | Next Page 
+      i.fa.fa-chevron-right
