@@ -1,12 +1,13 @@
 h1 Actions
-p Here are all Actions.
-table.table
-  thead
-    tr
-      th User-E-Mail
-      th Language
-      th Location
-      th Timeslot
-      th Finalized
-  tbody
-    //loaded by service
+p.well Here are all Actions.
+img.loader(ng-show="isLoading" src="/images/loader.gif")
+table.table.table-bordered.table-striped.table-hover.table-condensed(ng-table="ctrl.tableParams" ng-form="ctrl.tableForm" show-filter="true" ng-show="!isLoading")
+  tr(ng-repeat="row in $data"  ng-form="rowForm" emit-last-repeater-element)
+    td(data-title="'User-E-Mail'" filter="{email: 'text'}" sortable="'email'") {{row.email}}
+    td(data-title="'Language'" filter="{language: 'text'}" sortable="'language'") {{row.language}}
+    td(data-title="'Location'" filter="{location: 'text'}" sortable="'location'") {{row.location}}
+    td(data-title="'Start'" filter="{start_time: 'text'}" sortable="'start_time'") {{row.start_time}}
+    td(data-title="'End'" filter="{end_time: 'text'}" sortable="'end_time'") {{row.end_time}}
+    td(data-title="'Finalized'" filter="{finalized: 'text'}")
+      span.glyphicon.glyphicon-ok(ng-show="row.finalized" title="Action Final")
+      span.glyphicon.glyphicon-time(ng-show="!row.finalized" title="Action Pending")

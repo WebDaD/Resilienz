@@ -294,6 +294,48 @@ FROM languages l, strings s, translations t
 WHERE t.languages_id = l.id
 AND t.strings_id = s.id;
 
+-- -----------------------------------------------------
+-- View `userList`
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS `userList` ;
+DROP TABLE IF EXISTS `userList`;
+CREATE  OR REPLACE VIEW `userList` AS
+    SELECT
+        u.vorname,
+        u.nachname,
+        u.email,
+        u.active,
+        l.name AS language,
+        a.location,
+        a.finalized
+    FROM
+        resilienz.user u,
+        resilienz.languages l,
+        resilienz.actions a
+    WHERE
+        u.id = a.user_id
+            AND u.languages_id = l.id;
+-- -----------------------------------------------------
+-- View `resilienz`.`actionList`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `resilienz`.`actionList`;
+USE `resilienz`;
+CREATE  OR REPLACE VIEW `actionList` AS
+    SELECT
+        u.email,
+        l.name AS language,
+        a.location,
+        a.start_time,
+        a.end_time,
+        a.finalized
+    FROM
+        resilienz.user u,
+        resilienz.languages l,
+        resilienz.actions a
+    WHERE
+        u.id = a.user_id
+            AND u.languages_id = l.id;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
