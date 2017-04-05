@@ -5,6 +5,9 @@ html(lang=lang.key)
       include ../includes/head-debug.pug
     else
       include ../includes/head.pug
+    script(src='js/jquery.min.js')
+    script(src='js/jquery.cookie.js')
+    script(src='js/index.js')
   body.no-skin
     h1 #{lang.title}
     p #{lang.welcome}

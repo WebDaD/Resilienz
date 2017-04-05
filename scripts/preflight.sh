@@ -141,6 +141,7 @@ echo 'OK'
 
 echo -n '==> Verifying JS ...'
 test -e public/js/jquery.min.js
+test -e public/js/jquery.cookie.js
 test -e public/js/angular.min.js
 test -e public/js/angular-route.min.js
 test -e public/js/angular-resource.min.js

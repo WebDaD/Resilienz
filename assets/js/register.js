@@ -34,7 +34,12 @@ $(document).ready(function () {
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === '200') {
-        // TODO Login and send to welcome
+        $.cookie('resilienzManager-admin', data.admin, {expires: 365, path: '/'})
+        $.cookie('resilienzManager-id', data.id, {expires: 365, path: '/'})
+        $.cookie('resilienzManager-action', data.action, {expires: 365, path: '/'})
+        $.cookie('resilienzManager-email', data.email, {expires: 365, path: '/'})
+        $.cookie('resilienzManager-token', data.token, {expires: 365, path: '/'})
+        window.location.href = '/app'
       } else {
         error(data.msg)
       }

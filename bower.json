@@ -25,7 +25,8 @@
     "bootstrap": "*",
     "font-awesome": "*",
     "flag-icon-css": "*",
-    "caman":"*"
+    "caman":"*",
+    "jquery.cookie":"*"
   },
   "resolutions": {
     "angular": "*"

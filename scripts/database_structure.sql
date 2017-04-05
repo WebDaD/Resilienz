@@ -24,14 +24,12 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(16) NOT NULL,
   `vorname` VARCHAR(255) NOT NULL,
   `nachname` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(64) NOT NULL,
   `languages_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   INDEX `fk_user_languages1_idx` (`languages_id` ASC),
   CONSTRAINT `fk_user_languages1`

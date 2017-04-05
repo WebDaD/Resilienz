@@ -34,7 +34,7 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/', function (req, res) { // index
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies.lang || 'en', function (translations) {
       res.render('pages/index', {lang: translations})
     })
   })

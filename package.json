@@ -42,6 +42,7 @@
     "multer":"*",
     "helmet":"*",
     "pug":"*",
-    "cookie-parser":"*"
+    "cookie-parser":"*",
+    "request":"*"
   }
 }

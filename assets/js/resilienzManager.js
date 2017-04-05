@@ -40,28 +40,25 @@
         return viewLocation === $location.path()
       }
       if (typeof $cookies.get('resilienzManager-id') !== 'undefined' && typeof $cookies.get('resilienzManager-token') !== 'undefined') {
-        $rootScope.username = $cookies.get('resilienzManager-name')
         var adm = $cookies.get('resilienzManager-admin')
         if (typeof adm === 'boolean') {
           $rootScope.admin = adm
         } else {
           $rootScope.admin = adm === 'true'
         }
-        $rootScope.admin = $cookies.get('resilienzManager-admin')
         $rootScope.id = $cookies.get('resilienzManager-id')
         $rootScope.action = $cookies.get('resilienzManager-action')
-        $rootScope.login = $cookies.get('resilienzManager-login')
+        $rootScope.email = $cookies.get('resilienzManager-email')
         $rootScope.token = $cookies.get('resilienzManager-token')
-        $http.defaults.headers.common.login = $cookies.get('resilienzManager-login')
+        $http.defaults.headers.common.email = $cookies.get('resilienzManager-email')
         $http.defaults.headers.common.token = $cookies.get('resilienzManager-token')
       } else {
-        $rootScope.username = ''
         $rootScope.admin = false
         $rootScope.id = ''
         $rootScope.action = ''
-        $rootScope.login = ''
+        $rootScope.email = ''
         $rootScope.token = ''
-        $http.defaults.headers.common.login = ''
+        $http.defaults.headers.common.email = ''
         $http.defaults.headers.common.token = ''
         $location.path('/login')
       }
@@ -70,16 +67,14 @@
         $cookies.remove('resilienzManager-id')
         $cookies.remove('resilienzManager-action')
         $cookies.remove('resilienzManager-token')
-        $cookies.remove('resilienzManager-name')
         $cookies.remove('resilienzManager-admin')
-        $cookies.remove('resilienzManager-login')
-        $rootScope.username = ''
+        $cookies.remove('resilienzManager-email')
         $rootScope.admin = false
         $rootScope.id = ''
         $rootScope.action = ''
-        $rootScope.login = ''
+        $rootScope.email = ''
         $rootScope.token = ''
-        $http.defaults.headers.common.login = ''
+        $http.defaults.headers.common.email = ''
         $http.defaults.headers.common.token = ''
         $location.path('/login')
       }
