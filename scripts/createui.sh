@@ -1,17 +1,20 @@
-# check if needed binaries are there, else notify and output install command
-  # bower
-  # mkdir
-  # rm
-  # cp
-  # lessc
-  
+#!/bin/bash
+echo '=> Preparing to deploy Website Assets'
+
+if ! type "bower" > /dev/null; then
+  echo '==> bower not installed, installing'
+  npm install -g bower
+fi
+if ! type "lessc" > /dev/null; then
+  echo '==> less not installed, installing'
+  npm install -g less
+fi
+echo '=> Preparation Done.'
 echo '=> Deploying Website Assets'
 
 echo -n '==> Preparing Folders ...'
 mkdir -p public
-mkdir -p tmp
 rm -rf public/*
-rm -rf tmp/*
 mkdir -p public/templates
 mkdir -p public/css
 mkdir -p public/js

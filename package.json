@@ -28,8 +28,6 @@
     "createui":"sh scripts/createui.sh",
     "minifyui":"sh scripts/minifyui.sh",
 
-    "deploy":"sh scripts/deploy.sh",
-
     "prestart":"sh scripts/preflight.sh",
     "start":"node app.js",
 

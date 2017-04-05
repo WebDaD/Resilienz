@@ -4,6 +4,16 @@
 USE `resilienz` ;
 
 --
+-- Dumping data for table `languages`
+--
+
+LOCK TABLES `languages` WRITE;
+/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+INSERT INTO `languages` VALUES (1,'Deutsch','de');
+/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `strings`
 --
 LOCK TABLES `strings` WRITE;
