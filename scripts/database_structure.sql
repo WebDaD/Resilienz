@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `nachname` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(64) NOT NULL,
-  `active` TINYINT NOT NULL DEFAULT 0,
   `languages_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),

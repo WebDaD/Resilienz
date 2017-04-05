@@ -3,23 +3,50 @@ html
   head
     include ../includes/head.pug
     link(rel='stylesheet', href='css/login.min.css')
+    script(src='js/jquery.min.js')
+    script(src='js/register.js')
   body
     .container
-      #pwd-container.row
-        .col-md-4
-        .col-md-4
-          section.login-form
-            form(method='post', action='#', role='register')
-              img.img-responsive(src='http://i.imgur.com/RcmcLv4.png', alt='')
-              select.form-control
-                option Language 1
-                option Language 2
-              input.form-control.input-lg(type='email', name='email', placeholder=lang.login_email, required='', value='joestudent@gmail.com')
-              input.form-control.input-lg(type='text', name='name', placeholder=lang.login_name, required='', value='Joe')
-              input.form-control.input-lg(type='text', name='vorname', placeholder=lang.login_vorname, required='', value='Student')  
-              input#password_1.form-control.input-lg(type='password', placeholder=lang.login_password_1, required='')
-              input#password_2.form-control.input-lg(type='password', placeholder=lang.login_password_2, required='')
-              button.btn.btn-lg.btn-primary.btn-block(type='submit', name='go') #{lang.login_register}
+      .row
+        .col-md-4.col-md-offset-4
+          section.register-form
+            form.form-horizontal
+              .form-group
+                label.col-sm-2(for="register-language") #{lang.login_language}
+                select#register-language.col-sm-10.form-control
+                  each l in languages
+                    option(value=l.key)= l.name
+              .form-group
+                label.col-sm-2(for="register-email") #{lang.login_email}
+                input#register-email.col-sm-10.form-control.input-lg(type='email' placeholder=lang.login_email)
+              .form-group
+                label.col-sm-2(for="register-vorname") #{lang.login_vorname}
+                input#register-vorname.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_vorname)    
+              .form-group
+                label.col-sm-2(for="register-nachname") #{lang.login_nachname}
+                input#register-nachname.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_nachname)    
+              .form-group
+                label.col-sm-2(for="register-password") #{lang.login_password}
+                input#register-password.col-sm-10.form-control.input-lg(type='password' placeholder=lang.login_password)
+              .form-group
+                label.col-sm-2(for="register-passwordrepeat") #{lang.login_passwordrepeat}
+                input#register-passwordrepeat.col-sm-10.form-control.input-lg(type='password' placeholder=lang.login_passwordrepeat)                    
+              .form-group
+                label.col-sm-2(for="register-location") #{lang.login_location}
+                input#register-location.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_location)     
+              .form-group
+                label.col-sm-2(for="register-start") #{lang.login_start}
+                input#register-start.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_start)   
+              .form-group
+                label.col-sm-2(for="register-stop") #{lang.login_stop}
+                input#register-stop.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_stop)
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  .g-recaptcha(data-sitekey="6Lf14CgTAAAAADUtZY-4ZtXbV7Rs4Kla6QACFYRt")
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  button#register-submit.btn.btn-lg.btn-primary(type='submit' role='button') #{lang.login_register}
+              p#register-error.well(style="display:none;")
             .form-links
               a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
     include ../includes/footer.pug

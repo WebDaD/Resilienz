@@ -3,9 +3,6 @@ p.well Here are all Users that are registered.
 img.loader(ng-show="isLoading" src="/images/loader.gif")
 table.table.table-bordered.table-striped.table-hover.table-condensed(ng-table="ctrl.tableParams" ng-form="ctrl.tableForm" show-filter="true" ng-show="!isLoading")
   tr(ng-repeat="row in $data"  ng-form="rowForm" emit-last-repeater-element)
-    td(data-title="'Active'" filter="{active: 'text'}")
-      span.glyphicon.glyphicon-ok(ng-show="row.active" title="Active")
-      span.glyphicon.glyphicon-remove(ng-show="!row.active" title="Not Active")
     td(data-title="'Name'" filter="{nachname: 'text'}" sortable="'nachname'") {{row.vorname}} {{row.nachname}}
     td(data-title="'E-Mail'" filter="{email: 'text'}" sortable="'email'") {{row.email}}
     td(data-title="'Language'" filter="{language: 'text'}" sortable="'language'") {{row.language}}
