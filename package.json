@@ -10,10 +10,10 @@
       "password":"resilienz",
       "database":"resilienz"
     },
-    "images":"",
-    "books":"",
-    "pages":"",
-    "pdfs":"",
+    "images":"/var/resilienz/images",
+    "books":"/var/resilienz/books",
+    "pages":"/var/resilienz/pages",
+    "pdfs":"/var/resilienz/pdfs",
     "bookpages":46
   },
   "scripts": {
