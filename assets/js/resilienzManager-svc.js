@@ -12,7 +12,13 @@
             return $resource(restURL + 'users/:id', {id: '@id'})
           },
           actions: function () {
-            return $resource(restURL + 'actions/:id', {id: '@id'})
+            return $resource(restURL + 'actions/:id', {id: '@id'}, {
+              makeFinal: {
+                method: 'PUT',
+                url: restURL + 'actions/:id/finalize',
+                params: {id: '@id'}
+              }
+            })
           }
         }
       }

@@ -4,17 +4,17 @@
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
         .when('/welcome', {
-          controller: 'resilienzManager-welcome',
+          controller: 'resilienzManager-Welcome',
           controllerAs: 'ctrl',
           templateUrl: 'container/welcome'
         })
         .when('/layout', {
-          controller: 'resilienzManager-layout',
+          controller: 'resilienzManager-Layout',
           controllerAs: 'ctrl',
           templateUrl: 'container/layouter'
         })
         .when('/finish', {
-          controller: 'resilienzManager-finish',
+          controller: 'resilienzManager-Finalize',
           controllerAs: 'ctrl',
           templateUrl: 'container/finish'
         })
@@ -24,7 +24,7 @@
           templateUrl: 'container/users'
         })
         .when('/actions', {
-          controller: 'resilienzManager-actions',
+          controller: 'resilienzManager-Actions',
           controllerAs: 'ctrl',
           templateUrl: 'container/actions'
         })
@@ -49,6 +49,7 @@
         }
         $rootScope.admin = $cookies.get('resilienzManager-admin')
         $rootScope.id = $cookies.get('resilienzManager-id')
+        $rootScope.action = $cookies.get('resilienzManager-action')
         $rootScope.login = $cookies.get('resilienzManager-login')
         $rootScope.token = $cookies.get('resilienzManager-token')
         $http.defaults.headers.common.login = $cookies.get('resilienzManager-login')
@@ -57,6 +58,7 @@
         $rootScope.username = ''
         $rootScope.admin = false
         $rootScope.id = ''
+        $rootScope.action = ''
         $rootScope.login = ''
         $rootScope.token = ''
         $http.defaults.headers.common.login = ''
@@ -66,6 +68,7 @@
 
       $rootScope.logout = function () { // eslint-disable-line
         $cookies.remove('resilienzManager-id')
+        $cookies.remove('resilienzManager-action')
         $cookies.remove('resilienzManager-token')
         $cookies.remove('resilienzManager-name')
         $cookies.remove('resilienzManager-admin')
@@ -73,6 +76,7 @@
         $rootScope.username = ''
         $rootScope.admin = false
         $rootScope.id = ''
+        $rootScope.action = ''
         $rootScope.login = ''
         $rootScope.token = ''
         $http.defaults.headers.common.login = ''

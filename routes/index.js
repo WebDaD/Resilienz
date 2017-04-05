@@ -14,8 +14,9 @@
  * @param {object} login - login Object
  * @param {object} layouter - layouter Object
  * @param {object} bookGenerator - bookGenerator Object
+* @param {object} config - config Object
  */
-module.exports = function (app, database, language, login, layouter, bookGenerator) {
+module.exports = function (app, database, language, login, layouter, bookGenerator, config) {
   /** Middleware to Log every route
   * @param {object} req - Express.req Object
   * @param {object} res - Express.res Object
@@ -27,7 +28,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     next()
   })
   // Load Backend Routes
-  require('./backend.js')(app, database, language, login, layouter, bookGenerator)
+  require('./backend.js')(app, database, language, login, layouter, bookGenerator, config)
   // Load UI Routes
   require('./frontend.js')(app, language, login)
   // Load Login Routes

@@ -55,7 +55,7 @@ Language(database, function (error, language) {
 
     // Routes
     console.log('Loading Routes...')
-    require('./routes')(app, database, language, login, layouter, bookGenerator)
+    require('./routes')(app, database, language, login, layouter, bookGenerator, pack.config)
 
     // Listen to Port
     server.listen(pack.config.port)
