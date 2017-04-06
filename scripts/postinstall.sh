@@ -20,11 +20,11 @@ mysql -h $DB_HOST -u root -p -e 'CREATE SCHEMA `$DB_NAME`;CREATE USER `$DB_USER`
 
 
 echo '==> Creating Database Structure'
-mysql -h $DB_HOST -u $DB_USER -p$DB_PWD $DB_NAME < scripts/database_structure.sql
+mysql -h $DB_HOST -u $DB_USER -p$DB_PWD $DB_NAME < scripts/sql/structure.sql
 echo '==> Creating Database Structure OK'
 
 echo '==> Creating Database Data'
-mysql -h $DB_HOST -u $DB_USER -p$DB_PWD $DB_NAME < scripts/database_data.sql
+mysql -h $DB_HOST -u $DB_USER -p$DB_PWD $DB_NAME < scripts/sql/data.sql
 echo '==> Creating Database Data OK'
 
 echo '=> Creating Database OK'

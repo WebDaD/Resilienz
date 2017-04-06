@@ -33,7 +33,9 @@
     "start":"node app.js",
 
     "predebug":"sh scripts/preflight.sh",
-    "debug":"node app.js --debug"
+    "debug":"node app.js --debug",
+
+    "export:translations":"sh scripts/export_translations.sh"
 
   },
   "dependencies": {
