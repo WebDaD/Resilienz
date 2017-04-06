@@ -54,4 +54,10 @@ FOLDER=$(json -f package.json config.pdfs | sed -e 's/\n//g')
 mkdir -p $FOLDER
 chmod 777 -R $FOLDER
 echo 'OK'
+
+echo -n '==> Creating Salt-File...'
+FILE=$(json -f package.json config.salt | sed -e 's/\n//g')
+touch $FILE
+chmod 777 $FILE
+echo 'OK'
 echo '=> Creating Folders OK'

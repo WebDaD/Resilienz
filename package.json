@@ -14,7 +14,8 @@
     "books":"/var/resilienz/books",
     "pages":"/var/resilienz/pages",
     "pdfs":"/var/resilienz/pdfs",
-    "bookpages":46
+    "bookpages":46,
+    "salt":"/var/resilienz/my.salt"
   },
   "scripts": {
     "preinstall":"sh scripts/preinstall.sh",
@@ -43,6 +44,7 @@
     "helmet":"*",
     "pug":"*",
     "cookie-parser":"*",
-    "request":"*"
+    "request":"*",
+    "bcrypt":"*"
   }
 }

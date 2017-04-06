@@ -1,12 +1,11 @@
-install:
+all: install
+install: config
 	npm install
 	npm run createui
 	npm run minifyui
 config:
   npm run config
-test:
+test: install
 	npm run test
-docs:
+docs: install
 	npm run docs
-deploy:
-	npm run deploy

@@ -22,6 +22,7 @@ var Layouter = require('./lib/layouter.js')
 var BookGenerator = require('./lib/book-generator.js')
 var path = require('path')
 var cookieParser = require('cookie-parser')
+var bcrypt = require('bcrypt')
 
 console.log('Setting Static paths...')
 // Send public and docs
@@ -49,7 +50,7 @@ Language(database, function (error, language) {
     database.close()
     process.exit()
   } else {
-    var login = new Login(database)
+    var login = new Login(database, bcrypt, pack.config.salt)
     var layouter = new Layouter(pack.config.images, pack.config.pages, database)
     var bookGenerator = new BookGenerator(layouter, pack.config.pages, pack.config.books, pack.config.bookpages)
 

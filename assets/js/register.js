@@ -39,6 +39,7 @@ $(document).ready(function () {
         $.cookie('resilienzManager-action', data.action, {expires: 365, path: '/'})
         $.cookie('resilienzManager-email', data.email, {expires: 365, path: '/'})
         $.cookie('resilienzManager-token', data.token, {expires: 365, path: '/'})
+        $.cookie('resilienzManager-language', data.language, {expires: 365, path: '/'})
         window.location.href = '/app'
       } else {
         error(data.msg)

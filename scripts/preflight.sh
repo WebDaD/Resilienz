@@ -93,6 +93,14 @@ checkFolder 'images'
 checkFolder 'books'
 checkFolder 'pages'
 checkFolder 'pdfs'
+SALT=$(json -f package.json config.salt | sed -e 's/\n//g')
+if [ -e "$SALT" && -w "$SALT" ]
+  then
+    echo '===> $SALT exists and is writable'
+  else
+    echo '===> $SALT does not exist or is not writable'
+    exit 1
+fi
 echo '==> Verifying Folders OK'
 
 echo '==> Verifying File-Integrity'

@@ -36,6 +36,7 @@ textValue images "Enter Path for Images"
 textValue books "Enter Path for Books"
 textValue pages "Enter Path for Pages"
 textValue pdfs "Enter Path for Manuals"
+textValue salt "Enter Path for Salt-File"
 textValue bookpages "Enter Number of Pages in Book"
 echo '=> Configuration Complete'
 exit 0

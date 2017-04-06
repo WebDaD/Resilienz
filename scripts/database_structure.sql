@@ -293,10 +293,11 @@ CREATE  OR REPLACE VIEW `userList` AS
         u.vorname,
         u.nachname,
         u.email,
-        u.active,
+        u.id, 
         l.name AS language,
         a.location,
-        a.finalized
+        a.finalized,
+        a.id AS action_id
     FROM
         resilienz.user u,
         resilienz.languages l,
@@ -312,6 +313,7 @@ USE `resilienz`;
 CREATE  OR REPLACE VIEW `actionList` AS
     SELECT
         u.email,
+        u.id AS user_id,
         l.name AS language,
         a.location,
         a.start_time,
