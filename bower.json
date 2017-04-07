@@ -26,7 +26,8 @@
     "font-awesome": "*",
     "flag-icon-css": "*",
     "caman":"*",
-    "jquery.cookie":"*"
+    "jquery.cookie":"*",
+    "jquery-md5":"*"
   },
   "resolutions": {
     "angular": "*"

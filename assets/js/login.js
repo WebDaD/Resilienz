@@ -11,7 +11,7 @@ $(document).ready(function () {
     }
     $.post('/login', {
       email: $('#login-email').val(),
-      password: $('#login-password').val(),
+      password: $.md5($('#login-password').val()),
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === '200') {

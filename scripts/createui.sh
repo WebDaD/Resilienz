@@ -35,6 +35,10 @@ echo -n '==> Deploying jquery.cookie ...'
 cp bower_components/jquery.cookie/src/jquery.cookie.js public/js/jquery.cookie.js
 echo 'OK'
 
+echo -n '==> Deploying jquery-md5 ...'
+cp bower_components/jquery-md5/jquery.md5.js public/js/jquery.md5.js
+echo 'OK'
+
 echo -n '==> Deploying Bootstrap ...'
 cp bower_components/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.min.css
 echo 'OK'

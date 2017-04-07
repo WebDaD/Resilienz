@@ -27,7 +27,7 @@ $(document).ready(function () {
       email: $('#register-email').val(),
       vorname: $('#register-vorname').val(),
       nachname: $('#register-nachname').val(),
-      password: $('#register-password').val(),
+      password: $.md5($('#register-password').val()),
       location: $('#register-location').val(),
       start: $('#register-start').val(),
       stop: $('#register-stop').val(),
