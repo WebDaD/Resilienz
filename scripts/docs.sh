@@ -48,4 +48,7 @@ markdown-html doc/manuals/user.md -o doc/manual_user.html >/dev/null 2>&1
 markdown-html doc/manuals/admin.md -o doc/manual_admin.html >/dev/null 2>&1
 echo 'OK'
 
+
+# TODO: parse puml files
+
 echo '=> Creating Docs OK'

@@ -25,6 +25,7 @@ echo 'OK'
 
 echo -n '==> Getting Bower Componentes'
 bower install --allow-root
+npm install ng-table --save
 echo 'OK'
 
 echo -n '==> Deploying jquery ...'
@@ -32,7 +33,7 @@ cp bower_components/jquery/dist/jquery.min.js public/js/jquery.min.js
 echo 'OK'
 
 echo -n '==> Deploying jquery.cookie ...'
-cp bower_components/jquery.cookie/src/jquery.cookie.js public/js/jquery.cookie.js
+cp bower_components/jquery.cookie/jquery.cookie.js public/js/jquery.cookie.js
 echo 'OK'
 
 echo -n '==> Deploying jquery-md5 ...'
@@ -64,8 +65,8 @@ cp bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js public/js/ui-boot
 echo 'OK'
 
 echo -n '==> Deploying angular-ngtable ...'
-cp bower_components/ng-table/ng-table.min.js public/js/ng-table.min.js
-cp bower_components/ng-table/ng-table.min.css public/css/ng-table.min.css
+cp node_modules/ng-table/bundles/ng-table.min.js public/js/ng-table.min.js
+cp node_modules/ng-table/bundles/ng-table.min.css public/css/ng-table.min.css
 echo 'OK'
 
 echo -n '==> Deploying custom JS ...'

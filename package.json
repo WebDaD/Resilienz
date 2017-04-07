@@ -3,24 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall":"sh scripts/preinstall.sh",
-    "postinstall":"sh scripts/postinstall.sh",
+    "preinstall":"bash scripts/preinstall.sh",
+    "postinstall":"bash scripts/postinstall.sh",
 
-    "config":"sh scripts/configure.sh",
+    "config":"bash scripts/configure.sh",
 
-    "test":"sh scripts/test.sh",
-    "docs":"sh scripts/docs.sh",
+    "test":"bash scripts/test.sh",
+    "docs":"bash scripts/docs.sh",
 
-    "createui":"sh scripts/createui.sh",
-    "minifyui":"sh scripts/minifyui.sh",
+    "createui":"bash scripts/createui.sh",
+    "minifyui":"bash scripts/minifyui.sh",
 
-    "prestart":"sh scripts/preflight.sh",
+    "prestart":"bash scripts/preflight.sh",
     "start":"node app.js",
 
-    "predebug":"sh scripts/preflight.sh",
+    "predebug":"bash scripts/preflight.sh",
     "debug":"node app.js --debug",
 
-    "export:translations":"sh scripts/export_translations.sh"
+    "export:translations":"bash scripts/export_translations.sh"
 
   },
   "dependencies": {

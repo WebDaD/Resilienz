@@ -1,5 +1,5 @@
 #!/bin/bash
-if ! type "json" > /dev/null; then
+if  ! type "json" > /dev/null ; then
   echo '==> json not installed, installing'
   npm install -g json
 fi
@@ -10,8 +10,7 @@ echo '=> Configuration...'
 echo -n "Skip Configuration and use Default Values? (y|n) [n]: "
 read -r -n 1 skip
 echo ''
-if [ "$skip" == "y" ]
-then
+if [ "$skip" == "y" ]; then
   echo '=> Configuration Skipped'
   exit 0
 fi
@@ -32,7 +31,7 @@ function textValue {
 }
 textValue port "Enter Port"
 textValue database.host "Enter Database Server"
-textValue database.name "Enter Database Name"
+textValue database.database "Enter Database Name"
 textValue database.user "Enter Database User"
 textValue database.password "Enter Database Password"
 textValue images "Enter Path for Images"

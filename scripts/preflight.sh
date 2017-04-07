@@ -1,11 +1,11 @@
 #!/bin/bash
 function checkFolder {
   PARM=$(json -f config.json "$1" | sed -e 's/\n//g')
-  if [ -d "$PARM" && -w "$PARM" ]
+  if [ -d "$PARM" ] && [ -w "$PARM" ]
     then
-      echo '===> $PARM exists and is writable'
+      echo "===> $PARM exists and is writable"
     else
-      echo '===> $PARM does not exist or is not writable'
+      echo "===> $PARM does not exist or is not writable"
       exit 1
   fi
 }
@@ -83,7 +83,7 @@ checkIfMySQLTableExists "categories_has_layouts"
 checkIfMySQLTableExists "images"
 checkIfMySQLTableExists "images_has_actions_has_layouts"
 checkIfMySQLTableExists "languages"
-checkIfMySQLTableExists "layout_has_language"
+checkIfMySQLTableExists "layout_has_languages"
 checkIfMySQLTableExists "layouts"
 checkIfMySQLTableExists "positions"
 checkIfMySQLTableExists "strings"
@@ -97,7 +97,7 @@ checkFolder 'books'
 checkFolder 'pages'
 checkFolder 'pdfs'
 SALT=$(json -f config.json salt | sed -e 's/\n//g')
-if [ -e "$SALT" && -w "$SALT" ]
+if [ -e "$SALT" ] && [ -w "$SALT" ]
   then
     echo '===> $SALT exists and is writable'
   else
@@ -229,8 +229,8 @@ fi
 echo '==> Verifying Binaries OK'
 
 echo '==> Verifying Server'
-PORT=$(json -f package.json config.port | sed -e 's/\n//g')
-if [ netstat -lnt | awk '$6 == "LISTEN" && $4 ~ ".$PORT"' ]
+PORT=$(json -f config.json port | sed -e 's/\n//g')
+if [ $(netstat -lnt | awk '$6 == "LISTEN" && $4 ~ ".$PORT"') ]
   then
     echo '===> Port is in use!'
     exit 1
