@@ -48,8 +48,9 @@ var database = new Database(config.database)
 Language(database, function (error, language) {
   if (error) {
     console.error(error)
-    database.close()
-    process.exit()
+    database.close(function () {
+      process.exit()
+    })
   } else {
     var login = new Login(database, bcrypt, config.salt, config.serversecret)
     var layouter = new Layouter(config.images, config.pages, database)
