@@ -15,12 +15,12 @@ var request = require('request')
  */
 module.exports = function (app, language, login, config) {
   app.get('/login', function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('pages/login', {lang: translations, captcha: config.gcaptchaclient})
     })
   })
   app.get('/register', function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       language.listLanguages(function (languages) {
         res.render('pages/register', {lang: translations, languages: languages, captcha: config.gcaptchaclient})
       })

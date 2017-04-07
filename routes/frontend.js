@@ -14,32 +14,32 @@
  */
 module.exports = function (app, language, login) {
   app.get('/container/welcome', function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('container/welcome', {lang: translations})
     })
   })
   app.get('/container/finish', function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('container/finish', {lang: translations})
     })
   })
   app.get('/container/layouter', function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('container/layouter', {lang: translations})
     })
   })
   app.get('/modal/editor', function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('modals/editor', {lang: translations})
     })
   })
   app.get('/', function (req, res) { // index
-    language.listTranslation(req.cookies.lang || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
       res.render('pages/index', {lang: translations})
     })
   })
   app.get('/app', login.isLoggedIn(), function (req, res) {
-    language.listTranslation(req.cookies.lang, function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('pages/app', {lang: translations})
     })
   })
