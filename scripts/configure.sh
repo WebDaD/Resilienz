@@ -3,6 +3,9 @@ if ! type "json" > /dev/null; then
   echo '==> json not installed, installing'
   npm install -g json
 fi
+if [ ! -e "config.json" ]; then
+  cp config.json.sample config.json
+fi
 echo '=> Configuration...'
 echo -n "Skip Configuration and use Default Values? (y|n) [n]: "
 read -r -n 1 skip
@@ -13,7 +16,7 @@ then
   exit 0
 fi
 function textValue {
-  PARM=$(json -f package.json config."$1" | sed -e 's/\n//g')
+  PARM=$(json -f config.json "$1" | sed -e 's/\n//g')
   read -r -p "$2 [$PARM]: " newparm
   if [ -n "$newparm" ]
   then
@@ -38,5 +41,8 @@ textValue pages "Enter Path for Pages"
 textValue pdfs "Enter Path for Manuals"
 textValue salt "Enter Path for Salt-File"
 textValue bookpages "Enter Number of Pages in Book"
+textValue serversecret "Enter Random stuff to add to passwords"
+textValue gcaptchasecret "Enter Server Key for Google NoCaptcha"
+textValue gcaptchaclient "Enter Site Key for Google NoCaptcha"
 echo '=> Configuration Complete'
 exit 0

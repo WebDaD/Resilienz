@@ -13,25 +13,24 @@ var request = require('request')
  * @param {object} language - language Object
  * @param {object} login - login Object
  */
-module.exports = function (app, language, login) {
+module.exports = function (app, language, login, config) {
   app.get('/login', function (req, res) {
     language.listTranslation(req.cookies.lang, function (translations) {
-      res.render('pages/login', {lang: translations})
+      res.render('pages/login', {lang: translations, captcha: config.gcaptchaclient})
     })
   })
   app.get('/register', function (req, res) {
     language.listTranslation(req.cookies.lang, function (translations) {
       language.listLanguages(function (languages) {
-        res.render('pages/register', {lang: translations, languages: languages})
+        res.render('pages/register', {lang: translations, languages: languages, captcha: config.gcaptchaclient})
       })
     })
   })
   app.post('/login', function (req, res) {
-    var secretKey = '6Lf14CgTAAAAALwtDdvvb3_k0QjxRq4QmnIoIDp4'
     if (req.body['captchaResponse'] === undefined || req.body['captchaResponse'] === '' || req.body['captchaResponse'] === null) {
       return res.status(403).json({msg: 'Please select captcha'})
     } else {
-      var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + secretKey + '&response=' + req.body['g-recaptcha-response'] + '&remoteip=' + req.connection.remoteAddress
+      var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress
       request(verificationUrl, function (error, response, body) {
         if (error) {
           return res.status(501).json(error)
@@ -53,11 +52,10 @@ module.exports = function (app, language, login) {
     }
   })
   app.post('/register', function (req, res) {
-    var secretKey = '6Lf14CgTAAAAALwtDdvvb3_k0QjxRq4QmnIoIDp4'
     if (req.body['captchaResponse'] === undefined || req.body['captchaResponse'] === '' || req.body['captchaResponse'] === null) {
       return res.status(403).json({msg: 'Please select captcha'})
     } else {
-      var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + secretKey + '&response=' + req.body['g-recaptcha-response'] + '&remoteip=' + req.connection.remoteAddress
+      var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress
       request(verificationUrl, function (error, response, body) {
         if (error) {
           return res.status(501).json(error)

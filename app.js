@@ -14,6 +14,7 @@ var express = require('express')
 var app = express()
 var server = require('http').createServer(app)
 var pack = require('./package.json')
+var config = require('./config.json')
 var bodyParser = require('body-parser')
 var Database = require('./lib/database.js')
 var Language = require('./lib/language.js')
@@ -43,27 +44,27 @@ app.use(bodyParser.urlencoded({
 
 // Objects
 console.log('Creating Objects...')
-var database = new Database(pack.config.database)
+var database = new Database(config.database)
 Language(database, function (error, language) {
   if (error) {
     console.error(error)
     database.close()
     process.exit()
   } else {
-    var login = new Login(database, bcrypt, pack.config.salt)
-    var layouter = new Layouter(pack.config.images, pack.config.pages, database)
-    var bookGenerator = new BookGenerator(layouter, pack.config.pages, pack.config.books, pack.config.bookpages)
+    var login = new Login(database, bcrypt, config.salt, config.serversecret)
+    var layouter = new Layouter(config.images, config.pages, database)
+    var bookGenerator = new BookGenerator(layouter, config.pages, config.books, config.bookpages)
 
     // Routes
     console.log('Loading Routes...')
-    require('./routes')(app, database, language, login, layouter, bookGenerator, pack.config)
+    require('./routes')(app, database, language, login, layouter, bookGenerator, config)
 
     // Listen to Port
-    server.listen(pack.config.port)
+    server.listen(config.port)
 
     console.log('Startup Complete')
-    console.log('Using Database ' + pack.config.database)
-    console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.port)
+    console.log('Using Database ' + config.database)
+    console.log(pack.name + '@' + pack.version + ' running on Port ' + config.port)
   }
 })
 

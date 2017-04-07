@@ -82,6 +82,9 @@ jspm_packages
 public
 tmp
 
+# Config (may have secret information)
+config.json
+
 # Optional npm cache directory
 .npm
 

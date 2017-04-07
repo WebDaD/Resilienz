@@ -32,7 +32,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
   // Load UI Routes
   require('./frontend.js')(app, language, login)
   // Load Login Routes
-  require('./login.js')(app, language, login)
+  require('./login.js')(app, language, login, config)
 
   // Sends status information
   app.get('/status', function (req, res) {

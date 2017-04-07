@@ -2,21 +2,6 @@
   "name": "resilienz-app",
   "version": "0.1.0",
   "private": true,
-  "config": {
-    "port":8080,
-    "database": {
-      "host":"localhost",
-      "user":"resilienz",
-      "password":"resilienz",
-      "database":"resilienz"
-    },
-    "images":"/var/resilienz/images",
-    "books":"/var/resilienz/books",
-    "pages":"/var/resilienz/pages",
-    "pdfs":"/var/resilienz/pdfs",
-    "bookpages":46,
-    "salt":"/var/resilienz/my.salt"
-  },
   "scripts": {
     "preinstall":"sh scripts/preinstall.sh",
     "postinstall":"sh scripts/postinstall.sh",

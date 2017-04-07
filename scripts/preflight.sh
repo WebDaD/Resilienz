@@ -1,6 +1,6 @@
 #!/bin/bash
 function checkFolder {
-  PARM=$(json -f package.json config."$1" | sed -e 's/\n//g')
+  PARM=$(json -f config.json "$1" | sed -e 's/\n//g')
   if [ -d "$PARM" && -w "$PARM" ]
     then
       echo '===> $PARM exists and is writable'
@@ -11,10 +11,10 @@ function checkFolder {
 }
 function checkIfMySQLTableExists {
     table=$1;
-    DB_HOST=$(json -f package.json config.database.host | sed -e 's/\n//g')
-    DB_USER=$(json -f package.json config.database.user | sed -e 's/\n//g' )
-    DB_NAME=$(json -f package.json config.database.database | sed -e 's/\n//g')
-    DB_PWD=$(json -f package.json config.database.password | sed -e 's/\n//g')
+    DB_HOST=$(json -f config.json database.host | sed -e 's/\n//g')
+    DB_USER=$(json -f config.json database.user | sed -e 's/\n//g' )
+    DB_NAME=$(json -f config.json database.database | sed -e 's/\n//g')
+    DB_PWD=$(json -f config.json database.password | sed -e 's/\n//g')
     if [ $(mysql -N -s --host=$DB_HOST --user=$DB_USER --password=$DB_PWD -e \
         "select count(*) from information_schema.tables where \
             table_schema='${DB_NAME}' and table_name='${table}';") -eq 1 ]; then
@@ -43,6 +43,9 @@ if ! type "json" > /dev/null; then
   echo '==> json not installed, installing'
   npm install -g json
 fi
+
+test -e config.json
+
 echo '=> Preparation Done.'
 
 echo '=> Performing Preflight-Check'
@@ -59,10 +62,10 @@ echo 'OK'
 echo '==> Verifying Security OK'
 
 echo '==> Verifying Database'
-DB_HOST=$(json -f package.json config.database.host | sed -e 's/\n//g')
-DB_USER=$(json -f package.json config.database.user | sed -e 's/\n//g' )
-DB_NAME=$(json -f package.json config.database.database | sed -e 's/\n//g')
-DB_PWD=$(json -f package.json config.database.password | sed -e 's/\n//g')
+DB_HOST=$(json -f config.json database.host | sed -e 's/\n//g')
+DB_USER=$(json -f config.json database.user | sed -e 's/\n//g' )
+DB_NAME=$(json -f config.json database.database | sed -e 's/\n//g')
+DB_PWD=$(json -f config.json database.password | sed -e 's/\n//g')
 
 RESULT=`mysqlshow --host=$DB_HOST --user=$DB_USER --password=$DB_PWD $DB_NAME| grep -v Wildcard | grep -o $DB_NAME`
 if [ "$RESULT" == "$DB_NAME" ]
@@ -93,7 +96,7 @@ checkFolder 'images'
 checkFolder 'books'
 checkFolder 'pages'
 checkFolder 'pdfs'
-SALT=$(json -f package.json config.salt | sed -e 's/\n//g')
+SALT=$(json -f config.json salt | sed -e 's/\n//g')
 if [ -e "$SALT" && -w "$SALT" ]
   then
     echo '===> $SALT exists and is writable'

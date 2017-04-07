@@ -1,0 +1,18 @@
+{
+  "port":8080,
+  "database": {
+    "host":"localhost",
+    "user":"resilienz",
+    "password":"resilienz",
+    "database":"resilienz"
+  },
+  "images":"/var/resilienz/images",
+  "books":"/var/resilienz/books",
+  "pages":"/var/resilienz/pages",
+  "pdfs":"/var/resilienz/pdfs",
+  "bookpages":46,
+  "salt":"/var/resilienz/my.salt",
+  "serversecret":"---some-random-string---",
+  "gcaptchasecret":"google-captcha-server-key",
+  "gcaptchaclient":"google-captcha-site-key"
+}
