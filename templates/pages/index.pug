@@ -1,15 +1,12 @@
 doctype html
 html(lang=lang.key)
   head
-    if debug
-      include ../includes/head-debug.pug
-    else
-      include ../includes/head.pug
+    include ../includes/head.pug
     script(src='js/jquery.min.js')
     script(src='js/jquery.cookie.js')
     script(src='js/index.js')
   body.no-skin
     h1 #{lang.title}
-    p #{lang.welcome}
+    p #{lang.index_text}
     a(href="http://resilienz.prixjeunesse.de/login") #{lang.link_app}
     include ../includes/footer.pug

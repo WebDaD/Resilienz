@@ -29,8 +29,8 @@ html(lang=lang.key, ng-app='resilienzManager')
               a(href='#!/actions') Actions
             li(ng-show="admin" ng-class="{ active: isActive('/users')}")
               a(href='#!/users') Users
-          button.navbar-right.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="username !== ''" style="margin-left:10px;") #{lang.nav.logout}
-          p.navbar-text.navbar-right(ng-show="username !== ''" style="margin-left:10px;") #{lang.nav.logged_in_as} {{username}}
+          button.navbar-right.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="username !== ''" style="margin-left:10px;") #{lang.nav_logout}
+          p.navbar-text.navbar-right(ng-show="username !== ''" style="margin-left:10px;") #{lang.nav_logged_in_as} {{username}}
         // /.nav-collapse
     div.fluid-container
       #ng-view(ng-view='')

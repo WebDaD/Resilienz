@@ -19,6 +19,20 @@ module.exports = function (app, language, login, config) {
       res.render('pages/login', {lang: translations, captcha: config.gcaptchaclient})
     })
   })
+  app.get('/reset', function (req, res) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+      res.render('pages/reset_pwd', {lang: translations, captcha: config.gcaptchaclient})
+    })
+  })
+  app.get('/set-pwd', function (req, res) {
+    if (!req.query.resetToken || !req.query.email) {
+      res.status(403).send('No ResetToken or E-Mail-Address given.')
+    } else {
+      language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+        res.render('pages/set_pwd', {lang: translations, captcha: config.gcaptchaclient, resetToken: req.query.resetToken, email: req.query.email})
+      })
+    }
+  })
   app.get('/register', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       language.listLanguages(function (languages) {
@@ -40,6 +54,56 @@ module.exports = function (app, language, login, config) {
             return res.status(403).json({msg: 'Failed captcha verification'})
           } else {
             login.login(req.body.email, req.body.password, function (error, data) {
+              if (error) {
+                return res.status(501).json(error)
+              } else {
+                return res.status(200).json(data)
+              }
+            })
+          }
+        }
+      })
+    }
+  })
+  app.post('/reset', function (req, res) {
+    if (req.body['captchaResponse'] === undefined || req.body['captchaResponse'] === '' || req.body['captchaResponse'] === null) {
+      return res.status(403).json({msg: 'Please select captcha'})
+    } else {
+      var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress
+      request(verificationUrl, function (error, response, body) {
+        if (error) {
+          return res.status(501).json(error)
+        } else {
+          body = JSON.parse(body)
+          if (body.success !== undefined && !body.success) {
+            return res.status(403).json({msg: 'Failed captcha verification'})
+          } else {
+            login.reset(req.body.email, function (error, data) {
+              if (error) {
+                return res.status(501).json(error)
+              } else {
+                return res.status(200).json(data)
+              }
+            })
+          }
+        }
+      })
+    }
+  })
+  app.post('/set-pwd', function (req, res) {
+    if (req.body['captchaResponse'] === undefined || req.body['captchaResponse'] === '' || req.body['captchaResponse'] === null) {
+      return res.status(403).json({msg: 'Please select captcha'})
+    } else {
+      var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress
+      request(verificationUrl, function (error, response, body) {
+        if (error) {
+          return res.status(501).json(error)
+        } else {
+          body = JSON.parse(body)
+          if (body.success !== undefined && !body.success) {
+            return res.status(403).json({msg: 'Failed captcha verification'})
+          } else {
+            login.setpwd(req.body.email, req.body.password, req.body.resetToken, function (error, data) {
               if (error) {
                 return res.status(501).json(error)
               } else {

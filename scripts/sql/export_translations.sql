@@ -1,4 +1,4 @@
-SELECT s.string_key, s.description, l.lang_key, t.translation
+SELECT s.id AS string_id, s.string_key, s.description, l.id As lang_id, l.lang_key, t.translation
 FROM languages l
 JOIN strings s
 LEFT JOIN translations t ON(t.languages_id=l.id AND t.strings_id=s.id)
