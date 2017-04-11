@@ -96,6 +96,7 @@ checkFolder 'images'
 checkFolder 'books'
 checkFolder 'pages'
 checkFolder 'pdfs'
+checkFolder 'backups'
 SALT=$(json -f config.json salt | sed -e 's/\n//g')
 if [ -e "$SALT" ] && [ -w "$SALT" ]
   then
@@ -153,6 +154,7 @@ echo 'OK'
 echo -n '==> Verifying JS ...'
 test -e public/js/jquery.min.js
 test -e public/js/jquery.cookie.js
+test -e public/js/jquery.md5.js
 test -e public/js/angular.min.js
 test -e public/js/angular-route.min.js
 test -e public/js/angular-resource.min.js
@@ -169,6 +171,9 @@ test -e public/js/controllers/users-controller.js
 test -e public/js/controllers/welcome-controller.js
 test -e public/js/js.min.js
 test -e public/js/login.js
+test -e public/js/register.js
+test -e public/js/reset_pwd.js
+test -e public/js/set_pwd.js
 echo 'OK'
 
 echo -n '==> Verifying Images ...'

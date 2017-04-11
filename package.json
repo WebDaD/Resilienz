@@ -20,7 +20,8 @@
     "predebug":"bash scripts/preflight.sh",
     "debug":"node app.js --debug",
 
-    "export:translations":"bash scripts/export_translations.sh"
+    "export:translations":"bash scripts/export_translations.sh",
+    "backup":"bash scripts/backup.sh"
 
   },
   "dependencies": {
