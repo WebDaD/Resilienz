@@ -1,40 +1,26 @@
 .row
   .col-md-3
-    button.btn.btn-default.btn-block
+    button.btn.btn-default.btn-block(ng-click="ctrl.switchToCategorie(ctrl.categories.previous.id)")
       i.fa.fa-chevron-left
-      |  Previous Category
+      |  {{ctrl.categories.previous.name}}
   .col-md-6.text-center
-    h2 Active Category
+    h2 {{ctrl.categories.active.name}}
   .col-md-3
-    button.btn.btn-default.btn-block
-      | Next Category 
+    button.btn.btn-default.btn-block(ng-click="ctrl.switchToCategorie(ctrl.categories.next.id)")
+      | {{ctrl.categories.next.name}}
       i.fa.fa-chevron-right
 .row
-  .col-md-3
-    button.btn.btn-default.btn-block 1
-  .col-md-3
-    button.btn.btn-default.btn-block.btn-success(disabled='') 2
-  .col-md-3
-    button.btn.btn-default.btn-block 3
-  .col-md-3
-    button.btn.btn-default.btn-block 4
-.row
+    .col-md-3(ng-repeat="n in arrayFromPages(ctrl.categories.active.pages) track by $index")
+        button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.switchToPage(n)")= n++
+.row 
   .col-xs-6.text-center
-    img.img-responsive(src='http://placekitten.com/300/450')
+    img.img-responsive(ng-src="/images/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}" alt="Actual Layout")
   .col-xs-6
     .row
       .col-md-12
-        select#layoutSelect.form-control
-          option Layout 1
-          option Layout 2
+        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.layouts track by layout.id" ng-model="ctrl.selectedLayout")
     .row
-      .col-md-6.has-image
-        img(src='//placehold.it/100x100')
-        span.edit-overlay Click to Edit
-      .col-md-6.dropzone Drop file or click to upload
-      .col-md-6.dropzone Drop file or click to upload
-.row
-  .col-md-12
-    button.btn.btn-default.btn-primary.pull-right
-      | Next Page 
-      i.fa.fa-chevron-right
+      .col-md-6(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image, dropzone:!position.image")
+        span(ng-show="!position.image") #{lang.layout_upload}
+        img(ng-show="position.image" ng-src='/images/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}/{{position.id}}')
+        span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position.id)") #{lang.layout_edit}
