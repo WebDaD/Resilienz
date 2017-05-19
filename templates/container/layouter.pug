@@ -1,4 +1,7 @@
-.row
+.row(ng-show="ctrl.catLoading")
+  .col-md-12
+    .spinner
+.row(ng-show="!ctrl.catLoading")
   .col-md-3
     button.btn.btn-default.btn-block(ng-click="ctrl.switchToCategorie(ctrl.categories.previous.id)")
       i.fa.fa-chevron-left
@@ -9,10 +12,10 @@
     button.btn.btn-default.btn-block(ng-click="ctrl.switchToCategorie(ctrl.categories.next.id)")
       | {{ctrl.categories.next.name}}
       i.fa.fa-chevron-right
-.row
-    .col-md-3(ng-repeat="n in arrayFromPages(ctrl.categories.active.pages) track by $index")
-        button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.switchToPage(n)")= n++
-.row 
+.row(ng-show="!ctrl.catLoading")
+  .col-md-3(ng-repeat="n in arrayFromPages(ctrl.categories.active.pages) track by $index")
+    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.switchToPage(n)")= n++
+.row(ng-show="!ctrl.catLoading") 
   .col-xs-6.text-center
     img.img-responsive(ng-src="/images/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}" alt="Actual Layout")
   .col-xs-6

@@ -1,6 +1,6 @@
 /* global angular */
 ;(function () {
-  angular.module('resilienzManager', ['ngRoute', 'ngResource', 'ngCookies', 'ngTable', 'ui.bootstrap'])
+  angular.module('resilienzManager', ['ngRoute', 'ngResource', 'ngCookies', 'ngTable', 'ui.bootstrap', 'ng-imgAreaSelect'])
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
         .when('/welcome', {

@@ -32,6 +32,10 @@ echo -n '==> Deploying jquery ...'
 cp bower_components/jquery/dist/jquery.min.js public/js/jquery.min.js
 echo 'OK'
 
+echo -n '==> Deploying jquery.imgareaselect ...'
+cp bower_components/imgareaselect/dist/jquery.imgareaselect.js public/js/jquery.imgareaselect.js
+echo 'OK'
+
 echo -n '==> Deploying jquery.cookie ...'
 cp bower_components/jquery.cookie/jquery.cookie.js public/js/jquery.cookie.js
 echo 'OK'
@@ -58,6 +62,10 @@ echo 'OK'
 
 echo -n '==> Deploying angular-cookies ...'
 cp bower_components/angular-cookies/angular-cookies.min.js public/js/angular-cookies.min.js
+echo 'OK'
+
+echo -n '==> Deploying angular-imgAreaSelect ...'
+cp bower_components/ng-imgAreaSelect/ng-imgAreaSelect.min.js public/js/ng-imgAreaSelect.min.js
 echo 'OK'
 
 echo -n '==> Deploying angular-bootstrap ...'

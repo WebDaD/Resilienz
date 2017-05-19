@@ -6,6 +6,8 @@
       self.close = function () {
         $uibModalInstance.close()
       }
-      // TODO: image editing, see caman
+      self.image = data.image
+      // TODO: http://odyniec.net/projects/imgareaselect/
+      // TODO: https://github.com/eliyahen/ng-imgAreaSelect
     }])
 }())

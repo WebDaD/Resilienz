@@ -4,6 +4,7 @@
     .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', function ($scope, resilienzManagerDataProvider, $uibModal) {
       var self = this
       self.actionid = -1 // TODO: from rootScope?
+      self.catLoading = true
       self.categories = {}
       self.categories.all = [] // TODO: load
       self.categories.previous = {sort: -1, name: '', pages: -1}

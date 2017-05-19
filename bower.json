@@ -25,7 +25,8 @@
     "bootstrap": "*",
     "font-awesome": "*",
     "flag-icon-css": "*",
-    "caman":"*",
+    "imgareaselect":"*",
+    "ng-imgAreaSelect":"*",
     "jquery.cookie":"*",
     "jquery-md5":"*"
   },
