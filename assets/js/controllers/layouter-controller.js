@@ -13,7 +13,7 @@
       self.selectedPage = -1
 
       self.layouts = [] // TODO: load {id, name, positions}
-      self.selectedLayout = {id: -1, name: '', positions: []} // TODO: positions: {image:true/false, id}
+      self.selectedLayout = {id: -1, name: '', positions: []} // TODO: positions: {image:true/false, id, width, height}
       self.switchToCategorie = function (cat_order) {
 
       }
@@ -27,7 +27,7 @@
           controller: 'resilienzManager-Editor',
           controllerAs: 'ctrl',
           size: 'lg',
-          resolve: { // TODO: give date to editor
+          resolve: { // TODO: give data to editor: image-path, width/height of position
             data: function () {
               return data
             }
