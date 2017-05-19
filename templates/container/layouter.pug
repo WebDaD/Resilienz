@@ -3,13 +3,13 @@
     .spinner
 .row(ng-show="!ctrl.catLoading")
   .col-md-3
-    button.btn.btn-default.btn-block(ng-click="ctrl.switchToCategorie(ctrl.categories.previous.id)")
+    button.btn.btn-default.btn-block(ng-click="ctrl.catPrevious()")
       i.fa.fa-chevron-left
       |  {{ctrl.categories.previous.name}}
   .col-md-6.text-center
     h2 {{ctrl.categories.active.name}}
   .col-md-3
-    button.btn.btn-default.btn-block(ng-click="ctrl.switchToCategorie(ctrl.categories.next.id)")
+    button.btn.btn-default.btn-block(ng-click="ctrl.catNext()")
       | {{ctrl.categories.next.name}}
       i.fa.fa-chevron-right
 .row(ng-show="!ctrl.catLoading")
@@ -21,9 +21,10 @@
   .col-xs-6
     .row
       .col-md-12
-        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.layouts track by layout.id" ng-model="ctrl.selectedLayout")
+        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.categories.active.layouts track by layout.id" ng-model="ctrl.selectedLayout")
     .row
-      .col-md-6(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image, dropzone:!position.image")
+      .col-md-6(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image")
+        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig" event-handlers="{ 'addedfile': position.upload}")
         span(ng-show="!position.image") #{lang.layout_upload}
         img(ng-show="position.image" ng-src='/images/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}/{{position.id}}')
-        span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position.id)") #{lang.layout_edit}
+        span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)") #{lang.layout_edit}

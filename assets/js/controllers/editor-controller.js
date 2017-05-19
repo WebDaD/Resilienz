@@ -10,7 +10,7 @@
         // TODO: send data to backend for image cropping
         $uibModalInstance.close()
       }
-      self.image = data.image
+      self.image = data.imagepath
       self.options = {
         handles: true,
         movable: true,

@@ -1,41 +1,67 @@
 /* global angular */
 ;(function () {
   angular.module('resilienzManager')
-    .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', function ($scope, resilienzManagerDataProvider, $uibModal) {
+    .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope) {
       var self = this
-      self.actionid = -1 // TODO: from rootScope?
+      self.dropzoneConfig = {
+        parallelUploads: 1,
+        maxFileSize: 10,
+        maxFiles: 1
+      }
+      self.actionid = $rootScope.action
       self.catLoading = true
-      self.categories = {}
-      self.categories.all = [] // TODO: load
-      self.categories.previous = {sort: -1, name: '', pages: -1}
-      self.categories.next = {sort: -1, name: '', pages: -1}
-      self.categories.active = {sort: -1, name: '', pages: -1}
-      self.selectedPage = -1
-
-      self.layouts = [] // TODO: load {id, name, positions}
-      self.selectedLayout = {id: -1, name: '', positions: []} // TODO: positions: {image:true/false, id, width, height}
-      self.switchToCategorie = function (cat_order) {
+      // load cats with layouts and positions
+      resilienzManagerDataProvider.categoriesFull().query(function (categories) {
+        self.categories.all = categories // {id, sort: -1, name: '', pages: -1, layouts: []}
+        // TODO: loop all layouts.positions and Add function upload where image=false
+        self.categories.previous = {}
+        self.categories.active = categories[0]
+        self.categories.next = categories[1]
+        self.selectedPage = 1
+        self.selectedLayout = self.categories.active.layouts[0] // {image, width, height, imagepath, id}
+        self.catLoading = false
+      })
+      self.catPrevious = function () {
+        self.catLoading = true
+        self.categories.next = self.categories.active
+        self.categories.active = self.categories.previous
+        // TODO: set previous
+        self.catLoading = false
+      }
+      self.catNext = function () {
+        self.catLoading = true
+        self.categories.previous = self.categories.active
+        self.categories.active = self.categories.next
+        // TODO: set next
+        self.catLoading = false
+      }
+      self.switchToPage = function (nr) {
 
       }
-      self.switchToPage = function(nr) {
-
-      }
-      self.openEditor = function(position_id) {
+      self.openEditor = function (position) {
+        var data = {}
+        data.image = position.imagepath
+        data.width = position.width
+        data.height = position.height
         $uibModal.open({
           animation: true,
           templateUrl: 'modals/editor',
           controller: 'resilienzManager-Editor',
           controllerAs: 'ctrl',
           size: 'lg',
-          resolve: { // TODO: give data to editor: image-path, width/height of position
+          resolve: {
             data: function () {
               return data
             }
           }
         })
       }
-      self.arrayFromPages = function(num) {
+      self.arrayFromPages = function (num) {
         return new Array(num)
+      }
+      function upload (file) {
+        // TODO; make use of this to get position id
+        // TODO: upload file, add to postions
       }
     }])
 }())

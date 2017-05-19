@@ -11,6 +11,9 @@
           users: function () {
             return $resource(restURL + 'users/:id', {id: '@id'})
           },
+          categoriesFull: function () {
+            return $resource(restURL + 'categories/full')
+          },
           actions: function () {
             return $resource(restURL + 'actions/:id', {id: '@id'}, {
               makeFinal: {

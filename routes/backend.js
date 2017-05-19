@@ -56,4 +56,5 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
   })
   // TODO: app.get '/images/action/categorie_id/pagenr' <-- return layout for action
   // TODO: app.get '/images/action/categorie_id/pagenr/positionid' <-- return single image for action
+  // TODO: app.get '/categories/full' <-- return cats with allowed layouts and their positions
 }

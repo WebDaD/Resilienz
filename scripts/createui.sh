@@ -68,6 +68,12 @@ echo -n '==> Deploying angular-imgAreaSelect ...'
 cp bower_components/ng-imgAreaSelect/ng-imgAreaSelect.min.js public/js/ng-imgAreaSelect.min.js
 echo 'OK'
 
+echo -n '==> Deploying angular-dropzone ...'
+cp bower_components/angular-dropzone/lib/angular-dropzone.js public/js/angular-dropzone.js
+cp bower_components/dropzone/downloads/dropzone.min.js public/js/dropzone.min.js
+cp bower_components/dropzone/downloads/css/dropzone.css public/css/dropzone.css
+echo 'OK'
+
 echo -n '==> Deploying angular-bootstrap ...'
 cp bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js public/js/ui-bootstrap-tpls.min.js
 echo 'OK'
