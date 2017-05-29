@@ -21,7 +21,7 @@ DB_USER=$(json -f config.json database.user | sed -e 's/\n//g' )
 DB_NAME=$(json -f config.json database.database | sed -e 's/\n//g')
 DB_PWD=$(json -f config.json database.password | sed -e 's/\n//g')
 
-mysqldump -h $DB_HOST -u $DB_USER -p$DB_PWD --databases $DB_NAME > ${D_BACKUPS}rbtmp/$db_sqlfile
+mysqldump --single-transaction -h $DB_HOST -u $DB_USER -p$DB_PWD --databases $DB_NAME > ${D_BACKUPS}rbtmp/$db_sqlfile
 
 echo '==> Archiving Folders and SALT...'
 
