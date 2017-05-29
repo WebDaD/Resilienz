@@ -39,6 +39,7 @@ cp $FILE_SALT ${D_BACKUPS}rbtmp/my.salt
 
 cd  ${D_BACKUPS}rbtmp
 tar -zcvf $D_BACKUPS$now-resilienz.tar.gz *
+cp $D_BACKUPS$now-resilienz.tar.gz ${D_BACKUPS}resilienz.tar.gz
 
 rm -rf ${D_BACKUPS}rbtmp
 
