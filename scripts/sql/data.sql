@@ -68,7 +68,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES (1,'Deutsch','de');
+INSERT INTO `languages` VALUES (1,'Deutsch','de'), (2,'English','en');
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +173,65 @@ INSERT INTO `translations` VALUES
 (1,55,'Hochladen'),
 (1,56,'Bearbeiten'),
 (1,57,'Bildeditor'),
-(1,58,'Schließen')
+(1,58,'Schließen'),
+(2,1,'Switch Navigation'),
+(2,2,'Welcome'),
+(2,3,'This is the start of the app'),
+(2,4,'manual_english.pdf'),
+(2,5,'Instructions as PDF'),
+(2,6,'Layout'),
+(2,7,'Finalize'),
+(2,8,'Instructions'),
+(2,9,'Done'),
+(2,10,'Link to your Book'),
+(2,11,'Finalize'),
+(2,12,'Language'),
+(2,13,'E-Mail'),
+(2,14,'Name'),
+(2,15,'Surname'),
+(2,16,'Password'),
+(2,17,'Repeat Password'),
+(2,18,'Location'),
+(2,19,'From'),
+(2,20,'To'),
+(2,21,'Register'),
+(2,22,'Login'),
+(2,23,'Cover'),
+(2,24,'This is us and we are proud of this!'),
+(2,25,'The day when I realized what I am able to do!'),
+(2,26,'The day when I was able to help others!'),
+(2,27,'The day when others saw my strength!'),
+(2,28,'The day when I could learn something!'),
+(2,29,'The day when I was able to overcome my fear!'),
+(2,30,'Tips for dealing with fear'),
+(2,31,'The day when I was able to solve a problem! '),
+(2,32,'The day when I was clever in a dangerous situation! '),
+(2,33,'Tips to deal with danger'),
+(2,34,'The day I realised that I am strong! '),
+(2,35,'That was the Storytelling Club '),
+(2,36,'Resiliency'),
+(2,37,'Welcome to the Resiliency-App'),
+(2,38,'to the App'),
+(2,39,'Welcome'),
+(2,40,'Finalize'),
+(2,41,'Imprint'),
+(2,42,'Privacy Policy'),
+(2,43,'Logout'),
+(2,44,'Logged in As'),
+(2,45,'E-Mail'),
+(2,46,'Enter your e-mail, a new password will be sent to you'),
+(2,47,'Reset Password'),
+(2,48,'You have forgotten your password. Please click on the following link to reset your password.'),
+(2,49,'New Password'),
+(2,50,'Repeat Password'),
+(2,51,'Save'),
+(2,52,'Reset Password'),
+(2,53,'Register'),
+(2,54,'Password successfully reseted'),
+(2,55,'Upload'),
+(2,56,'Edit'),
+(2,57,'Image Editor'),
+(2,58,'Close')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;
