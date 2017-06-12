@@ -32,7 +32,6 @@ app.use('/docs', express.static(path.join(__dirname, 'doc')))
 
 // Add rendering Engine
 app.set('view engine', 'pug')
-app.set('views', path.join(__dirname, 'templates'))
 
 // Add Cookie Cababilities
 app.use(cookieParser())
@@ -65,7 +64,7 @@ Language(database, function (error, language) {
     server.listen(config.port)
 
     console.log('Startup Complete')
-    console.log('Using Database ' + config.database)
+    console.log('Using Database ' + config.database.database)
     console.log(pack.name + '@' + pack.version + ' running on Port ' + config.port)
   }
 })
