@@ -39,7 +39,7 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/app', login.isLoggedIn(), function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
       res.render('pages/app', {lang: translations})
     })
   })
