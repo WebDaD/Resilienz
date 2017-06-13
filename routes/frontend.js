@@ -44,10 +44,14 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/datenschutz', function (req, res) {
-    res.render('pages/datenschutz')
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+      res.render('pages/datenschutz', {lang: translations})
+    })
   })
   app.get('/impressum', function (req, res) {
-    res.render('pages/impressum')
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+      res.render('pages/impressum', {lang: translations})
+    })
   })
   // ADMIN ONLY
   app.get('/container/users', login.isLoggedIn(), login.isAdmin(), function (req, res) {
