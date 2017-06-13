@@ -53,6 +53,59 @@ INSERT INTO `categories_has_layouts` VALUES (1,1),(2,2),(3,3),(5,3),(6,3),(4,4),
 /*!40000 ALTER TABLE `categories_has_layouts` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- Dumping data for table `layout_backgrounds`
+--
+LOCK TABLES `layout_backgrounds` WRITE;
+/*!40000 ALTER TABLE `categories_has_layouts` DISABLE KEYS */;
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (1,1,'01_deckblatt.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (2,2,'02_inhalt.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (3,3,'02_inhalt.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (4,4,'03_wir.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (5,5,'03_wir.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (6,6,'04_kann.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (7,7,'04_kann.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (8,8,'05_helfen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (9,9,'05_helfen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (10,10,'05_helfen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (11,11,'05_helfen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (12,12,'06_staerke.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (13,13,'06_staerke.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (14,14,'07_lernen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (15,15,'07_lernen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (16,16,'07_lernen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (17,17,'07_lernen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (18,18,'07_lernen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (19,19,'07_lernen.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (20,20,'08_angst.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (21,21,'08_angst.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (22,22,'08_angst.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (23,23,'08_angst.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (24,24,'08_angst.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (25,25,'08_angst.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (26,26,'10_angst_tipps.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (27,27,'10_angst_tipps.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (28,28,'11_problem.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (29,29,'11_problem.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (30,30,'11_problem.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (31,31,'11_problem.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (32,32,'12_gefahr.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (33,33,'12_gefahr.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (34,34,'12_gefahr.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (35,35,'12_gefahr.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (36,36,'13_gefahr_tipps.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (37,37,'13_gefahr_tipps.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (38,38,'14_stark.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (39,39,'14_stark.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (40,40,'14_stark.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (41,41,'14_stark.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (42,42,'15_storytelling.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (43,43,'15_storytelling.png');
+INSERT INTO `layout_backgrounds` (`id`,`page`,`background`) VALUES (44,44,'16_ruecken.png');
+/*!40000 ALTER TABLE `categories_has_layouts` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Dumping data for table `images_on_positions`
 --

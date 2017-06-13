@@ -26,6 +26,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.pdfname + '.pdf')
     file.pipe(res)
   })
+  //TODO: create book -> languague
   app.put('/actions/:id/finalize', login.isLoggedIn(), function (req, res) {
     database.actionFinalize(req.params.id, function (error, result) {
       if (error) {

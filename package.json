@@ -33,6 +33,7 @@
     "pug":"*",
     "cookie-parser":"*",
     "request":"*",
-    "bcrypt":"*"
+    "bcrypt":"*",
+    "sync":"*"
   }
 }

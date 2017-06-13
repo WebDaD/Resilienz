@@ -8,6 +8,8 @@
         maxFileSize: 10,
         maxFiles: 1
       }
+      // TODO: remeber: pages have _two if not page 1 or 44 (not seen anyways)
+      // TODO: remeber: we have the first page as to give to the backend. just show the other one (page+1)
       self.actionid = $rootScope.action
       self.catLoading = true
       // load cats with layouts and positions

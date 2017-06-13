@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `actionList`;
 /*!50001 DROP VIEW IF EXISTS `actionList`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `actionList` AS SELECT 
+/*!50001 CREATE VIEW `actionList` AS SELECT
  1 AS `email`,
  1 AS `user_id`,
  1 AS `language`,
@@ -110,6 +110,20 @@ CREATE TABLE `categories_has_layouts` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `layout_backgrounds`
+--
+
+DROP TABLE IF EXISTS `layout_backgrounds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `resilienz`.`layout_backgrounds` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `page` INT NOT NULL,
+  `background` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `images_on_positions`
 --
 
@@ -136,7 +150,7 @@ DROP TABLE IF EXISTS `language_translations`;
 /*!50001 DROP VIEW IF EXISTS `language_translations`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `language_translations` AS SELECT 
+/*!50001 CREATE VIEW `language_translations` AS SELECT
  1 AS `language_name`,
  1 AS `language_key`,
  1 AS `string_key`,
@@ -260,7 +274,7 @@ DROP TABLE IF EXISTS `userList`;
 /*!50001 DROP VIEW IF EXISTS `userList`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `userList` AS SELECT 
+/*!50001 CREATE VIEW `userList` AS SELECT
  1 AS `id`,
  1 AS `vorname`,
  1 AS `nachname`,
@@ -270,6 +284,13 @@ SET character_set_client = utf8;
  1 AS `finalized`,
  1 AS `action_id`*/;
 SET character_set_client = @saved_cs_client;
+
+
+CREATE OR REPLACE VIEW positions_on_actions AS
+SELECT p.id AS position_id, p.x, p.y, p.width, p.height, p.spin, ahl.id AS action_has_layouts_id, ahl.layouts_id AS layouts_id, ahl.page, ahl.actions_id
+FROM positions p, actions_has_layouts ahl
+WHERE p.layouts_id=ahl.layouts_id
+;
 
 --
 -- Dumping routines for database 'resilienz'

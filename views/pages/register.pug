@@ -15,33 +15,33 @@ html(lang=lang.key)
             form.form-horizontal
               .form-group
                 label.col-sm-2(for="register-language") #{lang.login_language}
-                select#register-language.col-sm-10.form-control
+                select#register_language.col-sm-10.form-control
                   each lname, lkey in languages
                     option(value=lkey)= lname
               .form-group
                 label.col-sm-2(for="register-email") #{lang.login_email}
-                input#register-email.col-sm-10.form-control.input-lg(type='email' placeholder=lang.login_email)
+                input#register_email.col-sm-10.form-control.input-lg(type='email' placeholder=lang.login_email)
               .form-group
                 label.col-sm-2(for="register-vorname") #{lang.login_vorname}
-                input#register-vorname.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_vorname)    
+                input#register_vorname.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_vorname)    
               .form-group
                 label.col-sm-2(for="register-nachname") #{lang.login_nachname}
-                input#register-nachname.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_nachname)    
+                input#register_nachname.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_nachname)    
               .form-group
                 label.col-sm-2(for="register-password") #{lang.login_password}
-                input#register-password.col-sm-10.form-control.input-lg(type='password' placeholder=lang.login_password)
+                input#register_password.col-sm-10.form-control.input-lg(type='password' placeholder=lang.login_password)
               .form-group
                 label.col-sm-2(for="register-passwordrepeat") #{lang.login_passwortrepeat}
-                input#register-passwordrepeat.col-sm-10.form-control.input-lg(type='password' placeholder=lang.login_passwortrepeat)                    
+                input#register_passwordrepeat.col-sm-10.form-control.input-lg(type='password' placeholder=lang.login_passwortrepeat)                    
               .form-group
                 label.col-sm-2(for="register-location") #{lang.login_location}
-                input#register-location.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_location)     
+                input#register_location.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_location)     
               .form-group
                 label.col-sm-2(for="register-start") #{lang.login_start}
-                input#register-start.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_start)   
+                input#register_start.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_start)   
               .form-group
                 label.col-sm-2(for="register-stop") #{lang.login_stop}
-                input#register-stop.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_stop)
+                input#register_stop.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_stop)
               .form-group
                 .col-sm-offset-2.col-sm-10
                   .g-recaptcha(data-sitekey=captcha)
