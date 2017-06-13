@@ -1,4 +1,4 @@
 #!/bin/sh
 git pull
-sh createui.sh
-sh minifyui.sh
+sh scripts/createui.sh
+sh scripts/minifyui.sh
