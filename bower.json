@@ -26,7 +26,6 @@
     "font-awesome": "*",
     "flag-icon-css": "*",
     "imgareaselect":"*",
-    "ng-imgAreaSelect":"*",
     "jquery.cookie":"*",
     "jquery-md5":"*"
   },

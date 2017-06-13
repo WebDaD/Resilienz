@@ -65,7 +65,7 @@ cp bower_components/angular-cookies/angular-cookies.min.js public/js/angular-coo
 echo 'OK'
 
 echo -n '==> Deploying angular-imgAreaSelect ...'
-cp bower_components/ng-imgAreaSelect/ng-imgAreaSelect.min.js public/js/ng-imgAreaSelect.min.js
+cp assets/js/ng-imgAreaSelect.min.js public/js/ng-imgAreaSelect.min.js
 echo 'OK'
 
 echo -n '==> Deploying angular-dropzone ...'
