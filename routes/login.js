@@ -107,7 +107,11 @@ module.exports = function (app, language, login, config) {
               if (error) {
                 return res.status(501).json(error)
               } else {
-                return res.status(200).json(data)
+                if (!data) {
+                  return res.status(403).json({msg: 'Wrong Token'})
+                } else {
+                  return res.status(200).json(data)
+                }
               }
             })
           }

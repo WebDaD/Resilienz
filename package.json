@@ -35,6 +35,7 @@
     "request":"*",
     "bcrypt":"*",
     "sync":"*",
-    "diskspace":"*"
+    "diskspace":"*",
+    "nodemailer":"*"
   }
 }
