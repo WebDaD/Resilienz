@@ -16,8 +16,8 @@ html(lang=lang.key)
               .form-group
                 label.col-sm-2(for="register-language") #{lang.login_language}
                 select#register-language.col-sm-10.form-control
-                  each l in languages
-                    option(value=l.key)= l.name
+                  each lname, lkey in languages
+                    option(value=lkey)= lname
               .form-group
                 label.col-sm-2(for="register-email") #{lang.login_email}
                 input#register-email.col-sm-10.form-control.input-lg(type='email' placeholder=lang.login_email)
