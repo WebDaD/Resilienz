@@ -5,6 +5,10 @@
 @import "ghost-button.less";
 @import "spinner.less";
 
+.container {
+  background-color: white;
+}
+
 /* navbar brand */
 .navbar-brand {
   display: flex;
@@ -18,20 +22,24 @@
     margin-top: 15px;
 }
 
-/* footer */
-.site-footer {
-	background-color: #374147;
-	padding: 40px 0;
-	color: #fff;
-	margin-top: 30px;
+/* Footer */
+footer {
+  background-color: #212121;
+  color: #f0f0f0 !important;
+  width: 100%;
+  padding-top: 10px;
+  margin-top: 20px;
 }
-
-.site-footer a {
-	color: #fff;
-	opacity: 0.6;
+/* better typhography */
+body {
+  font-family: 'Source Sans Pro';
 }
-
-.site-footer a:hover {
-	color: #fff;
-	opacity: 1;
+p, figcaption, .click-to-tweet-text, td, .btn {
+  font-size: 20px;
+	font-size: 1.8rem;
+	letter-spacing: -.01em;
+  font-style: normal;
+	font-weight: 400;
+  line-height: 1.4;
+  word-wrap: normal;
 }
