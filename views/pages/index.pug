@@ -6,7 +6,8 @@ html(lang='en')
     script(src='js/jquery.cookie.js')
     script(src='js/index.js')
   body.no-skin
-    h1 #{lang.title}
-    p #{lang.index_text}
-    a(href="http://resilienz.prixjeunesse.de/login") #{lang.link_app}
-    include ../includes/footer.jade
+    .container
+      h1 #{lang.title}
+      p #{lang.index_text}
+      a(href="http://resilienz.prixjeunesse.de/login") #{lang.link_app}
+      include ../includes/footer.jade
