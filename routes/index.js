@@ -16,7 +16,7 @@
  * @param {object} bookGenerator - bookGenerator Object
 * @param {object} config - config Object
  */
-module.exports = function (app, database, language, login, layouter, bookGenerator, config) {
+module.exports = function (app, database, language, login, layouter, bookGenerator, status, config) {
   /** Middleware to Log every route
   * @param {object} req - Express.req Object
   * @param {object} res - Express.res Object
@@ -36,7 +36,9 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
 
   // Sends status information
   app.get('/status', function (req, res) {
-    // TODO get status
+    status.info(function (info) {
+      res.json(info)
+    })
   })
   /** Middleware to Catch Errors
   * @param {object} err - Express.err Object

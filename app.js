@@ -17,6 +17,7 @@ var pack = require('./package.json')
 var config = require('./config.json')
 var bodyParser = require('body-parser')
 var Database = require('./lib/database.js')
+var Status = require('./lib/status.js')
 var Language = require('./lib/language.js')
 var Login = require('./lib/login.js')
 var Layouter = require('./lib/layouter.js')
@@ -55,10 +56,10 @@ Language(database, function (error, language) {
     var login = new Login(database, bcrypt, config.salt, config.serversecret)
     var layouter = new Layouter(config.images, config.pages, database)
     var bookGenerator = new BookGenerator(layouter, config.pages, config.books, config.bookpages)
-
+    var status = new Status()
     // Routes
     console.log('Loading Routes...')
-    require('./routes')(app, database, language, login, layouter, bookGenerator, config)
+    require('./routes')(app, database, language, login, layouter, bookGenerator, status, config)
 
     // Listen to Port
     server.listen(config.port)
