@@ -1,7 +1,7 @@
 doctype html
-html(lang=lang.key)
+html(lang='en')
   head
-    include includes/head.pug
+    include ../includes/head.jade
     script(src='js/jquery.min.js')
     script(src='js/jquery.cookie.js')
     script(src='js/index.js')
@@ -9,4 +9,4 @@ html(lang=lang.key)
     h1 #{lang.title}
     p #{lang.index_text}
     a(href="http://resilienz.prixjeunesse.de/login") #{lang.link_app}
-    include includes/footer.pug
+    include ../includes/footer.jade

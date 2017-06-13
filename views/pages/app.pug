@@ -2,9 +2,9 @@ doctype html
 html(lang=lang.key, ng-app='resilienzManager')
   head
     if debug
-      include includes/head-debug.pug
+      include ../includes/head-debug.jade
     else
-      include includes/head.pug
+      include ../includes/head.jade
   body.no-skin
     nav.navbar.navbar-default
       .container
@@ -34,8 +34,8 @@ html(lang=lang.key, ng-app='resilienzManager')
         // /.nav-collapse
     div.fluid-container
       #ng-view(ng-view='')
-    include includes/footer.pug
+    include ../includes/footer.jade
     if debug
-      include includes/scripts-debug.pug
+      include ../includes/scripts-debug.jade
     else
-      include includes/scripts.pug
+      include ../includes/scripts.jade

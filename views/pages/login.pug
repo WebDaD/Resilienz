@@ -1,7 +1,7 @@
 doctype html
 html(lang=lang.key)
   head
-    include includes/head.pug
+    include ../includes/head.jade
     link(rel='stylesheet', href='css/login.min.css')
     script(src='js/jquery.min.js')
     script(src='js/jquery.cookie.js')
@@ -30,4 +30,4 @@ html(lang=lang.key)
               a(href='/reset') #{lang.link_reset}
               a(href='/register') #{lang.link_register}
               a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
-    include includes/footer.pug
+    include ../includes/footer.jade
