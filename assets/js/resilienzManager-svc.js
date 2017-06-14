@@ -15,11 +15,16 @@
             return $resource(restURL + 'categories/full')
           },
           images: function () {
-            return $resource(restURL + 'images/:id', {id: '@id'}, {
+            return $resource(restURL + 'images/:name', {name: '@name'}, {
               rescale: {
                 method: 'PUT',
-                url: restURL + 'images/:id/rescale',
-                params: {id: '@id'}
+                url: restURL + 'images/:name/rescale',
+                params: {name: '@name'}
+              },
+              delete: {
+                method: 'DELETE',
+                url: restURL + 'images/:name',
+                params: {name: '@name'}
               }
             })
           },
@@ -29,6 +34,11 @@
                 method: 'PUT',
                 url: restURL + 'actions/:id/finalize',
                 params: {id: '@id'}
+              },
+              saveLayout: {
+                method: 'PUT',
+                url: restURL + 'actions/:id/:page/layout',
+                params: {id: '@id', page: '@page'}
               }
             })
           }

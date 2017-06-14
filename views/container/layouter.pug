@@ -21,10 +21,11 @@
   .col-xs-6
     .row
       .col-md-12
-        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.categories.active.layouts track by layout.id" ng-model="ctrl.selectedLayout")
+        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.categories.active.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
     .row
       .col-md-6(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image")
         form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="/images/upload/{{ctrl.actionid}}/{{ctrl.selectedPage}}/{{position.id}}")
         span(ng-show="!position.image") #{lang.layout_upload}
         img(ng-show="position.image" ng-src='/images/{{ctrl.actionid}}/{{ctrl.selectedPage}}/{{position.id}}')
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)") #{lang.layout_edit}
+        span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)") #{lang.layout_delete_image}

@@ -37,6 +37,15 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.put('/actions/:id/:page/layout', login.isLoggedIn(), function (req, res) {
+    database.saveLayout(req.params.id, req.params.page, req.body.id, function (error, result) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200)
+      }
+    })
+  })
   app.get('/book/:action_id/', login.isLoggedIn(), function (req, res) {
     bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'], function (error, path) {
       if (error) {
@@ -62,6 +71,15 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
   })
   app.get('/images/:name/', login.isLoggedIn(), function (req, res) {
     res.status(200).sendfile(config.images + '/' + req.params.name)
+  })
+  app.delete('/images/:name/', login.isLoggedIn(), function (req, res) {
+    database.removeImage(req.params.name, function (error, name) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200).end()
+      }
+    })
   })
   app.put('/images/:name/rescale', login.isLoggedIn(), function (req, res) {
     layouter.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, function (error) {

@@ -63,8 +63,14 @@
           }
         })
       }
+      self.delete = function (position) {
+        resilienzManagerDataProvider.images().delete({name: position.image}, function (something) {})
+      }
       self.arrayFromPages = function (num) {
         return new Array(num)
+      }
+      self.saveLayout = function () {
+        resilienzManagerDataProvider.actions().saveLayout({id: this.actionid, page: this.selectedPage}, $scope.selectedItem, function (something) {})
       }
     }])
 }())
