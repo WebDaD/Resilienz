@@ -157,6 +157,7 @@ INSERT INTO `strings` VALUES (1,'Navigationsmenü anzeigen','toogle_navigation')
 ,(56,'Layout - Bearbeiten','layout_edit')
 ,(57,'Editor - Titelleiste','editor_title')
 ,(58,'Editor - Schließen','editor_close')
+,(59,'Layout - Bild Löschen','layout_delete')
 ;
 
 /*!40000 ALTER TABLE `strings` ENABLE KEYS */;
@@ -227,6 +228,7 @@ INSERT INTO `translations` VALUES
 (1,56,'Bearbeiten'),
 (1,57,'Bildeditor'),
 (1,58,'Schließen'),
+(1,59,'Löschen'),
 (2,1,'Switch Navigation'),
 (2,2,'Welcome'),
 (2,3,'This is the start of the app'),
@@ -284,7 +286,8 @@ INSERT INTO `translations` VALUES
 (2,55,'Upload'),
 (2,56,'Edit'),
 (2,57,'Image Editor'),
-(2,58,'Close')
+(2,58,'Close'),
+(2,59,'Delete')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;
