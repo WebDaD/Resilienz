@@ -7,7 +7,7 @@
         $uibModalInstance.close()
       }
       self.close = function () {
-        resilienzManagerDataProvider.images().rescale({id: data.id}, self.coords, function (something) {
+        resilienzManagerDataProvider.images().rescale({name: data.name}, self.coords, function (something) {
           $uibModalInstance.close()
         })
       }

@@ -6,8 +6,10 @@
  * @description Exports frontend routes
  * @memberof resilienz
  * @requires module:fs
+* @requires module:uuid
  */
 var fs = require('fs')
+const uuidV4 = require('uuid/v4')
  /** Exports Routes
  * @param {object} app - Express app
  * @param {object} database - Database Object
@@ -36,26 +38,83 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/book/:action_id/', login.isLoggedIn(), function (req, res) {
-    // TODO: create book -> languague, then servce as PDF
+    bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'], function (error, path) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        var file = fs.createReadStream(path)
+        var stat = fs.statSync(path)
+        res.setHeader('Content-Length', stat.size)
+        res.setHeader('Content-Type', 'application/pdf')
+        res.setHeader('Content-Disposition', 'attachment; filename=myBook.pdf')
+        file.pipe(res)
+      }
+    })
   })
   app.get('/categories/full/', login.isLoggedIn(), function (req, res) {
-    // TODO: return cats ({id, sort: -1, name: '', pages: -1, layouts: []}) with allowed layouts and their positions and pages (show real pages eg 32, but only the left ones!)
+    database.getCategoriesFull(function (error, categories) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200).json(categories)
+      }
+    })
   })
-  app.get('/images/:id/', login.isLoggedIn(), function (req, res) {
-    // TODO: return image (from database table image_on_positions)
+  app.get('/images/:name/', login.isLoggedIn(), function (req, res) {
+    res.status(200).sendfile(config.images + '/' + req.params.name)
   })
-  app.put('/images/:id/rescale', login.isLoggedIn(), function (req, res) {
-    // TODO:  <-- rescales image (from database table image_on_positions) (body: { x1:int, y1:int, x2: int, y2: int, width: int, height:int })
+  app.put('/images/:name/rescale', login.isLoggedIn(), function (req, res) {
+    layouter.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, function (error) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200)
+      }
+    })
   })
-  app.get('/images/:action_id/:categorie_id/:page', login.isLoggedIn(), function (req, res) {
-    // TODO: return layout from database
+  app.get('/images/:action_id/:page', login.isLoggedIn(), function (req, res) {
+    layouter.createPage(req.params.action_id, req.cookies['resilienzManager-language'], req.params.page, function (error, result) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        if (result) {
+          res.status(501).end()
+        } else {
+          res.status(200).sendfile(config.pagespath + '/' + req.params.action_id + '/' + req.params.page + '_two.png')
+        }
+      }
+    })
   })
-  app.get('/images/:action_id/:categorie_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
-    // TODO: return single image for action // TODO: remeber: pages have _two if not page 1 or 44 (not seen anyways)
+  app.get('/images/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
+    database.getImage(req.params.action_id, req.params.page, req.params.position_id, function (error, name) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200).sendfile(config.images + '/' + name)
+      }
+    })
   })
-  app.post('/images/upload/:action_id/:categorie_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
-    // TODO: upload image https://howtonode.org/really-simple-file-uploads
-    // TODO: copy to folder, write to database
+  app.post('/images/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
+    fs.readFile(req.files.displayImage.path, function (err, data) {
+      if (err) {
+        res.status(501).json(err)
+      } else {
+        var newFileName = uuidV4()
+        fs.writeFile(config.images + '/' + newFileName, data, function (err) {
+          if (err) {
+            res.status(501).json(err)
+          } else {
+            database.addImage(req.params.action_id, req.params.page, req.params.position_id, newFileName, function (error) {
+              if (error) {
+                res.status(501).json(error)
+              } else {
+                res.status(200).end()
+              }
+            })
+          }
+        })
+      }
+    })
   })
   // ADMIN ONLY
   app.get('/users', login.isLoggedIn(), login.isAdmin(), function (req, res) {

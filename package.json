@@ -36,6 +36,7 @@
     "bcrypt":"*",
     "sync":"*",
     "diskspace":"*",
-    "nodemailer":"*"
+    "nodemailer":"*",
+    "uuid":"*"
   }
 }
