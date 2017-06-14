@@ -53,7 +53,7 @@ Language(database, function (error, language) {
       process.exit()
     })
   } else {
-    var login = new Login(database, language, bcrypt, config.salt, config.serversecret)
+    var login = new Login(database, language, bcrypt, config.salt, config.serversecret, config.mail)
     var layouter = new Layouter(config.images, config.pages, database)
     var bookGenerator = new BookGenerator(layouter, config.pages, config.books, config.bookpages)
     var status = new Status()
