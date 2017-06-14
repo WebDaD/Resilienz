@@ -8,14 +8,11 @@
         maxFileSize: 10,
         maxFiles: 1
       }
-      // TODO: remeber: pages have _two if not page 1 or 44 (not seen anyways)
-      // TODO: remeber: we have the first page as to give to the backend. just show the other one (page+1)
       self.actionid = $rootScope.action
       self.catLoading = true
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().query(function (categories) {
         self.categories.all = categories // {id, sort: -1, name: '', pages: -1, layouts: []}
-        // TODO: loop all layouts.positions and Add function upload where image=false
         self.categories.previous = {}
         self.categories.active = categories[0]
         self.categories.next = categories[1]
@@ -27,22 +24,30 @@
         self.catLoading = true
         self.categories.next = self.categories.active
         self.categories.active = self.categories.previous
-        // TODO: set previous
+        var psort = self.categories.previous.sort - 1
+        self.categories.all.forEach(function (cat) {
+          if (cat.sort === psort) {
+            self.categories.previous = cat
+          }
+        })
         self.catLoading = false
       }
       self.catNext = function () {
         self.catLoading = true
         self.categories.previous = self.categories.active
         self.categories.active = self.categories.next
-        // TODO: set next
+        var nsort = self.categories.next.sort + 1
+        self.categories.all.forEach(function (cat) {
+          if (cat.sort === nsort) {
+            self.categories.next = cat
+          }
+        })
         self.catLoading = false
-      }
-      self.switchToPage = function (nr) {
-
       }
       self.openEditor = function (position) {
         var data = {}
         data.image = position.imagepath
+        data.id = position.imageid
         data.width = position.width
         data.height = position.height
         $uibModal.open({
@@ -60,10 +65,6 @@
       }
       self.arrayFromPages = function (num) {
         return new Array(num)
-      }
-      function upload (file) {
-        // TODO; make use of this to get position id
-        // TODO: upload file, add to postions
       }
     }])
 }())

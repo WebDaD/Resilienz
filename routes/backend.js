@@ -56,6 +56,9 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   // TODO: app.get '/images/action/categorie_id/pagenr' <-- return layout for action
-  // TODO: app.get '/images/action/categorie_id/pagenr/positionid' <-- return single image for action
-  // TODO: app.get '/categories/full' <-- return cats with allowed layouts and their positions
+  // TODO: app.get '/images/action/categorie_id/pagenr/positionid' <-- return single image for action // TODO: remeber: pages have _two if not page 1 or 44 (not seen anyways)
+  // TODO: UPLOAD /images/upload/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}/{{position.id}} https://howtonode.org/really-simple-file-uploads
+  // TODO: app.get '/categories/full' <-- return cats ({id, sort: -1, name: '', pages: -1, layouts: []}) with allowed layouts and their positions and pages (show real pages eg 32, but only the left ones!)
+  // TODO: app.get '/images/:id' <-- return image (from image_on_positions)
+  // TODO: app.put '/images/:id/rescale' <-- rescales image (body: { x1:int, y1:int, x2: int, y2: int, width: int, height:int })
 }

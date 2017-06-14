@@ -14,6 +14,15 @@
           categoriesFull: function () {
             return $resource(restURL + 'categories/full')
           },
+          images: function () {
+            return $resource(restURL + 'images/:id', {id: '@id'}, {
+              rescale: {
+                method: 'PUT',
+                url: restURL + 'images/:id/rescale',
+                params: {id: '@id'}
+              }
+            })
+          },
           actions: function () {
             return $resource(restURL + 'actions/:id', {id: '@id'}, {
               makeFinal: {

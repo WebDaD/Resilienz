@@ -7,8 +7,9 @@
         $uibModalInstance.close()
       }
       self.close = function () {
-        // TODO: send data to backend for image cropping
-        $uibModalInstance.close()
+        resilienzManagerDataProvider.images().rescale({id: data.id}, self.coords, function (something) {
+          $uibModalInstance.close()
+        })
       }
       self.image = data.imagepath
       self.options = {

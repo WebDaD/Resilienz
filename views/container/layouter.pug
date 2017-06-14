@@ -14,7 +14,7 @@
       i.fa.fa-chevron-right
 .row(ng-show="!ctrl.catLoading")
   .col-md-3(ng-repeat="n in arrayFromPages(ctrl.categories.active.pages) track by $index")
-    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.switchToPage(n)")= n++
+    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.selectedPage = n")= (n++)+"/"(n+1)
 .row(ng-show="!ctrl.catLoading") 
   .col-xs-6.text-center
     img.img-responsive(ng-src="/images/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}" alt="Actual Layout")
@@ -24,7 +24,7 @@
         select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.categories.active.layouts track by layout.id" ng-model="ctrl.selectedLayout")
     .row
       .col-md-6(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image")
-        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig" event-handlers="{ 'addedfile': position.upload}")
+        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="/images/upload/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}/{{position.id}}")
         span(ng-show="!position.image") #{lang.layout_upload}
         img(ng-show="position.image" ng-src='/images/{{ctrl.actionid}}/{{ctrl.categories.active.id}}/{{ctrl.selectedPage}}/{{position.id}}')
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)") #{lang.layout_edit}
