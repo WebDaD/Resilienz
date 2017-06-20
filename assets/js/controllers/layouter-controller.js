@@ -11,7 +11,7 @@
       self.actionid = $rootScope.action
       self.catLoading = true
       // load cats with layouts and positions
-      resilienzManagerDataProvider.categoriesFull().query(function (categories) {
+      resilienzManagerDataProvider.categoriesFull().success(function (categories) {
         self.categories.all = categories // {id, sort: -1, name: '', pages: -1, layouts: []}
         self.categories.previous = {}
         self.categories.active = categories[0]
@@ -64,13 +64,13 @@
         })
       }
       self.delete = function (position) {
-        resilienzManagerDataProvider.images().delete({name: position.image}, function (something) {})
+        resilienzManagerDataProvider.imageDelete(position.image).success(function (something) {})
       }
       self.arrayFromPages = function (num) {
         return new Array(num)
       }
       self.saveLayout = function () {
-        resilienzManagerDataProvider.actions().saveLayout({id: this.actionid, page: this.selectedPage}, $scope.selectedItem, function (something) {})
+        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).success(function (something) {})
       }
     }])
 }())

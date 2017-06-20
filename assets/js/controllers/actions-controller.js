@@ -7,7 +7,7 @@
       self.tableParams = {}
 
       $scope.isLoading = true
-      resilienzManagerDataProvider.actions().query(function (actions) {
+      resilienzManagerDataProvider.actions().success(function (actions) {
         self.actions = actions
         self.tableParams = new NgTableParams({
           sorting: { order: 'asc' },
