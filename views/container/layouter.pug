@@ -5,12 +5,12 @@
   .col-md-3
     button.btn.btn-default.btn-block(ng-click="ctrl.catPrevious()")
       i.fa.fa-chevron-left
-      |  {{ctrl.categories.previous.name}}
+      |  {{lang[ctrl.categories.previous.lang_string_key]]}}
   .col-md-6.text-center
-    h2 {{ctrl.categories.active.name}}
+    h2 {{lang[ctrl.categories.active.lang_string_key]}}
   .col-md-3
     button.btn.btn-default.btn-block(ng-click="ctrl.catNext()")
-      | {{ctrl.categories.next.name}}
+      | {{lang[ctrl.categories.next.lang_string_key]}}
       i.fa.fa-chevron-right
 .row(ng-show="!ctrl.catLoading")
   .col-md-3(ng-repeat="n in arrayFromPages(ctrl.categories.active.pages) track by $index")
