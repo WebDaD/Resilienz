@@ -7,11 +7,11 @@
         $uibModalInstance.close()
       }
       self.close = function () {
-        resilienzManagerDataProvider.imageRescale(data.name, self.coords).success(function (something) {
+        resilienzManagerDataProvider.imageRescale(data.image, self.coords).success(function (something) {
           $uibModalInstance.close()
         })
       }
-      self.image = data.imagepath
+      self.image = data.image
       self.options = {
         handles: true,
         movable: true,
