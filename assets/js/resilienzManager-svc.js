@@ -28,6 +28,11 @@
               method: 'GET', url: restURL + 'categories/full'
             })
           },
+          getLayoutImagesByActionPage: function (actionid, page) {
+            return $http({
+              method: 'GET', url: restURL + 'actions/' + actionid + '/' + page + '/layout'
+            })
+          },
           imageRescale: function (name, data) {
             return $http({
               method: 'PUT', url: restURL + 'images/' + name + '/rescale', data: data

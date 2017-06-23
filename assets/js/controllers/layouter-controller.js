@@ -17,9 +17,14 @@
         self.categories.active = categories[0]
         self.categories.next = categories[1]
         self.selectedPage = 1
-        self.selectedLayout = self.categories.active.layouts[0] // {image, width, height, imagepath, id}
-        self.catLoading = false
+        resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).success(function (layoutWithImages) {
+          // TODO: add Data to fitting points (selectedLayout, ctrl.selectedLayout.positions (image, widh, height))
+
+          self.catLoading = false
+        })
       })
+
+      //TODO: on cat/page Change, reload getLayoutImagesByActionPage
       self.catPrevious = function () {
         self.catLoading = true
         self.categories.next = self.categories.active
@@ -30,6 +35,7 @@
             self.categories.previous = cat
           }
         })
+        self.selectedPage = 1 // TODO: must be last Page of categorie
         self.catLoading = false
       }
       self.catNext = function () {
@@ -42,6 +48,7 @@
             self.categories.next = cat
           }
         })
+        self.selectedPage = 1 // TODO: must be first Page of categorie
         self.catLoading = false
       }
       self.openEditor = function (position) {

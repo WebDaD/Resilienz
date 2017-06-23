@@ -37,6 +37,15 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.get('/actions/:id/:page/layout', login.isLoggedIn(), function (req, res) {
+    database.getLayoutImagesByActionPage(req.params.id, req.params.page, function (error, result) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200).json(result)
+      }
+    })
+  })
   app.put('/actions/:id/:page/layout', login.isLoggedIn(), function (req, res) {
     database.saveLayout(req.params.id, req.params.page, req.body.id, function (error, result) {
       if (error) {
