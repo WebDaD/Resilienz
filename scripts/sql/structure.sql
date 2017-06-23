@@ -84,6 +84,7 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `pages` int(11) NOT NULL,
+  `start_page` INT(11) NOT NULL,
   `ordering` int(11) NOT NULL,
   `lang_string_key` varchar(255) CHARACTER SET latin1 COLLATE latin1_german1_ci NOT NULL,
   PRIMARY KEY (`id`),

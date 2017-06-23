@@ -10,21 +10,17 @@
       }
       self.actionid = $rootScope.action
       self.catLoading = true
+      self.pageLoading = true
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().success(function (categories) {
-        self.categories.all = categories // {id, sort: -1, name: '', pages: -1, layouts: []}
+        self.categories.all = categories // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: []}
         self.categories.previous = {}
         self.categories.active = categories[0]
         self.categories.next = categories[1]
         self.selectedPage = 1
-        resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).success(function (layoutWithImages) {
-          // TODO: add Data to fitting points (selectedLayout, ctrl.selectedLayout.positions (image, widh, height))
-
-          self.catLoading = false
-        })
+        self.catLoading = false
+        reloadLayoutPositions(function () { self.pageLoading = false })
       })
-
-      //TODO: on cat/page Change, reload getLayoutImagesByActionPage
       self.catPrevious = function () {
         self.catLoading = true
         self.categories.next = self.categories.active
@@ -35,8 +31,9 @@
             self.categories.previous = cat
           }
         })
-        self.selectedPage = 1 // TODO: must be last Page of categorie
+        self.selectedPage = self.categories.active.startpage + self.categories.active.pages - 1 // minus one to get the lefthand page
         self.catLoading = false
+        reloadLayoutPositions(function () { self.pageLoading = false })
       }
       self.catNext = function () {
         self.catLoading = true
@@ -48,8 +45,9 @@
             self.categories.next = cat
           }
         })
-        self.selectedPage = 1 // TODO: must be first Page of categorie
+        self.selectedPage = self.categories.active.startpage
         self.catLoading = false
+        reloadLayoutPositions(function () { self.pageLoading = false })
       }
       self.openEditor = function (position) {
         var data = {}
@@ -72,11 +70,20 @@
       self.delete = function (position) {
         resilienzManagerDataProvider.imageDelete(position.image).success(function (something) {})
       }
-      self.arrayFromPages = function (num) {
-        return new Array(num)
-      }
       self.saveLayout = function () {
         resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).success(function (something) {})
+      }
+      self.selectPage = function (page) {
+        self.pageLoading = true
+        self.selectedPage = page
+        reloadLayoutPositions(function () { self.pageLoading = false })
+      }
+      function reloadLayoutPositions (callback) {
+        resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).success(function (layoutWithImages) {
+          // TODO: add Data to fitting points (selectedLayout, ctrl.selectedLayout.positions (image, widh, height))
+
+          callback()
+        })
       }
     }])
 }())

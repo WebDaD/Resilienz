@@ -13,9 +13,12 @@
       | {{lang[ctrl.categories.next.lang_string_key]}}
       i.fa.fa-chevron-right
 .row(ng-show="!ctrl.catLoading")
-  .col-md-3(ng-repeat="n in arrayFromPages(ctrl.categories.active.pages) track by $index")
-    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.selectedPage = n")= (n++)+"/"(n+1)
-.row(ng-show="!ctrl.catLoading") 
+  .col-md-3(ng-repeat="n in ctrl.categories.active.realPages track by $index")
+    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.selectPage(n)")= (n++)+"/"(n+1)
+.row(ng-show="ctrl.pageLoading")
+  .col-md-12
+    .spinner
+.row(ng-show="!ctrl.pageLoading") 
   .col-xs-6.text-center
     img.img-responsive(ng-src="/images/{{ctrl.actionid}}/{{ctrl.selectedPage}}" alt="Actual Layout")
   .col-xs-6

@@ -39,7 +39,19 @@ UNLOCK TABLES;
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Deckblatt',1,1,'kat_deckblatt'),(2,'Das sind wir',1,2,'kat_wir'),(3,'was ich kann',1,3,'kat_kann'),(4,'anderen helfen',2,4,'kat_helfen'),(5,'Stärke',1,5,'kat_staerke'),(6,'etwas lernen',3,6,'kat_kernen'),(7,'meine Angst',3,7,'kat_angst'),(8,'Tipps Angst',1,8,'kat_tipps_angst'),(9,'Problem lösen',2,9,'kat_problem'),(10,'Gefahr clever',2,10,'kat_gefahr'),(11,'Tipps Gefahr',1,11,'kat_tipps_gefahr'),(12,'stark wurde',2,12,'kat_stark'),(13,'So war',1,13,'kat_storytelling');
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (1,'Deckblatt',1,1,'kat_deckblatt',1);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (2,'Das sind wir',2,2,'kat_wir',4);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (3,'was ich kann',2,3,'kat_kann',6);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (4,'anderen helfen',4,4,'kat_helfen',8);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (5,'Stärke',2,5,'kat_staerke',12);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (6,'etwas lernen',6,6,'kat_kernen',14);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (7,'meine Angst',6,7,'kat_angst',20);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (8,'Tipps Angst',2,8,'kat_tipps_angst',26);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (9,'Problem lösen',4,9,'kat_problem',28);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (10,'Gefahr clever',4,10,'kat_gefahr',32);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (11,'Tipps Gefahr',2,11,'kat_tipps_gefahr',36);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (12,'stark wurde',4,12,'kat_stark',38);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (13,'So war',3,13,'kat_storytelling',42);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
