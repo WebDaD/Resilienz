@@ -8,6 +8,8 @@
 
     "config":"bash scripts/configure.sh",
 
+    "createuser":"node scripts/createUser.js",
+
     "test":"bash scripts/test.sh",
     "docs":"bash scripts/docs.sh",
 
@@ -37,6 +39,8 @@
     "sync":"*",
     "diskspace":"*",
     "nodemailer":"*",
-    "uuid":"*"
+    "uuid":"*",
+    "readline-sync":"*",
+    "md5":"*"
   }
 }
