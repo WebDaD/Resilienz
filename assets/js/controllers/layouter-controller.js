@@ -80,8 +80,7 @@
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).success(function (layoutWithImages) {
-          // TODO: add Data to fitting points (selectedLayout, ctrl.selectedLayout.positions (image, widh, height))
-
+          self.selectedLayout = layoutWithImages
           callback()
         })
       }
