@@ -84,5 +84,14 @@
           callback()
         })
       }
+      self.calcStyle = function (position) {
+        var style = {} // TODO: calc using position_data and #page data angular.element(document.getElementById(id)).clientWidth;
+        style.left = '-1px'
+        style.top = '-1px'
+        style.width = '-1px'
+        style.height = '-1px'
+        style.transform = 'rotate(-1deg)'
+        return style
+      }
     }])
 }())
