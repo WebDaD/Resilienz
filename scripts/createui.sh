@@ -33,7 +33,7 @@ cp bower_components/jquery/dist/jquery.min.js public/js/jquery.min.js
 echo 'OK'
 
 echo -n '==> Deploying jquery.imgareaselect ...'
-cp bower_components/imgareaselect/dist/jquery.imgareaselect.js public/js/jquery.imgareaselect.js
+cp bower_components/imgareaselect/jquery.imgareaselect.dev.js public/js/jquery.imgareaselect.js
 echo 'OK'
 
 echo -n '==> Deploying jquery.cookie ...'
