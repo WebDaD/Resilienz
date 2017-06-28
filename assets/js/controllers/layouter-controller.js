@@ -1,7 +1,7 @@
 /* global angular */
 ;(function () {
   angular.module('resilienzManager')
-    .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope) {
+    .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', '$window', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope, $window) {
       var self = this
       self.dropzoneConfig = {
         parallelUploads: 1,
@@ -11,6 +11,12 @@
       self.actionid = $rootScope.action
       self.catLoading = true
       self.pageLoading = true
+      self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
+      self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
+      angular.element($window).on('resize', function () {
+        self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
+        self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
+      })
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().success(function (categories) {
         self.categories.all = categories // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: []}
@@ -85,12 +91,14 @@
         })
       }
       self.calcStyle = function (position) {
-        var style = {} // TODO: calc using position_data and #page data angular.element(document.getElementById(id)).clientWidth;
-        style.left = '-1px'
-        style.top = '-1px'
-        style.width = '-1px'
-        style.height = '-1px'
-        style.transform = 'rotate(-1deg)'
+        var style = {}
+        var orgWidth = (self.categories.active.id === '1') ? 720 : 1440
+        var orgHeight = 1040
+        style.left = (position.x * self.pageWidth / orgWidth) + 'px'
+        style.top = (position.y * self.pageHeight / orgHeight) + 'px'
+        style.width = (position.width * self.pageWidth / orgWidth) + 'px'
+        style.height = (position.height * self.pageHeight / orgHeight) + 'px'
+        style.transform = 'rotate(' + position.spin + 'deg)'
         return style
       }
     }])
