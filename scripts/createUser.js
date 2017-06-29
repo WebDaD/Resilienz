@@ -1,4 +1,4 @@
-var config = require('./config.json')
+var config = require('../config.json')
 var bcrypt = require('bcrypt')
 var fs = require('fs')
 var md5 = require('md5')
