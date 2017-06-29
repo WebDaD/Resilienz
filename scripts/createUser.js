@@ -6,7 +6,7 @@ var readlineSync = require('readline-sync')
 var Database = require('../lib/database.js')
 var database = new Database(config.database)
 var salt = ''
-var saltfilecontent = fs.readFileSync(config.salt)
+var saltfilecontent = fs.readFileSync(config.salt, 'utf8')
 if (!saltfilecontent) {
   salt = bcrypt.genSaltSync(10)
   fs.writeFileSync(config.salt, salt)
