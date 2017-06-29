@@ -19,9 +19,7 @@ var data = {}
 data.register_vorname = readlineSync.question('Enter Vorname: ')
 data.register_nachname = readlineSync.question('Enter Nachname: ')
 data.register_email = readlineSync.questionEMail('Enter E-Mail: ')
-data.register_language = readlineSync.question('Enter LanguageCode [en]: ', {
-  defaultInput: 'en'
-})
+data.register_language = 2
 data.password = readlineSync.question('Enter Password: ', {
   hideEchoBack: true
 })
