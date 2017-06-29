@@ -3,37 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "bash scripts/preinstall.sh",
-    "postinstall": "bash scripts/postinstall.sh",
-    "config": "bash scripts/configure.sh",
-    "createuser": "node scripts/createUser.js",
-    "test": "bash scripts/test.sh",
-    "docs": "bash scripts/docs.sh",
-    "createui": "bash scripts/createui.sh",
-    "minifyui": "bash scripts/minifyui.sh",
-    "prestart": "bash scripts/preflight.sh",
-    "start": "node app.js",
-    "predebug": "bash scripts/preflight.sh",
-    "debug": "node app.js --debug",
-    "export:translations": "bash scripts/export_translations.sh",
-    "backup": "bash scripts/backup.sh"
+    "preinstall":"bash scripts/preinstall.sh",
+    "postinstall":"bash scripts/postinstall.sh",
+
+    "config":"bash scripts/configure.sh",
+
+    "createuser":"node scripts/createUser.js",
+
+    "test":"bash scripts/test.sh",
+    "docs":"bash scripts/docs.sh",
+
+    "createui":"bash scripts/createui.sh",
+    "minifyui":"bash scripts/minifyui.sh",
+
+    "prestart":"bash scripts/preflight.sh",
+    "start":"node app.js",
+
+    "predebug":"bash scripts/preflight.sh",
+    "debug":"node app.js --debug",
+
+    "export:translations":"bash scripts/export_translations.sh",
+    "backup":"bash scripts/backup.sh"
+
   },
   "dependencies": {
-    "bcrypt": "*",
-    "body-parser": "*",
-    "cookie-parser": "*",
-    "diskspace": "*",
     "express": "*",
-    "helmet": "*",
-    "md5": "*",
-    "multer": "*",
-    "mysql": "*",
-    "ng-table": "^3.0.1",
-    "nodemailer": "*",
-    "pug": "*",
-    "readline-sync": "*",
-    "request": "*",
-    "sync": "*",
-    "uuid": "*"
+    "mysql":"*",
+    "body-parser":"*",
+    "multer":"*",
+    "helmet":"*",
+    "pug":"*",
+    "cookie-parser":"*",
+    "request":"*",
+    "bcrypt":"*",
+    "sync":"*",
+    "diskspace":"*",
+    "nodemailer":"*",
+    "uuid":"*",
+    "readline-sync":"*",
+    "md5":"*"
   }
 }
