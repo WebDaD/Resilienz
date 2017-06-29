@@ -46,7 +46,7 @@ bcrypt.hash(data.password + config.secret, salt, function (error, hash) {
     console.error(error)
     process.exit(1)
   } else {
-    if (data.admin === '1') {
+    if (data.admin === 1) {
       database.addAdminUser(data, function (error, result) {
         if (error) {
           console.error(error)
