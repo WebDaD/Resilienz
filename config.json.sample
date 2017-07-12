@@ -19,6 +19,7 @@
   "books":"/var/resilienz/books",
   "pages":"/var/resilienz/pages",
   "pdfs":"/var/resilienz/pdfs",
+  "powerpoints":"/var/resilienz/powerpoints",
   "backups":"/tmp/",
   "bookpages":46,
   "salt":"/var/resilienz/my.salt",

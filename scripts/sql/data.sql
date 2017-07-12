@@ -170,6 +170,13 @@ INSERT INTO `strings` VALUES (1,'Navigationsmenü anzeigen','toogle_navigation')
 ,(57,'Editor - Titelleiste','editor_title')
 ,(58,'Editor - Schließen','editor_close')
 ,(59,'Layout - Bild Löschen','layout_delete')
+,(60,'Intro - Text','intro_text')
+,(61,'Intro - Link Login','intro_login')
+,(62,'Intro - Link Registrieren','intro_register')
+,(63,'Intro - Link Manual','intro_manual')
+,(64,'Intro - Link Nutzungsbedingungen','intro_usage')
+,(65,'Welcome - Link Powerpoint','welcome_powerpoint')
+,(66,'Intro - Link Materials','welcome_materials')
 ;
 
 /*!40000 ALTER TABLE `strings` ENABLE KEYS */;
@@ -241,6 +248,13 @@ INSERT INTO `translations` VALUES
 (1,57,'Bildeditor'),
 (1,58,'Schließen'),
 (1,59,'Löschen'),
+(1,60,'Haben wir Ihr Interesse an dem Storytelling Club geweckt und möchten Sie das Projekt vielleicht auch selbst durchführen? Damit Sie das gesamte Material des Storytelling Clubs herunterladen können, registrieren Sie sich bitte hier'),
+(1,61,'Login'),
+(1,62,'Registrieren'),
+(1,63,'Anleitung'),
+(1,64,'Nutzungsbedingungen'),
+(1,65,'Powerpoint-Vorlage für Buch'),
+(1,66,'Einzelne Bausteine zur Durchführung des Stoytelling-Club'),
 (2,1,'Switch Navigation'),
 (2,2,'Welcome'),
 (2,3,'This is the start of the app'),
@@ -299,7 +313,14 @@ INSERT INTO `translations` VALUES
 (2,56,'Edit'),
 (2,57,'Image Editor'),
 (2,58,'Close'),
-(2,59,'Delete')
+(2,59,'Delete'),
+(2,60,'If we have aroused your interest and would you like to find out more or to organise this projekt by yourself? Please register here to get the whole material of the Storytelling Club.'),
+(2,61,'Login'),
+(2,62,'Register'),
+(2,63,'Manual'),
+(2,64,'Terms of Usage'),
+(2,65,'powerpoint-template for book'),
+(2,66,'Single building blocks for carrying out the storytelling club')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;

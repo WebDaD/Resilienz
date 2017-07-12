@@ -1,6 +1,12 @@
 h1 #{lang.welcome_title}
 p #{lang.welcome_text}
-a(href='/pdf/'+lang.welcome_pdf target="_blank") #{lang.welcome_pdf_link}
-button.btn.btn-lg.btn-primary(type="button" ng-click="toLayouter()")
-  span #{lang.nav_layout}
-  i.fa.fa-chevron-right(aria-hidden="true")
+p
+  a(href='/pdf/manual_'+lang.key)  #{lang.intro_manual}
+p
+  a(href='/materials')  #{lang.welcome_materials}
+p
+  button.btn.btn-lg.btn-primary(type="button" ng-click="toLayouter()")
+    span #{lang.nav_layout}
+    i.fa.fa-chevron-right(aria-hidden="true")
+p
+  a(href='/powerpoint/'+lang.key) #{lang.welcome_powerpoint}
