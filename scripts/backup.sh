@@ -29,12 +29,16 @@ F_IMAGES=$(json -f config.json images | sed -e 's/\n//g')
 F_BOOKS=$(json -f config.json books | sed -e 's/\n//g')
 F_PAGES=$(json -f config.json pages | sed -e 's/\n//g')
 F_PDFS=$(json -f config.json pdfs | sed -e 's/\n//g')
+F_POWERPOINTS=$(json -f config.json powerpoints | sed -e 's/\n//g')
+F_DOWNLOADS=$(json -f config.json downloads | sed -e 's/\n//g')
 FILE_SALT=$(json -f config.json salt | sed -e 's/\n//g')
 
 cp -a $F_IMAGES ${D_BACKUPS}rbtmp/images
 cp -a $F_BOOKS ${D_BACKUPS}rbtmp/books
 cp -a $F_PAGES ${D_BACKUPS}rbtmp/pages
 cp -a $F_PDFS ${D_BACKUPS}rbtmp/pdfs
+cp -a $F_POWERPOINTS ${D_BACKUPS}rbtmp/powerpoints
+cp -a $F_DOWNLOADS ${D_BACKUPS}rbtmp/downloads
 cp $FILE_SALT ${D_BACKUPS}rbtmp/my.salt
 
 cd  ${D_BACKUPS}rbtmp
