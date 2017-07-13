@@ -28,6 +28,14 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.pdfname + '.pdf')
     file.pipe(res)
   })
+  app.get('/downloads/:lang/:pdfname', function (req, res) {
+    var file = fs.createReadStream(config.downloads + req.params.lang + '/' + req.params.pdfname + '.pdf')
+    var stat = fs.statSync(config.downloads + req.params.lang + '/' + req.params.pdfname + '.pdf')
+    res.setHeader('Content-Length', stat.size)
+    res.setHeader('Content-Type', 'application/pdf')
+    res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.pdfname + '_' + req.params.lang + '.pdf')
+    file.pipe(res)
+  })
   app.get('/powerpoint/:langkey', function (req, res) {
     var file = fs.createReadStream(config.powerpoints + '/' + req.params.langkey + '.ppt')
     var stat = fs.statSync(config.powerpoints + '/' + req.params.langkey + '.ppt')

@@ -18,6 +18,11 @@ module.exports = function (app, language, login) {
       res.render('container/welcome', {lang: translations})
     })
   })
+  app.get('/container/materials', function (req, res) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+      res.render('container/materials', {lang: translations})
+    })
+  })
   app.get('/container/finish', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('container/finish', {lang: translations})

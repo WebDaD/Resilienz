@@ -8,6 +8,11 @@
           controllerAs: 'ctrl',
           templateUrl: 'container/welcome'
         })
+        .when('/materials', {
+          controller: 'resilienzManager-Materials',
+          controllerAs: 'ctrl',
+          templateUrl: 'container/materials'
+        })
         .when('/layout', {
           controller: 'resilienzManager-Layout',
           controllerAs: 'ctrl',
