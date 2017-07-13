@@ -177,6 +177,56 @@ INSERT INTO `strings` VALUES (1,'Navigationsmenü anzeigen','toogle_navigation')
 ,(64,'Intro - Link Nutzungsbedingungen','intro_usage')
 ,(65,'Welcome - Link Powerpoint','welcome_powerpoint')
 ,(66,'Intro - Link Materials','welcome_materials')
+,(67,'Materialien - Titel','materials_title')
+,(68,'Materialien - Arbeitsblätter','materials_worksheets')
+,(69,'Materialien - Geschichten','materials_stories')
+,(70,'Materialien - Spiele','materials_games')
+,(71,'Materialien - Vorlagen','materials_templates')
+,(72,'Materialien - Videos','materials_videos')
+,(73,'Navigation - Materialien','nav_materials')
+,(74,'Materialien - Arbeitsblätter - Das ist mein Name','materials_worksheets_my_name')
+,(75,'Materialien - Arbeitsblätter - Das bin ich und ich bin stolz auf ...','materials_worksheets_proud_of')
+,(76,'Materialien - Arbeitsblätter - Zeichnung: Als ich meine Angst überwand','materials_worksheets_drawing_fear')
+,(77,'Materialien - Arbeitsblätter - Erzählung: Als ich meine Angst überwand','materials_worksheets_narrative_fear')
+,(78,'Materialien - Arbeitsblätter - Als ich meine Angst überwand (Geschichte in Reinform)','materials_worksheets_poem_fear')
+,(79,'Materialien - Arbeitsblätter - Zeichnung: Als ich merke, was ich kann','materials_worksheets_drawing_able')
+,(80,'Materialien - Arbeitsblätter - Bildergeschichte - Als ich anderen helfen konnte','materials_worksheets_pictures_help')
+,(81,'Materialien - Arbeitsblätter - Zeichnung: Als andere meine Stärke sahen','materials_worksheets_drawing_strength')
+,(82,'Materialien - Arbeitsblätter - Zeichnung: Als ich etwas lernen konnte','materials_worksheets_drawing_learning')
+,(83,'Materialien - Arbeitsblätter - Erzählung: Als ich etwas lernen konnte','materials_worksheets_learning')
+,(84,'Materialien - Arbeitsblätter - Zeichnung: Als ich ein Problem lösen konnte','materials_worksheets_drawing_problem')
+,(85,'Materialien - Arbeitsblätter - Erzählung: Als ich ein Problem lösen konnte','materials_worksheets_problem')
+,(86,'Materialien - Arbeitsblätter - Zeichnung: Als ich bei Gefahr clever war','materials_worksheets_drawing_danger')
+,(87,'Materialien - Arbeitsblätter - Erzählung: Als ich bei Gefahr clever war','materials_worksheets_danger')
+,(88,'Materialien - Arbeitsblätter - Zeichnung: Als ich Stärke zeigen konnte','materials_worksheets_drawing_power')
+,(89,'Materialien - Arbeitsblätter - Erählung: Als ich Stärke zeigen konnte','materials_worksheets_power')
+,(90,'Materialien - Arbeitsblätter - Die 7 Schlüssel zu deiner Stärke','materials_worksheets_keys_to_strength')
+,(91,'Materialien - Geschichten - Geräuschegeschichte','materials_stories_noises')
+,(92,'Materialien - Geschichten - Lerngeschichte ','materials_stories_learning')
+,(93,'Materialien - Geschichten - Problemgeschichte','materials_stories_problems')
+,(94,'Materialien - Geschichten - Krisengeschichten','materials_stories_crisis')
+,(95,'Materialien - Spiele - Löwenjagd (Sing-und Bewegungsspiel)','materials_games_lions')
+,(96,'Materialien - Spiele - Fli-Flei-Floh (Singspiel)','materials_games_fli_flei_floh')
+,(97,'Materialien - Spiele - Gehen im Regen und Sturm (Bewegungsspiel)','materials_games_walking_in_rain')
+,(98,'Materialien - Spiele - Meditation','materials_games_meditation')
+,(99,'Materialien - Spiele - weitere Spiele (in Bearbeitung)','materials_games_more')
+,(100,'Materialien - Vorlagen - Regelblatt','materials_templates_rules')
+,(101,'Materialien - Vorlagen - Spannungsbogen','materials_templates_arc_of_suspense')
+,(102,'Materialien - Vorlagen - leere Zettel für Stichpunkte','materials_templates_notes')
+,(103,'Materialien - Vorlagen - leere Zettel für Tipps','materials_templates_tipps')
+,(104,'Materialien - Vorlagen - Ablauf der Präsentation','materials_templates_presentation')
+,(105,'Materialien - Vorlagen - Einladung','materials_templates_invitation')
+,(106,'Materialien - Videos - Fli-Flei-Floh (Anleitungsvideo)','materials_videos_fli_flei_floh')
+,(107,'Materialien - Videos - Link - Fli Flei Floh','materials_videos_link_fli_flei_floh')
+,(108,'Materialien - Videos - Löwenjagd (Anleitungsvideo)','materials_videos_lions')
+,(109,'Materialien - Videos - Link - Löwenjagd','materials_videos_link_lions')
+,(110,'Materialien - Videos - Der Junge, der Slum und die Topfdeckel','materials_videos_boy_slum_pot')
+,(111,'Materialien - Videos - Link - Der Junge, der Slum und die Topfdeckel','materials_videos_link_boy_slum_pot')
+,(112,'Materialien - Videos - Wasser holen mit Hinternissen','materials_videos_water')
+,(113,'Materialien - Videos - Link - Wasser holen mit Hinternissen','materials_videos_link_water')
+,(114,'Materialien - Videos - Der Gecko-Pot','materials_videos_gecko')
+,(115,'Materialien - Videos - Link - Der Gecko-Pot','materials_videos_link_gecko')
+
 ;
 
 /*!40000 ALTER TABLE `strings` ENABLE KEYS */;
@@ -320,7 +370,56 @@ INSERT INTO `translations` VALUES
 (2,63,'Manual'),
 (2,64,'Terms of Usage'),
 (2,65,'powerpoint-template for book'),
-(2,66,'Single building blocks for carrying out the storytelling club')
+(2,66,'Single building blocks for carrying out the storytelling club'),
+(1,67,'Materialien'),(2,67,'Materials'),
+(1,68,'Arbeitsblätter'),(2,68,'Worksheets'),
+(1,69,'Geschichten'),(2,69,'Stories'),
+(1,70,'Spiele'),(2,70,'Games'),
+(1,71,'Vorlagen'),(2,71,'Templates'),
+(1,72,'Videos'),(2,72,'Videos'),
+(1,73,'Materialien'),(2,73,'Materials'),
+(1,74,'Das ist mein Name'),(2,74,'This is my name'),
+(1,75,'Das bin ich und ich bin stolz auf ...'),(2,75,'This is me and what i am proud of'),
+(1,76,'Zeichnung: Als ich meine Angst überwand'),(2,76,'Drawing: when I was able to overcome my fear'),
+(1,77,'Erzählung: Als ich meine Angst überwand'),(2,77,'Story: when I was able to overcome my fear'),
+(1,78,'Als ich meine Angst überwand (Geschichte in Reinform)'),(2,78,'When I was able to overcome my fear (story in rhyming form)'),
+(1,79,'Zeichnung: Als ich merke, was ich kann'),(2,79,'Drawing: when I realized what I am able to do'),
+(1,80,'Bildergeschichte - Als ich anderen helfen konnte'),(2,80,'Pictures - when I was able to help others'),
+(1,81,'Zeichnung: Als andere meine Stärke sahen'),(2,81,'Drawing: when others saw my strength'),
+(1,82,'Zeichnung: Als ich etwas lernen konnte'),(2,82,'Drawing: when I could learn something'),
+(1,83,'Erzählung: Als ich etwas lernen konnte'),(2,83,'Story: when I could learn something'),
+(1,84,'Zeichnung: Als ich ein Problem lösen konnte'),(2,84,'Drawing: when I was able to solve a problem'),
+(1,85,'Erzählung: Als ich ein Problem lösen konnte'),(2,85,'Story: when I was able to solve a problem'),
+(1,86,'Zeichnung: Als ich bei Gefahr clever war'),(2,86,'Drawing: when I was clever in a dangerous situation'),
+(1,87,'Erzählung: Als ich bei Gefahr clever war'),(2,87,'Story: when I was clever in a dangerous situation'),
+(1,88,'Zeichnung: Als ich Stärke zeigen konnte'),(2,88,'Drawing: I realised that I am strong'),
+(1,89,'Erählung: Als ich Stärke zeigen konnte'),(2,89,'Story: I realised that I am strong'),
+(1,90,'Die 7 Schlüssel zu deiner Stärke'),(2,90,'The 7 Keys to your strength'),
+(1,91,'Geräuschegeschichte'),(2,91,'Story of noises'),
+(1,92,'Lerngeschichte '),(2,92,'Story of learning'),
+(1,93,'Problemgeschichte'),(2,93,'Story of problems'),
+(1,94,'Krisengeschichten'),(2,94,'Story of crises'),
+(1,95,'Löwenjagd (Sing-und Bewegungsspiel)'),(2,95,'Lion Hunting (singing and movement game)'),
+(1,96,'Fli-Flei-Floh (Singspiel)'),(2,96,'Fli-Flei-Floh (Singing game)'),
+(1,97,'Gehen im Regen und Sturm (Bewegungsspiel)'),(2,97,'Walking in rain and storm (movement game)'),
+(1,98,'Meditation'),(2,98,'meditation'),
+(1,99,'weitere Spiele (in Bearbeitung)'),(2,99,'more games (work in progress)'),
+(1,100,'Regelblatt'),(2,100,'Rules'),
+(1,101,'Spannungsbogen'),(2,101,'Arc of Suspense'),
+(1,102,'leere Zettel für Stichpunkte'),(2,102,'empty paper for notes'),
+(1,103,'leere Zettel für Tipps'),(2,103,'empty paper for tipps'),
+(1,104,'Ablauf der Präsentation'),(2,104,'Sequence of presentation'),
+(1,105,'Einladung'),(2,105,'invitation'),
+(1,106,'Fli-Flei-Floh (Anleitungsvideo)'),(2,106,'Fli-Flei-Floh (instructions video)'),
+(1,107,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,107,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),
+(1,108,'Löwenjagd (Anleitungsvideo)'),(2,108,'Lion Hunting (instructions video)'),
+(1,109,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,109,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),
+(1,110,'Der Junge, der Slum und die Topfdeckel'),(2,110,'The Boy, The Slum and the Lids'),
+(1,111,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,111,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),
+(1,112,'Wasser holen mit Hinternissen'),(2,112,'Fetching Water with obstacles'),
+(1,113,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,113,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),
+(1,114,'Der Gecko-Pot'),(2,114,'The Gecko Pot'),
+(1,115,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,115,'https://www.youtube.com/watch?v=kFGXXLHgZr0')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;
