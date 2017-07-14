@@ -47,7 +47,7 @@ module.exports = function (app, language, login, config) {
       var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress
       request(verificationUrl, function (error, response, body) {
         if (error) {
-          return res.status(501).json(error)
+          return res.status(403).json(error)
         } else {
           body = JSON.parse(body)
           if (body.success !== undefined && !body.success) {
@@ -55,7 +55,7 @@ module.exports = function (app, language, login, config) {
           } else {
             login.login(req.body.email, req.body.password, function (error, data) {
               if (error) {
-                return res.status(501).json(error)
+                return res.status(403).json(error)
               } else {
                 return res.status(200).json(data)
               }
