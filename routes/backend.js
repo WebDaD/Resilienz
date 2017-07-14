@@ -65,6 +65,15 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.get('/action/:id', login.isLoggedIn(), function (req, res) {
+    database.getAction(req.params.id, function (error, result) {
+      if (error) {
+        res.status(501).json(error)
+      } else {
+        res.status(200)
+      }
+    })
+  })
   app.put('/actions/:id/finalize', login.isLoggedIn(), function (req, res) {
     database.actionFinalize(req.params.id, function (error, result) {
       if (error) {

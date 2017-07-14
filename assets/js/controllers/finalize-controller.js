@@ -5,14 +5,13 @@
       var self = this
       self.isLoading = true
       self.final = false
-      self.actionid = $rootScope.action
-      resilienzManagerDataProvider.action(self.actionid).success(function (action) {
+      resilienzManagerDataProvider.action($rootScope.id).then(function (action) {
         self.final = action.finalized
         self.isLoading = false
       })
       self.finalize = function () {
         self.isLoading = true
-        resilienzManagerDataProvider.actionMakeFinal(self.actionid).success(function () {
+        resilienzManagerDataProvider.actionMakeFinal($rootScope.action).then(function () {
           self.final = true
           self.isLoading = false
         })
