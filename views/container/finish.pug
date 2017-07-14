@@ -1,11 +1,13 @@
 .container
   h1 #{lang.finish_title}
+  h2 {{isLoading}}
+  h2 {{final}}
   img.loader(ng-show="isLoading" src="/images/loader.gif")
   p.well(ng-show="!isLoading && !final") #{lang.finish_text}
   p.well(ng-show="!isLoading && final") #{lang.finish_completed}
   a(href='/book/'+actionid target="_blank" ng-show="!isLoading && final") 
     i.fa.fa-file-pdf-o(aria-hidden="true")
-    span #{lang.finish_pdf_link}
+    span   #{lang.finish_pdf_link}
   button.btn.btn-lg.btn-primary(type="button" ng-show="!isLoading && !final" ng-click="finalize()")
     span #{lang.finish_done}  
     i.fa.fa-book(aria-hidden="true")
