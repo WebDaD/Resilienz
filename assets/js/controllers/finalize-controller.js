@@ -5,6 +5,7 @@
       var self = this
       self.isLoading = true
       self.final = false
+      self.actionid = $rootScope.action
       resilienzManagerDataProvider.action($rootScope.id).then(function (action) {
         self.final = (action.data.finalized === 1)
         self.isLoading = false

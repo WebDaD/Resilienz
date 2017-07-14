@@ -3,7 +3,7 @@
   img.loader(ng-show="ctrl.isLoading" src="/images/loader.gif")
   p(ng-show="!ctrl.isLoading && !ctrl.final") #{lang.finish_text}
   p(ng-show="!ctrl.isLoading && ctrl.final") #{lang.finish_completed}
-  a.btn.btn-lg.btn-primary(href='/book/'+actionid target="_blank" ng-show="!ctrl.isLoading && ctrl.final") 
+  a.btn.btn-lg.btn-primary(href='/book/'+ctrl.actionid target="_blank" ng-show="!ctrl.isLoading && ctrl.final") 
     i.fa.fa-file-pdf-o(aria-hidden="true")
     span   #{lang.finish_pdf_link}
   button.btn.btn-lg.btn-primary(type="button" ng-show="!ctrl.isLoading && !ctrl.final" ng-click="ctrl.finalize()")
