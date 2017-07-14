@@ -281,6 +281,7 @@ SET character_set_client = utf8;
  1 AS `vorname`,
  1 AS `nachname`,
  1 AS `email`,
+ 1 AS `admin`,
  1 AS `language`,
  1 AS `location`,
  1 AS `finalized`,
@@ -347,7 +348,7 @@ WHERE p.layouts_id=ahl.layouts_id
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `userList` AS select `u`.`id` AS `id`,`u`.`vorname` AS `vorname`,`u`.`nachname` AS `nachname`,`u`.`email` AS `email`,`l`.`name` AS `language`,`a`.`location` AS `location`,`a`.`finalized` AS `finalized`,`a`.`id` AS `action_id` from ((`user` `u` join `languages` `l`) join `actions` `a`) where ((`u`.`id` = `a`.`user_id`) and (`u`.`languages_id` = `l`.`id`)) */;
+/*!50001 VIEW `userList` AS select `u`.`id` AS `id`,`u`.`vorname` AS `vorname`,`u`.`nachname` AS `nachname`,`u`.`email` AS `email`,`u`.`admin` AS `admin`,`l`.`name` AS `language`,`a`.`location` AS `location`,`a`.`finalized` AS `finalized`,`a`.`id` AS `action_id` from ((`user` `u` join `languages` `l`) join `actions` `a`) where ((`u`.`id` = `a`.`user_id`) and (`u`.`languages_id` = `l`.`id`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
