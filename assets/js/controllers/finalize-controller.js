@@ -6,7 +6,7 @@
       self.isLoading = true
       self.final = false
       resilienzManagerDataProvider.action($rootScope.id).then(function (action) {
-        self.final = action.data.finalized
+        self.final = (action.data.finalized === 1)
         self.isLoading = false
       }, function (error) {
         console.error(error)
