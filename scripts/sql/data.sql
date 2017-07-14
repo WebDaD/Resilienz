@@ -226,7 +226,7 @@ INSERT INTO `strings` VALUES (1,'Navigationsmenü anzeigen','toogle_navigation')
 ,(113,'Materialien - Videos - Link - Wasser holen mit Hinternissen','materials_videos_link_water')
 ,(114,'Materialien - Videos - Der Gecko-Pot','materials_videos_gecko')
 ,(115,'Materialien - Videos - Link - Der Gecko-Pot','materials_videos_link_gecko')
-
+,(116,'Überschrift - Storytelling-Club','head_storytelling')
 ;
 
 /*!40000 ALTER TABLE `strings` ENABLE KEYS */;
@@ -420,6 +420,7 @@ INSERT INTO `translations` VALUES
 (1,113,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,113,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),
 (1,114,'Der Gecko-Pot'),(2,114,'The Gecko Pot'),
 (1,115,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,115,'https://www.youtube.com/watch?v=kFGXXLHgZr0')
+(1,116,'Der Storytelling-Club'),(2,116,'The Storytelling-Club')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;

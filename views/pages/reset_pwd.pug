@@ -6,6 +6,7 @@ html(lang=lang.key)
     script(src='js/jquery.min.js')
     script(src='js/reset_pwd.js')
   body
+    h1 #{lang.link_reset}
     .container
       .row
         .col-md-10.col-md-offset-1
@@ -20,9 +21,7 @@ html(lang=lang.key)
                 .col-sm-offset-2.col-sm-10
                   .g-recaptcha(data-sitekey=captcha)
               .form-group
-                .col-sm-offset-2.col-sm-10
-                  button#reset-submit.btn.btn-lg.btn-primary(type='submit' role='button') #{lang.reset_reset}
+                .col-sm-12
+                  button#reset-submit.btn.btn-lg.btn-block.btn-primary(type='submit' role='button') #{lang.reset_reset}
               p#reset-error.well(style="display:none;")
-            .form-links
-              a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
     include ../includes/footer.jade

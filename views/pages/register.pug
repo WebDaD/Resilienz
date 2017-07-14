@@ -9,6 +9,7 @@ html(lang=lang.key)
     script(src='js/register.js')
   body
     .container
+      h1 #{lang.link_register}
       .row
         .col-md-10.col-md-offset-1
           section.register-form
@@ -43,12 +44,10 @@ html(lang=lang.key)
                 label.col-sm-2(for="register-stop") #{lang.login_stop}
                 input#register_stop.col-sm-10.form-control.input-lg(type='text' placeholder=lang.login_stop)
               .form-group
-                .col-sm-offset-2.col-sm-10
+                .col-sm-12
                   .g-recaptcha(data-sitekey=captcha)
               .form-group
-                .col-sm-offset-2.col-sm-10
-                  button#register-submit.btn.btn-lg.btn-primary(type='submit' role='button') #{lang.login_register}
+                .col-sm-12
+                  button#register-submit.btn.btn-lg.btn-primary.btn-block(type='submit' role='button') #{lang.login_register}
               p#register-error.well(style="display:none;")
-            .form-links
-              a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
     include ../includes/footer.jade
