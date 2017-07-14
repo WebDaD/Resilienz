@@ -50,7 +50,7 @@ echo 'OK'
 
 echo -n '==> Deploying Font-Awesome ...'
 cp bower_components/font-awesome/css/font-awesome.min.css public/css/font-awesome.min.css
-cp -s bower_components/font-awesome/fonts/ public/fonts
+cp bower_components/font-awesome/fonts/* public/fonts 2>>/dev/null
 echo 'OK'
 
 echo -n '==> Deploying angular'
