@@ -25,6 +25,8 @@ $(document).ready(function () {
       } else {
         error(data.msg)
       }
+    }).fail(function (data) {
+      error(data.msg)
     })
   })
 })
