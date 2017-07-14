@@ -18,7 +18,7 @@
         self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
       })
       // load cats with layouts and positions
-      resilienzManagerDataProvider.categoriesFull().success(function (categories) {
+      resilienzManagerDataProvider.categoriesFull().then(function (categories) {
         self.categories.all = categories // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: []}
         self.categories.previous = {}
         self.categories.active = categories[0]
@@ -74,10 +74,10 @@
         })
       }
       self.delete = function (position) {
-        resilienzManagerDataProvider.imageDelete(position.image).success(function (something) {})
+        resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {})
       }
       self.saveLayout = function () {
-        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).success(function (something) {})
+        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).then(function (something) {})
       }
       self.selectPage = function (page) {
         self.pageLoading = true
@@ -85,7 +85,7 @@
         reloadLayoutPositions(function () { self.pageLoading = false })
       }
       function reloadLayoutPositions (callback) {
-        resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).success(function (layoutWithImages) {
+        resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
           self.selectedLayout = layoutWithImages
           callback()
         })

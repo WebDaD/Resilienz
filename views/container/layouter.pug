@@ -14,7 +14,7 @@
       i.fa.fa-chevron-right
 .row(ng-show="!ctrl.catLoading")
   .col-md-3(ng-repeat="n in ctrl.categories.active.realPages track by $index")
-    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.selectPage(n)")= (n++)+"/"(n+1)
+    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.selectPage(n)")= (n++)+"/"+(n+1)
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner
