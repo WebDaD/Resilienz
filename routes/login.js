@@ -45,6 +45,7 @@ module.exports = function (app, language, login, config) {
       return res.status(403).json({msg: 'Please select captcha'})
     } else {
       var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress
+      console.log(verificationUrl)
       request(verificationUrl, function (error, response, body) {
         if (error) {
           return res.status(403).json(error)

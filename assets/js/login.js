@@ -26,7 +26,7 @@ $(document).ready(function () {
         error(data.msg)
       }
     }).fail(function (data) {
-      error(data.msg)
+      error(data.responseJSON.msg)
     })
   })
 })
