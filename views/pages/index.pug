@@ -8,12 +8,12 @@ html(lang='en')
   body.no-skin
     .container
       h1.text-center Willkommen / Welcome / ¡Bienvenidos! / ترحيب
-      .row
+      .row.row-grid
         .col-md-6
           img.img-responsive(src="images/poster.jpg")
         .col-md-6
           img.img-responsive(src="images/android-chrome-512x512.png")
-      .row
+      .row.row-grid
         .col-md-12      
           h2 The Story Telling Club
           p
@@ -28,13 +28,13 @@ html(lang='en')
             | Short lessons on learning stories are accompanied by basic principles of resilience which are to be stressed in the stories. There will also be small, proven exercises promoting self-esteem and communication.
           p
             | The Story Telling Club is a pedagogic building block system that supervisors on the ground can use to undertake project-oriented work with the children. In turn the results will be made available to other project groups around the world. Scientific evaluation in the first initiatives will assure quality and provide the supervisors with important information on opportunities and potential problems. In some cases the intention is to forge contact to media professionals who will report on the project and/or present individual Strong Stories in the media.
-      .row
+      .row.row-grid
         .col-md-3
-          button.lang-selector.btn-primary.btn.btn-lg(data-lang="de") Weiter auf Deutsch
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="de") Weiter auf Deutsch
         .col-md-3
-          button.lang-selector.btn-primary.btn.btn-lg(data-lang="en") Continue in english
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="en") Continue in english
         .col-md-3
-          button.lang-selector.btn-default.btn-lg.btn.disabled(data-lang="et" tabindex="-1") Continuar en español
+          button.lang-selector.btn-default.btn-lg.btn.btn-block.disabled(data-lang="et" tabindex="-1") Continuar en español
         .col-md-3
-          button.lang-selector.btn-default.btn-lg.btn.disabled(data-lang="ar" tabindex="-1") تستمر باللغة العربية
+          button.lang-selector.btn-default.btn-lg.btn.btn-block.disabled(data-lang="ar" tabindex="-1") تستمر باللغة العربية
     include ../includes/footer.jade

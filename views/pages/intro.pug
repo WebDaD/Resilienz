@@ -6,19 +6,19 @@ html(lang=lang.key)
   body.no-skin
     .container
       h1 #{lang.head_storytelling}
-      .row
+      .row.row-grid
         .col-md-6
           div(style='position:relative;height:0;padding-bottom:56.25%')
             iframe(src='https://www.youtube.com/embed/OyqIAxo71Dc?rel=0&showinfo=0?ecver=2', width='640', height='360', frameborder='0', style='position:absolute;width:100%;height:100%;left:0', allowfullscreen='')
         .col-md-6
           p #{lang.intro_text}
-      .row
-        .col-md-4
-          a.btn-primary.btn-lg.btn(href="login") #{lang.intro_login}
-        .col-md-4
-          a.btn-primary.btn-lg.btn(href="register") #{lang.intro_register}
+      .row.row-grid
         .col-md-6
-          a.btn-default.btn(href="pdf/manual_"+lang.key) #{lang.intro_manual}
+          a.btn-primary.btn-lg.btn.btn-block(href="login") #{lang.intro_login}
         .col-md-6
-          a.btn-default.btn(href="pdf/usage_"+lang.key) #{lang.intro_usage}
+          a.btn-primary.btn-lg.btn.btn-block(href="register") #{lang.intro_register}
+        .col-md-6
+          a.btn-default.btn.btn-block(href="pdf/manual_"+lang.key) #{lang.intro_manual}
+        .col-md-6
+          a.btn-default.btn.btn-block(href="pdf/usage_"+lang.key) #{lang.intro_usage}
     include ../includes/footer.jade

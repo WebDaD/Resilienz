@@ -9,7 +9,7 @@ html(lang=lang.key)
     script(src='js/login.js')
   body
     .container
-      h1 #{lang.link_login}
+      h1 #{lang.intro_login}
       .row
         .col-md-10.col-md-offset-1
           section.register-form
@@ -27,7 +27,9 @@ html(lang=lang.key)
                 .col-sm-12
                   button#login-submit.btn.btn-lg.btn-primary.btn-block(type='submit' role='button') #{lang.login_login}
               p#login-error.well(style="display:none;")
-      .form-links
-        a.btn.btn-lg.btn-default(href='/reset') #{lang.link_reset}
-        a.btn.btn-lg.btn-default(href='/register') #{lang.link_register}
+                .form-group
+                  .col-sm-6
+                    a.btn.btn-lg.btn-default(href='/reset') #{lang.link_reset}
+                  .col-sm-6
+                    a.btn.btn-lg.btn-default(href='/register') #{lang.link_register}      
     include ../includes/footer.jade
