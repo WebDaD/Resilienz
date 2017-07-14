@@ -8,6 +8,7 @@
         maxFileSize: 10,
         maxFiles: 1
       }
+      self.categories = {}
       self.actionid = $rootScope.action
       self.catLoading = true
       self.pageLoading = true

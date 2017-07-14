@@ -22,7 +22,7 @@
   .col-md-12
     select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.categories.active.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
 .row(ng-show="!ctrl.pageLoading")
-  #page(ng-style="background-image:url(/bookimages/{{ctrl.actionid}}/{{ctrl.selectedPage}})")      
+  #page(ng-style="'background-image':'url(/bookimages/{{ctrl.actionid}}/{{ctrl.selectedPage}})'")      
     .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image" ng-style="ctrl.calcStyle(position)")
       form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="/bookimages/upload/{{ctrl.actionid}}/{{ctrl.selectedPage}}/{{position.id}}")
       span(ng-show="!position.image") #{lang.layout_upload}
