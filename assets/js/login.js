@@ -14,7 +14,7 @@ $(document).ready(function () {
       password: $.md5($('#login-password').val()),
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
-      if (textStatus === '200') {
+      if (textStatus === 'success') {
         $.cookie('resilienzManager-admin', data.admin, {expires: 365, path: '/'})
         $.cookie('resilienzManager-id', data.id, {expires: 365, path: '/'})
         $.cookie('resilienzManager-action', data.action, {expires: 365, path: '/'})

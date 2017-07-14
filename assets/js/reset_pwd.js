@@ -12,12 +12,14 @@ $(document).ready(function () {
       email: $('#reset-email').val(),
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
-      if (textStatus === '200') {
+      if (textStatus === 'success') {
         $('#reset-ok').show()
         $('.reset-form').hide()
       } else {
         error(data.msg)
       }
+    }).fail(function (data) {
+      error(data.responseJSON.msg)
     })
   })
 })

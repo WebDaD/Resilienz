@@ -21,7 +21,7 @@ $(document).ready(function () {
       password: $.md5($('#set-password').val()),
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
-      if (textStatus === '200') {
+      if (textStatus === 'success') {
         $.cookie('resilienzManager-admin', data.admin, {expires: 365, path: '/'})
         $.cookie('resilienzManager-id', data.id, {expires: 365, path: '/'})
         $.cookie('resilienzManager-action', data.action, {expires: 365, path: '/'})
@@ -32,6 +32,8 @@ $(document).ready(function () {
       } else {
         error(data.msg)
       }
+    }).fail(function (data) {
+      error(data.responseJSON.msg)
     })
   })
 })
