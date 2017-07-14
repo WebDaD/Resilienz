@@ -65,7 +65,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/action/:id', login.isLoggedIn(), function (req, res) {
+  app.get('/actions/:id', login.isLoggedIn(), function (req, res) {
     database.getAction(req.params.id, function (error, result) {
       if (error) {
         res.status(501).json(error)
