@@ -46,13 +46,14 @@ bcrypt.hash(data.password + config.secret, salt, function (error, hash) {
     console.error(error)
     process.exit(1)
   } else {
+    data.password = hash
     if (data.admin === 1) {
       database.addAdminUser(data, function (error, result) {
         if (error) {
           console.error(error)
           process.exit(1)
         } else {
-          console.log('ADMIN User ' + data.email + ' added with ID ' + result.id)
+          console.log('ADMIN User ' + data.register_email + ' added with ID ' + result.id)
           process.exit(0)
         }
       })
@@ -62,7 +63,7 @@ bcrypt.hash(data.password + config.secret, salt, function (error, hash) {
           console.error(error)
           process.exit(1)
         } else {
-          console.log('User ' + data.email + ' added with ID ' + result.id)
+          console.log('User ' + data.register_email + ' added with ID ' + result.id)
           process.exit(0)
         }
       })
