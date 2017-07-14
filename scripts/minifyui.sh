@@ -17,7 +17,7 @@ echo '=> Preparation Done.'
 
 echo '=> Minifying Files'
 echo -n '==> Minifying JS ...'
-uglifyjs public/js/index.js public/js/login.js public/js/ng-table.min.js public/js/register.js public/js/reset_pwd.js public/js/resilienzManager-dir.js public/js/resilienzManager.js public/js/resilienzManager-svc.js public/js/set_pwd.js public/js/controllers/* -o public/js/js.min.js
+uglifyjs public/js/ng-table.min.js public/js/resilienzManager-dir.js public/js/resilienzManager.js public/js/resilienzManager-svc.js public/js/controllers/* -o public/js/js.min.js
 echo 'OK'
 
 
