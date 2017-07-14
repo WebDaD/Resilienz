@@ -8,6 +8,8 @@
       resilienzManagerDataProvider.action($rootScope.id).then(function (action) {
         self.final = action.finalized
         self.isLoading = false
+      }, function (error) {
+        console.log(error)
       })
       self.finalize = function () {
         self.isLoading = true
