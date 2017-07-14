@@ -70,7 +70,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(501).json(error)
       } else {
-        res.status(200)
+        res.status(200).json(result)
       }
     })
   })

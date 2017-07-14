@@ -10,13 +10,15 @@
         self.final = action.finalized
         self.isLoading = false
       }, function (error) {
-        console.log(error)
+        console.error(error)
       })
       self.finalize = function () {
         self.isLoading = true
         resilienzManagerDataProvider.actionMakeFinal($rootScope.action).then(function () {
           self.final = true
           self.isLoading = false
+        }, function (error) {
+          console.error(error)
         })
       }
     }])
