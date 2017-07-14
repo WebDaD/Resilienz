@@ -4,11 +4,13 @@ html(lang=lang.key)
     include ../includes/head
     link(rel='stylesheet', href='css/login.min.css')
     script(src='js/jquery.min.js')
+    script(src='https://www.google.com/recaptcha/api.js')
     script(src='js/jquery.cookie.js')
     script(src='js/jquery.md5.js')
     script(src='js/set_pwd.js')
   body
     .container
+      h1 #{lang.set_password}
       .row
         .col-md-10.col-md-offset-1
           section.set-form
@@ -26,8 +28,6 @@ html(lang=lang.key)
                 .col-sm-offset-2.col-sm-10
                   input#set-resetToken(type='hidden' value=resetToken)
                   input#set-email(type='hidden' value=email)
-                  button#set-submit.btn.btn-lg.btn-primary(type='submit' role='button') #{lang.set_send}
+                  button#set-submit.btn.btn-lg.btn-primary(role='button') #{lang.set_send}
               p#set-error.well(style="display:none;")
-            .form-links
-              a(href='http://resilienz.prixjeunesse.de') resilienz.prixjeunesse.de
     include ../includes/footer
