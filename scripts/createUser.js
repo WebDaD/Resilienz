@@ -41,7 +41,7 @@ if (readlineSync.keyInYN('Is this an Admin-User? [yn] ')) {
   data.register_stop = readlineSync.question('Enter Stop Time: ')
 }
 data.password = md5(data.password)
-bcrypt.hash(data.password + config.secret, salt, function (error, hash) {
+bcrypt.hash(data.password + config.serversecret, salt, function (error, hash) {
   if (error) {
     console.error(error)
     process.exit(1)
