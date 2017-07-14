@@ -116,7 +116,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/images/:name/', login.isLoggedIn(), function (req, res) {
-    res.status(200).sendfile(config.images + '/' + req.params.name)
+    res.status(200).sendFile(config.images + '/' + req.params.name)
   })
   app.delete('/images/:name/', login.isLoggedIn(), function (req, res) {
     database.removeImage(req.params.name, function (error, name) {
