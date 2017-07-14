@@ -115,10 +115,10 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/images/:name/', login.isLoggedIn(), function (req, res) {
+  app.get('/bookimages/:name/', login.isLoggedIn(), function (req, res) {
     res.status(200).sendFile(config.images + '/' + req.params.name)
   })
-  app.delete('/images/:name/', login.isLoggedIn(), function (req, res) {
+  app.delete('/bookimages/:name/', login.isLoggedIn(), function (req, res) {
     database.removeImage(req.params.name, function (error, name) {
       if (error) {
         res.status(501).json(error)
@@ -127,7 +127,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.put('/images/:name/rescale', login.isLoggedIn(), function (req, res) {
+  app.put('/bookimages/:name/rescale', login.isLoggedIn(), function (req, res) {
     layouter.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, function (error) {
       if (error) {
         res.status(501).json(error)
@@ -136,7 +136,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/images/:action_id/:page', login.isLoggedIn(), function (req, res) {
+  app.get('/bookimages/:action_id/:page', login.isLoggedIn(), function (req, res) {
     layouter.createPage(req.params.action_id, req.cookies['resilienzManager-language'], req.params.page, function (error, result) {
       if (error) {
         res.status(501).json(error)
@@ -149,7 +149,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/images/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
+  app.get('/bookimages/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
     database.getImage(req.params.action_id, req.params.page, req.params.position_id, function (error, name) {
       if (error) {
         res.status(501).json(error)
@@ -158,7 +158,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.post('/images/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
+  app.post('/bookimages/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
     fs.readFile(req.files.displayImage.path, function (err, data) {
       if (err) {
         res.status(501).json(err)

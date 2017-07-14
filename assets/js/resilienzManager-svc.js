@@ -35,12 +35,12 @@
           },
           imageRescale: function (name, data) {
             return $http({
-              method: 'PUT', url: restURL + 'images/' + name + '/rescale', data: data
+              method: 'PUT', url: restURL + 'bookimages/' + name + '/rescale', data: data
             })
           },
           imageDelete: function (name) {
             return $http({
-              method: 'DELETE', url: restURL + 'images/' + name
+              method: 'DELETE', url: restURL + 'bookimages/' + name
             })
           },
           actionMakeFinal: function (id) {
