@@ -19,7 +19,6 @@
     "angular-bootstrap": "*",
     "angular-dropzone":"*",
     "angular-cookies":"*",
-    "angular-resource": "*",
     "angular-route": "*",
     "ng-table":"*",
     "bootstrap": "*",
