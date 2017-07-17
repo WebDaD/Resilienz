@@ -84,6 +84,15 @@ cp node_modules/ng-table/bundles/ng-table.min.js public/js/ng-table.min.js
 cp node_modules/ng-table/bundles/ng-table.min.css public/css/ng-table.min.css
 echo 'OK'
 
+echo -n '==> Deploying jquery.datetimepicker ...'
+cp bower_components/datetimepicker/build/jquery.datetimepicker.full.min.js public/js/jquery.datetimepicker.full.min.js
+cp bower_components/datetimepicker/jquery.datetimepicker.css public/css/jquery.datetimepicker.css
+echo 'OK'
+
+echo -n '==> Deploying jquery-locationpicker-plugin ...'
+cp bower_components/jquery-locationpicker-plugin/dist/locationpicker.jquery.js public/js/locationpicker.jquery.js
+echo 'OK'
+
 echo -n '==> Deploying custom JS ...'
 cp assets/js/*.js public/js/
 cp assets/js/controllers/*.js public/js/controllers/

@@ -1,5 +1,17 @@
 /* global $ */
 $(document).ready(function () {
+  var location = 'none'
+  $('#register-start').datetimepicker({timepicker: false, format: 'Y-d-m'})
+  $('#register-stop').datetimepicker({timepicker: false, format: 'Y-d-m'})
+  $('#register-location').locationpicker({
+    location: {
+      latitude: 48.1437389,
+      longitude: 11.5499916
+    },
+    onchanged: function (currentLocation, radius, isMarkerDropped) {
+      location = currentLocation
+    }
+  })
   $('.register-form').on('click', '#register-submit', function () {
     $('#register-error').hide()
     var errors = 0
@@ -9,7 +21,6 @@ $(document).ready(function () {
     errors += checkField('register-nachname')
     errors += checkField('register-password')
     errors += checkField('register-passwordrepeat')
-    errors += checkField('register-location')
     errors += checkField('register-start')
     errors += checkField('register-stop')
     if (errors > 0) {
@@ -28,7 +39,7 @@ $(document).ready(function () {
       vorname: $('#register-vorname').val(),
       nachname: $('#register-nachname').val(),
       password: $.md5($('#register-password').val()),
-      location: $('#register-location').val(),
+      location: location,
       start: $('#register-start').val(),
       stop: $('#register-stop').val(),
       captchaResponse: $('#g-recaptcha-response').val()
