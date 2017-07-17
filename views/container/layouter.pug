@@ -2,25 +2,16 @@
   .col-md-12
     .spinner
 .row(ng-show="!ctrl.catLoading")
+  .col-md-9
+    select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
   .col-md-3
-    button.btn.btn-default.btn-block(ng-click="ctrl.catPrevious()")
-      i.fa.fa-chevron-left
-      |  lang[{{ctrl.categories.previous.lang_string_key}}]
-  .col-md-6.text-center
-    h2 lang[{{ctrl.categories.active.lang_string_key}}]
-  .col-md-3
-    button.btn.btn-default.btn-block(ng-click="ctrl.catNext()")
-      | lang[{{ctrl.categories.next.lang_string_key}}]
-      i.fa.fa-chevron-right
-.row(ng-show="!ctrl.catLoading")
-  .col-md-3(ng-repeat="n in ctrl.categories.active.realPages track by $index")
-    button.btn.btn-default.btn-block(ng-class="btn-success:n==ctrl.selectedPage" ng-disabled="n==ctrl.selectedPage" ng-click="ctrl.selectPage(n)")= (n++)+"/"+(n+1)
+    select#pageSelect.form-control(ng-options="n in ctrl.selectedCategory.realPages track by $index" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner
 .row(ng-show="!ctrl.pageLoading")
   .col-md-12
-    select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.categories.active.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
+    select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
 .row(ng-show="!ctrl.pageLoading")
   #page(ng-style="'background-image':'url(/bookimages/{{ctrl.actionid}}/{{ctrl.selectedPage}})'")      
     .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image" ng-style="ctrl.calcStyle(position)")

@@ -116,7 +116,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/categories/full/', login.isLoggedIn(), function (req, res) {
-    database.getCategoriesFull(function (error, categories) {
+    database.getCategoriesFull(req.cookies['resilienzManager-language'], function (error, categories) {
       if (error) {
         res.status(501).json(error)
       } else {

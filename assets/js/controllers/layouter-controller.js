@@ -8,54 +8,41 @@
         maxFileSize: 10,
         maxFiles: 1
       }
-      self.categories = {}
+      self.categories = []
       self.actionid = $rootScope.action
       self.catLoading = true
       self.pageLoading = true
       self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
       self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
+
+      self.selectedCategory = {}
+      self.selectedPage = -1
+
+      self.selectCategory = function () {
+        self.catLoading = true
+        self.selectedPage = self.selectedCategory.startpage
+        self.catLoading = false
+        reloadLayoutPositions(function () { self.pageLoading = false })
+      }
+      self.selectPage = function () {
+        self.pageLoading = true
+        reloadLayoutPositions(function () { self.pageLoading = false })
+      }
+
       angular.element($window).on('resize', function () {
         self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
         self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
       })
+
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().then(function (categories) {
-        self.categories.all = categories // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: []}
-        self.categories.previous = {}
-        self.categories.active = categories[0]
-        self.categories.next = categories[1]
-        self.selectedPage = 1
+        self.categories = categories // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: [], translation}
+        self.selectedCategory = categories[0]
+        self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         reloadLayoutPositions(function () { self.pageLoading = false })
       })
-      self.catPrevious = function () {
-        self.catLoading = true
-        self.categories.next = self.categories.active
-        self.categories.active = self.categories.previous
-        var psort = self.categories.previous.sort - 1
-        self.categories.all.forEach(function (cat) {
-          if (cat.sort === psort) {
-            self.categories.previous = cat
-          }
-        })
-        self.selectedPage = self.categories.active.startpage + self.categories.active.pages - 1 // minus one to get the lefthand page
-        self.catLoading = false
-        reloadLayoutPositions(function () { self.pageLoading = false })
-      }
-      self.catNext = function () {
-        self.catLoading = true
-        self.categories.previous = self.categories.active
-        self.categories.active = self.categories.next
-        var nsort = self.categories.next.sort + 1
-        self.categories.all.forEach(function (cat) {
-          if (cat.sort === nsort) {
-            self.categories.next = cat
-          }
-        })
-        self.selectedPage = self.categories.active.startpage
-        self.catLoading = false
-        reloadLayoutPositions(function () { self.pageLoading = false })
-      }
+
       self.openEditor = function (position) {
         var data = {}
         data.image = position.image
@@ -79,11 +66,6 @@
       }
       self.saveLayout = function () {
         resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).then(function (something) {})
-      }
-      self.selectPage = function (page) {
-        self.pageLoading = true
-        self.selectedPage = page
-        reloadLayoutPositions(function () { self.pageLoading = false })
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
