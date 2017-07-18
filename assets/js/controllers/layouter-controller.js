@@ -16,12 +16,18 @@
       self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
 
       self.selectedCategory = {}
+      self.selectedLayout = {}
       self.selectedPage = -1
+
+      self.pageImage = {
+        'background-image': 'url(/bookimages/' + self.actionid + '/' + self.selectedPage + ')'
+      }
 
       self.selectCategory = function () {
         self.catLoading = true
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
+        self.pageLoading = true
         reloadLayoutPositions(function () { self.pageLoading = false })
       }
       self.selectPage = function () {
@@ -38,7 +44,7 @@
       resilienzManagerDataProvider.categoriesFull().then(function (categories) {
         self.categories = categories.data // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: [], translation}
         self.selectedCategory = self.categories[0]
-        self.selectedPage = self.selectedCategory.startpage
+        self.selectedPage = self.selectedCategory.realPages[0]
         self.catLoading = false
         reloadLayoutPositions(function () { self.pageLoading = false })
       })
