@@ -36,8 +36,8 @@
 
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().then(function (categories) {
-        self.categories = categories // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: [], translation}
-        self.selectedCategory = categories[0]
+        self.categories = categories.data // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: [], translation}
+        self.selectedCategory = self.categories[0]
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         reloadLayoutPositions(function () { self.pageLoading = false })
@@ -69,7 +69,7 @@
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
-          self.selectedLayout = layoutWithImages
+          self.selectedLayout = layoutWithImages.data
           callback()
         })
       }
