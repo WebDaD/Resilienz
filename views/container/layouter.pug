@@ -2,16 +2,15 @@
   .col-md-12
     .spinner
 .row(ng-show="!ctrl.catLoading")
-  .col-md-9
+  .col-md-6
     select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
   .col-md-3
     select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
+  .col-md-3
+    select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner
-.row(ng-show="!ctrl.pageLoading")
-  .col-md-12
-    select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
 .row(ng-show="!ctrl.pageLoading")
   #page(ng-style="ctrl.pageImage")      
     .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image" ng-style="ctrl.calcStyle(position)")
