@@ -41,6 +41,7 @@
     "nodemailer":"*",
     "uuid":"*",
     "readline-sync":"*",
-    "md5":"*"
+    "md5":"*",
+    "mkdirp":"*"
   }
 }
