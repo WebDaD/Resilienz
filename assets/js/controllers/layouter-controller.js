@@ -84,7 +84,7 @@
       }
       self.calcStyle = function (position) {
         var style = {}
-        var orgWidth = (self.categories.active.id === '1') ? 720 : 1440
+        var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
         var orgHeight = 1040
         style.left = (position.x * self.pageWidth / orgWidth) + 'px'
         style.top = (position.y * self.pageHeight / orgHeight) + 'px'
