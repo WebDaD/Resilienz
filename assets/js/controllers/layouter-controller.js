@@ -19,10 +19,6 @@
       self.selectedLayout = {}
       self.selectedPage = -1
 
-      self.pageImage = {
-        'background-image': 'url(/bookimages/' + self.actionid + '/' + self.selectedPage + ')'
-      }
-
       self.selectCategory = function () {
         self.catLoading = true
         self.selectedPage = self.selectedCategory.startpage
@@ -76,6 +72,9 @@
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
           self.selectedLayout = layoutWithImages.data
+          self.pageImage = {
+            'background-image': 'url(/bookimages/' + self.actionid + '/' + self.selectedPage + ')'
+          }
           callback()
         })
       }
