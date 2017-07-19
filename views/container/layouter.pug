@@ -2,16 +2,17 @@
   .col-md-12
     .spinner
 .row(ng-show="!ctrl.catLoading")
-  .form-inline
-    .form-group
-      label(for="categorySelect") #{lang.layout_categorySelect}
-      select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
-    .form-group
-      label(for="pageSelect") #{lang.layout_pageSelect}
-      select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
-    .form-group
-      label(for="layoutSelect") #{lang.layout_layoutSelect}
-      select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
+  .container
+    .form-inline
+      .form-group
+        label(for="categorySelect") #{lang.layout_categorySelect}
+        select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
+      .form-group
+        label(for="pageSelect") #{lang.layout_pageSelect}
+        select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
+      .form-group
+        label(for="layoutSelect") #{lang.layout_layoutSelect}
+        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.saveLayout()")
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner

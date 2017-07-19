@@ -16,6 +16,7 @@
     }
   },
   "images":"/var/resilienz/images",
+  "layouts":"/var/resilienz/layouts",
   "books":"/var/resilienz/books",
   "pages":"/var/resilienz/pages",
   "pdfs":"/var/resilienz/pdfs",
