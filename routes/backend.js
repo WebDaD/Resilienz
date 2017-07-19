@@ -153,7 +153,11 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         if (result) {
           res.status(501).end()
         } else {
-          res.status(200).sendfile(config.pagespath + '/' + req.params.action_id + '/' + req.params.page + '_two.png')
+          if (req.params.page === 1 || req.params.page === 44) {
+            res.status(200).sendFile(config.pagespath + '/' + req.params.action_id + '/' + req.params.page + '.png')
+          } else {
+            res.status(200).sendFile(config.pagespath + '/' + req.params.action_id + '/' + req.params.page + '_two.png')
+          }
         }
       }
     })
@@ -163,7 +167,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(501).json(error)
       } else {
-        res.status(200).sendfile(config.images + '/' + name)
+        res.status(200).sendFile(config.images + '/' + name)
       }
     })
   })
