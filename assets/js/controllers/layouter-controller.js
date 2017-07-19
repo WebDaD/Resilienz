@@ -26,10 +26,12 @@
         self.pageLoading = true
       }
       self.selectPage = function () {
+
+      }
+      self.selectLayout = function () {
         self.pageLoading = true
         reloadLayoutPositions(function () { self.pageLoading = false })
       }
-
       angular.element($window).on('resize', function () {
         self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
         self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
@@ -67,7 +69,7 @@
       }
       self.saveLayout = function () {
         self.pageLoading = true
-        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).then(function (something) {
+        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
           reloadLayoutPositions(function () { self.pageLoading = false })
         })
       }
