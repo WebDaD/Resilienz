@@ -83,8 +83,8 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/actions/:id/:page/layout', login.isLoggedIn(), function (req, res) {
-    database.getLayoutImagesByActionPage(req.params.id, req.params.page, function (error, result) {
+  app.get('/actions/:actionid/:page/layout', login.isLoggedIn(), function (req, res) {
+    database.getLayoutImagesByActionPage(req.params.actionid, req.params.page, function (error, result) {
       if (error) {
         res.status(501).json(error)
       } else {
