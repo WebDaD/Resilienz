@@ -51,7 +51,7 @@ INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`star
 INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (10,'Gefahr clever',4,10,'kat_gefahr',32);
 INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (11,'Tipps Gefahr',2,11,'kat_tipps_gefahr',36);
 INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (12,'stark wurde',4,12,'kat_stark',38);
-INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (13,'So war',3,13,'kat_storytelling',42);
+INSERT INTO `categories` (`id`,`name`,`pages`,`ordering`,`lang_string_key`,`start_page`) VALUES (13,'So war',2,13,'kat_storytelling',42);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,6 +227,9 @@ INSERT INTO `strings` VALUES (1,'Navigationsmenü anzeigen','toogle_navigation')
 ,(114,'Materialien - Videos - Der Gecko-Pot','materials_videos_gecko')
 ,(115,'Materialien - Videos - Link - Der Gecko-Pot','materials_videos_link_gecko')
 ,(116,'Überschrift - Storytelling-Club','head_storytelling')
+,(117,'Layouter - Erklärung Kategorieauswahl','layout_categorySelect')
+,(118,'Layouter - Erklärung Seitenauswahl','layout_pageSelect')
+,(119,'Layouter - Erklärung Layoutauswahl','layout_layoutSelect')
 ;
 
 /*!40000 ALTER TABLE `strings` ENABLE KEYS */;
@@ -420,7 +423,10 @@ INSERT INTO `translations` VALUES
 (1,113,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,113,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),
 (1,114,'Der Gecko-Pot'),(2,114,'The Gecko Pot'),
 (1,115,'https://www.youtube.com/watch?v=kFGXXLHgZr0'),(2,115,'https://www.youtube.com/watch?v=kFGXXLHgZr0')
-(1,116,'Der Storytelling-Club'),(2,116,'The Storytelling-Club')
+(1,116,'Der Storytelling-Club'),(2,116,'The Storytelling-Club'),
+(1,117,'Kapitel'),(2,117,'Chapter'),
+(1,118,'Seite'),(2,118,'Page'),
+(1,119,'Gewähltes Layout'),(2,119,'Selected Layout')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;
