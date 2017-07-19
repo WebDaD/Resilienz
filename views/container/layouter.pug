@@ -22,7 +22,7 @@
   .container
     #page(ng-style="ctrl.pageImage")      
       .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="has-image:position.image" ng-style="ctrl.calcStyle(position)")
-        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="/bookimages/upload/{{ctrl.actionid}}/{{ctrl.selectedPage}}/{{position.id}}")
+        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="position.action")
         span(ng-show="!position.image") #{lang.layout_upload}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)") #{lang.layout_edit}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)") #{lang.layout_delete_image}

@@ -230,6 +230,7 @@ INSERT INTO `strings` VALUES (1,'Navigationsmenü anzeigen','toogle_navigation')
 ,(117,'Layouter - Erklärung Kategorieauswahl','layout_categorySelect')
 ,(118,'Layouter - Erklärung Seitenauswahl','layout_pageSelect')
 ,(119,'Layouter - Erklärung Layoutauswahl','layout_layoutSelect')
+,(120,'Layouter - Layout Speichern Button','layout_layoutSave')
 ;
 
 /*!40000 ALTER TABLE `strings` ENABLE KEYS */;
@@ -426,7 +427,8 @@ INSERT INTO `translations` VALUES
 (1,116,'Der Storytelling-Club'),(2,116,'The Storytelling-Club'),
 (1,117,'Kapitel'),(2,117,'Chapter'),
 (1,118,'Seite'),(2,118,'Page'),
-(1,119,'Gewähltes Layout'),(2,119,'Selected Layout')
+(1,119,'Gewähltes Layout'),(2,119,'Selected Layout'),
+(1,120,'Layout Speichern'),(2,120,'Save Layout')
 ;
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 UNLOCK TABLES;
