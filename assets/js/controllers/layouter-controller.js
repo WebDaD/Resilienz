@@ -24,7 +24,6 @@
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         self.pageLoading = true
-        reloadLayoutPositions(function () { self.pageLoading = false })
       }
       self.selectPage = function () {
         self.pageLoading = true
@@ -67,7 +66,10 @@
         resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {})
       }
       self.saveLayout = function () {
-        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).then(function (something) {})
+        self.pageLoading = true
+        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, $scope.selectedItem).then(function (something) {
+          reloadLayoutPositions(function () { self.pageLoading = false })
+        })
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
