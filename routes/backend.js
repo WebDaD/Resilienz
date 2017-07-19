@@ -153,7 +153,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         if (result) {
           res.status(501).end()
         } else {
-          if (req.params.page === 1 || req.params.page === 44) {
+          if (req.params.page === '1' || req.params.page === '44') {
             res.status(200).sendFile(config.pagespath + '/' + req.params.action_id + '/' + req.params.page + '.png')
           } else {
             res.status(200).sendFile(config.pagespath + '/' + req.params.action_id + '/' + req.params.page + '_two.png')
