@@ -83,7 +83,7 @@
           }
           var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
           var orgHeight = 1040
-          for (var i = 0; i < self.selectedLayout.positions; i++) {
+          for (var i = 0; i < self.selectedLayout.positions.length; i++) {
             var position = self.selectedLayout.positions[i]
             position.style = {
               'left': (position.x * self.pageWidth / orgWidth) + 'px',
