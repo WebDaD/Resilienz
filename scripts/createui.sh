@@ -90,7 +90,7 @@ cp bower_components/datetimepicker/jquery.datetimepicker.css public/css/jquery.d
 echo 'OK'
 
 echo -n '==> Deploying jquery-locationpicker-plugin ...'
-cp bower_components/jquery-locationpicker-plugin/dist/locationpicker.jquery.js public/js/locationpicker.jquery.js
+cp bower_components/jquery-locationpicker-plugin/dist/locationpicker.jquery.min.js public/js/locationpicker.jquery.min.js
 echo 'OK'
 
 echo -n '==> Deploying custom JS ...'
@@ -100,7 +100,6 @@ echo 'OK'
 
 echo -n '==> Deploying custom CSS ...'
 lessc assets/css/main.less public/css/main.css
-lessc assets/css/login.less public/css/login.css
 echo 'OK'
 
 echo -n '==> Deploying Images ...'
