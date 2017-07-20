@@ -12,8 +12,6 @@
       self.actionid = $rootScope.action
       self.catLoading = true
       self.pageLoading = true
-      self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
-      self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
 
       self.selectedCategory = {}
       self.selectedLayout = {}
@@ -83,6 +81,8 @@
           }
           var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
           var orgHeight = 1040
+          self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
+          self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
             var position = self.selectedLayout.positions[i]
             position.style = {
