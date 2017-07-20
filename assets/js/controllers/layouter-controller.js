@@ -30,10 +30,6 @@
         self.pageLoading = true
         reloadLayoutPositions(function () {})
       }
-      angular.element($window).on('resize', function () {
-        self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
-        self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
-      })
 
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().then(function (categories) {
@@ -79,19 +75,19 @@
           }
           var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
           var orgHeight = 1040
-          self.pageLoading = false
-          self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
-          self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
+          var pageHeight = 700
+          var pageWidth = ((orgWidth * self.pageHeight) / orgHeight)
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
             var position = self.selectedLayout.positions[i]
             position.style = {
-              'left': (position.x * self.pageWidth / orgWidth) + 'px',
-              'top': (position.y * self.pageHeight / orgHeight) + 'px',
-              'width': (position.width * self.pageWidth / orgWidth) + 'px',
-              'height': (position.height * self.pageHeight / orgHeight) + 'px',
+              'left': (position.x * pageWidth / orgWidth) + 'px',
+              'top': (position.y * pageHeight / orgHeight) + 'px',
+              'width': (position.width * pageWidth / orgWidth) + 'px',
+              'height': (position.height * pageHeight / orgHeight) + 'px',
               'transform': 'rotate(' + position.spin + 'deg)'
             }
           }
+          self.pageLoading = false
           callback()
         })
       }
