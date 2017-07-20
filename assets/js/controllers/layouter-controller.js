@@ -43,7 +43,9 @@
         self.selectedCategory = self.categories[0]
         self.selectedPage = self.selectedCategory.realPages[0]
         self.catLoading = false
-        reloadLayoutPositions(function () { self.pageLoading = false })
+        reloadLayoutPositions(function () {
+          self.pageLoading = false
+        })
       })
 
       self.openEditor = function (position) {
@@ -79,19 +81,20 @@
           self.pageImage = {
             'background-image': 'url(/bookimages/' + self.actionid + '/' + self.selectedPage + ')'
           }
+          var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
+          var orgHeight = 1040
+          for (var i = 0; i < self.selectedLayout.positions; i++) {
+            var position = self.selectedLayout.position[i]
+            position.style = {
+              'left': (position.x * self.pageWidth / orgWidth) + 'px',
+              'top': (position.y * self.pageHeight / orgHeight) + 'px',
+              'width': (position.width * self.pageWidth / orgWidth) + 'px',
+              'height': (position.height * self.pageHeight / orgHeight) + 'px',
+              'transform': 'rotate(' + position.spin + 'deg)'
+            }
+          }
           callback()
         })
-      }
-      self.calcStyle = function (position) {
-        var style = {}
-        var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
-        var orgHeight = 1040
-        style.left = (position.x * self.pageWidth / orgWidth) + 'px'
-        style.top = (position.y * self.pageHeight / orgHeight) + 'px'
-        style.width = (position.width * self.pageWidth / orgWidth) + 'px'
-        style.height = (position.height * self.pageHeight / orgHeight) + 'px'
-        style.transform = 'rotate(' + position.spin + 'deg)'
-        return style
       }
     }])
 }())
