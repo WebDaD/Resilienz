@@ -1,9 +1,9 @@
 /* global $ */
 $(document).ready(function () {
   var location = 'none'
-  $('#register-start').datetimepicker({timepicker: false, format: 'Y-d-m'})
-  $('#register-stop').datetimepicker({timepicker: false, format: 'Y-d-m'})
-  $('#register-location').locationpicker({
+  $('#register_start').datetimepicker({timepicker: false, format: 'Y-d-m'})
+  $('#register_stop').datetimepicker({timepicker: false, format: 'Y-d-m'})
+  $('#register_location').locationpicker({
     location: {
       latitude: 48.1437389,
       longitude: 11.5499916
@@ -12,36 +12,36 @@ $(document).ready(function () {
       location = currentLocation
     }
   })
-  $('.register-form').on('click', '#register-submit', function () {
-    $('#register-error').hide()
+  $('.register_form').on('click', '#register_submit', function () {
+    $('#register_error').hide()
     var errors = 0
-    errors += checkField('register-language')
-    errors += checkField('register-email')
-    errors += checkField('register-vorname')
-    errors += checkField('register-nachname')
-    errors += checkField('register-password')
-    errors += checkField('register-passwordrepeat')
-    errors += checkField('register-start')
-    errors += checkField('register-stop')
+    errors += checkField('register_language')
+    errors += checkField('register_email')
+    errors += checkField('register_vorname')
+    errors += checkField('register_nachname')
+    errors += checkField('register_password')
+    errors += checkField('register_passwordrepeat')
+    errors += checkField('register_start')
+    errors += checkField('register_stop')
     if (errors > 0) {
       error('Some Fields are Empty')
       return
     }
-    if ($('register-password').val() !== $('register-passwordrepeat').val()) {
+    if ($('register_password').val() !== $('register_passwordrepeat').val()) {
       error('Passwords must match')
-      $('#register-password').addClass('has-error')
-      $('#register-passwordrepeat').addClass('has-error')
+      $('#register_password').addClass('has-error')
+      $('#register_passwordrepeat').addClass('has-error')
       return
     }
     $.post('/register', {
-      language: $('#register-language').val(),
-      email: $('#register-email').val(),
-      vorname: $('#register-vorname').val(),
-      nachname: $('#register-nachname').val(),
-      password: $.md5($('#register-password').val()),
+      language: $('#register_language').val(),
+      email: $('#register_email').val(),
+      vorname: $('#register_vorname').val(),
+      nachname: $('#register_nachname').val(),
+      password: $.md5($('#register_password').val()),
       location: location,
-      start: $('#register-start').val(),
-      stop: $('#register-stop').val(),
+      start: $('#register_start').val(),
+      stop: $('#register_stop').val(),
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === 'success') {
@@ -61,7 +61,7 @@ $(document).ready(function () {
   })
 })
 function error (msg) {
-  $('#register-error').text(msg).show()
+  $('#register_error').text(msg).show()
 }
 function checkField (id) {
   $('#' + id).removeClass('has-error')
