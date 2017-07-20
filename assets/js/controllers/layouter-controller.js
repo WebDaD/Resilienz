@@ -28,7 +28,7 @@
       }
       self.selectLayout = function () {
         self.pageLoading = true
-        reloadLayoutPositions(function () { self.pageLoading = false })
+        reloadLayoutPositions(function () {})
       }
       angular.element($window).on('resize', function () {
         self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
@@ -41,9 +41,7 @@
         self.selectedCategory = self.categories[0]
         self.selectedPage = self.selectedCategory.realPages[0]
         self.catLoading = false
-        reloadLayoutPositions(function () {
-          self.pageLoading = false
-        })
+        reloadLayoutPositions(function () {})
       })
 
       self.openEditor = function (position) {
@@ -70,7 +68,7 @@
       self.saveLayout = function () {
         self.pageLoading = true
         resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
-          reloadLayoutPositions(function () { self.pageLoading = false })
+          reloadLayoutPositions(function () { })
         })
       }
       function reloadLayoutPositions (callback) {
@@ -81,6 +79,7 @@
           }
           var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
           var orgHeight = 1040
+          self.pageLoading = false
           self.pageWidth = angular.element(document.getElementById('#page')).clientWidth
           self.pageHeight = angular.element(document.getElementById('#page')).clientHeight
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
