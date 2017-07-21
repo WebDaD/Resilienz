@@ -15,6 +15,7 @@
 
       self.selectedCategory = {}
       self.selectedLayout = {}
+      self.layoutChanged = false
       self.selectedPage = -1
 
       self.selectCategory = function () {
@@ -22,20 +23,23 @@
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         self.pageLoading = true
+        reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
-      self.selectPage = function () {
-
-      }
-      self.selectLayout = function () {
+      self.selectPage = function () { 
         self.pageLoading = true
-        reloadLayoutPositions(function () {})
+        reloadLayoutPositions(function () {}) // uses page to selectLayout
+      }
+      self.selectLayout = function () { 
+        self.pageLoading = true
+        self.layoutChanged = true
+        reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
 
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().then(function (categories) {
         self.categories = categories.data // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: [], translation}
         self.selectedCategory = self.categories[0]
-        self.selectedPage = self.selectedCategory.realPages[0]
+        self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         reloadLayoutPositions(function () {})
       })
@@ -64,8 +68,16 @@
       self.saveLayout = function () {
         self.pageLoading = true
         resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
+          self.layoutChanged = true
           reloadLayoutPositions(function () { })
         })
+      }
+      self.uploadOK() = function () {
+        self.pageLoading = true
+        reloadLayoutPositions(function () {})
+      }
+      self.uploadError() = function ( file, errorMessage ) {
+        console.error(errorMessage)
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {

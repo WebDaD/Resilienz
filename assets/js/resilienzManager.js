@@ -1,3 +1,4 @@
+Dropzone.autoDiscover = false;
 /* global angular */
 ;(function () {
   angular.module('resilienzManager', ['ngRoute', 'ngCookies', 'ngTable', 'ui.bootstrap', 'ng-imgAreaSelect', 'ngDropzone'])

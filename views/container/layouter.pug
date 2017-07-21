@@ -13,7 +13,7 @@
       .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
         label(for="layoutSelect") #{lang.layout_layoutSelect}
         select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()")
-      .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
+      .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1 && ctrl.layoutChanged")
         button#saveLayout.btn.btn-primary.btn-lg(ng-click="ctrl.saveLayout()") #{lang.layout_layoutSave}
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
@@ -22,7 +22,7 @@
   .container
     #page(ng-style="ctrl.pageImage")      
       .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style")
-        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="position.action")
+        form.dropzone(ng-show="!position.image" method="post" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="ctrl.dropzoneConfig"  action="position.action" event-handlers="{'success':ctrl.uploadOK(), 'error':ctrl.uploadError()}")
         span(ng-show="!position.image") #{lang.layout_upload}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)") #{lang.layout_edit}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)") #{lang.layout_delete_image}
