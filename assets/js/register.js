@@ -43,8 +43,8 @@ $(document).ready(function () {
       nachname: $('#register_nachname').val(),
       password: $.md5($('#register_password').val()),
       location: location.longitude + ',' + location.latitude,
-      start: $('#register_start').val(),
-      stop: $('#register_stop').val(),
+      start: $('#register_start').val() + ' 00:00:00',
+      stop: $('#register_stop').val() + ' 00:00:00',
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === 'success') {
