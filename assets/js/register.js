@@ -4,8 +4,8 @@ $(document).ready(function () {
     latitude: 48.1437389,
     longitude: 11.5499916
   }
-  $('#register_start').datetimepicker({timepicker: false, format: 'Y-d-m'})
-  $('#register_stop').datetimepicker({timepicker: false, format: 'Y-d-m'})
+  $('#register_start').datetimepicker({timepicker: false, format: 'Y-m-d'})
+  $('#register_stop').datetimepicker({timepicker: false, format: 'Y-m-d'})
   $('#register_location').locationpicker({
     location: {
       latitude: 48.1437389,
