@@ -1,6 +1,9 @@
 /* global $ */
 $(document).ready(function () {
-  var location = 'none'
+  var location = {
+    latitude: 48.1437389,
+    longitude: 11.5499916
+  }
   $('#register_start').datetimepicker({timepicker: false, format: 'Y-d-m'})
   $('#register_stop').datetimepicker({timepicker: false, format: 'Y-d-m'})
   $('#register_location').locationpicker({
@@ -39,7 +42,7 @@ $(document).ready(function () {
       vorname: $('#register_vorname').val(),
       nachname: $('#register_nachname').val(),
       password: $.md5($('#register_password').val()),
-      location: location,
+      location: location.longitude + ',' + location.latitude,
       start: $('#register_start').val(),
       stop: $('#register_stop').val(),
       captchaResponse: $('#g-recaptcha-response').val()
