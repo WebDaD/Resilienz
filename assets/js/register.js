@@ -37,14 +37,14 @@ $(document).ready(function () {
       return
     }
     $.post('/register', {
-      language: $('#register_language').val(),
-      email: $('#register_email').val(),
-      vorname: $('#register_vorname').val(),
-      nachname: $('#register_nachname').val(),
-      password: $.md5($('#register_password').val()),
-      location: location.longitude + ',' + location.latitude,
-      start: $('#register_start').val() + ' 00:00:00',
-      stop: $('#register_stop').val() + ' 00:00:00',
+      register_language: $('#register_language').val(),
+      register_email: $('#register_email').val(),
+      register_vorname: $('#register_vorname').val(),
+      register_nachname: $('#register_nachname').val(),
+      register_password: $.md5($('#register_password').val()),
+      register_location: location.longitude + ',' + location.latitude,
+      register_start: $('#register_start').val() + ' 00:00:00',
+      register_stop: $('#register_stop').val() + ' 00:00:00',
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === 'success') {
