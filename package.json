@@ -42,6 +42,7 @@
     "uuid":"*",
     "readline-sync":"*",
     "md5":"*",
-    "mkdirp":"*"
+    "mkdirp":"*",
+    "mime-types":"*"
   }
 }

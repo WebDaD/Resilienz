@@ -6,9 +6,11 @@
  * @description Exports frontend routes
  * @memberof resilienz
  * @requires module:fs
+  * @requires module:mime-types
 * @requires module:uuid
  */
 var fs = require('fs')
+var mime = require('mime-types')
 const uuidV4 = require('uuid/v4')
  /** Exports Routes
  * @param {object} app - Express app
@@ -35,8 +37,8 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/downloads/:lang/:pdfname', function (req, res) {
-    var file = config.downloads + req.params.lang + '/' + req.params.pdfname + '.pdf'
+  app.get('/downloads/:lang/:name', function (req, res) {
+    var file = config.downloads + req.params.lang + '/' + req.params.name
     fs.access(file, fs.constants.R_OK, function (error) {
       if (error) {
         res.status(404).end()
@@ -44,8 +46,8 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         var filestream = fs.createReadStream(file)
         var stat = fs.statSync(file)
         res.setHeader('Content-Length', stat.size)
-        res.setHeader('Content-Type', 'application/pdf')
-        res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.pdfname + '.pdf')
+        res.setHeader('Content-Type', mime.lookup(req.params.name) || 'application/octet-stream')
+        res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.name)
         filestream.pipe(res)
       }
     })
