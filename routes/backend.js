@@ -23,7 +23,7 @@ const uuidV4 = require('uuid/v4')
  */
 module.exports = function (app, database, language, login, layouter, bookGenerator, config) {
   app.get('/pdf/:pdfname', function (req, res) {
-    var file = config.pdfs + req.params.pdfname + '.pdf'
+    var file = config.pdfs + '/' + req.params.pdfname + '.pdf'
     fs.access(file, fs.constants.R_OK, function (error) {
       if (error) {
         console.error(error)
@@ -39,7 +39,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/downloads/:lang/:name', function (req, res) {
-    var file = config.downloads + req.params.lang + '/' + req.params.name
+    var file = config.downloads + '/' + req.params.lang + '/' + req.params.name
     fs.access(file, fs.constants.R_OK, function (error) {
       if (error) {
         console.error(error)
