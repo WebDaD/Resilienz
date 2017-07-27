@@ -71,7 +71,7 @@ echo 'OK'
 
 echo -n '==> Deploying angular-dropzone ...'
 cp bower_components/angular-dropzone/lib/angular-dropzone.js public/js/angular-dropzone.js
-cp bower_components/dropzone/downloads/dropzone.min.js public/js/dropzone.min.js
+cp bower_components/dropzone/downloads/dropzone.js public/js/dropzone.js
 cp bower_components/dropzone/downloads/css/dropzone.css public/css/dropzone.css
 echo 'OK'
 
