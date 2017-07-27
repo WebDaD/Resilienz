@@ -23,11 +23,11 @@
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         self.pageLoading = true
-        reloadLayoutPositions(function () {}) // uses page to selectLayout
+        // reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectPage = function () {
         self.pageLoading = true
-        reloadLayoutPositions(function () {}) // uses page to selectLayout
+        // reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectLayout = function () {
         self.pageLoading = true
@@ -68,7 +68,7 @@
       self.saveLayout = function () {
         self.pageLoading = true
         resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
-          self.layoutChanged = true
+          self.layoutChanged = false
           reloadLayoutPositions(function () { })
         })
       }
