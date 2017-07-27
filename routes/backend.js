@@ -11,6 +11,8 @@
  */
 var fs = require('fs')
 var mime = require('mime-types')
+var multer = require('multer')
+var upload = multer({ dest: '/tmp/' })
 const uuidV4 = require('uuid/v4')
  /** Exports Routes
  * @param {object} app - Express app
@@ -176,12 +178,14 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.post('/bookimages/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
+  app.post('/bookimages/upload/:action_id/:page/:position_id', login.isLoggedIn(), upload.single('dropzone'), function (req, res) {
     console.error(req.body)
     console.error(req.dropzone)
     console.error(req.params)
     console.error(req.files)
+    console.error(req.file)
     console.error(req.query)
+    return res.status(400).send('some error').end()
     fs.readFile(req.dropzone.displayImage.path, function (err, data) {
       if (err) {
         return res.status(400).json(err)
