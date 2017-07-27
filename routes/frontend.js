@@ -33,7 +33,7 @@ module.exports = function (app, language, login) {
       res.render('container/layouter', {lang: translations})
     })
   })
-  app.get('/modal/editor', function (req, res) {
+  app.get('/modals/editor', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
       res.render('modals/editor', {lang: translations})
     })
