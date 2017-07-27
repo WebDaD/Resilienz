@@ -58,7 +58,10 @@
         })
       }
       self.delete = function (position) {
-        resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {})
+        resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
+          self.pageLoading = true
+          reloadLayoutPositions(function () {})
+        })
       }
       self.saveLayout = function () {
         self.pageLoading = true
