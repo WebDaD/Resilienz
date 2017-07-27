@@ -26,6 +26,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     var file = config.pdfs + req.params.pdfname + '.pdf'
     fs.access(file, fs.constants.R_OK, function (error) {
       if (error) {
+        console.error(error)
         res.status(404).end()
       } else {
         var filestream = fs.createReadStream(file)
@@ -41,6 +42,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     var file = config.downloads + req.params.lang + '/' + req.params.name
     fs.access(file, fs.constants.R_OK, function (error) {
       if (error) {
+        console.error(error)
         res.status(404).end()
       } else {
         var filestream = fs.createReadStream(file)
@@ -56,6 +58,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     var file = config.powerpoints + '/' + req.params.langkey + '.ppt'
     fs.access(file, fs.constants.R_OK, function (error) {
       if (error) {
+        console.error(error)
         res.status(404).end()
       } else {
         var filestream = fs.createReadStream(file)
