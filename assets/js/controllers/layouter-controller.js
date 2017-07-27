@@ -99,7 +99,8 @@
               maxFileSize: 10,
               maxFiles: 1,
               url: position.action,
-              paramName: 'dropzone'
+              paramName: 'dropzone',
+              method: 'post'
             }
           }
           self.pageLoading = false
