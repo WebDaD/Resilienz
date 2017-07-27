@@ -181,6 +181,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     console.error(req.dropzone)
     console.error(req.params)
     console.error(req.files)
+    console.error(req.query)
     fs.readFile(req.dropzone.displayImage.path, function (err, data) {
       if (err) {
         return res.status(400).json(err)
