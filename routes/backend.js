@@ -177,19 +177,18 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.post('/bookimages/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
-    console.log(req.dropzone)
     fs.readFile(req.dropzone.displayImage.path, function (err, data) {
       if (err) {
-        res.status(501).json(err)
+        res.status(400).json({'err': err, 'req': req})
       } else {
         var newFileName = uuidV4()
         fs.writeFile(config.images + '/' + newFileName, data, function (err) {
           if (err) {
-            res.status(501).json(err)
+            res.status(400).json(err)
           } else {
             database.addImage(req.params.action_id, req.params.page, req.params.position_id, newFileName, function (error) {
               if (error) {
-                res.status(501).json(error)
+                res.status(400).json(error)
               } else {
                 res.status(200).end()
               }
