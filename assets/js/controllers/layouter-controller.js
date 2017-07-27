@@ -98,7 +98,8 @@
               parallelUploads: 1,
               maxFileSize: 10,
               maxFiles: 1,
-              url: position.action
+              url: position.action,
+              paramName: 'dropzone'
             }
           }
           self.pageLoading = false
