@@ -25,10 +25,10 @@
         form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK, 'error':ctrl.uploadError}")
           span.dz-message(ng-show="!position.image" title=lang.layout_upload)
             i.fa.fa-upload(aria-hidden="true")
-            span #{lang.layout_upload}
+            span  #{lang.layout_upload}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
           i.fa.fa-pencil(aria-hidden="true")
-          span.sr-only #{lang.layout_edit}
+          span.sr-only  #{lang.layout_edit}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)"  title=lang.layout_delete_image)
           i.fa.fa-trash(aria-hidden="true")
-          span.sr-only #{lang.layout_delete_image}
+          span.sr-only  #{lang.layout_delete_image}
