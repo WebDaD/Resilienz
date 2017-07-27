@@ -25,11 +25,11 @@
         self.pageLoading = true
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
-      self.selectPage = function () { 
+      self.selectPage = function () {
         self.pageLoading = true
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
-      self.selectLayout = function () { 
+      self.selectLayout = function () {
         self.pageLoading = true
         self.layoutChanged = true
         reloadLayoutPositions(function () {}) // uses page to selectLayout
@@ -72,11 +72,11 @@
           reloadLayoutPositions(function () { })
         })
       }
-      self.uploadOK() = function () {
+      self.uploadOK = function () {
         self.pageLoading = true
         reloadLayoutPositions(function () {})
       }
-      self.uploadError() = function ( file, errorMessage ) {
+      self.uploadError = function (file, errorMessage) {
         console.error(errorMessage)
       }
       function reloadLayoutPositions (callback) {
