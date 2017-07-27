@@ -23,11 +23,11 @@
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
         self.pageLoading = true
-        // reloadLayoutPositions(function () {}) // uses page to selectLayout
+        reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectPage = function () {
         self.pageLoading = true
-        // reloadLayoutPositions(function () {}) // uses page to selectLayout
+        reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectLayout = function () {
         self.pageLoading = true
@@ -73,11 +73,13 @@
         })
       }
       self.uploadOK = function () {
+        /*
         self.pageLoading = true
         reloadLayoutPositions(function () {})
+        */
       }
       self.uploadError = function (file, errorMessage) {
-        console.error(errorMessage)
+        // console.error(errorMessage)
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
