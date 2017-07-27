@@ -3,11 +3,6 @@
   angular.module('resilienzManager')
     .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', '$window', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope, $window) {
       var self = this
-      self.dropzoneConfig = {
-        parallelUploads: 1,
-        maxFileSize: 10,
-        maxFiles: 1
-      }
       self.categories = []
       self.actionid = $rootScope.action
       self.catLoading = true
@@ -99,6 +94,12 @@
               'width': (position.width * pageWidth / orgWidth) + 'px',
               'height': (position.height * pageHeight / orgHeight) + 'px',
               'transform': 'rotate(' + position.spin + 'deg)'
+            }
+            position.dropzoneConfig = {
+              parallelUploads: 1,
+              maxFileSize: 10,
+              maxFiles: 1,
+              url: position.action
             }
           }
           self.pageLoading = false
