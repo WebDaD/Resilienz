@@ -68,8 +68,9 @@
         })
       }
       self.uploadOK = function () {
-        self.pageLoading = true
-        reloadLayoutPositions(function () {})
+        console.log('upload OK')
+        // self.pageLoading = true
+        // reloadLayoutPositions(function () {})
       }
       self.uploadError = function (file, errorMessage) {
         console.error(errorMessage)
