@@ -22,10 +22,10 @@
   .container
     #page(ng-style="ctrl.pageImage")      
       .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style")
-        div(ng-show="!position.image" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK(), 'error':ctrl.uploadError()}")
-        span(ng-show="!position.image" title=lang.layout_upload)
-          i.fa.fa-upload(aria-hidden="true")
-          span.sr-only #{lang.layout_upload}
+        .myDropZone(ng-show="!position.image" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK(), 'error':ctrl.uploadError()}")
+          span.dz-message(ng-show="!position.image" title=lang.layout_upload)
+            i.fa.fa-upload(aria-hidden="true")
+            span.sr-only #{lang.layout_upload}
         span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
           i.fa.fa-pencil(aria-hidden="true")
           span.sr-only #{lang.layout_edit}

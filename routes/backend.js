@@ -177,7 +177,8 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.post('/bookimages/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
-    fs.readFile(req.files.displayImage.path, function (err, data) {
+    console.log(req.file)
+    fs.readFile(req.file.displayImage.path, function (err, data) {
       if (err) {
         res.status(501).json(err)
       } else {

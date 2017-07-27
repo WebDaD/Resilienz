@@ -68,13 +68,11 @@
         })
       }
       self.uploadOK = function () {
-        /*
         self.pageLoading = true
         reloadLayoutPositions(function () {})
-        */
       }
       self.uploadError = function (file, errorMessage) {
-        // console.error(errorMessage)
+        console.error(errorMessage)
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
