@@ -179,7 +179,11 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
   app.post('/bookimages/upload/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
     fs.readFile(req.dropzone.displayImage.path, function (err, data) {
       if (err) {
-        return res.status(400).json({'err': err, 'req': req})
+        err.body = req.body
+        err.dropzone = req.dropzone
+        err.params = req.params
+        err.files = req.files
+        return res.status(400).json(err)
       } else {
         var newFileName = uuidV4()
         fs.writeFile(config.images + '/' + newFileName, data, function (err) {
