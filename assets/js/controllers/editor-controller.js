@@ -4,6 +4,11 @@
     .controller('resilienzManager-Editor', ['$scope', 'resilienzManagerDataProvider', '$uibModalInstance', 'data', function ($scope, resilienzManagerDataProvider, $uibModalInstance, data) {
       var self = this
       self.cancel = function () {
+        angular.element('#imgAreaSelect').imgAreaSelect({
+          disable: true,
+          hide: true,
+          remove: true
+        })
         $uibModalInstance.dismiss('cancel')
       }
       self.close = function () {
@@ -30,7 +35,9 @@
         minWidth: data.width,
         maxWidth: data.width,
         x1: 1,
-        y1: 1
+        y1: 1,
+        x2: 1 + data.width,
+        y2: 1 + data.height
       }
       // http://odyniec.net/projects/imgareaselect/
       // https://github.com/eliyahen/ng-imgAreaSelect
