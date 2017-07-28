@@ -111,6 +111,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
   app.get('/book/:action_id/', login.isLoggedIn(), function (req, res) {
     bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'], function (error, path) {
       if (error) {
+        console.error(error)
         res.status(503).json(error)
       } else {
         var file = fs.createReadStream(path)
