@@ -4,14 +4,15 @@
     .controller('resilienzManager-Editor', ['$scope', 'resilienzManagerDataProvider', '$uibModalInstance', 'data', function ($scope, resilienzManagerDataProvider, $uibModalInstance, data) {
       var self = this
       self.cancel = function () {
-        $uibModalInstance.close()
+        $uibModalInstance.dismiss('cancel')
       }
       self.close = function () {
         resilienzManagerDataProvider.imageRescale(data.image, self.coords).then(function (something) {
-          self.options = {
+          angular.element('#imgAreaSelect').imgAreaSelect({
             disable: true,
-            hide: true
-          }
+            hide: true,
+            remove: true
+          })
           $uibModalInstance.close()
         })
       }
