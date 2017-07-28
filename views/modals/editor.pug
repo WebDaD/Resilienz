@@ -1,7 +1,7 @@
 .modal-header
   h3.modal-title #{lang.editor_title}
 .modal-body
-  img(ng-image-area-select ng-img-area-selection="ctrl.options" selection="ctrl.coords" ng-src="{{ctrl.image}}")
+  img(ng-image-area-select ng-img-area-selection="ctrl.options" selection="ctrl.coords" ng-src="bookimages/{{ctrl.image}}")
 .modal-footer
   button.btn.btn-default.hidden-print(type='button', ng-click='ctrl.cancel()') #{lang.editor_cancel}
   button.btn.btn-primary.hidden-print(type='button', ng-click='ctrl.close()') #{lang.editor_close}
