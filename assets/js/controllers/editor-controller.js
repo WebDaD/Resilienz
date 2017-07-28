@@ -12,6 +12,7 @@
         })
       }
       self.image = data.image
+      self.imageToLoad = 'bookimages/' + self.image
       self.options = {
         handles: true,
         movable: true,
