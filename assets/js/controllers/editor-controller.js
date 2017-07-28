@@ -27,7 +27,9 @@
         minHeight: data.height,
         maxHeight: data.height,
         minWidth: data.width,
-        maxWidth: data.width
+        maxWidth: data.width,
+        x1: 1,
+        y1: 1
       }
       // http://odyniec.net/projects/imgareaselect/
       // https://github.com/eliyahen/ng-imgAreaSelect

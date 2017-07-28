@@ -44,7 +44,7 @@
         data.image = position.image
         data.width = position.width
         data.height = position.height
-        $uibModal.open({
+        var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'modals/editor',
           controller: 'resilienzManager-Editor',
@@ -55,6 +55,10 @@
               return data
             }
           }
+        })
+        modalInstance.result.then(function () {
+          self.pageLoading = true
+          reloadLayoutPositions(function () {})
         })
       }
       self.delete = function (position) {
