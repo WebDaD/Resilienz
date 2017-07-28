@@ -22,7 +22,7 @@ echo 'OK'
 
 
 echo -n '==> Minifying CSS ...'
-uglifycss public/css/* > public/css/css.min.css
+uglifycss public/css/*.css > public/css/css.min.css
 echo 'OK'
 
 echo -n '==> Minifying Images ...'

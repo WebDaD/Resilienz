@@ -34,6 +34,11 @@ echo 'OK'
 
 echo -n '==> Deploying jquery.imgareaselect ...'
 cp bower_components/imgareaselect/jquery.imgareaselect.dev.js public/js/jquery.imgareaselect.js
+cp bower_components/imgareaselect/distfiles/css/imgareselect-animated.css public/css/imgareselect-animated.css
+cp bower_components/imgareaselect/distfiles/css/border-anim-h.gif public/css/border-anim-h.gif
+cp bower_components/imgareaselect/distfiles/css/border-anim-v.gif public/css/border-anim-v.gif
+cp bower_components/imgareaselect/distfiles/css/border-h.gif public/css/border-h.gif
+cp bower_components/imgareaselect/distfiles/css/border-v.gif public/css/border-v.gif
 echo 'OK'
 
 echo -n '==> Deploying jquery.cookie ...'
