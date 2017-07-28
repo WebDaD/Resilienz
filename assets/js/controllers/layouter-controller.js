@@ -77,6 +77,7 @@
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
+          self.selectedLayout = {}
           self.selectedLayout = layoutWithImages.data
           self.pageImage = {
             'background-image': 'url(/bookimages/' + self.actionid + '/' + self.selectedPage + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
