@@ -7,7 +7,7 @@
         $uibModalInstance.close()
       }
       self.close = function () {
-        resilienzManagerDataProvider.imageRescale(data.image, self.coords).success(function (something) {
+        resilienzManagerDataProvider.imageRescale(data.image, self.coords).then(function (something) {
           $uibModalInstance.close()
         })
       }
@@ -15,8 +15,10 @@
       self.imageToLoad = 'bookimages/' + self.image
       self.options = {
         handles: true,
+        hide: false,
         movable: true,
         resizable: false,
+        show: true,
         minHeight: data.height,
         maxHeight: data.height,
         minWidth: data.width,
