@@ -158,7 +158,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(503).json(error)
       } else {
-        if (result) {
+        if (!result) {
           res.status(503).end()
         } else {
           if (req.params.page === '1' || req.params.page === '44') {
