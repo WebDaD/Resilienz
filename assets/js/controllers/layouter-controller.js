@@ -25,7 +25,7 @@
       }
       self.selectLayout = function () {
         self.pageLoading = true
-        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
+        resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, self.selectedLayout).then(function (something) {
           reloadLayoutPositions(function () { })
         })
       }
