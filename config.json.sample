@@ -23,7 +23,7 @@
   "powerpoints":"/var/resilienz/powerpoints",
   "downloads":"/var/resilienz/downloads",
   "backups":"/tmp/",
-  "bookpages":46,
+  "bookpages":44,
   "salt":"/var/resilienz/my.salt",
   "serversecret":"---some-random-string---",
   "gcaptchasecret":"google-captcha-server-key",
