@@ -10,7 +10,6 @@
 
       self.selectedCategory = {}
       self.selectedLayout = {}
-      self.layoutChanged = false
       self.selectedPage = -1
 
       self.selectCategory = function () {
@@ -26,8 +25,9 @@
       }
       self.selectLayout = function () {
         self.pageLoading = true
-        self.layoutChanged = true
-        reloadLayoutPositions(function () {}) // uses page to selectLayout
+        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
+          reloadLayoutPositions(function () { })
+        })
       }
 
       // load cats with layouts and positions
@@ -65,13 +65,6 @@
         resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
           self.pageLoading = true
           reloadLayoutPositions(function () {})
-        })
-      }
-      self.saveLayout = function () {
-        self.pageLoading = true
-        resilienzManagerDataProvider.actionSaveLayout(this.actionid, this.selectedPage, this.selectedLayout).then(function (something) {
-          self.layoutChanged = false
-          reloadLayoutPositions(function () { })
         })
       }
       self.uploadOK = function () {

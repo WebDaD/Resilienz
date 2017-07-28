@@ -13,8 +13,6 @@
       .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
         label(for="layoutSelect") #{lang.layout_layoutSelect}
         select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()")
-      .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1 && ctrl.layoutChanged")
-        button#saveLayout.btn.btn-primary.btn-lg(ng-click="ctrl.saveLayout()") #{lang.layout_layoutSave}
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner
