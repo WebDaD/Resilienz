@@ -24,10 +24,12 @@
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectLayout = function () {
-        self.pageLoading = true
-        resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, self.selectedLayout).then(function (something) {
-          reloadLayoutPositions(function () { })
-        })
+        if (self.selectedLayout) {
+          self.pageLoading = true
+          resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, self.selectedLayout).then(function (something) {
+            reloadLayoutPositions(function () { })
+          })
+        }
       }
 
       // load cats with layouts and positions
