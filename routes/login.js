@@ -72,7 +72,7 @@ module.exports = function (app, language, login, config) {
       var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + config.gcaptchasecret + '&response=' + req.body['captchaResponse'] + '&remoteip=' + req.connection.remoteAddress.replace(/^.*:/, '')
       request(verificationUrl, function (error, response, body) {
         if (error) {
-          return res.status(501).json(error)
+          return res.status(501).json({error: error, response: response, body: body, url: verificationUrl})
         } else {
           body = JSON.parse(body)
           if (body.success !== undefined && !body.success) {
