@@ -39,7 +39,7 @@ Dropzone.autoDiscover = false
     .run(['$cookies', '$rootScope', '$location', '$http', function ($cookies, $rootScope, $location, $http) {
       $rootScope.$on('$locationChangeStart', function (event, next, current) {
         if ($rootScope.id === '' || $rootScope.token === '') {
-          $location.path('/login')
+          window.location = '/login'
         }
       })
       $rootScope.isActive = function (viewLocation) { // eslint-disable-line
@@ -66,7 +66,7 @@ Dropzone.autoDiscover = false
         $rootScope.token = ''
         $http.defaults.headers.common.email = ''
         $http.defaults.headers.common.token = ''
-        $location.path('/login')
+        window.location = '/login'
       }
 
       $rootScope.logout = function () { // eslint-disable-line
