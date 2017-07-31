@@ -16,7 +16,6 @@
       .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
         label(for="layoutSelect") #{lang.layout_layoutSelect}
         select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()" ng-show="!ctrl.final")
-        p.form-control-static(ng-show="ctrl.final") {{ctrl.selectedLayout}}
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner
