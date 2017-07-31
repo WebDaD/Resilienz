@@ -78,7 +78,7 @@ module.exports = function (app, language, login, config) {
           if (body.success !== undefined && !body.success) {
             return res.status(403).json({msg: 'Failed captcha verification'})
           } else {
-            login.reset(req.cookies['resilienzManager-language'], req.body.email, function (error, data) {
+            login.reset(req.cookies['resilienzManager-language'], req.body.reset_email, function (error, data) {
               if (error) {
                 return res.status(501).json(error)
               } else {

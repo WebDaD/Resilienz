@@ -3,13 +3,13 @@ $(document).ready(function () {
   $('.reset-form').on('click', '#reset-submit', function () {
     $('#reset-error').hide()
     var errors = 0
-    errors += checkField('reset-email')
+    errors += checkField('reset_email')
     if (errors > 0) {
       error('Some Fields are Empty')
       return
     }
     $.post('/reset', {
-      email: $('#reset-email').val(),
+      email: $('#reset_email').val(),
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === 'success') {
