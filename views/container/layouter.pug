@@ -5,10 +5,10 @@
   .container
     .form-inline
       .form-group
-        .lock(ng-show="ctrl.final")
-          i.fa.fa-lock(aria-hidden="true")
-          span.sr-only #{lang.layout_locked}
-        label(for="categorySelect") #{lang.layout_categorySelect}
+        label(for="categorySelect") 
+          i.fa.fa-lock.lock(aria-hidden="true" ng-show="ctrl.final")
+          span.sr-only.lock(ng-show="ctrl.final" style="margin-right:10px;") #{lang.layout_locked}
+          span #{lang.layout_categorySelect}
         select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
       .form-group(ng-show="ctrl.selectedCategory.realPages.length > 1")
         label(for="pageSelect") #{lang.layout_pageSelect}
