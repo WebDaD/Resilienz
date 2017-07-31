@@ -8,8 +8,8 @@
     i.fa.fa-book(aria-hidden="true" ng-show="!ctrl.creating")
     span(ng-show="ctrl.creating") #{lang.finish_creating}   
     i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="ctrl.creating")
-  a.btn.btn-lg.btn-primary(ng-href="/book/{{ctrl.actionid}}" target="_blank" ng-show="!ctrl.isLoading && ctrl.book=='Y'") 
-    span.fa-stack
+  a.btn.btn-lg.btn-primary(ng-href="/book/{{ctrl.actionid}}" target="_blank" ng-show="!ctrl.isLoading && ctrl.book=='Y'" style="font-size: 1.5em;") 
+    span.fa-stack(style="width: 1em;height: 1em;line-height: 1em;")
       i.fa.fa-file.fa-stack-1x(aria-hidden="true" style="color:#CDCDCD;")
       i.fa.fa-file-pdf-o.fa-stack-1x(aria-hidden="true" style="color:red;")
     span   #{lang.finish_pdf_link}
