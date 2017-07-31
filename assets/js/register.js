@@ -13,6 +13,9 @@ $(document).ready(function () {
     },
     onchanged: function (currentLocation, radius, isMarkerDropped) {
       location = currentLocation
+    },
+    inputBinding: {
+      locationNameInput: $('#register_location_text')
     }
   })
   $('.register_form').on('click', '#register_submit', function () {
