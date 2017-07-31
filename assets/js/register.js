@@ -1,4 +1,4 @@
-/* global $ */
+/* global $, google */
 $(document).ready(function () {
   var location = {
     latitude: 48.1437389,
@@ -11,6 +11,9 @@ $(document).ready(function () {
       latitude: 48.1437389,
       longitude: 11.5499916
     },
+    enableAutocomplete: true,
+    markerInCenter: true,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
     onchanged: function (currentLocation, radius, isMarkerDropped) {
       location = currentLocation
     },
