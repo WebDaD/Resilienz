@@ -18,6 +18,7 @@
         self.creating = true
         resilienzManagerDataProvider.createBook($rootScope.action).then(function () {
           self.creating = false
+          self.book = 'Y'
         }, function (error) {
           console.error(error)
         })
