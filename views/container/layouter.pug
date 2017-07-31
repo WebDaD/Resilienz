@@ -1,35 +1,29 @@
-.row(ng-show="ctrl.catLoading")
-  .col-md-12
-    .spinner
-.row(ng-show="!ctrl.catLoading")
-  .container
-    .form-inline
-      .form-group
-        label(for="categorySelect") 
-          i.fa.fa-lock.lock(aria-hidden="true" ng-show="ctrl.final"  style="margin-right:10px;")
-          span.sr-only.lock(ng-show="ctrl.final") #{lang.layout_locked}
-          span #{lang.layout_categorySelect}
-        select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
-      .form-group(ng-show="ctrl.selectedCategory.realPages.length > 1")
-        label(for="pageSelect") #{lang.layout_pageSelect}
-        select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
-      .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
-        label(for="layoutSelect") #{lang.layout_layoutSelect}
-        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()" ng-show="!ctrl.final")
-.row(ng-show="ctrl.pageLoading")
-  .col-md-12
-    .spinner
-.row(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
-  .container
-    #page(ng-style="ctrl.pageImage")      
-      .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final")
-        form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK, 'error':ctrl.uploadError}")
-          span.dz-message(ng-show="!position.image" title=lang.layout_upload)
-            i.fa.fa-upload(aria-hidden="true")
-            span  #{lang.layout_upload}
-        span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
-          i.fa.fa-pencil(aria-hidden="true")
-          span.sr-only  #{lang.layout_edit}
-        span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)"  title=lang.layout_delete_image)
-          i.fa.fa-trash(aria-hidden="true" style="color:red;")
-          span.sr-only  #{lang.layout_delete_image}
+.spinner(ng-show="ctrl.catLoading")  
+.container(ng-show="!ctrl.catLoading")
+  .form-inline
+    .form-group
+      label(for="categorySelect") 
+        i.fa.fa-lock.lock(aria-hidden="true" ng-show="ctrl.final"  style="margin-right:10px;")
+        span.sr-only.lock(ng-show="ctrl.final") #{lang.layout_locked}
+        span #{lang.layout_categorySelect}
+      select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
+    .form-group(ng-show="ctrl.selectedCategory.realPages.length > 1")
+      label(for="pageSelect") #{lang.layout_pageSelect}
+      select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
+    .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
+      label(for="layoutSelect") #{lang.layout_layoutSelect}
+      select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()" ng-show="!ctrl.final")
+.spinner(ng-show="ctrl.pageLoading")  
+.container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
+  #page(ng-style="ctrl.pageImage")      
+    .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final")
+      form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK, 'error':ctrl.uploadError}")
+        span.dz-message(ng-show="!position.image" title=lang.layout_upload)
+          i.fa.fa-upload(aria-hidden="true")
+          span  #{lang.layout_upload}
+      span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
+        i.fa.fa-pencil(aria-hidden="true")
+        span.sr-only  #{lang.layout_edit}
+      span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)"  title=lang.layout_delete_image)
+        i.fa.fa-trash(aria-hidden="true" style="color:red;")
+        span.sr-only  #{lang.layout_delete_image}
