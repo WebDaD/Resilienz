@@ -5,6 +5,9 @@
   .container
     .form-inline
       .form-group
+        .lock(ng-show="ctrl.final")
+          i.fa.fa-lock(aria-hidden="true")
+          span.sr-only #{lang.layout_locked}
         label(for="categorySelect") #{lang.layout_categorySelect}
         select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
       .form-group(ng-show="ctrl.selectedCategory.realPages.length > 1")
@@ -18,9 +21,6 @@
   .col-md-12
     .spinner
 .row(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
-  #lock(ng-show="ctrl.final")
-    i.fa.fa-lock(aria-hidden="true")
-    span.sr-only #{lang.layout_locked}
   .container
     #page(ng-style="ctrl.pageImage")      
       .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final")
