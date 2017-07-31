@@ -12,14 +12,18 @@
         select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
       .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
         label(for="layoutSelect") #{lang.layout_layoutSelect}
-        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()")
+        select#layoutSelect.form-control(ng-options="layout.name for layout in ctrl.selectedCategory.layouts track by layout.id" ng-model="ctrl.selectedLayout" ng-change="ctrl.selectLayout()" ng-show="!ctrl.final")
+        p.form-control-static(ng-show="ctrl.final") {{ctrl.selectedLayout}}
 .row(ng-show="ctrl.pageLoading")
   .col-md-12
     .spinner
 .row(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
+  #lock(ng-show="ctrl.final")
+    i.fa.fa-lock(aria-hidden="true")
+    span.sr-only #{lang.layout_locked}
   .container
     #page(ng-style="ctrl.pageImage")      
-      .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style")
+      .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final")
         form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK, 'error':ctrl.uploadError}")
           span.dz-message(ng-show="!position.image" title=lang.layout_upload)
             i.fa.fa-upload(aria-hidden="true")

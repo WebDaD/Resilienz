@@ -4,6 +4,7 @@
     .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', '$window', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope, $window) {
       var self = this
       self.categories = []
+      self.final = false
       self.actionid = $rootScope.action
       self.catLoading = true
       self.pageLoading = true
@@ -24,11 +25,13 @@
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectLayout = function () {
-        if (self.selectedLayout) {
-          self.pageLoading = true
-          resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, self.selectedLayout).then(function (something) {
-            reloadLayoutPositions(function () { })
-          })
+        if (!self.final) {
+          if (self.selectedLayout) {
+            self.pageLoading = true
+            resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, self.selectedLayout).then(function (something) {
+              reloadLayoutPositions(function () { })
+            })
+          }
         }
       }
 
@@ -38,36 +41,45 @@
         self.selectedCategory = self.categories[0]
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
-        reloadLayoutPositions(function () {})
+        resilienzManagerDataProvider.action($rootScope.id).then(function (action) {
+          self.final = (action.data.finalized === 1)
+          reloadLayoutPositions(function () {})
+        }, function (error) {
+          console.error(error)
+        })
       })
 
       self.openEditor = function (position) {
-        var data = {}
-        data.image = position.image
-        data.width = position.width
-        data.height = position.height
-        var modalInstance = $uibModal.open({
-          animation: true,
-          templateUrl: 'modals/editor',
-          controller: 'resilienzManager-Editor',
-          controllerAs: 'ctrl',
-          size: 'lg',
-          resolve: {
-            data: function () {
-              return data
+        if (!self.final) {
+          var data = {}
+          data.image = position.image
+          data.width = position.width
+          data.height = position.height
+          var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'modals/editor',
+            controller: 'resilienzManager-Editor',
+            controllerAs: 'ctrl',
+            size: 'lg',
+            resolve: {
+              data: function () {
+                return data
+              }
             }
-          }
-        })
-        modalInstance.result.then(function () {
-          self.pageLoading = true
-          reloadLayoutPositions(function () {})
-        })
+          })
+          modalInstance.result.then(function () {
+            self.pageLoading = true
+            reloadLayoutPositions(function () {})
+          })
+        }
       }
       self.delete = function (position) {
-        resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
-          self.pageLoading = true
-          reloadLayoutPositions(function () {})
-        })
+        if (!self.final) {
+          resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
+            self.pageLoading = true
+            reloadLayoutPositions(function () {})
+          })
+        }
       }
       self.uploadOK = function () {
         console.log('upload OK')

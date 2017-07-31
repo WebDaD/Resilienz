@@ -104,12 +104,36 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(503).json(error)
       } else {
-        res.status(200).end()
+        database.updateBookStatus(req.params.action_id, 'O', function (error, result) {
+          if (error) {
+            console.error(error)
+            res.status(503).json(error)
+          } else {
+            res.status(200).end()
+          }
+        })
+      }
+    })
+  })
+  app.put('/book/:action_id/', login.isLoggedIn(), function (req, res) {
+    bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'], function (error, path) {
+      if (error) {
+        console.error(error)
+        res.status(503).json(error)
+      } else {
+        database.updateBookStatus(req.params.action_id, 'Y', function (error, result) {
+          if (error) {
+            console.error(error)
+            res.status(503).json(error)
+          } else {
+            res.status(200).end()
+          }
+        })
       }
     })
   })
   app.get('/book/:action_id/', login.isLoggedIn(), function (req, res) {
-    bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'], function (error, path) {
+    bookGenerator.getBook(req.params.action_id, function (error, path) {
       if (error) {
         console.error(error)
         res.status(503).json(error)
@@ -140,7 +164,14 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(503).json(error)
       } else {
-        res.status(200).end()
+        database.updateBookStatus(req.cookies['resilienzManager-action'], 'O', function (error, result) {
+          if (error) {
+            console.error(error)
+            res.status(503).json(error)
+          } else {
+            res.status(200).end()
+          }
+        })
       }
     })
   })
@@ -149,7 +180,14 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(503).json(error)
       } else {
-        res.status(200).end()
+        database.updateBookStatus(req.cookies['resilienzManager-action'], 'O', function (error, result) {
+          if (error) {
+            console.error(error)
+            res.status(503).json(error)
+          } else {
+            res.status(200).end()
+          }
+        })
       }
     })
   })
@@ -195,7 +233,14 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
               if (error) {
                 return res.status(400).json(error)
               } else {
-                res.status(200).end()
+                database.updateBookStatus(req.params.action_id, 'O', function (error, result) {
+                  if (error) {
+                    console.error(error)
+                    res.status(503).json(error)
+                  } else {
+                    res.status(200).end()
+                  }
+                })
               }
             })
           }

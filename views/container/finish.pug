@@ -3,8 +3,15 @@
   img.loader(ng-show="ctrl.isLoading" src="/images/loader.gif")
   p(ng-show="!ctrl.isLoading && !ctrl.final") #{lang.finish_text}
   p(ng-show="!ctrl.isLoading && ctrl.final") #{lang.finish_completed}
-  a.btn.btn-lg.btn-primary(ng-href="/book/{{ctrl.actionid}}" target="_blank" ng-show="!ctrl.isLoading && ctrl.final") 
-    i.fa.fa-file-pdf-o(aria-hidden="true")
+  button.btn.btn-lg(type="button" ng-show="!ctrl.isLoading && ctrl.book!='Y'" ng-click="ctrl.createBook()" ng-class="{'btn-warning':ctrl.creating, 'btn-primary':!ctrl.creating}" ng-disabled="ctrl.creating")
+    span(ng-show="!ctrl.creating") #{lang.finish_createbook}  
+    i.fa.fa-book(aria-hidden="true" ng-show="!ctrl.creating")
+    span(ng-show="ctrl.creating") #{lang.finish_creating}   
+    i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="ctrl.creating")
+  a.btn.btn-lg.btn-primary(ng-href="/book/{{ctrl.actionid}}" target="_blank" ng-show="!ctrl.isLoading && ctrl.final && ctrl.book=='Y'") 
+    span.fa-stack
+      i.fa.fa-file-pdf-o.fa-stack-2x.text-danger(aria-hidden="true")
+      i.fa.fa-file-file.fa-stack-1x(aria-hidden="true")  
     span   #{lang.finish_pdf_link}
   button.btn.btn-lg.btn-primary(type="button" ng-show="!ctrl.isLoading && !ctrl.final" ng-click="ctrl.finalize()")
     span #{lang.finish_done}  

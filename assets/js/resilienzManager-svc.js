@@ -48,6 +48,11 @@
               method: 'PUT', url: restURL + 'actions/' + id + '/finalize'
             })
           },
+          createBook: function (id) {
+            return $http({
+              method: 'PUT', url: restURL + 'book/' + id
+            })
+          },
           actionSaveLayout: function (id, page, layoutId) {
             return $http({
               method: 'PUT', url: restURL + 'actions/' + id + '/' + page + '/layout', data: layoutId
