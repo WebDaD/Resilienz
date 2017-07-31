@@ -1,7 +1,7 @@
 doctype html
 html(lang=lang.key)
   head
-    include ../includes/head
+    include ../includes/head.jade
     link(rel='stylesheet', href='css/css.min.css')
     script(src='js/jquery.min.js')
     script(src='https://www.google.com/recaptcha/api.js')
@@ -22,7 +22,7 @@ html(lang=lang.key)
                 label.col-sm-2(for="set-passwordrepeat") #{lang.set_passwordrepeat}
                 input#set-passwordrepeat.col-sm-10.form-control.input-lg(type='password' placeholder=lang.set_passwordrepeat)                    
               .form-group
-                .col-sm-offset-2.col-sm-10
+                .col-sm-10
                   .g-recaptcha(data-sitekey=captcha)
               .form-group
                 .col-sm-offset-2.col-sm-10
