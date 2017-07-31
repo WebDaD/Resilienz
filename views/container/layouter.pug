@@ -3,7 +3,7 @@
   .form-inline
     .form-group
       label(for="categorySelect") 
-        i.fa.fa-lock.lock(aria-hidden="true" ng-show="ctrl.final"  style="margin-right:10px;")
+        i.fa.fa-lock.lock(aria-hidden="true" ng-show="ctrl.final"  style="margin-right:10px;" title=lang.layout_locked)
         span.sr-only.lock(ng-show="ctrl.final") #{lang.layout_locked}
         span #{lang.layout_categorySelect}
       select#categorySelect.form-control(ng-options="cat.translation for cat in ctrl.categories track by cat.id" ng-model="ctrl.selectedCategory" ng-change="ctrl.selectCategory()")
