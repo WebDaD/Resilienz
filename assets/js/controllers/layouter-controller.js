@@ -82,6 +82,26 @@
       self.uploadError = function (file, errorMessage) {
         console.error(errorMessage)
       }
+      self.dragEnter = function (event) {
+        event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'
+      }
+      self.dragLeave = function (event) {
+        event.currentTarget.parentElement.style.outline = '0px'
+      }
+      self.sending = function (file, xhr, formData) {
+        var position = {} // TODO: get position
+        position.sending = true
+        $scope.$apply()
+      }
+      self.success = function (file, response) {
+        var position = {} // TODO: get position model
+        resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
+          position.image = image.data
+          position.sending = false
+          position.deleting = false
+          position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+        })
+      }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
           self.pageLoading = true
@@ -111,24 +131,7 @@
               paramName: 'dropzone',
               method: 'post'
             }
-            position.dragEnter = function (event) {
-              event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'
-            }
-            position.dragLeave = function (event) {
-              event.currentTarget.parentElement.style.outline = '0px'
-            }
-            position.sending = function (file, xhr, formData) {
-              position.sending = true
-              $scope.$apply()
-            }
-            position.success = function (position) {
-              resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
-                position.image = image.data
-                position.sending = false
-                position.deleting = false
-                position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-              })
-            }
+
             position.sending = false
             position.deleting = false
           }
