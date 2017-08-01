@@ -132,6 +132,8 @@
               success: function () {
                 resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
                   position.image = image
+                  position.sending = false
+                  position.deleting = false
                   position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
                   $scope.$apply()
                 })
