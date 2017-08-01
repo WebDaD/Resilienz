@@ -121,13 +121,13 @@
             }
             position.sending = false
             position.uploadSending = function (file, xhr, formData) {
-              this.sending = true
+              position.sending = true
             }
             position.dragenter = function (event) {
-              this.style.outline = '2px solid green'
+              position.style.outline = '2px solid green'
             }
             position.dragleave = function (event) {
-              this.style.outline = '0'
+              position.style.outline = '0'
             }
           }
           self.pageLoading = false
