@@ -111,24 +111,24 @@
               paramName: 'dropzone',
               method: 'post'
             }
-            position.dragEnter = function (event, selPos) {
-              selPos.style.outline = '2px solid #1BFF1B'
+            position.dragEnter = function (event) {
+              event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'
               $scope.$apply()
             }
-            position.dragLeave = function (event, selPos) {
-              delete selPos.style.outline
+            position.dragLeave = function (event) {
+              event.currentTarget.parentElement.style.outline
               $scope.$apply()
             }
-            position.sending = function (file, xhr, formData, selPos) {
-              selPos.sending = true
+            position.sending = function (file, xhr, formData) {
+              position.sending = true
               $scope.$apply()
             }
-            position.success = function (selPos) {
-              resilienzManagerDataProvider.getPositionImage(self.actionid, selPos.id).then(function (image) {
-                selPos.image = image.data
-                selPos.sending = false
-                selPos.deleting = false
-                selPos.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+            position.success = function (position) {
+              resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
+                position.image = image.data
+                position.sending = false
+                position.deleting = false
+                position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
               })
             }
             position.sending = false
