@@ -67,7 +67,6 @@
           })
           modalInstance.result.then(function (image) {
             position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-            // $scope.$apply()
           })
         }
       }
@@ -77,7 +76,6 @@
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
             position.image = undefined
-            // $scope.$apply()
           })
         }
       }
@@ -114,7 +112,7 @@
               method: 'post'
             }
             position.dragEnter = function (event) {
-              position.style.outline = '2px solid #88E188'
+              position.style.outline = '2px solid #1BFF1B'
               $scope.$apply()
             }
             position.dragLeave = function (event) {
@@ -131,7 +129,6 @@
                 position.sending = false
                 position.deleting = false
                 position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-                // $scope.$apply()
               })
             }
             position.sending = false
