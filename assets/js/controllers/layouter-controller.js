@@ -89,8 +89,7 @@
         event.currentTarget.parentElement.style.outline = '0px'
       }
       self.sending = function (file, xhr, formData) {
-        var position = {} // TODO: get position
-        position.sending = true
+        this.element.parentElement.attributes['data-position'].sending = true
         $scope.$apply()
       }
       self.success = function (file, response) {

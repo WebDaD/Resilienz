@@ -16,7 +16,7 @@
 .spinner(ng-show="ctrl.pageLoading")  
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      
-    .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final")
+    .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final" data-position="position")
       form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'error':ctrl.uploadError, 'dragenter':ctrl.dragEnter, 'dragleave':ctrl.dragLeave, 'drop':ctrl.dragLeave, 'success':ctrl.success, 'sending':ctrl.sending}")
         span.dz-message(ng-show="!position.image" title=lang.layout_upload)
           i.fa.fa-upload(aria-hidden="true" ng-show="!position.sending")
