@@ -108,7 +108,6 @@
               'width': (position.width * pageWidth / orgWidth) + 'px',
               'height': (position.height * pageHeight / orgHeight) + 'px',
               'transform': 'rotate(' + position.spin + 'deg)',
-              'outline': '0',
               'background-image': 'url(/layout/image/' + position.image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
             }
             position.dropzoneConfig = {
@@ -120,15 +119,19 @@
               method: 'post',
               sending: function (file, xhr, formData) {
                 position.sending = true
+                $scope.$apply()
               },
               dragenter: function (event) {
                 position.style.outline = '2px solid green'
+                $scope.$apply()
               },
               dragleave: function (event) {
-                position.style.outline = '0'
+                delete position.style.outline
+                $scope.$apply()
               },
               drop: function (event) {
-                position.style.outline = '0'
+                delete position.style.outline
+                $scope.$apply()
               }
             }
             position.sending = false
