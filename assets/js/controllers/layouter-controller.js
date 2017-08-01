@@ -65,16 +65,17 @@
               }
             }
           })
-          modalInstance.result.then(function () {
-            reloadLayoutPositions(function () {})
+          modalInstance.result.then(function (image) {
+            position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+            $scope.$apply()
           })
         }
       }
       self.delete = function (position) {
         if (!self.final) {
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
-              position.style['background-image'] = 'url(/layout/image/placeholder)'
-              $scope.$apply()
+            position.style['background-image'] = 'url(/layout/image/placeholder)'
+            $scope.$apply()
           })
         }
       }

@@ -18,7 +18,7 @@
             hide: true,
             remove: true
           })
-          $uibModalInstance.close()
+          $uibModalInstance.close(data.image)
         })
       }
       self.image = data.image
