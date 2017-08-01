@@ -114,14 +114,14 @@
               method: 'post'
             }
             position.dragEnter = function (event) {
-              position.style.outline = '2px solid green'
+              position.style.outline = '2px solid #88E188'
               $scope.$apply()
             }
             position.dragLeave = function (event) {
               delete position.style.outline
               $scope.$apply()
             }
-            position.sending = function (file, xhr, formData, position) {
+            position.sending = function (file, xhr, formData) {
               position.sending = true
               $scope.$apply()
             }
