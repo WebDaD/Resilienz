@@ -22,9 +22,10 @@
           i.fa.fa-upload(aria-hidden="true" ng-show="!position.sending")
           span(ng-show="!position.sending")  #{lang.layout_upload}
           i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="position.sending")
-      span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
+      span.edit-overlay(ng-show="position.image && !position.deleting" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
         i.fa.fa-pencil(aria-hidden="true")
         span.sr-only  #{lang.layout_edit}
-      span.edit-overlay(ng-show="position.image" ng-click="ctrl.delete(position)"  title=lang.layout_delete_image)
+      span.edit-overlay(ng-show="position.image && !position.deleting" ng-click="ctrl.delete(position)"  title=lang.layout_delete_image)
         i.fa.fa-trash(aria-hidden="true" style="color:red;")
         span.sr-only  #{lang.layout_delete_image}
+      i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="position.deleting")

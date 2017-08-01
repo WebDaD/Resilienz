@@ -73,6 +73,7 @@
       }
       self.delete = function (position) {
         if (!self.final) {
+          position.deleting = true
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
             position.image = undefined
@@ -137,6 +138,7 @@
               }
             }
             position.sending = false
+            position.deleting = false
           }
           self.pageLoading = false
           callback()
