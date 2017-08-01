@@ -116,7 +116,7 @@
               $scope.$apply()
             }
             position.dragLeave = function (event) {
-              event.currentTarget.parentElement.style.outline
+              event.currentTarget.parentElement.style.outline = undefined
               $scope.$apply()
             }
             position.sending = function (file, xhr, formData) {
