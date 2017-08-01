@@ -111,32 +111,28 @@
               maxFileSize: 10,
               url: position.action,
               paramName: 'dropzone',
-              method: 'post',
-              sending: function (file, xhr, formData, position) {
-                position.sending = true
-                $scope.$apply()
-              },
-              dragleave: function (event, position) {
-                delete position.style.outline
-                $scope.$apply()
-              },
-              drop: function (event, position) {
-                delete position.style.outline
-                $scope.$apply()
-              },
-              success: function (position) {
-                resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
-                  position.image = image.data
-                  position.sending = false
-                  position.deleting = false
-                  position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-                  // $scope.$apply()
-                })
-              }
+              method: 'post'
             }
             position.dragEnter = function (event) {
               position.style.outline = '2px solid green'
               $scope.$apply()
+            }
+            position.dragLeave = function (event) {
+              delete position.style.outline
+              $scope.$apply()
+            }
+            position.sending = function (file, xhr, formData, position) {
+              position.sending = true
+              $scope.$apply()
+            }
+            position.success = function (position) {
+              resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
+                position.image = image.data
+                position.sending = false
+                position.deleting = false
+                position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+                // $scope.$apply()
+              })
             }
             position.sending = false
             position.deleting = false
