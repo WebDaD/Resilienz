@@ -104,7 +104,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       if (error) {
         res.status(503).json(error)
       } else {
-        database.updateBookStatus(req.params.action_id, 'O', function (error, result) {
+        database.updateBookStatus(req.params.id, 'O', function (error, result) {
           if (error) {
             console.error(error)
             res.status(503).json(error)
