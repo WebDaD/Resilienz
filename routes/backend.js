@@ -185,7 +185,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         console.error(error)
         res.status(404).end()
       } else {
-        res.status(200).sendFile(config.images + '/' + image)
+        res.status(200).send(image)
       }
     })
   })
