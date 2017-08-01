@@ -116,10 +116,6 @@
                 position.sending = true
                 $scope.$apply()
               },
-              dragenter: function (event, position) {
-                position.style.outline = '2px solid green'
-                $scope.$apply()
-              },
               dragleave: function (event, position) {
                 delete position.style.outline
                 $scope.$apply()
@@ -137,6 +133,10 @@
                   // $scope.$apply()
                 })
               }
+            }
+            position.dragEnter = function (event) {
+              position.style.outline = '2px solid green'
+              $scope.$apply()
             }
             position.sending = false
             position.deleting = false
