@@ -15,7 +15,7 @@ $(document).ready(function () {
       $('#set-passwordrepeat').addClass('has-error')
       return
     }
-    $.post('/set_pwd', {
+    $.post('/set-pwd', {
       email: $('#set-email').val(),
       resetToken: $('#set-resetToken').val(),
       password: $.md5($('#set-password').val()),
@@ -28,7 +28,8 @@ $(document).ready(function () {
         $.cookie('resilienzManager-email', data.email, {expires: 365, path: '/'})
         $.cookie('resilienzManager-token', data.token, {expires: 365, path: '/'})
         $.cookie('resilienzManager-language', data.language, {expires: 365, path: '/'})
-        window.location.href = '/app'
+        error('Password changed succesfully')
+        $('#link_login').show()
       } else {
         error(data.msg)
       }
