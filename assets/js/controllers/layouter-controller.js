@@ -112,23 +112,23 @@
               url: position.action,
               paramName: 'dropzone',
               method: 'post',
-              sending: function (file, xhr, formData) {
+              sending: function (file, xhr, formData, position) {
                 position.sending = true
-                // $scope.$apply()
+                $scope.$apply()
               },
-              dragenter: function (event) {
+              dragenter: function (event, position) {
                 position.style.outline = '2px solid green'
-                // $scope.$apply()
+                $scope.$apply()
               },
-              dragleave: function (event) {
+              dragleave: function (event, position) {
                 delete position.style.outline
-                // $scope.$apply()
+                $scope.$apply()
               },
-              drop: function (event) {
+              drop: function (event, position) {
                 delete position.style.outline
-                // $scope.$apply()
+                $scope.$apply()
               },
-              success: function () {
+              success: function (position) {
                 resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
                   position.image = image.data
                   position.sending = false
