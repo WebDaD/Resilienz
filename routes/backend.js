@@ -156,6 +156,26 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.get('/layout/image/:name/', login.isLoggedIn(), function (req, res) {
+    var file = config.images + '/' + req.params.name
+    fs.access(file, fs.constants.R_OK, function (error) {
+      if (error) {
+        res.status(200).sendFile(config.layouts + '/placeholder.png')
+      } else {
+        res.status(200).sendFile(file)
+      }
+    })
+  })
+  app.get('/layout/background/:page', login.isLoggedIn(), function (req, res) {
+    database.getBackgroundImage(res.params.page, req.cookies['resilienzManager-language'], function (error, image) {
+      if (error) {
+        console.error(error)
+        res.status(404).end()
+      } else {
+        res.status(200).sendFile(image)
+      }
+    })
+  })
   app.get('/bookimages/:name/', login.isLoggedIn(), function (req, res) {
     res.status(200).sendFile(config.images + '/' + req.params.name)
   })

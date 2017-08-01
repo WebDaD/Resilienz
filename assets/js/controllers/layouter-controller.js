@@ -94,7 +94,7 @@
           self.selectedLayout = {}
           self.selectedLayout = layoutWithImages.data
           self.pageImage = {
-            'background-image': 'url(/bookimages/' + self.actionid + '/' + self.selectedPage + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+            'background-image': 'url(/layout/background/' + self.selectedPage + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
           }
           var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
           var orgHeight = 1040
@@ -107,7 +107,8 @@
               'top': (position.y * pageHeight / orgHeight) + 'px',
               'width': (position.width * pageWidth / orgWidth) + 'px',
               'height': (position.height * pageHeight / orgHeight) + 'px',
-              'transform': 'rotate(' + position.spin + 'deg)'
+              'transform': 'rotate(' + position.spin + 'deg)',
+              'background-image': 'url(/layout/image/' + position.image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
             }
             position.dropzoneConfig = {
               parallelUploads: 1,
