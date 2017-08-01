@@ -17,10 +17,11 @@
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      
     .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.image}" ng-style="position.style" ng-show="!ctrl.final")
-      form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK, 'error':ctrl.uploadError}")
+      form.myDropZone(ng-show="!position.image" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'success':ctrl.uploadOK, 'error':ctrl.uploadError, 'sending':position.uploadSending, 'dragenter':position.dragenter, 'dragleave':position.dragleave, 'drop':position.dragleave}")
         span.dz-message(ng-show="!position.image" title=lang.layout_upload)
-          i.fa.fa-upload(aria-hidden="true")
-          span  #{lang.layout_upload}
+          i.fa.fa-upload(aria-hidden="true" ng-show="!position.sending")
+          span(ng-show="!position.sending")  #{lang.layout_upload}
+          i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="position.sending")
       span.edit-overlay(ng-show="position.image" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit)
         i.fa.fa-pencil(aria-hidden="true")
         span.sr-only  #{lang.layout_edit}

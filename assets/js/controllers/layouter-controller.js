@@ -108,6 +108,7 @@
               'width': (position.width * pageWidth / orgWidth) + 'px',
               'height': (position.height * pageHeight / orgHeight) + 'px',
               'transform': 'rotate(' + position.spin + 'deg)',
+              'outline': '0',
               'background-image': 'url(/layout/image/' + position.image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
             }
             position.dropzoneConfig = {
@@ -117,6 +118,16 @@
               url: position.action,
               paramName: 'dropzone',
               method: 'post'
+            }
+            position.sending = false
+            position.uploadSending = function (file, xhr, formData) {
+              this.sending = true
+            }
+            position.dragenter = function (event) {
+              this.style.outline = '2px solid green'
+            }
+            position.dragleave = function (event) {
+              this.style.outline = '0'
             }
           }
           self.pageLoading = false
