@@ -166,6 +166,9 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.get('/layout/image/placeholder/', login.isLoggedIn(), function (req, res) {
+    res.status(200).sendFile(config.layouts + '/placeholder.png')
+  })
   app.get('/layout/background/:page', login.isLoggedIn(), function (req, res) {
     database.getBackgroundImage(req.params.page, function (error, image) {
       if (error) {
@@ -173,6 +176,16 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         res.status(404).end()
       } else {
         res.status(200).sendFile(config.layouts + '/' + req.cookies['resilienzManager-language'] + '/' + image)
+      }
+    })
+  })
+  app.get('/positions/:actionid/:positionid/image', login.isLoggedIn(), function (req, res) {
+    database.getPositionImage(req.params.actionid, req.params.positionid, function (error, image) {
+      if (error) {
+        console.error(error)
+        res.status(404).end()
+      } else {
+        res.status(200).sendFile(config.images + '/' + image)
       }
     })
   })

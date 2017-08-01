@@ -33,6 +33,11 @@
               method: 'GET', url: restURL + 'actions/' + actionid + '/' + page + '/layout'
             })
           },
+          getPositionImage: function (actionid, positionid) {
+            return $http({
+              method: 'GET', url: restURL + 'positions/' + actionid + '/' + positionid + '/image'
+            })
+          },
           imageRescale: function (name, data) {
             return $http({
               method: 'PUT', url: restURL + 'bookimages/' + name + '/rescale', data: data

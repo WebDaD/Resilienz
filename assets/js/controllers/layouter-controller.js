@@ -17,11 +17,9 @@
         self.catLoading = true
         self.selectedPage = self.selectedCategory.startpage
         self.catLoading = false
-        self.pageLoading = true
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectPage = function () {
-        self.pageLoading = true
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
       self.selectLayout = function () {
@@ -68,7 +66,6 @@
             }
           })
           modalInstance.result.then(function () {
-            self.pageLoading = true
             reloadLayoutPositions(function () {})
           })
         }
@@ -76,21 +73,17 @@
       self.delete = function (position) {
         if (!self.final) {
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
-            self.pageLoading = true
-            reloadLayoutPositions(function () {})
+              position.style['background-image'] = 'url(/layout/image/placeholder)'
+              $scope.$apply()
           })
         }
-      }
-      self.uploadOK = function () {
-        console.log('upload OK')
-        self.pageLoading = true
-        reloadLayoutPositions(function () {})
       }
       self.uploadError = function (file, errorMessage) {
         console.error(errorMessage)
       }
       function reloadLayoutPositions (callback) {
         resilienzManagerDataProvider.getLayoutImagesByActionPage(self.actionid, self.selectedPage).then(function (layoutWithImages) {
+          self.pageLoading = true
           self.selectedLayout = {}
           self.selectedLayout = layoutWithImages.data
           self.pageImage = {
@@ -132,6 +125,12 @@
               drop: function (event) {
                 delete position.style.outline
                 $scope.$apply()
+              },
+              success: function () {
+                resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
+                  position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+                  $scope.$apply()
+                })
               }
             }
             position.sending = false
