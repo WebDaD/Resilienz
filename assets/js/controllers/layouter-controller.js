@@ -89,11 +89,11 @@
         event.currentTarget.parentElement.style.outline = '0px'
       }
       self.sending = function (file, xhr, formData) {
-        this.element.parentElement.attributes['data-position-sending'].sending = true
+        self.selectedLayout.positions[this.element.parentElement.attributes['data-position-index']].sending = true
         $scope.$apply()
       }
       self.success = function (file, response) {
-        var position = {} // TODO: get position model
+        var position = self.selectedLayout.positions[this.element.parentElement.attributes['data-position-index']]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
           position.image = image.data
           position.sending = false
@@ -130,7 +130,7 @@
               paramName: 'dropzone',
               method: 'post'
             }
-
+            position.index = i
             position.sending = false
             position.deleting = false
           }
