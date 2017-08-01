@@ -89,11 +89,11 @@
         event.currentTarget.parentElement.style.outline = '0px'
       }
       self.sending = function (file, xhr, formData) {
-        self.selectedLayout.positions[this.element.parentElement.attributes['data-position-index']].sending = true
+        self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'])].sending = true
         $scope.$apply()
       }
       self.success = function (file, response) {
-        var position = self.selectedLayout.positions[this.element.parentElement.attributes['data-position-index']]
+        var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'])]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
           position.image = image.data
           position.sending = false
