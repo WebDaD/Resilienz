@@ -113,11 +113,9 @@
             }
             position.dragEnter = function (event) {
               event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'
-              $scope.$apply()
             }
             position.dragLeave = function (event) {
               event.currentTarget.parentElement.style.outline = '0px'
-              $scope.$apply()
             }
             position.sending = function (file, xhr, formData) {
               position.sending = true
