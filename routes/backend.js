@@ -167,7 +167,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/layout/background/:page', login.isLoggedIn(), function (req, res) {
-    database.getBackgroundImage(res.params.page, req.cookies['resilienzManager-language'], function (error, image) {
+    database.getBackgroundImage(req.params.page, req.cookies['resilienzManager-language'], function (error, image) {
       if (error) {
         console.error(error)
         res.status(404).end()
