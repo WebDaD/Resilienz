@@ -117,18 +117,21 @@
               maxFiles: 1,
               url: position.action,
               paramName: 'dropzone',
-              method: 'post'
+              method: 'post',
+              sending: function (file, xhr, formData) {
+                position.sending = true
+              },
+              dragenter: function (event) {
+                position.style.outline = '2px solid green'
+              },
+              dragleave: function (event) {
+                position.style.outline = '0'
+              },
+              drop: function (event) {
+                position.style.outline = '0'
+              }
             }
             position.sending = false
-            position.uploadSending = function (file, xhr, formData) {
-              position.sending = true
-            }
-            position.dragenter = function (event) {
-              position.style.outline = '2px solid green'
-            }
-            position.dragleave = function (event) {
-              position.style.outline = '0'
-            }
           }
           self.pageLoading = false
           callback()
