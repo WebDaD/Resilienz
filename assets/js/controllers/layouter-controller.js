@@ -75,6 +75,7 @@
         if (!self.final) {
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
+            position.image = undefined
             $scope.$apply()
           })
         }
@@ -129,6 +130,7 @@
               },
               success: function () {
                 resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
+                  position.image = image
                   position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
                   $scope.$apply()
                 })
