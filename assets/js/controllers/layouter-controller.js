@@ -67,7 +67,7 @@
           })
           modalInstance.result.then(function (image) {
             position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-            $scope.$apply()
+            // $scope.$apply()
           })
         }
       }
@@ -77,7 +77,7 @@
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
             position.image = undefined
-            $scope.$apply()
+            // $scope.$apply()
           })
         }
       }
@@ -109,25 +109,24 @@
             position.dropzoneConfig = {
               parallelUploads: 1,
               maxFileSize: 10,
-              maxFiles: 1,
               url: position.action,
               paramName: 'dropzone',
               method: 'post',
               sending: function (file, xhr, formData) {
                 position.sending = true
-                $scope.$apply()
+                // $scope.$apply()
               },
               dragenter: function (event) {
                 position.style.outline = '2px solid green'
-                $scope.$apply()
+                // $scope.$apply()
               },
               dragleave: function (event) {
                 delete position.style.outline
-                $scope.$apply()
+                // $scope.$apply()
               },
               drop: function (event) {
                 delete position.style.outline
-                $scope.$apply()
+                // $scope.$apply()
               },
               success: function () {
                 resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
@@ -135,7 +134,7 @@
                   position.sending = false
                   position.deleting = false
                   position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-                  $scope.$apply()
+                  // $scope.$apply()
                 })
               }
             }
