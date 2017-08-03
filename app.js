@@ -25,6 +25,7 @@ var BookGenerator = require('./lib/book-generator.js')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var bcrypt = require('bcrypt')
+var helmet = require('helmet')
 
 console.log('Setting Static paths...')
 // Send public and docs
@@ -36,6 +37,9 @@ app.set('view engine', 'pug')
 
 // Add Cookie Cababilities
 app.use(cookieParser())
+
+// Secure Data
+app.use(helmet())
 
 // Accept JSON Body
 app.use(bodyParser.json())
