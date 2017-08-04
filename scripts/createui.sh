@@ -107,6 +107,10 @@ echo -n '==> Deploying custom CSS ...'
 lessc assets/css/main.less public/css/main.css
 echo 'OK'
 
+echo -n '==> Deploying custom Fonts ...'
+cp assets/fonts/* public/fonts/ 2>>/dev/null
+echo 'OK'
+
 echo -n '==> Deploying Images ...'
 cp assets/images/* public/images/ 2>>/dev/null
 echo 'OK'
