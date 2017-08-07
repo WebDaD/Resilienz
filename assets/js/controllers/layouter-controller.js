@@ -22,17 +22,16 @@
       self.selectPage = function () {
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
-      self.selectLayout = function () {
+      self.onLayoutSelectCallback = function ($item, $model) {
         if (!self.final) {
-          if (self.selectedLayout) {
+          if ($item) {
             self.pageLoading = true
-            resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, self.selectedLayout).then(function (something) {
+            resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, $item).then(function (something) {
               reloadLayoutPositions(function () { })
             })
           }
         }
       }
-
       // load cats with layouts and positions
       resilienzManagerDataProvider.categoriesFull().then(function (categories) {
         self.categories = categories.data // {id, sort: -1, name: '', pages: -1, startpage: 0, layouts: [], translation}
@@ -46,7 +45,6 @@
           console.error(error)
         })
       })
-
       self.openEditor = function (position) {
         if (!self.final) {
           var data = {}

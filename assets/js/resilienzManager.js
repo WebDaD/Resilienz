@@ -1,7 +1,7 @@
 Dropzone.autoDiscover = false
 /* global angular */
 ;(function () {
-  angular.module('resilienzManager', ['ngRoute', 'ngCookies', 'ngTable', 'ui.bootstrap', 'ng-imgAreaSelect', 'ngDropzone'])
+  angular.module('resilienzManager', ['ngRoute', 'ngCookies', 'ngTable', 'ui.bootstrap', 'ng-imgAreaSelect', 'ngDropzone', 'ui.select', 'ngSanitize'])
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
         .when('/welcome', {

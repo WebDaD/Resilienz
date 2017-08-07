@@ -20,6 +20,8 @@
     "angular-dropzone":"*",
     "angular-cookies":"*",
     "angular-route": "*",
+    "angular-sanitize": "*",
+    "angular-ui-select": "*",
     "ng-table":"*",
     "bootstrap": "*",
     "font-awesome": "*",

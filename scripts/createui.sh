@@ -70,6 +70,15 @@ echo -n '==> Deploying angular-cookies ...'
 cp bower_components/angular-cookies/angular-cookies.min.js public/js/angular-cookies.min.js
 echo 'OK'
 
+echo -n '==> Deploying angular-sanitize ...'
+cp bower_components/angular-sanitize/angular-sanitize.js public/js/angular-sanitize.js
+echo 'OK'
+
+echo -n '==> Deploying angular-ui-select ...'
+cp bower_components/angular-ui-select/dist/select.js public/js/angular-select.js
+cp bower_components/angular-ui-select/dist/select.css public/css/angular-select.css
+echo 'OK'
+
 echo -n '==> Deploying angular-imgAreaSelect ...'
 cp assets/js/ng-imgAreaSelect.min.js public/js/ng-imgAreaSelect.min.js
 echo 'OK'
