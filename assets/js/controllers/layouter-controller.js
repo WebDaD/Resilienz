@@ -22,6 +22,9 @@
       self.selectPage = function () {
         reloadLayoutPositions(function () {}) // uses page to selectLayout
       }
+      self.getIconClass = function (symbol) {
+        return 'icon-layout_symbols_' + symbol
+      }
       self.onLayoutSelectCallback = function ($item, $model) {
         if (!self.final) {
           if ($item) {
