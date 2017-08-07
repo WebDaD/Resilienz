@@ -12,11 +12,13 @@
       select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
     .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1")
       label(for="layoutSelect") #{lang.layout_layoutSelect}
-      ui-select(ng-model='ctrl.selectedLayout', theme='bootstrap', search-enabled='false', on-select='ctrl.onLayoutSelectCallback($item, $model)')
+      ui-select#layoutSelect(ng-model='ctrl.selectedLayout', theme='bootstrap', search-enabled='false', on-select='ctrl.onLayoutSelectCallback($item, $model)')
         ui-select-match(placeholder='Select a Layout')
-          span(class='icon-layout_symbols_{{$select.selected.symbol}}')  {{$select.selected.name}}
+          span(class='icon-layout_symbols_{{$select.selected.symbol}}')
+          span  {{$select.selected.name}}
         ui-select-choices(repeat='layout in ctrl.selectedCategory.layouts')
-          span(class='icon-layout_symbols_{{layout.symbol}}')  {{layout.name}}
+          span(class='icon-layout_symbols_{{layout.symbol}}')
+          span  {{layout.name}}
 .spinner(ng-show="ctrl.pageLoading")  
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      
