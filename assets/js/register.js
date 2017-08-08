@@ -30,8 +30,6 @@ $(document).ready(function () {
     errors += checkField('register_nachname')
     errors += checkField('register_password')
     errors += checkField('register_passwordrepeat')
-    errors += checkField('register_start')
-    errors += checkField('register_stop')
     if (errors > 0) {
       error('Some Fields are Empty')
       return
@@ -49,8 +47,8 @@ $(document).ready(function () {
       register_nachname: $('#register_nachname').val(),
       register_password: $.md5($('#register_password').val()),
       register_location: location.longitude + ',' + location.latitude,
-      register_start: $('#register_start').val() + ' 00:00:00',
-      register_stop: $('#register_stop').val() + ' 00:00:00',
+      register_start: $('#register_start').val() || '1970-01-01' + ' 00:00:00',
+      register_stop: $('#register_stop').val() || '2222-12-31' + ' 00:00:00',
       captchaResponse: $('#g-recaptcha-response').val()
     }, function (data, textStatus, jqHXR) {
       if (textStatus === 'success') {

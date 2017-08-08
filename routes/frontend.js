@@ -63,6 +63,11 @@ module.exports = function (app, language, login) {
       res.render('pages/impressum', {lang: translations})
     })
   })
+  app.get('/nutzungsbedingungen', function (req, res) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+      res.render('pages/nutzungsbedingungen', {lang: translations})
+    })
+  })
   // ADMIN ONLY
   app.get('/container/users', login.isLoggedIn(), login.isAdmin(), function (req, res) {
     res.render('container/users')

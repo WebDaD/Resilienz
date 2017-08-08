@@ -20,34 +20,34 @@ html(lang=lang.key)
           section.register_form
             form.form-horizontal
               .form-group
-                label.col-sm-2.control-label(for="register_language") #{lang.login_language}
+                label.col-sm-2.control-label.required(for="register_language") #{lang.login_language}
                 .col-sm-10
                   select#register_language.form-control
                     each lname, lkey in languages
                       option(value=lkey)= lname
               .form-group
-                label.col-sm-2.control-label(for="register-email") #{lang.login_email}
+                label.col-sm-2.control-label.required(for="register-email") #{lang.login_email}
                 .col-sm-10
                   input#register_email.form-control.input-lg(type='email' placeholder=lang.login_email)
               .form-group
-                label.col-sm-2.control-label(for="register_vorname") #{lang.login_vorname}
+                label.col-sm-2.control-label.required(for="register_vorname") #{lang.login_vorname}
                 .col-sm-10
                   input#register_vorname.form-control.input-lg(type='text' placeholder=lang.login_vorname)    
               .form-group
-                label.col-sm-2.control-label(for="register_nachname") #{lang.login_nachname}
+                label.col-sm-2.control-label.required(for="register_nachname") #{lang.login_nachname}
                 .col-sm-10
                   input#register_nachname.form-control.input-lg(type='text' placeholder=lang.login_nachname)    
               .form-group
-                label.col-sm-2.control-label(for="register_password") #{lang.login_password}
+                label.col-sm-2.control-label.required(for="register_password") #{lang.login_password}
                 .col-sm-10
                   input#register_password.form-control.input-lg(type='password' placeholder=lang.login_password)
               .form-group
-                label.col-sm-2.control-label(for="register_passwordrepeat") #{lang.login_passwortrepeat}
+                label.col-sm-2.control-label.required(for="register_passwordrepeat") #{lang.login_passwortrepeat}
                 .col-sm-10
                   input#register_passwordrepeat.form-control.input-lg(type='password' placeholder=lang.login_passwortrepeat)
               hr                    
               .form-group
-                label.col-sm-2.control-label(for="register_location") #{lang.login_location}
+                label.col-sm-2.control-label.required(for="register_location") #{lang.login_location}
                 .col-sm-10
                   input#register_location_text.form-control.input-lg
                   br
@@ -61,7 +61,7 @@ html(lang=lang.key)
                 .col-sm-10
                   input#register_stop.form-control.input-lg(type='text' placeholder=lang.login_stop)
               .form-group
-                label.col-sm-2.control-label(for="captcha") Captcha
+                label.col-sm-2.control-label.required(for="captcha") Captcha
                 .col-sm-10
                   #captcha.g-recaptcha(data-sitekey=captcha)
               .form-group

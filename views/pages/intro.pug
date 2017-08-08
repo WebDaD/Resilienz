@@ -14,11 +14,13 @@ html(lang=lang.key)
           p #{lang.intro_text}
       .row.row-grid
         .col-md-6
-          a.btn-primary.btn-lg.btn.btn-block(href="login") #{lang.intro_login}
-        .col-md-6
           a.btn-primary.btn-lg.btn.btn-block(href="register") #{lang.intro_register}
         .col-md-6
-          a.btn-default.btn.btn-block(href="pdf/stc_manual_"+lang.key target="_blank") #{lang.intro_manual}
+          a.btn-default.btn-lg.btn.btn-block(href="login") #{lang.intro_login}
         .col-md-6
-          a.btn-default.btn.btn-block(href="pdf/usage_"+lang.key target="_blank") #{lang.intro_usage}
+          a.btn-default.btn.btn-block(href="pdf/stc_book_demo_"+lang.key target="_blank" title=lang.intro_manual)
+            img(src="images/demo_book_"+lang.key+".jpg")
+        .col-md-6
+          a.btn-default.btn.btn-block(href="pdf/stc_manual_demo_"+lang.key target="_blank" title=lang.intro_manual)
+            img(src="images/demo_manual_"+lang.key+".jpg")
     include ../includes/footer.jade
