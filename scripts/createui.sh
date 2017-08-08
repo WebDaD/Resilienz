@@ -51,6 +51,7 @@ echo 'OK'
 
 echo -n '==> Deploying Bootstrap ...'
 cp bower_components/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.min.css
+cp bower_components/bootstrap/dist/js/bootstrap.min.js public/js/bootstrap.min.js
 echo 'OK'
 
 echo -n '==> Deploying Font-Awesome ...'

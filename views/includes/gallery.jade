@@ -1,9 +1,9 @@
-#carousel-example-generic.carousel.slide(data-ride='carousel')
+#carousel.carousel.slide(data-ride='carousel')
   ol.carousel-indicators
-    li.active(data-target='#carousel-example-generic', data-slide-to='0')
+    li.active(data-target='#carousel', data-slide-to='0')
     - var n = 1;
     while n < 27
-      li(data-target='#carousel-example-generic', data-slide-to=n++)
+      li(data-target='#carousel', data-slide-to=n++)
   .carousel-inner(role='listbox')
     .item.active
       img(src='images/homepage_1.jpg', alt='')
@@ -11,9 +11,9 @@
     while z < 27
       .item
         img(src='images/homepage_'+(z++)+'.jpg', alt='')
-  a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+  a.left.carousel-control(href='#carousel', role='button', data-slide='prev')
     i.fa.fa-chevron-circle-left(aria-hidden='true')
     span.sr-only Prev
-  a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+  a.right.carousel-control(href='#carousel', role='button', data-slide='next')
     i.fa.fa-chevron-circle-right(aria-hidden='true')
     span.sr-only Next
