@@ -76,7 +76,8 @@
           position.deleting = true
           resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
-            position.image = undefined
+            position.value = undefined
+            position.type = 'image'
           })
         }
       }
@@ -115,14 +116,20 @@
           var pageHeight = 700
           var pageWidth = ((orgWidth * pageHeight) / orgHeight)
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
+            var background = 'none'
+            position.isImage = false
             var position = self.selectedLayout.positions[i]
+            if(position.type === 'image') {
+              background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+              position.isImage = true
+            }
             position.style = {
               'left': (position.x * pageWidth / orgWidth) + 'px',
               'top': (position.y * pageHeight / orgHeight) + 'px',
               'width': (position.width * pageWidth / orgWidth) + 'px',
               'height': (position.height * pageHeight / orgHeight) + 'px',
               'transform': 'rotate(' + position.spin + 'deg)',
-              'background-image': 'url(/layout/image/' + position.image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+              'background-image': background
             }
             position.dropzoneConfig = {
               parallelUploads: 1,
