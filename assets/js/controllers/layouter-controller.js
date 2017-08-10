@@ -122,6 +122,11 @@
             if(position.type === 'image') {
               background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
               position.isImage = true
+            } else {
+              position.value = position.value.split('|')[1]
+              position.details = {
+                oldValue: position.value.split('|')[0] + 'px'
+              }
             }
             position.style = {
               'left': (position.x * pageWidth / orgWidth) + 'px',
