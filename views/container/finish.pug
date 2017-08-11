@@ -1,6 +1,6 @@
 .container
   h1 #{lang.finish_title}
-  img.loader(ng-show="ctrl.isLoading" src="/images/loader.gif")
+  .spinner(ng-show="ctrl.isLoading")
   p(ng-show="!ctrl.isLoading && !ctrl.final") #{lang.finish_text}
   p(ng-show="!ctrl.isLoading && ctrl.final") #{lang.finish_completed}
   button.btn.btn-lg(type="button" ng-show="!ctrl.isLoading && ctrl.book!='Y'" ng-click="ctrl.createBook()" ng-class="{'btn-warning':ctrl.creating, 'btn-primary':!ctrl.creating}" ng-disabled="ctrl.creating")
