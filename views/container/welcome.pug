@@ -1,13 +1,13 @@
 .container
   h1 #{lang.welcome_title}
   p #{lang.welcome_text}
-  .row.row-grid
+  .row.row-grid(style="margin-bottom:10px;")
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_manual_'+lang.key target="_blank")  #{lang.intro_manual}
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='#!/materials')  #{lang.welcome_materials}
   p #{lang.welcome_text_bottom}
-  .row.row-grid
+  .row.row-grid(style="margin-bottom:10px;")
     .col-md-6
       button.btn-default.btn-lg.btn.btn-block(type="button" ng-click="toLayouter()") #{lang.nav_layout}
     .col-md-6
