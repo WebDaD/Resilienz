@@ -81,14 +81,31 @@
           })
         }
       }
+      self.makeText = function (position) {
+        if (!self.final) {
+          position.isImage = false
+        }
+      }
+      self.makeImage = function (position) {
+        if (!self.final) {
+          position.isImage = true
+        }
+      }
+      self.saveText = function (position) {
+        if (!self.final) {
+          self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
+          $scope.$apply()
+          // TODO: save the text (details.newValue|Value)
+        }
+      }
       self.uploadError = function (file, errorMessage) {
         console.error(errorMessage)
       }
       self.dragEnter = function (event) {
-        event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'
+        if (!self.final) {event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'}
       }
       self.dragLeave = function (event) {
-        event.currentTarget.parentElement.style.outline = '0px'
+        if (!self.final) {event.currentTarget.parentElement.style.outline = '0px'}
       }
       self.sending = function (file, xhr, formData) {
         self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
@@ -98,6 +115,7 @@
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
           position.image = image.data
+          position.isImage = true
           position.sending = false
           position.deleting = false
           position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
@@ -117,8 +135,9 @@
           var pageWidth = ((orgWidth * pageHeight) / orgHeight)
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
             var background = 'none'
-            position.isImage = false
             var position = self.selectedLayout.positions[i]
+            position.isImage = false
+            // TODO: if position.type === null, then use possible_type (image,text,both)
             if(position.type === 'image') {
               background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
               position.isImage = true
