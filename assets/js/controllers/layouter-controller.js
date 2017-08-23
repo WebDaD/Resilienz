@@ -140,14 +140,23 @@
             var background = 'none'
             var position = self.selectedLayout.positions[i]
             position.isImage = false
-            // TODO: if position.type === null, then use possible_type (image,text,both)
-            if(position.type === 'image') {
-              background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-              position.isImage = true
+            if (!position.type) {
+              if(position.possible_type === 'text') {
+                position.value = 'Enter Text here...'
+                position.details = {}
+              } else {
+                background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+                position.isImage = true
+              }
             } else {
-              position.value = position.value.split('|')[1]
-              position.details = {
-                oldValue: position.value.split('|')[0] + 'px'
+              if(position.type === 'image') {
+                background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+                position.isImage = true
+              } else {
+                position.value = position.value.split('|')[1]
+                position.details = {
+                  oldValue: position.value.split('|')[0] + 'px'
+                }
               }
             }
             position.style = {
