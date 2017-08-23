@@ -37,8 +37,11 @@
         span.sr-only  #{lang.layout_delete_image}
       i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="position.value && position.deleting")
       span.edit-overlay(ng-show="position.value && !position.deleting && position.isImage  && !ctrl.final && position.possibleType==='both'" ng-click="ctrl.makeText(position)"  title=lang.layout_make_text)
-        i.fa.fa-font(aria-hidden="true" style="color:red;")
+        i.fa.fa-font(aria-hidden="true")
         span.sr-only  #{lang.layout_make_text}
       span.edit-overlay(ng-show="position.value && !position.deleting && !position.isImage  && !ctrl.final && position.possibleType==='both'" ng-click="ctrl.makeImage(position)"  title=lang.layout_make_image)
-        i.fa.fa-picture-o(aria-hidden="true" style="color:red;")
+        i.fa.fa-picture-o(aria-hidden="true")
         span.sr-only  #{lang.layout_make_image}
+      span.edit-overlay(ng-show="position.value && !position.deleting && !position.isImage  && !ctrl.final" ng-click="ctrl.saveText(position)"  title=lang.layout_save_text)
+        i.fa.fa-floppy-o(aria-hidden="true")
+        span.sr-only  #{lang.layout_save_text}

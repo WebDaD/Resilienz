@@ -74,7 +74,7 @@
       self.delete = function (position) {
         if (!self.final) {
           position.deleting = true
-          resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
+          resilienzManagerDataProvider.imageDelete(position.value).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
             position.value = undefined
             position.type = 'image'
@@ -95,7 +95,10 @@
         if (!self.final) {
           self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
           $scope.$apply()
-          // TODO: save the text (details.newValue|Value)
+          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, position.details.newValue+'|'+position.value).then(function (something) {
+            self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = false
+            $scope.$apply()
+          })
         }
       }
       self.uploadError = function (file, errorMessage) {

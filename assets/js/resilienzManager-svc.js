@@ -48,6 +48,11 @@
               method: 'DELETE', url: restURL + 'bookimages/' + name
             })
           },
+          textSave: function (actionId, page, positionId, value) {
+            return $http({
+              method: 'PUT', url: restURL + '/booktext/save/' + actionId + '/' + page + '/' + positionId + '', data:value
+            })
+          },
           actionMakeFinal: function (id) {
             return $http({
               method: 'PUT', url: restURL + 'actions/' + id + '/finalize'
