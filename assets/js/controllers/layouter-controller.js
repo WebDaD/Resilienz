@@ -117,7 +117,7 @@
       self.success = function (file, response) {
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
-          position.image = image.data
+          position.value = image.data
           position.isImage = true
           position.sending = false
           position.deleting = false
@@ -141,7 +141,7 @@
             var position = self.selectedLayout.positions[i]
             position.isImage = false
             if (!position.type) {
-              if(position.possible_type === 'text') {
+              if(position.possibleType === 'text') {
                 position.value = 'Enter Text here...'
                 position.details = {}
               } else {
