@@ -51,7 +51,7 @@
       self.openEditor = function (position) {
         if (!self.final) {
           var data = {}
-          data.image = position.image
+          data.image = position.value
           data.width = position.width
           data.height = position.height
           var modalInstance = $uibModal.open({
