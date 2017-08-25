@@ -95,7 +95,7 @@
         if (!self.final) {
           self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
           $scope.$apply()
-          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, position.details.newValue+'|'+position.value).then(function (something) {
+          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, position.details.newValue + '|' + position.value).then(function (something) {
             self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = false
             $scope.$apply()
           })
@@ -105,10 +105,10 @@
         console.error(errorMessage)
       }
       self.dragEnter = function (event) {
-        if (!self.final) {event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'}
+        if (!self.final) { event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B' }
       }
       self.dragLeave = function (event) {
-        if (!self.final) {event.currentTarget.parentElement.style.outline = '0px'}
+        if (!self.final) { event.currentTarget.parentElement.style.outline = '0px' }
       }
       self.sending = function (file, xhr, formData) {
         self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
@@ -141,7 +141,7 @@
             var position = self.selectedLayout.positions[i]
             position.isImage = false
             if (!position.type) {
-              if(position.possibleType === 'text') {
+              if (position.possibleType === 'text') {
                 position.value = 'Enter Text here...'
                 position.details = {}
               } else {
@@ -149,7 +149,7 @@
                 position.isImage = true
               }
             } else {
-              if(position.type === 'image') {
+              if (position.type === 'image') {
                 background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
                 position.isImage = true
               } else {
