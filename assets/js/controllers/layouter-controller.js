@@ -96,15 +96,14 @@
           position.style['background-image'] = 'url(/layout/image/placeholder)'
         }
       }
-      self.saveText = function (element, position) {
+      self.saveText = function ($event, position) {
         if (!self.final) {
-          // self.selectedLayout.positions[parseInt(element.parentElement.attributes['data-position-index'].value)].sending = true
-          element.position.sending = true
-          // $scope.$apply()
-          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, position.details.newValue + '|' + position.value).then(function (something) {
-            // self.selectedLayout.positions[parseInt(element.parentElement.attributes['data-position-index'].value)].sending = false
-            element.position.sending = false
-            // $scope.$apply()
+          self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
+          $scope.$apply()
+          var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
+          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, size + '|' + position.value).then(function (something) {
+            self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
+            $scope.$apply()
           })
         }
       }
