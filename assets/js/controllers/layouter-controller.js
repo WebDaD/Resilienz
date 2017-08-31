@@ -146,10 +146,10 @@
             var background = 'none'
             var position = self.selectedLayout.positions[i]
             position.isImage = false
+            position.details = {}
             if (!position.type) {
               if (position.possibleType === 'text') {
                 position.value = 'Enter Text here...'
-                position.details = {}
               } else {
                 background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
                 position.isImage = true
