@@ -7,7 +7,7 @@ angular.module('ng-fitty', [])
       ngFittyDetails: '='
     },
     link: function postLink (scope, element, attrs) {
-      if (element[0].tagName === 'P') {
+      if (element[0].tagName === 'TEXTAREA') {
         if (scope.ngFittyDetails === undefined) {
           scope.ngFittyDetails = {}
         }
@@ -17,7 +17,7 @@ angular.module('ng-fitty', [])
           scope.ngFittyDetails = detail
         }, true)
       } else {
-        console.log('ng-fitty attribute can only be used on p elements.')
+        console.log('ng-fitty attribute can only be used on textarea elements.')
       }
     }
   }
