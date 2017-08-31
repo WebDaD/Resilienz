@@ -99,11 +99,11 @@
       self.saveText = function ($event, position) {
         if (!self.final) {
           self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
-          $scope.$apply()
+          // $scope.$apply()
           var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
           resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, size + '|' + position.value).then(function (something) {
             self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
-            $scope.$apply()
+            // $scope.$apply()
           })
         }
       }
