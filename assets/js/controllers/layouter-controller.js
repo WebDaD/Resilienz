@@ -100,11 +100,11 @@
         if (!self.final) {
           // self.selectedLayout.positions[parseInt(element.parentElement.attributes['data-position-index'].value)].sending = true
           element.position.sending = true
-          $scope.$apply()
+          // $scope.$apply()
           resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, position.details.newValue + '|' + position.value).then(function (something) {
             // self.selectedLayout.positions[parseInt(element.parentElement.attributes['data-position-index'].value)].sending = false
             element.position.sending = false
-            $scope.$apply()
+            // $scope.$apply()
           })
         }
       }
