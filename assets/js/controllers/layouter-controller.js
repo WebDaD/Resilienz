@@ -84,11 +84,16 @@
       self.makeText = function (position) {
         if (!self.final) {
           position.isImage = false
+          if (!position.value) {
+            position.value = 'Enter Text...'
+            position.style['background-image'] = 'none'
+          }
         }
       }
       self.makeImage = function (position) {
         if (!self.final) {
           position.isImage = true
+          position.style['background-image'] = 'url(/layout/image/placeholder)'
         }
       }
       self.saveText = function (position) {
