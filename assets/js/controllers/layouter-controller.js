@@ -96,12 +96,12 @@
           position.style['background-image'] = 'url(/layout/image/placeholder)'
         }
       }
-      self.saveText = function (position) {
+      self.saveText = function (element, position) {
         if (!self.final) {
-          self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
+          self.selectedLayout.positions[parseInt(element.parentElement.attributes['data-position-index'].value)].sending = true
           $scope.$apply()
           resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, position.details.newValue + '|' + position.value).then(function (something) {
-            self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = false
+            self.selectedLayout.positions[parseInt(element.parentElement.attributes['data-position-index'].value)].sending = false
             $scope.$apply()
           })
         }
