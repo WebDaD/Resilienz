@@ -23,6 +23,8 @@ $(document).ready(function () {
   })
   $('#register_location').css('display', 'none !important')
   $('.register_form').on('click', '#register_submit', function () {
+    $('#register_submit').hide()
+    $('#loading').show()
     $('#register_error').hide()
     var errors = 0
     errors += checkField('register_language')
@@ -62,9 +64,13 @@ $(document).ready(function () {
         window.location.href = '/app'
       } else {
         error(data.msg)
+        $('#register_submit').show()
+        $('#loading').hide()
       }
     }).fail(function (data) {
       error(data.responseJSON.msg)
+      $('#register_submit').show()
+      $('#loading').hide()
     })
   })
 })
