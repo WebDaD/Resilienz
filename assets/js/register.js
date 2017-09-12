@@ -21,7 +21,7 @@ $(document).ready(function () {
       locationNameInput: $('#register_location_text')
     }
   })
-  $('#register_location').hide()
+  $('#register_location').css('display', 'none !important')
   $('.register_form').on('click', '#register_submit', function () {
     $('#register_error').hide()
     var errors = 0
