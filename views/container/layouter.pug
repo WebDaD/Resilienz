@@ -10,7 +10,7 @@
     .form-group(ng-show="ctrl.selectedCategory.realPages.length > 1")
       label(for="pageSelect") #{lang.layout_pageSelect}
       select#pageSelect.form-control(ng-options="n as n for n in ctrl.selectedCategory.realPages" ng-model="ctrl.selectedPage" ng-change="ctrl.selectPage()")
-    .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1 && !ctrl.final")
+    .form-group(ng-show="ctrl.selectedCategory.layouts.length > 1 && !ctrl.final" style="height: 64px;")
       label(for="layoutSelect") #{lang.layout_layoutSelect}
       ui-select#layoutSelect(ng-model='ctrl.selectedLayout', theme='bootstrap', search-enabled='false', on-select='ctrl.onLayoutSelectCallback($item, $model)')
         ui-select-match(placeholder='Select a Layout')
