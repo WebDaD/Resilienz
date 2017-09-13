@@ -48,6 +48,15 @@
           console.error(error)
         })
       })
+      self.openInstructions = function () {
+        $uibModal.open({
+          animation: true,
+          templateUrl: 'modals/instructions',
+          controller: 'resilienzManager-Instructions',
+          controllerAs: 'ctrl',
+          size: 'lg'
+        })
+      }
       self.openEditor = function (position) {
         if (!self.final) {
           var data = {}

@@ -21,6 +21,9 @@
           span
             span(ng-class='ctrl.getIconClass(layout.symbol)'  style="display:inline;")
             span(style="font-family: 'Source Sans Pro',sans-serif; display:inline; margin-left:3px;")  {{layout.name}}
+    .form-group
+      label &nbsp;
+      button.btn.btn-default.form-control(ng-click="ctrl.openInstructions()") #{lang.layout_instructions}
 .spinner(ng-show="ctrl.pageLoading")  
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      

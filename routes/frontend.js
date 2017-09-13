@@ -38,6 +38,11 @@ module.exports = function (app, language, login) {
       res.render('modals/editor', {lang: translations})
     })
   })
+  app.get('/modals/instructions', function (req, res) {
+    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+      res.render('modals/instructions', {lang: translations})
+    })
+  })
   app.get('/', function (req, res) { // index
     language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
       res.render('pages/index', {lang: translations})

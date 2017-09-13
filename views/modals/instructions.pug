@@ -1,0 +1,13 @@
+.modal-header
+  h3.modal-title #{lang.instructions_title}
+.modal-body
+  .container
+      p #{lang.layouter_manual_start}
+      a(href="pdf/stc_manual_demo_"+lang.key" target="_blank ") #{lang.layouter_manual_example}
+      p #{lang.layouter_manual_one}
+      p #{lang.layouter_manual_two}
+      p #{lang.layouter_manual_three}
+      p #{lang.layouter_manual_four}
+      p #{lang.layouter_manual_five}
+.modal-footer
+  button.btn.btn-primary.hidden-print(type='button', ng-click='ctrl.close()') #{lang.editor_close}
