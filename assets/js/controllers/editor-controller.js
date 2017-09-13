@@ -31,6 +31,8 @@
         resizable: true,
         show: true,
         aspectRatio: data.width + ':' + data.height,
+        imageHeight: data.height,
+        imageWidth: data.width,
         x1: 1,
         y1: 1,
         x2: 1 + data.width,
