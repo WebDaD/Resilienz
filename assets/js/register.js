@@ -63,12 +63,12 @@ $(document).ready(function () {
         $.cookie('resilienzManager-language', data.language, {expires: 365, path: '/'})
         window.location.href = '/app'
       } else {
-        error(data.msg)
+        error(data.msg || 'Some Error has occured...')
         $('#register_submit').show()
         $('#loading').hide()
       }
     }).fail(function (data) {
-      error(data.responseJSON.msg)
+      error(data.responseJSON.msg || 'Some Error has occured...')
       $('#register_submit').show()
       $('#loading').hide()
     })
