@@ -14,11 +14,13 @@
       label(for="layoutSelect") #{lang.layout_layoutSelect}
       ui-select#layoutSelect(ng-model='ctrl.selectedLayout', theme='bootstrap', search-enabled='false', on-select='ctrl.onLayoutSelectCallback($item, $model)')
         ui-select-match(placeholder='Select a Layout')
-          span(ng-class='ctrl.getIconClass($select.selected.symbol)')
-          span  {{$select.selected.name}}
+          span
+            span(ng-class='ctrl.getIconClass($select.selected.symbol)')
+            span(style="font-family: 'Source Sans Pro',sans-serif;")  {{$select.selected.name}}
         ui-select-choices(repeat='layout in ctrl.selectedCategory.layouts')
-          span(ng-class='ctrl.getIconClass(layout.symbol)')
-          span  {{layout.name}}
+          span
+            span(ng-class='ctrl.getIconClass(layout.symbol)')
+            span(style="font-family: 'Source Sans Pro',sans-serif;")  {{layout.name}}
 .spinner(ng-show="ctrl.pageLoading")  
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      
