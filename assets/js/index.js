@@ -6,7 +6,9 @@ $(document).ready(function () {
     $.cookie('resilienzManager-language', language, {expires: 365, path: '/'})
   }
   $('.lang-selector').click(function () {
-    $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
-    window.location = '/intro'
+    if ($(this).data('lang') === 'de') {
+      $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
+      window.location = '/intro'
+    }
   })
 })

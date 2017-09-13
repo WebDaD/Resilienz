@@ -1,6 +1,8 @@
 /* global $ */
 $(document).ready(function () {
   $('.login-form').on('click', '#login-submit', function () {
+    $('#register_submit').hide()
+    $('#loading').show()
     $('#login-error').hide()
     var errors = 0
     errors += checkField('login-email')
@@ -24,9 +26,13 @@ $(document).ready(function () {
         window.location.href = '/app'
       } else {
         error(data.msg)
+        $('#register_submit').show()
+        $('#loading').hide()
       }
     }).fail(function (data) {
       error(data.responseJSON.msg)
+      $('#register_submit').show()
+      $('#loading').hide()
     })
   })
 })
