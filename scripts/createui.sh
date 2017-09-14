@@ -30,6 +30,7 @@ echo 'OK'
 
 echo -n '==> Deploying jquery ...'
 cp bower_components/jquery/dist/jquery.min.js public/js/jquery.min.js
+cp bower_components/jquery/dist/jquery.min.js admin/jquery.min.js
 echo 'OK'
 
 echo -n '==> Deploying jquery.imgareaselect ...'

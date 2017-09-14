@@ -85,6 +85,7 @@
       <p class="well">No Entries yet</p>
     <?php endif; ?>
     </div>
+    <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="bootstrap-sortable.js"></script>
     <?php $conn->close(); ?>
