@@ -32,7 +32,6 @@
         hide: false,
         movable: true,
         resizable: true,
-        persistent: true,
         show: true,
         aspectRatio: data.width + ':' + data.height,
         imageHeight: data.height,
