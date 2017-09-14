@@ -24,6 +24,7 @@
     "angular-ui-select": "*",
     "ng-table":"*",
     "bootstrap": "*",
+    "bootstrap-sortable":"*",
     "font-awesome": "*",
     "flag-icon-css": "*",
     "imgareaselect":"*",

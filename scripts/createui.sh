@@ -52,11 +52,21 @@ echo 'OK'
 echo -n '==> Deploying Bootstrap ...'
 cp bower_components/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.min.css
 cp bower_components/bootstrap/dist/js/bootstrap.min.js public/js/bootstrap.min.js
+cp bower_components/bootstrap/dist/css/bootstrap.min.css admin/bootstrap.min.css
+cp bower_components/bootstrap/dist/js/bootstrap.min.js admin/bootstrap.min.js
+echo 'OK'
+
+echo -n '==> Deploying Bootstrap-Sortable to Admin ...'
+cp bower_components/bootstrap-sortable/Contents/bootstrap-sortable.css admin/bootstrap-sortable.css
+
+cp bower_components/bootstrap-sortable/Scripts/bootstrap-sortable.js admin/bootstrap-sortable.js
 echo 'OK'
 
 echo -n '==> Deploying Font-Awesome ...'
 cp bower_components/font-awesome/css/font-awesome.min.css public/css/font-awesome.min.css
 cp bower_components/font-awesome/fonts/* public/fonts 2>>/dev/null
+cp bower_components/font-awesome/css/font-awesome.min.css admin/font-awesome.min.css
+cp bower_components/font-awesome/fonts/* admin/fonts 2>>/dev/null
 echo 'OK'
 
 echo -n '==> Deploying angular'
