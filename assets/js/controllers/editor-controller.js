@@ -3,6 +3,8 @@
   angular.module('resilienzManager')
     .controller('resilienzManager-Editor', ['$scope', 'resilienzManagerDataProvider', '$uibModalInstance', 'data', function ($scope, resilienzManagerDataProvider, $uibModalInstance, data) {
       var self = this
+      self.orgWidth = document.getElementById('imgAreaSelect').naturalWidth
+      self.orgHeight = document.getElementById('imgAreaSelect').naturalHeight
       self.cancel = function () {
         angular.element('#imgAreaSelect').imgAreaSelect({
           disable: true,
@@ -15,7 +17,7 @@
         // TODO: get image width, height
         var clientWidth = document.getElementById('imgAreaSelect').clientWidth
         var clientHeight = document.getElementById('imgAreaSelect').clientHeight
-        resilienzManagerDataProvider.imageRescale(data.image, self.coords, clientWidth, clientHeight, data.width, data.height).then(function (something) {
+        resilienzManagerDataProvider.imageRescale(data.image, self.coords, clientWidth, clientHeight, self.orgWidth, self.orgHeight).then(function (something) {
           angular.element('#imgAreaSelect').imgAreaSelect({
             disable: true,
             hide: true,
@@ -34,8 +36,8 @@
         resizable: true,
         show: true,
         aspectRatio: data.width + ':' + data.height,
-        imageHeight: data.height,
-        imageWidth: data.width,
+        imageHeight: self.orgHeight,
+        imageWidth: self.orgWidth,
         x1: 1,
         y1: 1,
         x2: 1 + data.width,
