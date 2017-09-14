@@ -12,7 +12,10 @@
         $uibModalInstance.dismiss('cancel')
       }
       self.close = function () {
-        resilienzManagerDataProvider.imageRescale(data.image, self.coords).then(function (something) {
+        // TODO: get image width, height
+        var clientWidth = document.getElementById('imgAreaSelect').clientWidth
+        var clientHeight = document.getElementById('imgAreaSelect').clientHeight
+        resilienzManagerDataProvider.imageRescale(data.image, self.coords, clientWidth, clientHeight, data.width, data.height).then(function (something) {
           angular.element('#imgAreaSelect').imgAreaSelect({
             disable: true,
             hide: true,
@@ -29,6 +32,7 @@
         hide: false,
         movable: true,
         resizable: true,
+        persistent: true,
         show: true,
         aspectRatio: data.width + ':' + data.height,
         imageHeight: data.height,

@@ -38,9 +38,14 @@
               method: 'GET', url: restURL + 'positions/' + actionid + '/' + positionid + '/image'
             })
           },
-          imageRescale: function (name, data) {
+          imageRescale: function (name, data, cw, ch, width, height) {
+            var sd = data
+            sd.cw = cw
+            sd.ch = ch
+            sd.imageWidth = width
+            sd.imageHeight = height
             return $http({
-              method: 'PUT', url: restURL + 'bookimages/' + name + '/rescale', data: data
+              method: 'PUT', url: restURL + 'bookimages/' + name + '/rescale', data: sd
             })
           },
           imageDelete: function (name) {

@@ -209,7 +209,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.put('/bookimages/:name/rescale', login.isLoggedIn(), function (req, res) {
-    layouter.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, function (error) {
+    layouter.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, req.body.cw, req.body.ch , req.body.imageWidth, req.body.imageHeight, function (error) {
       if (error) {
         res.status(503).json(error)
       } else {
