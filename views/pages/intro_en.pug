@@ -1,0 +1,22 @@
+doctype html
+html(lang=lang.key)
+  head
+    include ../includes/head.jade
+    script(src='js/jquery.min.js')
+  body.no-skin
+    .container
+      h1.text-center
+          img(src="images/android-chrome-192x192.png" style="height: 50px;margin-right: 10px;")
+          span The Power of Resilience
+      .row.row-grid
+        .col-md-12.text-center
+          iframe(width='854px', height='480px', src='https://www.youtube.com/embed/Z9o4xNbQHPw?rel=0&controls=1&showinfo=0', frameborder='0', allowfullscreen='true' style="border: 4px solid black;")
+      .row.row-grid
+        .col-md-6
+          p A project for the low-threshold promotion of resilience, creativity and mental health in children in difficult life situations. In weekly Storytelling Clubs children learn to write, draw and tell their own stories of strengths. The concrete result of a Storytelling Club is a book, composed of the stories and drawings of the children. The book is intended to help other children in a similar situation. Storytelling Club workshops can be conducted in refugee camps as well as any other setting where children have to cope with difficult circumstances. Pedagogues that wish to conduct a Storytelling Club are guided by a manual that leads through the procedures and has preprints for the story book. The Storytelling Club is a cooperative venture by the PRIX JEUNESSE Foundation, UNICEF and the International Central Institute for Youth and Educational Television.
+          p For a first impression, please see our introduction video and demo manual. 
+          p Coming soon: Registration and access to all materials in English!
+        .col-md-3
+          a(href="pdf/stc_manual_demo_en" target="_blank" title=lang.intro_manual)
+            img.img-responsive(src="images/demo_manual_en.jpg" style="width:60%;")
+    include ../includes/footer.jade
