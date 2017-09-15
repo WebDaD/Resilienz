@@ -56,6 +56,7 @@ Dropzone.autoDiscover = false
         $rootScope.action = $cookies.get('resilienzManager-action')
         $rootScope.email = $cookies.get('resilienzManager-email')
         $rootScope.token = $cookies.get('resilienzManager-token')
+        $rootScope.language = $cookies.get('resilienzManager-language')
         $http.defaults.headers.common.email = $cookies.get('resilienzManager-email')
         $http.defaults.headers.common.token = $cookies.get('resilienzManager-token')
       } else {
@@ -64,6 +65,7 @@ Dropzone.autoDiscover = false
         $rootScope.action = ''
         $rootScope.email = ''
         $rootScope.token = ''
+        $rootScope.language = ''
         $http.defaults.headers.common.email = ''
         $http.defaults.headers.common.token = ''
         window.location = '/login'
@@ -75,11 +77,13 @@ Dropzone.autoDiscover = false
         $cookies.remove('resilienzManager-token')
         $cookies.remove('resilienzManager-admin')
         $cookies.remove('resilienzManager-email')
+        $cookies.remove('resilienzManager-language')
         $rootScope.admin = false
         $rootScope.id = ''
         $rootScope.action = ''
         $rootScope.email = ''
         $rootScope.token = ''
+        $rootScope.language = ''
         $http.defaults.headers.common.email = ''
         $http.defaults.headers.common.token = ''
         $location.path('/login')

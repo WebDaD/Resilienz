@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular, alert */
 ;(function () {
   angular.module('resilienzManager')
     .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', '$window', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope, $window) {
@@ -102,6 +102,15 @@
         self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
         $scope.$apply()
       }
+      self.toBig = function () {
+        var text = ''
+        if ($rootScope.language === 'de') {
+          text = 'Bild zu groß. Maximal 2MB erlaubt.'
+        } else {
+          text = 'Image too Big. Max Size is 2MB.'
+        }
+        alert(text)
+      }
       self.success = function (file, response) {
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
@@ -135,7 +144,7 @@
             }
             position.dropzoneConfig = {
               parallelUploads: 1,
-              maxFileSize: 10,
+              maxFileSize: 2,
               url: position.action,
               paramName: 'dropzone',
               method: 'post'
