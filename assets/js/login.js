@@ -1,5 +1,8 @@
 /* global $ */
 $(document).ready(function () {
+  if ($.cookie('resilienzManager-id') && $.cookie('resilienzManager-email') && $.cookie('resilienzManager-token')) {
+    window.location.href = '/app'
+  }
   $('.login-form').on('click', '#login-submit', function () {
     $('#register_submit').hide()
     $('#loading').show()
