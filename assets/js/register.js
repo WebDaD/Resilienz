@@ -37,7 +37,7 @@ $(document).ready(function () {
       error('Some Fields are Empty')
       return
     }
-    if ($('register_password').val() !== $('register_passwordrepeat').val()) {
+    if ($('#register_password').val() !== $('#register_passwordrepeat').val()) {
       error('Passwords must match')
       $('#register_password').addClass('has-error')
       $('#register_passwordrepeat').addClass('has-error')
