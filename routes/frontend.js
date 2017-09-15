@@ -44,32 +44,32 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/', function (req, res) { // index
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/index', {lang: translations})
     })
   })
   app.get('/intro', function (req, res) { // intro-page (links to login/register)
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/intro', {lang: translations})
     })
   })
   app.get('/app', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/app', {lang: translations})
     })
   })
   app.get('/datenschutz', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/datenschutz', {lang: translations})
     })
   })
   app.get('/impressum', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/impressum', {lang: translations})
     })
   })
   app.get('/nutzungsbedingungen', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/nutzungsbedingungen', {lang: translations})
     })
   })

@@ -15,12 +15,12 @@ var request = require('request')
  */
 module.exports = function (app, language, login, config) {
   app.get('/login', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language']|| 'de', function (translations) {
       res.render('pages/login', {lang: translations, captcha: config.gcaptchaclient})
     })
   })
   app.get('/reset', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language']|| 'de', function (translations) {
       res.render('pages/reset_pwd', {lang: translations, captcha: config.gcaptchaclient})
     })
   })
@@ -28,13 +28,13 @@ module.exports = function (app, language, login, config) {
     if (!req.query.resetToken || !req.query.email) {
       res.status(403).send('No ResetToken or E-Mail-Address given.')
     } else {
-      language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+      language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
         res.render('pages/set_pwd', {lang: translations, captcha: config.gcaptchaclient, resetToken: req.query.resetToken, email: req.query.email})
       })
     }
   })
   app.get('/register', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language']|| 'de', function (translations) {
       language.listLanguages(function (languages) {
         res.render('pages/register', {lang: translations, languages: languages, captcha: config.gcaptchaclient})
       })
@@ -78,7 +78,7 @@ module.exports = function (app, language, login, config) {
           if (body.success !== undefined && !body.success) {
             return res.status(403).json({msg: 'Failed captcha verification', response: response})
           } else {
-            login.reset(req.cookies['resilienzManager-language'], req.body.email, function (error, data) {
+            login.reset(req.cookies['resilienzManager-language'] || 'de', req.body.email, function (error, data) {
               if (error) {
                 return res.status(501).json(error)
               } else {
