@@ -128,8 +128,8 @@
           self.pageImage = {
             'background-image': 'url(/layout/background/' + self.selectedPage + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
           }
-          var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
-          var orgHeight = 1040
+          var orgWidth = (self.selectedCategory.id === '1') ? 2127 : 4254
+          var orgHeight = 3072
           var pageHeight = 700
           var pageWidth = ((orgWidth * pageHeight) / orgHeight)
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
