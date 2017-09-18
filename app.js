@@ -13,6 +13,7 @@ console.log('Pulling in dependencies...')
 var express = require('express')
 var app = express()
 var server = require('http').createServer(app)
+server.timeout = 0
 var pack = require('./package.json')
 var config = require('./config.json')
 var bodyParser = require('body-parser')
