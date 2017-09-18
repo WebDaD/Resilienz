@@ -147,6 +147,21 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.get('/admin/book/:action_id/', function (req, res) {
+    bookGenerator.getBook(req.params.action_id, function (error, path) {
+      if (error) {
+        console.error(error)
+        res.status(503).json(error)
+      } else {
+        var file = fs.createReadStream(path)
+        var stat = fs.statSync(path)
+        res.setHeader('Content-Length', stat.size)
+        res.setHeader('Content-Type', 'application/pdf')
+        res.setHeader('Content-Disposition', 'attachment; filename=myBook.pdf')
+        file.pipe(res)
+      }
+    })
+  })
   app.get('/categories/full/', login.isLoggedIn(), function (req, res) {
     database.getCategoriesFull(req.cookies['resilienzManager-language'], function (error, categories) {
       if (error) {

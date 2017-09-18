@@ -70,9 +70,9 @@
               </td>
               <td  data-value="<?php echo $row["book"];?>">
                 <?php if($row["book"] == "Y") : ?>
-                  <a href="https://storytellingclub.de/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download</a>
+                  <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download</a>
                 <?php elseif($row["book"] == "O") : ?>
-                  <a href="https://storytellingclub.de/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download (Old Book)</a>
+                  <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download (Old Book)</a>
                 <?php else: ?>
                     &nbsp;
                 <?php endif; ?>
