@@ -14,6 +14,7 @@ var mime = require('mime-types')
 var multer = require('multer')
 var upload = multer({ dest: '/tmp/' })
 const uuidV4 = require('uuid/v4')
+const nodemailer = require('nodemailer')
  /** Exports Routes
  * @param {object} app - Express app
  * @param {object} database - Database Object
@@ -116,7 +117,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.put('/book/:action_id/', login.isLoggedIn(), function (req, res) {
-    bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'], function (error, path) {
+    bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'] || 'de', function (error, path) {
       if (error) {
         console.error(error)
         res.status(503).json(error)
@@ -126,7 +127,27 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
             console.error(error)
             res.status(503).json(error)
           } else {
-            res.status(200).end()
+            database.getEmailByAction(req.params.action_id, function (error, email) {
+              if (error) {
+                console.error(error)
+              }
+              var transporter = nodemailer.createTransport(config.mail)
+              // send mail here
+              var mailOptions = {
+                from: '"Storytelling Club" <info@prixjeunesse.de>', // sender address
+                to: email, // list of receivers
+                bcc: 'dominik.sigmund@webdad.eu,info@prixjeunesse.de',
+                subject: language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_subject'), // Subject line
+                html: language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_text') + '<br/><a href="https://www.storytelling.de/book/' + req.params.action_id + '">' + language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_button') + '</a>' // html body
+              }
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.error(error)
+                }
+                res.status(200).end()
+              })
+            })
+            
           }
         })
       }
