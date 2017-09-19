@@ -110,16 +110,16 @@
           <tbody>
             <?php while($row = $result->fetch_assoc()): ?>
               <tr>
-                <td><?php echo $row["email"];?></td>
-                <td><?php echo $row["language"];?></td>
-                <td data-value="<?php echo $row["finalized"];?>">
+                <td data-title="E-Mail"><?php echo $row["email"];?></td>
+                <td data-title="Language"><?php echo $row["language"];?></td>
+                <td data-value="<?php echo $row["finalized"];?>" data-title="Finalized">
                   <?php if($row["finalized"] == "1") : ?>
                     <i class="fa fa-check" aria-hidden="true" style="color:green;"></i>
                   <?php else: ?>
                     &nbsp;
                   <?php endif; ?>
                 </td>
-                <td  data-value="<?php echo $row["book"];?>">
+                <td data-value="<?php echo $row["book"];?>" data-title="Book">
                   <?php if($row["book"] == "Y") : ?>
                     <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download</a>
                   <?php elseif($row["book"] == "O") : ?>
