@@ -47,40 +47,42 @@
     <div class="container">
       <h1>Resilienz :: Books</h1>
       <?php if ($result->num_rows > 0):?>
-      <table class="table table-bordered table-striped table-hover sortable">
-        <thead>
-          <tr>
-            <th data-defaultsort="desc">E-Mail</th>
-            <th>Language</th>
-            <th>Finalized</th>
-            <th>Book</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php while($row = $result->fetch_assoc()): ?>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover sortable">
+          <thead>
             <tr>
-              <td><?php echo $row["email"];?></td>
-              <td><?php echo $row["language"];?></td>
-              <td data-value="<?php echo $row["finalized"];?>">
-                <?php if($row["finalized"] == "1") : ?>
-                  <i class="fa fa-check" aria-hidden="true" style="color:green;"></i>
-                <?php else: ?>
-                  &nbsp;
-                <?php endif; ?>
-              </td>
-              <td  data-value="<?php echo $row["book"];?>">
-                <?php if($row["book"] == "Y") : ?>
-                  <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download</a>
-                <?php elseif($row["book"] == "O") : ?>
-                  <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download (Old Book)</a>
-                <?php else: ?>
-                    &nbsp;
-                <?php endif; ?>
-              </td>
+              <th data-defaultsort="desc">E-Mail</th>
+              <th>Language</th>
+              <th>Finalized</th>
+              <th>Book</th>
             </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <?php while($row = $result->fetch_assoc()): ?>
+              <tr>
+                <td><?php echo $row["email"];?></td>
+                <td><?php echo $row["language"];?></td>
+                <td data-value="<?php echo $row["finalized"];?>">
+                  <?php if($row["finalized"] == "1") : ?>
+                    <i class="fa fa-check" aria-hidden="true" style="color:green;"></i>
+                  <?php else: ?>
+                    &nbsp;
+                  <?php endif; ?>
+                </td>
+                <td  data-value="<?php echo $row["book"];?>">
+                  <?php if($row["book"] == "Y") : ?>
+                    <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download</a>
+                  <?php elseif($row["book"] == "O") : ?>
+                    <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download (Old Book)</a>
+                  <?php else: ?>
+                      &nbsp;
+                  <?php endif; ?>
+                </td>
+              </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
+      </div>
     <?php else: ?>
       <p class="well">No Entries yet</p>
     <?php endif; ?>
