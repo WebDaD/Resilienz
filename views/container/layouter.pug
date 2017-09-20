@@ -34,12 +34,12 @@
           i.fa.fa-upload(aria-hidden="true" ng-show="!position.sending")
           span(ng-show="!position.sending")  #{lang.layout_upload}
           i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="position.sending")
-      span.edit-overlay(ng-show="position.value && !position.deleting && position.isImage  && !ctrl.final && !position.sending" ng-click="ctrl.delete(position)"  title=lang.layout_delete)
-        i.fa.fa-trash(aria-hidden="true" style="color:red;")
-        span.sr-only  #{lang.layout_delete}
       span.edit-overlay(ng-show="position.value && !position.deleting && position.isImage && !ctrl.final && !position.sending" ng-click="ctrl.openEditor(position)"  title=lang.layout_edit style="margin-right:10px;")
         i.fa.fa-pencil(aria-hidden="true")
         span.sr-only  #{lang.layout_edit}
+      span.edit-overlay(ng-show="position.value && !position.deleting && position.isImage  && !ctrl.final && !position.sending" ng-click="ctrl.delete(position)"  title=lang.layout_delete)
+        i.fa.fa-trash(aria-hidden="true" style="color:red;")
+        span.sr-only  #{lang.layout_delete}
       i.fa.fa-cog.fa-spin(aria-hidden="true" ng-show="position.value && position.deleting || position.sending")
       span#makeText.edit-overlay(ng-show="!position.deleting && position.isImage && !ctrl.final && position.possibleType==='both' && !position.sending" ng-click="ctrl.makeText(position)"  title=lang.layout_make_text)
         i.fa.fa-font(aria-hidden="true" style="color:#0068d9;")
