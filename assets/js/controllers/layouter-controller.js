@@ -103,6 +103,7 @@
         if (!self.final) {
           position.isImage = true
           position.style['background-image'] = 'url(/layout/image/placeholder)'
+          position.value = ''
         }
       }
       self.saveText = function ($event, position) {
