@@ -13,6 +13,7 @@ console.log('Pulling in dependencies...')
 var express = require('express')
 var app = express()
 var server = require('http').createServer(app)
+server.timeout = 0
 var pack = require('./package.json')
 var config = require('./config.json')
 var bodyParser = require('body-parser')
@@ -58,7 +59,7 @@ Language(database, function (error, language) {
     })
   } else {
     var login = new Login(database, language, bcrypt, config.salt, config.serversecret, config.mail)
-    var layouter = new Layouter(config.layouts, config.images, config.pages, database)
+    var layouter = new Layouter(config.layouts, config.images, config.pages, database, config.bookpages)
     var bookGenerator = new BookGenerator(layouter, config.pages, config.books, config.bookpages)
     var status = new Status()
     // Routes

@@ -9,7 +9,7 @@ $(document).ready(function () {
       error('Some Fields are Empty')
       return
     }
-    if ($('set-password').val() !== $('set-passwordrepeat').val()) {
+    if ($('#set-password').val() !== $('#set-passwordrepeat').val()) {
       error('Passwords must match')
       $('#set-password').addClass('has-error')
       $('#set-passwordrepeat').addClass('has-error')

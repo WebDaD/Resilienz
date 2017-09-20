@@ -12,7 +12,11 @@
         $uibModalInstance.dismiss('cancel')
       }
       self.close = function () {
-        resilienzManagerDataProvider.imageRescale(data.image, self.coords).then(function (something) {
+        var clientWidth = document.getElementById('imgAreaSelect').clientWidth
+        var clientHeight = document.getElementById('imgAreaSelect').clientHeight
+        var orgWidth = document.getElementById('imgAreaSelect').naturalWidth
+        var orgHeight = document.getElementById('imgAreaSelect').naturalHeight
+        resilienzManagerDataProvider.imageRescale(data.image, self.coords, clientWidth, clientHeight, orgWidth, orgHeight).then(function (something) {
           angular.element('#imgAreaSelect').imgAreaSelect({
             disable: true,
             hide: true,

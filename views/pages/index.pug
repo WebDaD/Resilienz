@@ -8,34 +8,34 @@ html(lang='en')
     script(src='js/index.js')
   body.no-skin
     .container
-      h1.text-center Willkommen / Welcome / ¡Bienvenidos! / ترحيب
+      h1.text-center
+        img(src="images/android-chrome-192x192.png" style="height: 100px;margin-right: 10px;")
+        span Willkommen / Welcome / ¡Bienvenidos! / ترحيب
       .row.row-grid
+        .col-md-3
+          a(href="https://www.prixjeunesse.de" target="_blank")
+            img.pull-right(src="images/Drilling_neutral_blau_512px.png" style="width:100%;" alt="Prix Jeunesse International Munich" title="Prix Jeunesse International Munich")
         .col-md-6
-            include ../includes/gallery.jade
-        .col-md-6
-          img.pull-right(src="images/android-chrome-192x192.png")
+          include ../includes/gallery.jade
+        .col-md-3
+          a(href="http://www.izi.de" target="_blank")
+              img.pull-left(src="images/Logo_IZI.jpg" style="width:50%;" alt="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk." title="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk.")
       .row.row-grid
         .col-md-12      
-          h2 The Story Telling Club
+          h2 Der Storytelling Club
           p
-            | A project for the low-threshold promotion of resilience, creativity and mental health in children in difficult life situations.
+            | Der Storytelling Club ist ein Projekt zur niederschwelligen Förderung der Resilienz, Kreativität und psychischen Gesundheit von Kindern in schwierigen Lebenssituationen. In wöchentlichen Storytelling Clubs lernen Kinder, ihre eigenen starken Geschichten zu schreiben, malen und erzählen. Das konkrete Ergebnis eines Storytelling Clubs ist ein Storybook mit den Geschichten und Bildern der Kinder, das anderen Kindern in ähnlichen Situationen helfen soll.
           p
-            | This project is a cooperative venture by the PRIX JEUNESSE Foundation, UNICEF and the International Central Institute for Youth and Educational Television (henceforth the project group) together with partners worldwide. The initial sites of implementation are UNICEF refugee camps and refugee accommodation in Germany. The project group provides the concept, training, a manual on the specific procedure, preprints for the picture books that are to be produced and to an extent support for its realisation. The local project partners organise a weekly workshop over an agreed timeframe, e.g. eight weeks, implemented together with a trained supervisor. It is possible to repeat or expand on the project.
+            | Storytelling-Club-Workshops können mit Flüchtlingskindern oder in einem anderen Umfeld mit Kindern, die mit schwierigen Situationen konfrontiert sind, abgehalten werden. PädagogInnen, die einen Storytelling Club durchführen möchten, bekommen ein Handout an die Hand, das sie durch die Module führt und Vordrucke für das Storybook enthält.
           p
-            | The official aim of the Story Telling Club project is to create a story book intended to help other children in a similar situation. The book’s heroes are two children, e.g. Aylin and Mohamed, who live in the same difficult situation as the participating children, e.g. in a refugee camp. Later the book will contain small, short stories and pictures or photographs narrating experience of everyday resilience (Strong Stories). Each of the stories ends with a little moral, such as “... and ever since then Aylin has known that she can achieve more than others thought she could”, or “That was the day Mohamed learnt that you can be strong by helping others.”
-          p
-            | The stories are created during weekly meetings in which the children come together for approximately 1.5 hours, usually to watch short films that then form a point of departure for their own strong stories. The children learn how to tell stories, as a monologue before the group, in pictures and in written form. Narratives are typically sparked by impulses such as “Have you ever had the experience that at first you didn’t dare to do something but then you did?” or “When did you notice that you can really do something?”
-          p
-            | Short lessons on learning stories are accompanied by basic principles of resilience which are to be stressed in the stories. There will also be small, proven exercises promoting self-esteem and communication.
-          p
-            | The Story Telling Club is a pedagogic building block system that supervisors on the ground can use to undertake project-oriented work with the children. In turn the results will be made available to other project groups around the world. Scientific evaluation in the first initiatives will assure quality and provide the supervisors with important information on opportunities and potential problems. In some cases the intention is to forge contact to media professionals who will report on the project and/or present individual Strong Stories in the media.
+            | Der Storytelling Club ist eine Kooperationsprojekt der Stiftung PRIX JEUNESSE, UNICEF und dem Internationalen Zentralinstitut für das Jugend- und Bildungsfernsehen (IZI) beim Bayerischen Rundfunk.
       .row.row-grid
         .col-md-3
           button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="de") Weiter auf Deutsch
         .col-md-3
-          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="en") Continue in english
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="en") Continue in English
         .col-md-3
-          button.lang-selector.btn-default.btn-lg.btn.btn-block.disabled(data-lang="et" tabindex="-1") Continuar en español
+          button.lang-selector.btn-default.btn-lg.btn.btn-block.disabled(data-lang="et" tabindex="-1") Continuar en Español
         .col-md-3
           button.lang-selector.btn-default.btn-lg.btn.btn-block.disabled(data-lang="ar" tabindex="-1") تستمر باللغة العربية
     include ../includes/footer.jade

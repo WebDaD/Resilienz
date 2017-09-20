@@ -15,18 +15,18 @@ html(lang=lang.key, ng-app='resilienzManager')
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href='#')
-            img(src="images/android-chrome-192x192.png" style="width:72px;height:72px;")
+            img(src="images/android-chrome-192x192.png" style="width:72px;height:auto;")
             #{lang.title}  
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/welcome')}")
               a(href='#!/welcome') #{lang.nav_welcome}
+            li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/materials')}")
+              a(href='#!/materials') #{lang.nav_materials}
             li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/layout')}")
               a(href='#!/layout') #{lang.nav_layout}
             li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/finish')}")
               a(href='#!/finish') #{lang.nav_finish}
-            li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/materials')}")
-              a(href='#!/materials') #{lang.nav_materials}
             li(ng-show="admin" ng-class="{ active: isActive('/actions')}")
               a(href='#!/actions') Actions
             li(ng-show="admin" ng-class="{ active: isActive('/users')}")

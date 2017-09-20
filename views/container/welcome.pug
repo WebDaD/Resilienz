@@ -1,13 +1,23 @@
 .container
   h1 #{lang.welcome_title}
   p #{lang.welcome_text}
-  p
-    a(href='/pdf/stc_manual_'+lang.key target="_blank")  #{lang.intro_manual}
-  p
-    a(href='#!/materials')  #{lang.welcome_materials}
-  p
-    button.btn.btn-lg.btn-primary(type="button" ng-click="toLayouter()")
-      span #{lang.nav_layout}  
-      i.fa.fa-chevron-right(aria-hidden="true")
-  p
-    a(href='/powerpoint/'+lang.key target="_blank") #{lang.welcome_powerpoint}
+  p #{lang.welcome_text_parental}
+  .row.row-grid(style="margin-bottom:10px;")
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_parental_'+lang.key target="_blank") #{lang.welcome_link_parental}
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_institutions.docx' target="_blank") #{lang.welcome_link_institutions}
+  p #{lang.welcome_text_part_2}
+  .row.row-grid(style="margin-bottom:10px;")
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_manual_'+lang.key target="_blank")  #{lang.intro_manual}
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='#!/materials')  #{lang.welcome_materials}
+  p #{lang.welcome_text_bottom}
+  .row.row-grid(style="margin-bottom:10px;")
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='#!/layout') #{lang.nav_layout}
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='/powerpoint/'+lang.key target="_blank") #{lang.welcome_powerpoint}
+  img.img-responsive(src="images/people_hands.png" style="margin: 0 auto")
+  p.text-center #{lang.welcome_have_fun}

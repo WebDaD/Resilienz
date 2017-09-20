@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular, alert */
 ;(function () {
   angular.module('resilienzManager')
     .controller('resilienzManager-Layout', ['$scope', 'resilienzManagerDataProvider', '$uibModal', '$rootScope', '$window', function ($scope, resilienzManagerDataProvider, $uibModal, $rootScope, $window) {
@@ -48,6 +48,15 @@
           console.error(error)
         })
       })
+      self.openInstructions = function () {
+        $uibModal.open({
+          animation: true,
+          templateUrl: 'modals/instructions',
+          controller: 'resilienzManager-Instructions',
+          controllerAs: 'ctrl',
+          size: 'lg'
+        })
+      }
       self.openEditor = function (position) {
         if (!self.final) {
           var data = {}
@@ -120,6 +129,15 @@
         self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
         $scope.$apply()
       }
+      self.toBig = function () {
+        var text = ''
+        if ($rootScope.language === 'de') {
+          text = 'Bild zu groß. Maximal 2MB erlaubt.'
+        } else {
+          text = 'Image too Big. Max Size is 2MB.'
+        }
+        alert(text)
+      }
       self.success = function (file, response) {
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
@@ -138,8 +156,8 @@
           self.pageImage = {
             'background-image': 'url(/layout/background/' + self.selectedPage + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
           }
-          var orgWidth = (self.selectedCategory.id === '1') ? 720 : 1440
-          var orgHeight = 1040
+          var orgWidth = (self.selectedCategory.id === '1') ? 2127 : 4254
+          var orgHeight = 3072
           var pageHeight = 700
           var pageWidth = ((orgWidth * pageHeight) / orgHeight)
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
@@ -175,7 +193,7 @@
             }
             position.dropzoneConfig = {
               parallelUploads: 1,
-              maxFileSize: 10,
+              maxFileSize: 2,
               url: position.action,
               paramName: 'dropzone',
               method: 'post'

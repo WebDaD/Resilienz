@@ -24,7 +24,7 @@
 
 /* Form required */
 .required:after {
-    content: "*";
+    content: "* (Pflichtfeld)";
     padding-left:1%;
     color:red;
 }
@@ -64,16 +64,33 @@ footer {
   background-color: #212121 !important;
   color: #f0f0f0 !important;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom:10px;
+  padding-top: 2px;
+  padding-bottom:2px;
   margin-top: 20px;
   bottom: 0px;
   position: fixed;
 }
+/* Footer mobile */
+@media (max-width: 767px) {
+  footer {
+    position: inherit;
+  }
+  body {
+    padding-bottom: 0;
+  }
+}
+
 /* better typhography */
 body {
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   padding-bottom: 140px;
+  font-size: 20px;
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  word-wrap: normal;
 }
 @media (min-width: 1200px) {
   body {
@@ -100,8 +117,9 @@ p, figcaption, td, .btn {
 #page .position {
   position:absolute;
   border: 2px solid #008ae1;
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 #page .position:hover {
   border: 2px solid #0068d9;

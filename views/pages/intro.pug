@@ -5,22 +5,22 @@ html(lang=lang.key)
     script(src='js/jquery.min.js')
   body.no-skin
     .container
-      h1 #{lang.head_storytelling}
+      h1.text-center
+          img(src="images/android-chrome-192x192.png" style="height: 50px;margin-right: 10px;")
+          span #{lang.head_storytelling}
+      .row.row-grid
+        .col-md-12.text-center
+          iframe(width='854px', height='480px', src='https://www.youtube.com/embed/Z9o4xNbQHPw?rel=0&controls=1&showinfo=0', frameborder='0', allowfullscreen='true' style="border: 4px solid black;")
       .row.row-grid
         .col-md-6
-          div(style='position:relative;height:0;padding-bottom:56.25%')
-            iframe(src='https://www.youtube.com/embed/OyqIAxo71Dc?rel=0&showinfo=0?ecver=2', width='640', height='360', frameborder='0', style='position:absolute;width:100%;height:100%;left:0', allowfullscreen='')
-        .col-md-6
-          p #{lang.intro_text}
-      .row.row-grid
-        .col-md-6
+          p #{lang.intro_text_part_2}
+          p #{lang.intro_text_buttons}
           a.btn-primary.btn-lg.btn.btn-block(href="register") #{lang.intro_register}
-        .col-md-6
           a.btn-default.btn-lg.btn.btn-block(href="login") #{lang.intro_login}
-        .col-md-6
-          a(href="pdf/stc_book_demo_"+lang.key target="_blank" title=lang.intro_manual)
-            img.img-responsive(src="images/demo_book_"+lang.key+".jpg")
-        .col-md-6
+        .col-md-3
+          a(href="pdf/stc_book_demo_"+lang.key target="_blank" title="Demoversion Storybook")
+            img.img-responsive(src="images/demo_book_"+lang.key+".jpg" style="width:60%;")
+        .col-md-3
           a(href="pdf/stc_manual_demo_"+lang.key target="_blank" title=lang.intro_manual)
-            img.img-responsive(src="images/demo_manual_"+lang.key+".jpg")
+            img.img-responsive(src="images/demo_manual_"+lang.key+".jpg" style="width:60%;")
     include ../includes/footer.jade
