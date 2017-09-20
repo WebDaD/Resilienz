@@ -93,6 +93,7 @@
       self.makeText = function (position) {
         if (!self.final) {
           position.isImage = false
+          position.changed = false
           position.value = 'Enter Text...'
           position.style['background-image'] = 'none'
         }
