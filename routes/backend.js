@@ -318,7 +318,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.put('/booktext/save/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
-    database.saveTextOnPosition(req.params.action_id, req.params.page, req.params.position_id, req.body.text, function (error) {
+    database.saveTextOnPosition(req.params.action_id, req.params.page, req.params.position_id, req.body.data.text, function (error) {
       if (error) {
         return res.status(400).json(error)
       } else {
