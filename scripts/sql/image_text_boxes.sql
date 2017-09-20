@@ -5,6 +5,7 @@ ALTER TABLE `resilienz`.`images_on_positions`
 ALTER TABLE `resilienz`.`positions` 
 ADD COLUMN `possible_type` VARCHAR(10) NOT NULL DEFAULT 'image' AFTER `layouts_id`;
 
+UPDATE `resilienz`.`positions` SET `possible_type`='both' WHERE `id`='1';
 UPDATE `resilienz`.`positions` SET `possible_type`='both' WHERE `id`='38';
 UPDATE `resilienz`.`positions` SET `possible_type`='both' WHERE `id`='40';
 
