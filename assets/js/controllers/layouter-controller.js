@@ -112,6 +112,7 @@
           var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
           resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, {'text': size + '|' + position.value}).then(function (something) {
             self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
+            self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].changed = false
             // $scope.$apply()
           })
         }
