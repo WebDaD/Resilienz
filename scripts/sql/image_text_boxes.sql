@@ -29,3 +29,7 @@ CREATE OR REPLACE VIEW `positions_on_actions` AS
         JOIN `actions_has_layouts` `ahl`)
     WHERE
         (`p`.`layouts_id` = `ahl`.`layouts_id`);
+
+INSERT INTO `strings` (`id`, `description`, `string_key`) VALUES (NULL, 'Layouter :: zu Bild wechseln', 'layout_make_image'), (NULL, 'layout :: zu Text wechseln', 'layout_make_text'), (NULL, 'Layout :: Text speichern', 'layout_save_text');
+
+INSERT INTO `translations` (`languages_id`, `strings_id`, `translation`) VALUES ('1', '175', 'Bild hochladen'), ('1', '176', 'Text schreiben'), ('1', '177', 'Text speichern');
