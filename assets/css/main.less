@@ -148,7 +148,22 @@ span.edit-overlay {
   font-size: x-large;
   cursor: pointer;
   margin-left: 10px;
+  float:right;
 }
 .lock {
   color: #CDCDCD;
+}
+textarea {
+  resize: none;
+}
+#makeText i:hover,
+#makeImage i:hover,
+#saveText i:hover {
+  font-weight: bold;
+}
+
+/* ImgAreaFix */
+.imgareaselect-outer,
+.modal-body > div:nth-child(2) {
+  position: absolute !important;
 }

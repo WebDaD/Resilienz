@@ -60,7 +60,7 @@
       self.openEditor = function (position) {
         if (!self.final) {
           var data = {}
-          data.image = position.image
+          data.image = position.value
           data.width = position.width
           data.height = position.height
           var modalInstance = $uibModal.open({
@@ -83,9 +83,39 @@
       self.delete = function (position) {
         if (!self.final) {
           position.deleting = true
-          resilienzManagerDataProvider.imageDelete(position.image).then(function (something) {
+          resilienzManagerDataProvider.imageDelete(position.value).then(function (something) {
             position.style['background-image'] = 'url(/layout/image/placeholder)'
-            position.image = undefined
+            position.value = undefined
+            position.type = 'image'
+          })
+        }
+      }
+      self.makeText = function (position) {
+        if (!self.final) {
+          position.isImage = false
+          position.changed = false
+          position.value = position.oldValue || 'Enter Text...'
+          position.oldValue = position.value
+          position.style['background-image'] = 'none'
+        }
+      }
+      self.makeImage = function (position) {
+        if (!self.final) {
+          position.isImage = true
+          position.value = position.oldValue || ''
+          position.oldValue = position.value
+          position.style['background-image'] = 'url(/layout/image/' + position.value || 'placeholder' + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+        }
+      }
+      self.saveText = function ($event, position) {
+        if (!self.final) {
+          self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
+          // $scope.$apply()
+          var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
+          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, {'text': size + '|' + position.value}).then(function (something) {
+            self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
+            self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].changed = false
+            // $scope.$apply()
           })
         }
       }
@@ -93,10 +123,10 @@
         console.error(errorMessage)
       }
       self.dragEnter = function (event) {
-        event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B'
+        if (!self.final) { event.currentTarget.parentElement.style.outline = '2px solid #1BFF1B' }
       }
       self.dragLeave = function (event) {
-        event.currentTarget.parentElement.style.outline = '0px'
+        if (!self.final) { event.currentTarget.parentElement.style.outline = '0px' }
       }
       self.sending = function (file, xhr, formData) {
         self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)].sending = true
@@ -114,7 +144,8 @@
       self.success = function (file, response) {
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
-          position.image = image.data
+          position.value = image.data
+          position.isImage = true
           position.sending = false
           position.deleting = false
           position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
@@ -133,14 +164,35 @@
           var pageHeight = 700
           var pageWidth = ((orgWidth * pageHeight) / orgHeight)
           for (var i = 0; i < self.selectedLayout.positions.length; i++) {
+            var background = 'none'
             var position = self.selectedLayout.positions[i]
+            position.isImage = false
+            position.details = {}
+            if (!position.type) {
+              if (position.possibleType === 'text') {
+                position.value = 'Enter Text here...'
+              } else {
+                background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+                position.isImage = true
+              }
+            } else {
+              if (position.type === 'image') {
+                background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+                position.isImage = true
+              } else {
+                position.value = position.value.split('|')[1]
+                position.details = {
+                  oldValue: position.value.split('|')[0] + 'px'
+                }
+              }
+            }
             position.style = {
               'left': (position.x * pageWidth / orgWidth) + 'px',
               'top': (position.y * pageHeight / orgHeight) + 'px',
               'width': (position.width * pageWidth / orgWidth) + 'px',
               'height': (position.height * pageHeight / orgHeight) + 'px',
               'transform': 'rotate(' + position.spin + 'deg)',
-              'background-image': 'url(/layout/image/' + position.image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+              'background-image': background
             }
             position.dropzoneConfig = {
               parallelUploads: 1,

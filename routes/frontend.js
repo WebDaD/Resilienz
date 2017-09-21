@@ -14,32 +14,32 @@
  */
 module.exports = function (app, language, login) {
   app.get('/container/welcome', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('container/welcome', {lang: translations})
     })
   })
   app.get('/container/materials', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('container/materials', {lang: translations})
     })
   })
   app.get('/container/finish', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('container/finish', {lang: translations})
     })
   })
   app.get('/container/layouter', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('container/layouter', {lang: translations})
     })
   })
   app.get('/modals/editor', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('modals/editor', {lang: translations})
     })
   })
   app.get('/modals/instructions', function (req, res) {
-    language.listTranslation(req.cookies['resilienzManager-language'], function (translations) {
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('modals/instructions', {lang: translations})
     })
   })

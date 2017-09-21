@@ -317,6 +317,22 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
+  app.put('/booktext/save/:action_id/:page/:position_id', login.isLoggedIn(), function (req, res) {
+    database.saveTextOnPosition(req.params.action_id, req.params.page, req.params.position_id, req.body.text, function (error) {
+      if (error) {
+        return res.status(400).json(error)
+      } else {
+        database.updateBookStatus(req.params.action_id, 'O', function (error, result) {
+          if (error) {
+            console.error(error)
+            res.status(503).json(error)
+          } else {
+            res.status(200).end()
+          }
+        })
+      }
+    })
+  })
   // ADMIN ONLY
   app.get('/users', login.isLoggedIn(), login.isAdmin(), function (req, res) {
     database.getUsers(function (error, users) {
