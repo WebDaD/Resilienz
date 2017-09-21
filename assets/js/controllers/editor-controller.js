@@ -28,7 +28,7 @@
       self.image = data.image
       self.imageToLoad = 'bookimages/' + self.image
       self.options = {
-        parent: '.modal-body',
+        parent: '#imgAreaSelect',
         enable: true,
         handles: true,
         hide: false,
