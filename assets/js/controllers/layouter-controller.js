@@ -94,15 +94,17 @@
         if (!self.final) {
           position.isImage = false
           position.changed = false
-          position.value = 'Enter Text...'
+          position.value = position.oldValue || 'Enter Text...'
+          position.oldValue = position.value
           position.style['background-image'] = 'none'
         }
       }
       self.makeImage = function (position) {
         if (!self.final) {
           position.isImage = true
-          position.style['background-image'] = 'url(/layout/image/placeholder)'
-          position.value = ''
+          position.value = position.oldValue || ''
+          position.oldValue = position.value
+          position.style['background-image'] = 'url(/layout/image/' + position.value || 'placeholder' + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
         }
       }
       self.saveText = function ($event, position) {
