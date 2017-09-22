@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>STC :: Admin :: StatusPage</title>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <link rel="stylesheet" href="font-awesome.min.css"/>
+    <style>
+      .hideable {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="status" class="alert alert-info" role="alert" style="display:none;"></div>
+      <h1>STC :: Status</h1>
+      <h2 class="hidable"><span id="hostname">HOSTNAME</span> <small id="uptime"></small></h2>
+      <a class="btn btn-default" href="/pm2" target="_blank">pm2-Status</a>
+      <a class="btn btn-default" href="/pm2web" target="_blank">pm2-Web</a>
+      <a class="btn btn-default" href="https://storytellingclub.de/status" target="_blank">Raw Status</a>
+      <a class="btn btn-default" href="https://db.storytellingclub.de/phpmyadmin" target="_blank">phpMyAdmin</a>
+      <hr  class="hidable"/>
+      <h3 class="hidable">Diskspace</h3>
+      <p class="well hidable">STATUS: <span id="diskspace-status"></span></p>
+      <div class="progress hidable">
+        <div id="diskspace-free" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+          Used 20GB / 80GB (10%)
+        </div>
+      </div>
+      <hr  class="hidable"/>
+      <h3  class="hidable">Memory</h3>
+      <div class="progress hidable">
+      <div id="memory-used" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+          Used 2GB / 8GB
+        </div>
+      </div>
+      <hr  class="hidable"/>
+      <h3  class="hidable">Load</h3>
+      <div id="load" class="alert alert-info hidable"></p>
+      <hr/>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script>
+      $( document ).ready(function() {
+        function getStatus() {
+          $.getJSON( 'https://storytellingclub.de/status')
+            .done(function( json ) {
+              $('#status').removeClass('alert-info').addClass('alert-success').removeClass('alert-danger').text('Server is Running!').show()
+              $('#hostname').text(json.hostname)
+              $('#uptime').text(secondsToString(json.uptime))
+              $('#diskspace-status').text(json.diskspace.status)
+              var usePercentage = (json.diskspace.used / json.diskspace.total) * 100
+              $('#diskspace-free').attr('aria-valuenow', usePercentage).css('width',usePercentage + '%').text('Used ' + bytesToString(json.data.used) + ' / ' + bytesToString(json.data.total) + ' (' + usePercentage + '%)')
+              if(usePercentage < 80) {
+                $('#diskspace-free').addClass('progress-bar-success')
+              } else if(usePercentage < 90) {
+                $('#diskspace-free').addClass('progress-bar-warning')
+              } else {
+                $('#diskspace-free').addClass('progress-bar-danger')
+              }
+              var MemUsePercentage = ((json.memory.total - json.memory.free) / json.memory.total) * 100
+              $('#memory-used').attr('aria-valuenow', MemUsePercentage).css('width',MemUsePercentage + '%').text('Used ' + bytesToString((json.memory.total - json.memory.free)) + ' / ' + bytesToString(json.memory.total) + ' (' + MemUsePercentage + '%)')
+              if(MemUsePercentage < 80) {
+                $('#memory-used').addClass('progress-bar-success')
+              } else if(MemUsePercentage < 90) {
+                $('#memory-used').addClass('progress-bar-warning')
+              } else {
+                $('#memory-used').addClass('progress-bar-danger')
+              }
+              $('#load').text(json.load.join(' '))
+              var maxLoad = Math.max.apply(Math, json.load)
+              $('#load').removeClass('alert-info')
+              if(maxLoad < 0.7) {
+                $('#load').addClass('alert-success')
+              } else if(maxLoad < 1) {
+                $('#load').addClass('alert-warning')
+              } else {
+                $('#load').addClass('alert-danger')
+              }
+              $('.hideable').show()
+            })
+            .fail(function() {
+              $('#status').removeClass('alert-info').removeClass('alert-success').addClass('alert-danger').text('Could not Reach Server!').show()
+              $('.hideable').hide()
+            })
+        }
+        getStatus()
+        setInterval(function(){ getStatus() }, 10000)
+      })
+      function secondsToString(seconds) {
+        var numyears = Math.floor(seconds / 31536000)
+        var numdays = Math.floor((seconds % 31536000) / 86400);
+        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600)
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60)
+        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60
+        return numyears + " years, " +  numdays + " days, " + numhours + " hours, " + numminutes + " minutes, " + numseconds + " seconds"
+      }
+      function bytesToString(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+        if (bytes == 0) return '0 Byte'
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
+      }
+    </script>
+  </body>
+</html>
