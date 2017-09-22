@@ -48,7 +48,7 @@
               $('#uptime').text(secondsToString(json.uptime))
               $('#diskspace-status').text(json.diskspace.status)
               var usePercentage = (json.diskspace.used / json.diskspace.total) * 100
-              $('#diskspace-free').attr('aria-valuenow', usePercentage).css('width',usePercentage + '%').text('Used ' + bytesToString(json.data.used) + ' / ' + bytesToString(json.data.total) + ' (' + usePercentage + '%)')
+              $('#diskspace-free').attr('aria-valuenow', usePercentage).css('width',usePercentage + '%').text('Used ' + bytesToString(json.diskspace.used) + ' / ' + bytesToString(json.data.total) + ' (' + usePercentage + '%)')
               if(usePercentage < 80) {
                 $('#diskspace-free').addClass('progress-bar-success')
               } else if(usePercentage < 90) {
