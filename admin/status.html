@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="bootstrap.min.css"/>
     <link rel="stylesheet" href="font-awesome.min.css"/>
     <style>
-      .hideable {
+      .hidable {
         display: none;
       }
     </style>
@@ -23,14 +23,12 @@
       <p class="well hidable">STATUS: <span id="diskspace-status"></span></p>
       <div class="progress hidable">
         <div id="diskspace-free" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-          Used 20GB / 80GB (10%)
         </div>
       </div>
       <hr  class="hidable"/>
       <h3  class="hidable">Memory</h3>
       <div class="progress hidable">
-      <div id="memory-used" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-          Used 2GB / 8GB
+      <div id="memory-used" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
         </div>
       </div>
       <hr  class="hidable"/>
@@ -77,11 +75,11 @@
               } else {
                 $('#load').addClass('alert-danger')
               }
-              $('.hideable').show()
+              $('.hidable').show()
             })
             .fail(function() {
               $('#status').removeClass('alert-info').removeClass('alert-success').addClass('alert-danger').text('Could not Reach Server!').show()
-              $('.hideable').hide()
+              $('.hidable').hide()
             })
         }
         getStatus()

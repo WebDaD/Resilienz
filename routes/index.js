@@ -37,6 +37,8 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
   // Sends status information
   app.get('/status', function (req, res) {
     status.info(function (info) {
+      res.header('Access-Control-Allow-Origin', '*')
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
       res.json(info)
     })
   })
