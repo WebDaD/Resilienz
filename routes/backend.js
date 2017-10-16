@@ -52,7 +52,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         var stat = fs.statSync(file)
         res.setHeader('Content-Length', stat.size)
         res.setHeader('Content-Type', mime.lookup(req.params.name) || 'application/octet-stream')
-        res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.name)
+        // res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.name)
         filestream.pipe(res)
       }
     })
