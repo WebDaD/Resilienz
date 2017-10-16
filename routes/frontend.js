@@ -65,12 +65,20 @@ module.exports = function (app, language, login) {
   })
   app.get('/datenschutz', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
-      res.render('pages/datenschutz', {lang: translations})
+      if (req.cookies['resilienzManager-language'] === 'en') {
+        res.render('pages/data_protection', {lang: translations})
+      } else {
+        res.render('pages/datenschutz', {lang: translations})
+      }
     })
   })
   app.get('/impressum', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
-      res.render('pages/impressum', {lang: translations})
+      if (req.cookies['resilienzManager-language'] === 'en') {
+        res.render('pages/site_notice', {lang: translations})
+      } else {
+        res.render('pages/impressum', {lang: translations})
+      }
     })
   })
   app.get('/nutzungsbedingungen', function (req, res) {
