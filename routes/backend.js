@@ -36,7 +36,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         var stat = fs.statSync(file)
         res.setHeader('Content-Length', stat.size)
         res.setHeader('Content-Type', 'application/pdf')
-        res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.pdfname + '.pdf')
+        // res.setHeader('Content-Disposition', 'attachment; filename=' + req.params.pdfname + '.pdf')
         filestream.pipe(res)
       }
     })
@@ -68,7 +68,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
         var stat = fs.statSync(file)
         res.setHeader('Content-Length', stat.size)
         res.setHeader('Content-Type', 'application/vnd.ms-powerpoint')
-        res.setHeader('Content-Disposition', 'attachment; filename=template_' + req.params.langkey + '.ppt')
+        // res.setHeader('Content-Disposition', 'attachment; filename=template_' + req.params.langkey + '.ppt')
         filestream.pipe(res)
       }
     })

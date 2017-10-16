@@ -4,13 +4,13 @@
   p #{lang.welcome_text_parental}
   .row.row-grid(style="margin-bottom:10px;")
     .col-md-6
-      a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_parental_'+lang.key target="_blank") #{lang.welcome_link_parental}
+      a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_parental_'+lang.key target="_blank" download=lang.welcome_link_parental) #{lang.welcome_link_parental}
     .col-md-6
-      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_institutions.docx' target="_blank") #{lang.welcome_link_institutions}
+      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_institutions.docx' target="_blank"  download=lang.welcome_link_institutions) #{lang.welcome_link_institutions}
   p #{lang.welcome_text_part_2}
   .row.row-grid(style="margin-bottom:10px;")
     .col-md-6
-      a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_manual_'+lang.key target="_blank")  #{lang.intro_manual}
+      a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_manual_'+lang.key target="_blank" download=lang.intro_manual)  #{lang.intro_manual}
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='#!/materials')  #{lang.welcome_materials}
   p #{lang.welcome_text_bottom}
@@ -18,6 +18,6 @@
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='#!/layout') #{lang.nav_layout}
     .col-md-6
-      a.btn-default.btn-lg.btn.btn-block(href='/powerpoint/'+lang.key target="_blank") #{lang.welcome_powerpoint}
+      a.btn-default.btn-lg.btn.btn-block(href='/powerpoint/'+lang.key target="_blank" download=lang.welcome_powerpoint) #{lang.welcome_powerpoint}
   img.img-responsive(src="images/people_hands.png" style="margin: 0 auto")
   p.text-center #{lang.welcome_have_fun}
