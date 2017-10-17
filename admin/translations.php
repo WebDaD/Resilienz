@@ -21,8 +21,8 @@ $translations = array();
 while($row = $result->fetch_assoc()) {
   $translations[$row["string_id"]]["id"] = $row["string_id"];
   $translations[$row["string_id"]]["key"] = $row["string_key"];
-  $translations[$row["string_id"]]["description"] = xmlsafe($row["description"], 1);
-  $translations[$row["string_id"]][$row["lang_key"]] = xmlsafe($row["translation"], 1);
+  $translations[$row["string_id"]]["description"] = utf8_encode(xmlsafe($row["description"], 1));
+  $translations[$row["string_id"]][$row["lang_key"]] = utf8_encode(xmlsafe($row["translation"], 1));
 }
 function xmlsafe($s,$intoQuotes=0) {
   if ($intoQuotes)
