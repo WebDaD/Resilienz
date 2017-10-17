@@ -26,7 +26,7 @@ $result = $conn->query($sql);
       <langid><?php echo $row["lang_id"];?></langid>
       <langkey><?php echo $row["lang_key"];?></langkey>
       <language><?php echo $row["Language"];?></language>
-      <text><?php echo $row["translation"];?></text>
+      <text><?php echo htmlentities($row["translation"]);?></text>
     </translation>
   <?php endwhile; ?>
 </xml>
