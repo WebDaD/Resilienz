@@ -21,18 +21,29 @@ $translations = array();
 while($row = $result->fetch_assoc()) {
   $translations[$row["string_id"]]["id"] = $row["string_id"];
   $translations[$row["string_id"]]["key"] = $row["string_key"];
-  $translations[$row["string_id"]]["description"] = $row["description"];
-  $translations[$row["string_id"]][$row["lang_key"]] = $row["translation"];
+  $translations[$row["string_id"]]["description"] = xmlsafe($row["description"], 1);
+  $translations[$row["string_id"]][$row["lang_key"]] = xmlsafe($row["translation"], 1);
 }
+function xmlsafe($s,$intoQuotes=0) {
+  if ($intoQuotes)
+      return str_replace(array('&','>','<','"'), array('&amp;','&gt;','&lt;','&quot;'), $s);
+  else
+      return str_replace(array('&','>','<'), array('&amp;','&gt;','&lt;'), $s);
+  }
+
+echo "<pre>";
+print_r($translations);
+echo "</pre>";
+
 ?>
 <xml>
   <?php foreach($translations as $entry => $value): ?>
     <translation>
       <id><?php echo $value["id"];?></id>
       <key><?php echo $value["key"];?></key>
-      <description><![CDATA[<?php echo $value["description"];?>]]></description>
-      <deutsch><![CDATA[<?php echo $value["de"];?>]]></deutsch>
-      <english><![CDATA[<?php echo $value["en"];?>]]></english>
+      <description><?php echo $value["description"];?></description>
+      <deutsch><?php echo $value["de"];?></deutsch>
+      <english><?php echo $value["en"];?></english>
     </translation>
 <?php endforeach; ?>
 </xml>
