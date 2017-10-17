@@ -31,12 +31,9 @@ function xmlsafe($s,$intoQuotes=0) {
       return str_replace(array('&','>','<'), array('&amp;','&gt;','&lt;'), $s);
   }
 
-echo "<pre>";
-print_r($translations);
-echo "</pre>";
 
 ?>
-<xml>
+<xml version="1.0" encoding="UTF-8">
   <?php foreach($translations as $entry => $value): ?>
     <translation>
       <id><?php echo $value["id"];?></id>
