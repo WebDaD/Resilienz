@@ -21,8 +21,8 @@ $translations = array();
 while($row = $result->fetch_assoc()) {
   $translations[$row["string_id"]]["id"] = $row["string_id"];
   $translations[$row["string_id"]]["key"] = $row["string_key"];
-  $translations[$row["string_id"]]["description"] = htmlentities($row["description"]);
-  $translations[$row["string_id"]][$row["lang_key"]] = htmlentities($row["translation"]);
+  $translations[$row["string_id"]]["description"] = htmlspecialchars($row["description"]);
+  $translations[$row["string_id"]][$row["lang_key"]] = htmlspecialchars($row["translation"]);
 }
 ?>
 <xml>
