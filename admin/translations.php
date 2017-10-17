@@ -21,8 +21,8 @@ $translations = array();
 while($row = $result->fetch_assoc()) {
   $translations[$row["string_id"]]["id"] = $row["string_id"];
   $translations[$row["string_id"]]["key"] = $row["string_key"];
-  $translations[$row["string_id"]]["description"] = htmlspecialchars($row["description"]);
-  $translations[$row["string_id"]][$row["lang_key"]] = htmlspecialchars($row["translation"]);
+  $translations[$row["string_id"]]["description"] = $row["description"];
+  $translations[$row["string_id"]][$row["lang_key"]] = $row["translation"];
 }
 ?>
 <xml>
@@ -31,8 +31,8 @@ while($row = $result->fetch_assoc()) {
       <id><?php echo $value["id"];?></id>
       <key><?php echo $value["key"];?></key>
       <description><?php echo $value["description"];?></description>
-      <deutsch><?php echo $value["de"];?></deutsch>
-      <english><?php echo $value["en"];?></english>
+      <deutsch><![CDATA[<?php echo $value["de"];?>]]></deutsch>
+      <english><![CDATA[<?php echo $value["en"];?>]]></english>
     </translation>
 <?php endforeach; ?>
 </xml>
