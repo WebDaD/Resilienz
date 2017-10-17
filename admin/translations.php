@@ -16,17 +16,23 @@ $sql = "SELECT s.id AS string_id, s.string_key, s.description, l.id As lang_id, 
           ORDER BY s.string_key ASC, l.lang_key ASC;
           ";
 $result = $conn->query($sql);
+
+$translations = array();
+while($row = $result->fetch_assoc()) {
+  $translations[$row["string_id"]]["id"] = $row["string_id"];
+  $translations[$row["string_id"]]["key"] = $row["string_key"];
+  $translations[$row["string_id"]]["description"] = htmlentities($row["description"]);
+  $translations[$row["string_id"]][$row["lang_key"]] = htmlentities($row["translation"]);
+}
 ?>
 <xml>
-  <?php while($row = $result->fetch_assoc()): ?>
+  <?php foreach($translations as $entry => $value): ?>
     <translation>
-      <stringid><?php echo $row["string_id"];?></stringid>
-      <stringkey><?php echo $row["string_key"];?></stringkey>
-      <description><?php echo htmlentities($row["description"]);?></description>
-      <langid><?php echo $row["lang_id"];?></langid>
-      <langkey><?php echo $row["lang_key"];?></langkey>
-      <language><?php echo $row["Language"];?></language>
-      <text><?php echo htmlentities($row["translation"]);?></text>
+      <id><?php echo $value["id"];?></id>
+      <key><?php echo $value["key"];?></key>
+      <description><?php echo $value["description"];?></description>
+      <deutsch><?php echo $value["de"];?></deutsch>
+      <english><?php echo $value["en"];?></english>
     </translation>
-  <?php endwhile; ?>
+<?php endforeach; ?>
 </xml>
