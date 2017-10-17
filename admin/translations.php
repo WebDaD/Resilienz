@@ -22,7 +22,7 @@ $result = $conn->query($sql);
     <translation>
       <stringid><?php echo $row["string_id"];?></stringid>
       <stringkey><?php echo $row["string_key"];?></stringkey>
-      <description><?php echo $row["description"];?></description>
+      <description><?php echo htmlentities($row["description"]);?></description>
       <langid><?php echo $row["lang_id"];?></langid>
       <langkey><?php echo $row["lang_key"];?></langkey>
       <language><?php echo $row["Language"];?></language>
