@@ -30,7 +30,7 @@ while($row = $result->fetch_assoc()) {
     <translation>
       <id><?php echo $value["id"];?></id>
       <key><?php echo $value["key"];?></key>
-      <description><?php echo $value["description"];?></description>
+      <description><![CDATA[<?php echo $value["description"];?>]]></description>
       <deutsch><![CDATA[<?php echo $value["de"];?>]]></deutsch>
       <english><![CDATA[<?php echo $value["en"];?>]]></english>
     </translation>
