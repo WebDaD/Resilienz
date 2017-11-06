@@ -138,7 +138,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
                 to: email, // list of receivers
                 bcc: 'dominik.sigmund@webdad.eu,info@prixjeunesse.de',
                 subject: language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_subject'), // Subject line
-                html: language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_text') + '<br/><a href="https://www.storytelling.de/book/' + req.params.action_id + '">' + language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_button') + '</a>' // html body
+                html: language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_text') + '<br/><a href="https://www.storytellingclub.de/book/' + req.params.action_id + '">' + language.getString(req.cookies['resilienzManager-language'] || 'de', 'book_mail_button') + '</a>' // html body
               }
               transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
