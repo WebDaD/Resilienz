@@ -41,6 +41,8 @@ function xmlsafe($s,$intoQuotes=0) {
       <description><?php echo $value["description"];?></description>
       <deutsch><?php echo $value["de"];?></deutsch>
       <english><?php echo $value["en"];?></english>
+      <espagnol><?php echo $value["es"];?></espagnol>
+      <arab><?php echo $value["ar"];?></arab>
     </translation>
 <?php endforeach; ?>
 </xml>
