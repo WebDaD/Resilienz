@@ -14,5 +14,9 @@ $(document).ready(function () {
       $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
       window.location = '/english'
     }
+    if ($(this).data('lang') === 'es') {
+      $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
+      window.location = '/espagnol'
+    }
   })
 })

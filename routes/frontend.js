@@ -58,6 +58,11 @@ module.exports = function (app, language, login) {
       res.render('pages/intro_en', {lang: translations})
     })
   })
+  app.get('/espagnol', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation(req.cookies['resilienzManager-language'] || 'es', function (translations) {
+      res.render('pages/intro_es', {lang: translations})
+    })
+  })
   app.get('/app', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/app', {lang: translations})
@@ -67,6 +72,8 @@ module.exports = function (app, language, login) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       if (req.cookies['resilienzManager-language'] === 'en') {
         res.render('pages/data_protection', {lang: translations})
+      } else if (req.cookies['resilienzManager-language'] === 'es') {
+        res.render('pages/politica_de_privacidad', {lang: translations})
       } else {
         res.render('pages/datenschutz', {lang: translations})
       }
@@ -76,6 +83,8 @@ module.exports = function (app, language, login) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       if (req.cookies['resilienzManager-language'] === 'en') {
         res.render('pages/site_notice', {lang: translations})
+      } else if (req.cookies['resilienzManager-language'] === 'es') {
+        res.render('pages/aviso_legal', {lang: translations})
       } else {
         res.render('pages/impressum', {lang: translations})
       }
@@ -83,7 +92,13 @@ module.exports = function (app, language, login) {
   })
   app.get('/nutzungsbedingungen', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
-      res.render('pages/nutzungsbedingungen', {lang: translations})
+      if (req.cookies['resilienzManager-language'] === 'en') {
+        res.render('pages/usage_contract', {lang: translations})
+      } else if (req.cookies['resilienzManager-language'] === 'es') {
+        res.render('pages/contrato_de_uso', {lang: translations})
+      } else {
+        res.render('pages/nutzungsbedingungen', {lang: translations})
+      }
     })
   })
   // ADMIN ONLY
