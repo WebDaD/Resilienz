@@ -17,6 +17,7 @@ mkdir -p public
 rm -rf public/*
 mkdir -p public/templates
 mkdir -p public/css
+mkdir -p public/langcss
 mkdir -p public/js
 mkdir -p public/js/controllers
 mkdir -p public/images
@@ -126,6 +127,10 @@ echo 'OK'
 
 echo -n '==> Deploying custom CSS ...'
 lessc assets/css/main.less public/css/main.css
+lessc assets/css/de.less public/langcss/de.css
+lessc assets/css/en.less public/langcss/en.css
+lessc assets/css/es.less public/langcss/es.css
+lessc assets/css/ar.less public/langcss/ar.css
 echo 'OK'
 
 echo -n '==> Deploying custom Fonts ...'
