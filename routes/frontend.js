@@ -54,13 +54,13 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/english', function (req, res) { // intro-page (links to login/register)
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
-      res.render('pages/intro_en', {lang: translations})
+    language.listTranslation('en', function (translations) {
+      res.render('pages/intro', {lang: translations})
     })
   })
   app.get('/espagnol', function (req, res) { // intro-page (links to login/register)
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'es', function (translations) {
-      res.render('pages/intro_es', {lang: translations})
+    language.listTranslation('es', function (translations) {
+      res.render('pages/intro', {lang: translations})
     })
   })
   app.get('/app', function (req, res) {
