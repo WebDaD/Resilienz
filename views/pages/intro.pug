@@ -3,6 +3,7 @@ html(lang=lang.key)
   head
     include ../includes/head.jade
     script(src='js/jquery.min.js')
+    script(src='js/intro.js')
   body.no-skin
     .container
       h1.text-center
@@ -10,7 +11,7 @@ html(lang=lang.key)
           span #{lang.head_storytelling}
       .row.row-grid
         .col-md-6.text-center
-          video(controls width='427px' height='240px')
+          video#resilience(width='427px' height='240px')
             source(src="https://videos.storytellingclub.de/what_is_resilience.mp4" type="video/mp4")
         .col-md-6.text-center
           iframe(width='427px', height='240px', src='https://www.youtube.com/embed/Z9o4xNbQHPw?rel=0&controls=1&showinfo=0', frameborder='0', allowfullscreen='true' style="border: 4px solid black;")
