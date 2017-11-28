@@ -63,6 +63,11 @@ module.exports = function (app, language, login) {
       res.render('pages/intro', {lang: translations})
     })
   })
+  app.get('/arab', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation('ar', function (translations) {
+      res.render('pages/intro', {lang: translations})
+    })
+  })
   app.get('/app', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/app', {lang: translations})
@@ -96,6 +101,8 @@ module.exports = function (app, language, login) {
         res.render('pages/usage_contract', {lang: translations})
       } else if (req.cookies['resilienzManager-language'] === 'es') {
         res.render('pages/contrato_de_uso', {lang: translations})
+      } else if (req.cookies['resilienzManager-language'] === 'ar') {
+        res.render('pages/usage_arab', {lang: translations})
       } else {
         res.render('pages/nutzungsbedingungen', {lang: translations})
       }
