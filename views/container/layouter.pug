@@ -28,7 +28,7 @@
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      
     .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.value}" ng-style="position.style"  data-position-index="{{position.index}}" data-position-id="{{position.id}}")
-      textarea(ng-show="!position.isImage" ng-fitty ng-fitty-details="position.details" style="width:100%;height:100%;overflow:auto;" ng-disabled="ctrl.final" ng-model="position.value" ng-change="position.changed = true")
+      textarea(ng-show="!position.isImage" ng-fitty ng-fitty-details="position.details" style="width:100%;height:100%;overflow:auto;" ng-disabled="ctrl.final" ng-model="position.value" ng-change="position.changed = true" ng-click="ctrl.clearText(position);")
       form.myDropZone(ng-show="!position.value && position.isImage && !ctrl.final" enctype="multipart/form-data" ng-dropzone dropzone="position.dropzone" dropzone-config="position.dropzoneConfig" event-handlers="{'error':ctrl.uploadError, 'dragenter':ctrl.dragEnter, 'dragleave':ctrl.dragLeave, 'drop':ctrl.dragLeave, 'success':ctrl.success, 'sending':ctrl.sending}")
         span.dz-message(ng-show="!position.value" title=lang.layout_upload)
           i.fa.fa-upload(aria-hidden="true" ng-show="!position.sending")

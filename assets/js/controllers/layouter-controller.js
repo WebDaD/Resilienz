@@ -99,6 +99,11 @@
           position.style['background-image'] = 'none'
         }
       }
+      self.clearText = function (position) {
+        if (!self.final && position.value === 'Enter Text...') {
+          position.value = ''
+        }
+      }
       self.makeImage = function (position) {
         if (!self.final) {
           position.isImage = true
