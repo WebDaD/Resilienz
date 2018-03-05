@@ -15,9 +15,7 @@ nav.navbar.navbar-default
         li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/materials')}")
           a(href='#!/materials') #{lang.nav_materials}
         li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/welcome')}")
-          a(href='#!/welcome') #{lang.nav_welcome}   
-    // /.nav-collapse
-    .navbar-header
+          a(href='#!/welcome') #{lang.nav_welcome}
       a.navbar-brand(href='#')
         // #{lang.title}
         img(src="images/android-chrome-192x192.png" style="width:72px;height:auto;")
@@ -26,4 +24,5 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
+    // /.nav-collapse     
       
