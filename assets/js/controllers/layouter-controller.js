@@ -107,13 +107,19 @@
       self.makeImage = function (position) {
         if (!self.final) {
           position.isImage = true
-          position.value = position.oldValue || ''
-          position.oldValue = position.value
+          if (position.value !== 'Enter Text...') {
+            position.value = position.oldValue || ''
+            position.oldValue = position.value
+          } else {
+            position.value = ''
+            position.oldValue = ''
+          }
+
           position.style['background-image'] = 'url(/layout/image/' + position.value || 'placeholder' + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
         }
       }
       self.saveText = function ($event, position) {
-        if (!self.final) {
+        if (!self.final && position.value !== 'Enter Text...') {
           self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
           // $scope.$apply()
           var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
