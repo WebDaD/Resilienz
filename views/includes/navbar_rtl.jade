@@ -1,8 +1,8 @@
 nav.navbar.navbar-default
   .container
     #navbar.collapse.navbar-collapse
-      p.navbar-text.navbar-right(ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logged_in_as} {{email}}
-      button.navbar-right.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logout}
+      button.navbar-left.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logout}
+      p.navbar-text.navbar-left(ng-show="email !== ''" style="margin-left:10px;") {{email}} #{lang.nav_logged_in_as}
       ul.nav.navbar-nav
         li(ng-show="admin" ng-class="{ active: isActive('/users')}")
           a(href='#!/users') Users
@@ -19,7 +19,7 @@ nav.navbar.navbar-default
     // /.nav-collapse
     .navbar-header
       a.navbar-brand(href='#')
-        #{lang.title}
+        // #{lang.title}
         img(src="images/android-chrome-192x192.png" style="width:72px;height:auto;")
       button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
         span.sr-only #{lang.toogle_navigation}
