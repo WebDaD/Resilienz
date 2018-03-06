@@ -65,7 +65,7 @@ Dropzone.autoDiscover = false
         $rootScope.language = language
         $cookies.put('resilienzManager-language', language)
         setNiceLanguage(language)
-        window.location = $location.path()
+        window.location.reload()
       }
       if (typeof $cookies.get('resilienzManager-id') !== 'undefined' && typeof $cookies.get('resilienzManager-token') !== 'undefined') {
         var adm = $cookies.get('resilienzManager-admin')

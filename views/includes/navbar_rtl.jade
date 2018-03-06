@@ -1,6 +1,19 @@
 nav.navbar.navbar-default
   .fluid-container
     #navbar.collapse.navbar-collapse
+      .btn-group.navbar-left(style="margin-left:10px;margin-right:10px;")
+        button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
+          span.caret
+          span {{niceLanguage}}
+        ul.dropdown-menu
+          li
+            a(href="#" ng-click="selectLanguage('de')") Deutsch
+          li
+            a(href="#" ng-click="selectLanguage('en')") English
+          li
+            a(href="#" ng-click="selectLanguage('es')") Español
+          li
+            a(href="#" ng-click="selectLanguage('ar')") العربية
       button.navbar-left.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logout}
       p.navbar-text.navbar-left(ng-show="email !== ''" style="margin-left:10px;") {{email}} #{lang.nav_logged_in_as}
       ul.nav.navbar-nav
