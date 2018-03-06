@@ -23,8 +23,8 @@ nav.navbar.navbar-default
           a(href='#!/actions') Actions
         li(ng-show="admin" ng-class="{ active: isActive('/users')}")
           a(href='#!/users') Users
-      .btn-group.navbar-right
-        button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" data-toggle="dropdown-menu" aria-haspopup="true" aria-expanded="false") 
+      .btn-group.navbar-right(style="margin-left:10px;margin-right:10px;")
+        button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
           span {{niceLanguage}}  
           span.caret
         ul.dropdown-menu

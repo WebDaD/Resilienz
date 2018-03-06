@@ -63,7 +63,7 @@ Dropzone.autoDiscover = false
       }
       $rootScope.selectLanguage = function (language) {
         $rootScope.language = language
-        $cookies.set('resilienzManager-language', language)
+        $cookies.put('resilienzManager-language', language)
         setNiceLanguage(language)
         window.location = $location.path()
       }
