@@ -1,5 +1,5 @@
 nav.navbar.navbar-default
-  .container
+  .fluid-container
     .navbar-header
       button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
         span.sr-only #{lang.toogle_navigation}
@@ -25,4 +25,17 @@ nav.navbar.navbar-default
           a(href='#!/users') Users
       button.navbar-right.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logout}
       p.navbar-text.navbar-right(ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logged_in_as} {{email}}
+      .btn-group
+        button.navbar-right.btn.btn-default.navbar-btn.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
+          span {{niceLanguage}}  
+          span.caret
+        ul.dropdown-menu
+          li
+            a(href="#" ng-click="selectLanguage('de')") Deutsch
+          li
+            a(href="#" ng-click="selectLanguage('en')") English
+          li
+            a(href="#" ng-click="selectLanguage('es')") Español
+          li
+            a(href="#" ng-click="selectLanguage('ar')") العربية
     // /.nav-collapse

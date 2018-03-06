@@ -1,5 +1,5 @@
 Dropzone.autoDiscover = false
-/* global angular */
+/* global angular, Dropzone */
 ;(function () {
   angular.module('resilienzManager', ['ngRoute', 'ngCookies', 'ngTable', 'ui.bootstrap', 'ng-imgAreaSelect', 'ngDropzone', 'ui.select', 'ngSanitize'])
     .config(['$routeProvider', function ($routeProvider) {
@@ -45,6 +45,28 @@ Dropzone.autoDiscover = false
       $rootScope.isActive = function (viewLocation) { // eslint-disable-line
         return viewLocation === $location.path()
       }
+      function setNiceLanguage (lang) {
+        switch (lang) {
+          case 'de':
+            $rootScope.niceLanguage = 'Deutsch'
+            break
+          case 'en':
+            $rootScope.niceLanguage = 'English'
+            break
+          case 'es':
+            $rootScope.niceLanguage = 'Español'
+            break
+          case 'ar':
+            $rootScope.niceLanguage = 'العربية'
+            break
+        }
+      }
+      $rootScope.selectLanguage = function (language) {
+        $rootScope.language = language
+        $cookies.set('resilienzManager-language', language)
+        setNiceLanguage(language)
+        window.location = $location.path()
+      }
       if (typeof $cookies.get('resilienzManager-id') !== 'undefined' && typeof $cookies.get('resilienzManager-token') !== 'undefined') {
         var adm = $cookies.get('resilienzManager-admin')
         if (typeof adm === 'boolean') {
@@ -57,6 +79,7 @@ Dropzone.autoDiscover = false
         $rootScope.email = $cookies.get('resilienzManager-email')
         $rootScope.token = $cookies.get('resilienzManager-token')
         $rootScope.language = $cookies.get('resilienzManager-language')
+        setNiceLanguage($rootScope.language)
         $http.defaults.headers.common.email = $cookies.get('resilienzManager-email')
         $http.defaults.headers.common.token = $cookies.get('resilienzManager-token')
       } else {

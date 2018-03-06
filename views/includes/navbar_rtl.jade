@@ -1,5 +1,5 @@
 nav.navbar.navbar-default
-  .container
+  .fluid-container
     #navbar.collapse.navbar-collapse
       button.navbar-left.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="email !== ''" style="margin-left:10px;") #{lang.nav_logout}
       p.navbar-text.navbar-left(ng-show="email !== ''" style="margin-left:10px;") {{email}} #{lang.nav_logged_in_as}
