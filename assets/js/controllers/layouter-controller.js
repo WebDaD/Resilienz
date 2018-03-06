@@ -13,6 +13,15 @@
       self.selectedLayout = {}
       self.selectedPage = -1
 
+      self.enterTextMsg = function () {
+        switch ($rootScope.language) {
+          case 'de': return 'Text eingeben...'
+          case 'en': return 'Enter Text...'
+          case 'es': return 'ingrese texto...'
+          case 'ar': return '...أدخل النص'
+        }
+      }
+
       self.selectCategory = function () {
         self.catLoading = true
         self.selectedPage = self.selectedCategory.startpage
@@ -94,20 +103,20 @@
         if (!self.final) {
           position.isImage = false
           position.changed = false
-          position.value = position.oldValue || 'Enter Text...'
+          position.value = position.oldValue || self.enterTextMsg()
           position.oldValue = position.value
           position.style['background-image'] = 'none'
         }
       }
       self.clearText = function (position) {
-        if (!self.final && position.value === 'Enter Text...') {
+        if (!self.final && position.value === self.enterTextMsg()) {
           position.value = ''
         }
       }
       self.makeImage = function (position) {
         if (!self.final) {
           position.isImage = true
-          if (position.value !== 'Enter Text...') {
+          if (position.value !== self.enterTextMsg()) {
             position.value = position.oldValue || ''
             position.oldValue = position.value
           } else {
@@ -119,7 +128,7 @@
         }
       }
       self.saveText = function ($event, position) {
-        if (!self.final && position.value !== 'Enter Text...') {
+        if (!self.final && position.value !== self.enterTextMsg()) {
           self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
           // $scope.$apply()
           var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
@@ -145,10 +154,19 @@
       }
       self.toBig = function () {
         var text = ''
-        if ($rootScope.language === 'de') {
-          text = 'Bild zu groß. Maximal 2MB erlaubt.'
-        } else {
-          text = 'Image too Big. Max Size is 2MB.'
+        switch ($rootScope.language) {
+          case 'de':
+            text = 'Bild zu groß. Maximal 2MB erlaubt.'
+            break
+          case 'en':
+            text = 'Image too Big. Max Size is 2MB.'
+            break
+          case 'es':
+            text = 'Image too Big. Max Size is 2MB.'
+            break
+          case 'ar':
+            text = 'Image too Big. Max Size is 2MB.'
+            break
         }
         alert(text)
       }
@@ -181,7 +199,7 @@
             position.details = {}
             if (!position.type) {
               if (position.possibleType === 'text') {
-                position.value = 'Enter Text here...'
+                position.value = self.enterTextMsg()
               } else {
                 background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
                 position.isImage = true
