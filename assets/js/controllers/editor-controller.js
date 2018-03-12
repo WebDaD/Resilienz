@@ -25,12 +25,7 @@
           $uibModalInstance.close(data.image)
         })
       }
-      self.coords = {
-        x1: 1,
-        y1: 1,
-        x2: 1 + data.width,
-        y2: 1 + data.height
-      }
+      self.coords = {}
       self.image = data.image
       self.imageToLoad = 'bookimages/' + self.image + '?v=' + Math.floor((Math.random() * 1000) + 1)
       self.options = {
