@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+  head
+    include ../includes/head.jade
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+    script(src='js/jquery.cookie.js')
+    script(src='js/index.js')
+  body.no-skin
+    .container
+      h1.text-center
+        img(src="images/android-chrome-192x192.png" style="height: 100px;margin-right: 10px;")
+        span Willkommen / Welcome / ¡Bienvenidos! / ترحيب
+      .row.row-grid
+        .col-md-3
+          a(href="https://www.prixjeunesse.de" target="_blank")
+            img.pull-right(src="images/Drilling_neutral_blau_512px.png" style="width:100%;" alt="Prix Jeunesse International Munich" title="Prix Jeunesse International Munich")
+        .col-md-6
+          include ../includes/gallery.jade
+        .col-md-3
+          a(href="http://www.izi.de" target="_blank")
+              img.pull-left(src="images/Logo_IZI.jpg" style="width:50%;" alt="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk." title="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk.")
+      .row.row-grid
+        .col-md-12     
+          h2 The Storytelling Club
+          p
+            | The Storytelling Club is a low threshold project to promote the resilience, creativity and mental health of children in difficult life situations. In weekly storytelling clubs, children learn to write and tell and draw their own strong stories. The final result of the storytelling club is a book full of the children's stories and pictures, which can help other children in similar situations.
+          p
+            | Storytelling Club workshops can be conducted in refugee camps as well as any other setting where children have to cope with difficult circumstances. Pedagogues that wish to conduct a Storytelling Club are guided by a manual that leads through the procedures and has preprints for the story book. 
+          p
+            | The Storytelling Club is a cooperative venture by the PRIX JEUNESSE Foundation, UNICEF and the International Central Institute for Youth and Educational Television (IZI) at the Bavarian Broadcasting Corporation.
+      .row.row-grid
+        .col-md-3
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="de" data-target="deutsch") Weiter auf Deutsch
+        .col-md-3
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="en" data-target="intro_en") Continue in English
+        .col-md-3
+          button.lang-selector.btn-primary.btn-lg.btn.btn-block(data-lang="es" data-target="espanol") Continuar en Español
+        .col-md-3
+          button.lang-selector.btn-primary.btn-lg.btn.btn-block(data-lang="ar" data-target="arab") تستمر باللغة العربية
+    include ../includes/footer.jade

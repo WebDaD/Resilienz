@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    include ../includes/head.jade
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+    script(src='js/jquery.cookie.js')
+    script(src='js/index.js')
+  body.no-skin
+    .container
+      h1.text-center
+        img(src="images/android-chrome-192x192.png" style="height: 100px;margin-right: 10px;")
+        span Willkommen / Welcome / ¡Bienvenidos! / ترحيب
+      .row.row-grid
+        .col-md-3
+          a(href="https://www.prixjeunesse.de" target="_blank")
+            img.pull-right(src="images/Drilling_neutral_blau_512px.png" style="width:100%;" alt="Prix Jeunesse International Munich" title="Prix Jeunesse International Munich")
+        .col-md-6
+          include ../includes/gallery.jade
+        .col-md-3
+          a(href="http://www.izi.de" target="_blank")
+              img.pull-left(src="images/Logo_IZI.jpg" style="width:50%;" alt="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk." title="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk.")
+      .row.row-grid
+        .col-md-12     
+          h2 Der Storytelling Club
+          p
+            | Der Storytelling Club ist ein Projekt zur niederschwelligen Förderung der Resilienz, Kreativität und psychischen Gesundheit von Kindern in schwierigen Lebenssituationen. In wöchentlichen Storytelling Clubs lernen Kinder, ihre eigenen starken Geschichten zu schreiben, malen und erzählen. Das konkrete Ergebnis des Storytelling Clubs ist ein Storybook mit den Geschichten und Bildern der Kinder, das anderen Kindern in ähnlichen Situationen helfen soll.
+          p
+            | Storytelling-Club-Workshops können mit Flüchtlingskindern oder in einem anderen Umfeld mit Kindern, die mit schwierigen Situationen konfrontiert sind, abgehalten werden. PädagogInnen, die einen Storytelling Club durchführen möchten, bekommen ein Handout an die Hand, das sie durch die Module führt und Vordrucke für das Storybook enthält.
+          p
+            | Der Storytelling Club ist ein Kooperationsprojekt der Stiftung PRIX JEUNESSE, UNICEF und dem Internationalen Zentralinstitut für das Jugend- und Bildungsfernsehen (IZI) beim Bayerischen Rundfunk.
+      .row.row-grid
+        .col-md-12
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="de" data-target="intro_de") Weiter auf Deutsch
+    include ../includes/footer.jade

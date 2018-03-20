@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    include ../includes/head.jade
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+    script(src='js/jquery.cookie.js')
+    script(src='js/index.js')
+  body.no-skin
+    .container
+      h1.text-center
+        img(src="images/android-chrome-192x192.png" style="height: 100px;margin-right: 10px;")
+        span Willkommen / Welcome / ¡Bienvenidos! / ترحيب
+      .row.row-grid
+        .col-md-3
+          a(href="https://www.prixjeunesse.de" target="_blank")
+            img.pull-right(src="images/Drilling_neutral_blau_512px.png" style="width:100%;" alt="Prix Jeunesse International Munich" title="Prix Jeunesse International Munich")
+        .col-md-6
+          include ../includes/gallery.jade
+        .col-md-3
+          a(href="http://www.izi.de" target="_blank")
+              img.pull-left(src="images/Logo_IZI.jpg" style="width:50%;" alt="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk." title="IZI - Internationales Zentralinstitut - ein Informations- und Dokumentationszentrum für das Kinder-, Jugend- und Bildungsfernsehen beim Bayerischen Rundfunk.")
+      .row.row-grid
+        .col-md-12     
+          h2 القصص
+          p
+            | نادي رواية القصص هو مشروع لتنمية قدرة المرونة والإبداع والصحّة النفسيّة للأطفال في ظروف الحياة الصّعبة. في نوادي القصص الأسبوعيّة، يتّعلم الأطفال كتابة ورسم ورواية قصصهم القويّة الخاصّة. النّتيجة الملموسة لنادي القصص هي كتاب حكايات مصوّر للأطفال، والذي ينبغي أن يقدّم المساعدة لأطفال آخرين في ظروف مماثلة. 
+          p
+            | مكن عقد ورش عمل نادي القصص مع بعض الأطفال اللاّجئين أو في بيئة مختلفة مع بعض الأطفال الذين يواجهون ظروفًا صعبة. ستحصل أخصائياّت علم التّربية (المربيّات) اللاّتي يرغبن في تنفيذ نادي رواية القصص على نشرة من شأنها أن توجّههم من خلال الوحدات التّعليميّة، وتشمل نماذج لأجل كتاب الحكايات.
+      .row.row-grid
+        .col-md-12
+          button.lang-selector.btn-primary.btn.btn-lg.btn-block(data-lang="ar" data-target="intro_ar") تستمر باللغة العربية
+    include ../includes/footer.jade

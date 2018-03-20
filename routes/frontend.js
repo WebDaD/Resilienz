@@ -44,26 +44,58 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/', function (req, res) { // index
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
-      res.render('pages/index', {lang: translations})
-    })
+    var domain = req.headers.host.split('.')[1].trim()
+    if (domain === 'de') {
+      language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
+        res.render('pages/index_de', {lang: translations})
+      })
+    } else {
+      language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+        res.render('pages/index_en', {lang: translations})
+      })
+    }
   })
   app.get('/intro', function (req, res) { // intro-page (links to login/register)
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
       res.render('pages/intro', {lang: translations})
     })
   })
+  app.get('/deutsch', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation('de', function (translations) {
+      res.render('pages/index_single_de', {lang: translations})
+    })
+  })
   app.get('/english', function (req, res) { // intro-page (links to login/register)
     language.listTranslation('en', function (translations) {
-      res.render('pages/intro', {lang: translations})
+      res.render('pages/index_single_en', {lang: translations})
     })
   })
   app.get('/espagnol', function (req, res) { // intro-page (links to login/register)
     language.listTranslation('es', function (translations) {
-      res.render('pages/intro', {lang: translations})
+      res.render('pages/index_single_es', {lang: translations})
     })
   })
   app.get('/arab', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation('ar', function (translations) {
+      res.render('pages/index_single_ar', {lang: translations})
+    })
+  })
+  app.get('/intro_de', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation('de', function (translations) {
+      res.render('pages/intro', {lang: translations})
+    })
+  })
+  app.get('/intro_en', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation('en', function (translations) {
+      res.render('pages/intro', {lang: translations})
+    })
+  })
+  app.get('/intro_es', function (req, res) { // intro-page (links to login/register)
+    language.listTranslation('es', function (translations) {
+      res.render('pages/intro', {lang: translations})
+    })
+  })
+  app.get('/intro_ar', function (req, res) { // intro-page (links to login/register)
     language.listTranslation('ar', function (translations) {
       res.render('pages/intro', {lang: translations})
     })

@@ -6,21 +6,7 @@ $(document).ready(function () {
     $.cookie('resilienzManager-language', language, {expires: 365, path: '/'})
   }
   $('.lang-selector').click(function () {
-    if ($(this).data('lang') === 'de') {
-      $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
-      window.location = '/intro'
-    }
-    if ($(this).data('lang') === 'en') {
-      $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
-      window.location = '/english'
-    }
-    if ($(this).data('lang') === 'es') {
-      $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
-      window.location = '/espagnol'
-    }
-    if ($(this).data('lang') === 'ar') {
-      $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
-      window.location = '/arab'
-    }
+    $.cookie('resilienzManager-language', $(this).data('lang'), {expires: 365, path: '/'})
+    window.location = $(this).data('target')
   })
 })
