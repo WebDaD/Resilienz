@@ -65,7 +65,7 @@ module.exports = function (app, language, login) {
       res.render('pages/index_single_en', {lang: translations})
     })
   })
-  app.get('/espagnol', function (req, res) { // intro-page (links to login/register)
+  app.get('/espanol', function (req, res) { // intro-page (links to login/register)
     language.listTranslation('es', function (translations) {
       res.render('pages/index_single_es', {lang: translations})
     })
