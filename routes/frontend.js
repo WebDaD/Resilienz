@@ -46,19 +46,14 @@ module.exports = function (app, language, login) {
   app.get('/', function (req, res) { // index
     var domain = req.headers.host.split('.')[1].trim()
     if (domain === 'de') {
-      language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
+      language.listTranslation('de', function (translations) {
         res.render('pages/index_de', {lang: translations})
       })
     } else {
-      language.listTranslation(req.cookies['resilienzManager-language'] || 'en', function (translations) {
+      language.listTranslation('en', function (translations) {
         res.render('pages/index_en', {lang: translations})
       })
     }
-  })
-  app.get('/intro', function (req, res) { // intro-page (links to login/register)
-    language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
-      res.render('pages/intro', {lang: translations})
-    })
   })
   app.get('/deutsch', function (req, res) { // intro-page (links to login/register)
     language.listTranslation('de', function (translations) {
