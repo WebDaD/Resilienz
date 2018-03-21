@@ -3,6 +3,6 @@
 .modal-body
   img#imgAreaSelect(ng-img-area-select ng-img-area-select-options="ctrl.options" selection="ctrl.coords" ng-src="{{ctrl.imageToLoad}}" style="max-width:100%;max-height: 700px;")
 .modal-footer
-  p.well Zur Auswahl bitte mit der Maus einen Kasten aufziehen und auf Schließen klicken.
+  p.well #{lang.editor_instructions}
   button.btn.btn-default.hidden-print(type='button', ng-click='ctrl.cancel()') #{lang.editor_cancel}
   button.btn.btn-primary.hidden-print(type='button', ng-click='ctrl.close()') #{lang.editor_close}
