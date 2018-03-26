@@ -44,7 +44,9 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/', function (req, res) { // index
-    var domain = req.get('host').split('.')[1].trim()
+    var host = req.get('host')
+    var hostparts = host.split('.')
+    var domain = hostparts[hostparts.length - 1].trim()
     console.log(domain)
     if (domain === 'de') {
       language.listTranslation('de', function (translations) {
