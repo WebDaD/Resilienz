@@ -24,7 +24,8 @@
     .form-group
       label &nbsp;
       button.btn.btn-default.form-control(ng-click="ctrl.openInstructions()") #{lang.layout_instructions}
-.spinner(ng-show="ctrl.pageLoading")  
+.spinner(ng-show="ctrl.pageLoading")
+i#pageCreating.fa.fa-cog.fa-spin(ng-show="ctrl.pageCreating" title="Rendering on Server ...")
 .container(ng-show="!ctrl.pageLoading" style="margin-top:20px;")
   #page(ng-style="ctrl.pageImage")      
     .position(ng-repeat="position in ctrl.selectedLayout.positions" ng-class="{'has-image':position.value}" ng-style="position.style"  data-position-index="{{position.index}}" data-position-id="{{position.id}}")
