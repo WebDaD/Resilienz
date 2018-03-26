@@ -44,7 +44,8 @@ module.exports = function (app, language, login) {
     })
   })
   app.get('/', function (req, res) { // index
-    var domain = req.headers.host.split('.')[1].trim()
+    var domain = req.get('host').split('.')[1].trim()
+    console.log(domain)
     if (domain === 'de') {
       language.listTranslation('de', function (translations) {
         res.render('pages/index_de', {lang: translations})
