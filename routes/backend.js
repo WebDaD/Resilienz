@@ -261,7 +261,6 @@ module.exports = function (app, database, language, login, books, config) {
     })
   })
   app.patch('/bookimages/:action_id/:category/:page', login.isLoggedIn(), function (req, res) {
-    console.log(req.params.action_id + ' - ' + req.params.category + ' - ' + req.params.page + ' - ' + req.cookies['resilienzManager-language'])
     books.createPage(req.params.action_id, req.params.category, req.params.page, req.cookies['resilienzManager-language'], function (error, result) {
       if (error) {
         res.status(503).json(error)

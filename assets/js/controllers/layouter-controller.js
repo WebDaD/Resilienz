@@ -16,7 +16,7 @@
 
       self.renderPage = function () {
         self.pageCreating = true
-        resilienzManagerDataProvider.createPage($rootScope.id, self.selectedCategory.id, self.selectedPage).then(function () {
+        resilienzManagerDataProvider.createPage($rootScope.action, self.selectedCategory.id, self.selectedPage).then(function () {
           self.pageCreating = false
         })
       }
