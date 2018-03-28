@@ -43,6 +43,7 @@
     "readline-sync":"*",
     "md5":"*",
     "mkdirp":"*",
-    "mime-types":"*"
+    "mime-types":"*",
+    "fs-copy-file-sync":"*"
   }
 }
