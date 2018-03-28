@@ -268,7 +268,7 @@ module.exports = function (app, database, language, login, books, config) {
         if (!result) {
           res.status(503).end()
         } else {
-          res.status(200).sendFile(result)
+          res.status(200).send(result)
         }
       }
     })
