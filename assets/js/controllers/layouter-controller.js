@@ -142,8 +142,7 @@
         if (!self.final && position.value !== self.enterTextMsg()) {
           self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
           // $scope.$apply()
-          var size = (position.details.hasOwnProperty('newValue')) ? position.details.newValue : '14'
-          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, {'text': size + '|' + position.value}).then(function (something) {
+          resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, {'text': position.value}).then(function (something) {
             self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
             self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].changed = false
             self.renderPage()
@@ -222,9 +221,8 @@
                 background = 'url(/layout/image/' + position.value + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
                 position.isImage = true
               } else {
-                position.value = position.value.split('|')[1]
                 position.details = {
-                  oldValue: position.value.split('|')[0] + 'px'
+                  oldValue: position.value
                 }
               }
             }
