@@ -24,7 +24,7 @@ const nodemailer = require('nodemailer')
  * @param {object} bookGenerator - bookGenerator Object
  * @param {object} config - config Object
  */
-module.exports = function (app, database, language, login, layouter, bookGenerator, config) {
+module.exports = function (app, database, language, login, books, config) {
   app.get('/pdf/:pdfname', function (req, res) {
     var file = config.pdfs + '/' + req.params.pdfname + '.pdf'
     fs.access(file, fs.constants.R_OK, function (error) {
@@ -117,7 +117,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.put('/book/:action_id/', login.isLoggedIn(), function (req, res) {
-    bookGenerator.createBook(req.params.action_id, req.cookies['resilienzManager-language'] || 'de', function (error, path) {
+    books.makeBook(req.params.action_id, req.cookies['resilienzManager-language'] || 'de', function (error, path) {
       if (error) {
         console.error(error)
         res.status(503).json(error)
@@ -154,7 +154,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/book/:action_id/', login.isLoggedIn(), function (req, res) {
-    bookGenerator.getBook(req.params.action_id, function (error, path) {
+    books.getBook(req.params.action_id, function (error, path) {
       if (error) {
         console.error(error)
         res.status(503).json(error)
@@ -169,7 +169,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.get('/admin/book/:action_id/', function (req, res) {
-    bookGenerator.getBook(req.params.action_id, function (error, path) {
+    books.getBook(req.params.action_id, function (error, path) {
       if (error) {
         console.error(error)
         res.status(503).json(error)
@@ -245,7 +245,7 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
     })
   })
   app.put('/bookimages/:name/rescale', login.isLoggedIn(), function (req, res) {
-    layouter.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, req.body.cw, req.body.ch , req.body.imageWidth, req.body.imageHeight, function (error) {
+    books.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, req.body.cw, req.body.ch , req.body.imageWidth, req.body.imageHeight, function (error) {
       if (error) {
         res.status(503).json(error)
       } else {
@@ -260,19 +260,15 @@ module.exports = function (app, database, language, login, layouter, bookGenerat
       }
     })
   })
-  app.get('/bookimages/:action_id/:page', login.isLoggedIn(), function (req, res) {
-    layouter.createPage(req.params.action_id, req.cookies['resilienzManager-language'], req.params.page, function (error, result) {
+  app.patch('/bookimages/:action_id/:category/:page', login.isLoggedIn(), function (req, res) {
+    books.createPage(req.params.action_id, req.params.category, req.params.page, req.cookies['resilienzManager-language'], function (error, result) {
       if (error) {
         res.status(503).json(error)
       } else {
         if (!result) {
           res.status(503).end()
         } else {
-          if (req.params.page === '1' || req.params.page === '44') {
-            res.status(200).sendFile(config.pages + '/' + req.params.action_id + '/' + req.params.page + '.png')
-          } else {
-            res.status(200).sendFile(config.pages + '/' + req.params.action_id + '/' + req.params.page + '_two.png')
-          }
+          res.status(200).send(result)
         }
       }
     })

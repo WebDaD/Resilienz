@@ -21,8 +21,7 @@ var Database = require('./lib/database.js')
 var Status = require('./lib/status.js')
 var Language = require('./lib/language.js')
 var Login = require('./lib/login.js')
-var Layouter = require('./lib/layouter.js')
-var BookGenerator = require('./lib/book-generator.js')
+var Books = require('./lib/books.js')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var bcrypt = require('bcrypt')
@@ -59,12 +58,11 @@ Language(database, function (error, language) {
     })
   } else {
     var login = new Login(database, language, bcrypt, config.salt, config.serversecret, config.mail)
-    var layouter = new Layouter(config.layouts, config.images, config.pages, database, config.bookpages)
-    var bookGenerator = new BookGenerator(layouter, config.pages, config.books, config.bookpages)
+    var books = new Books(database, config.layouts, config.pages, config.images, config.books)
     var status = new Status()
     // Routes
     console.log('Loading Routes...')
-    require('./routes')(app, database, language, login, layouter, bookGenerator, status, config)
+    require('./routes')(app, database, language, login, books, status, config)
 
     // Listen to Port
     server.listen(config.port)
