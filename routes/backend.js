@@ -147,7 +147,6 @@ module.exports = function (app, database, language, login, books, config) {
                 res.status(200).end()
               })
             })
-            
           }
         })
       }
@@ -245,7 +244,7 @@ module.exports = function (app, database, language, login, books, config) {
     })
   })
   app.put('/bookimages/:name/rescale', login.isLoggedIn(), function (req, res) {
-    books.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, req.body.cw, req.body.ch , req.body.imageWidth, req.body.imageHeight, function (error) {
+    books.rescaleImage(config.images + '/' + req.params.name, req.body.x1, req.body.y1, req.body.width, req.body.height, req.body.cw, req.body.ch, req.body.imageWidth, req.body.imageHeight, function (error) {
       if (error) {
         res.status(503).json(error)
       } else {

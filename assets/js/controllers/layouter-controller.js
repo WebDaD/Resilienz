@@ -198,6 +198,8 @@
             position.deleting = false
             position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
           })
+        }).catch(function (errorMessage) {
+          console.error(errorMessage)
         })
       }
       function reloadLayoutPositions (callback) {
