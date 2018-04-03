@@ -14,9 +14,9 @@
       self.selectedLayout = {}
       self.selectedPage = -1
 
-      self.renderPage = function (id, callback) {
+      self.renderPage = function (id, removed, callback) {
         self.pageCreating = true
-        resilienzManagerDataProvider.createPage($rootScope.action, self.selectedCategory.id, self.selectedPage, id).then(function () {
+        resilienzManagerDataProvider.createPage($rootScope.action, self.selectedCategory.id, self.selectedPage, id, removed).then(function () {
           self.pageCreating = false
           if (callback) {
             callback()
@@ -50,7 +50,7 @@
           if ($item) {
             resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, $item).then(function (something) {
               reloadLayoutPositions(function () {
-                self.renderPage(-2, function () {
+                self.renderPage(-2, false, function () {
                   self.pageLoading = true
                 })
               })
@@ -99,7 +99,7 @@
             }
           })
           modalInstance.result.then(function (image) {
-            self.renderPage(position.id, function () {
+            self.renderPage(position.id, false, function () {
               position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
             })
           })
@@ -109,7 +109,7 @@
         if (!self.final) {
           position.deleting = true
           resilienzManagerDataProvider.imageDelete(position.value).then(function (something) {
-            self.renderPage(-1, function () {
+            self.renderPage(position.id, true, function () {
               position.style['background-image'] = 'url(/layout/image/placeholder)'
               position.value = undefined
               position.type = 'image'
@@ -149,7 +149,7 @@
           self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
           // $scope.$apply()
           resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, {'text': position.value}).then(function (something) {
-            self.renderPage(self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].id, function () {
+            self.renderPage(self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].id, false, function () {
               self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
               self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].changed = false
             })
@@ -192,7 +192,7 @@
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, self.selectedPage, position.id).then(function (image) {
           position.value = image.data
-          self.renderPage(position.id, function () {
+          self.renderPage(position.id, false, function () {
             position.isImage = true
             position.sending = false
             position.deleting = false

@@ -259,8 +259,8 @@ module.exports = function (app, database, language, login, books, config) {
       }
     })
   })
-  app.patch('/bookimages/:action_id/:category/:page/:id', login.isLoggedIn(), function (req, res) {
-    books.createPage(req.params.action_id, req.params.category, req.params.page, req.cookies['resilienzManager-language'], req.params.id, function (error, result) {
+  app.patch('/bookimages/:action_id/:category/:page/:id/:removed', login.isLoggedIn(), function (req, res) {
+    books.createPage(req.params.action_id, req.params.category, req.params.page, req.cookies['resilienzManager-language'], req.params.id, (req.params.removed === '1'), function (error, result) {
       if (error) {
         res.status(503).json(error)
       } else {
