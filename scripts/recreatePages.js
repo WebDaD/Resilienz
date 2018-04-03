@@ -41,6 +41,7 @@ if (process.argv[2] === 'pages') {
                       pageCounter++
                       if (pageMax === pageCounter) {
                         console.log('STC :: done')
+                        process.exit(0)
                       }
                     })
                   }
@@ -72,6 +73,7 @@ if (process.argv[2] === 'pages') {
           bookCounter++
           if (actionCounter === bookCounter) {
             console.log('STC :: done')
+            process.exit(0)
           }
         })
       }
