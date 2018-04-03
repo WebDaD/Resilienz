@@ -28,8 +28,8 @@ if (process.argv[2] === 'pages') {
                   if (error) {
                     console.error(error)
                   } else {
-                    console.log('Processing Page ' + page + ' in category ' + category.id + ' for action ' + action.id)
-                    books.createPage(action.id.toString(), category.id.toString(), page, action.language, '-2', false, function (error, result) {
+                    console.log('Processing Page ' + page + ' in category ' + category[0].id + ' for action ' + action.id)
+                    books.createPage(action.id.toString(), category[0].id.toString(), page, action.language, '-2', false, function (error, result) {
                       if (error) {
                         console.error(error)
                       } else {
