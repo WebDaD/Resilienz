@@ -9,6 +9,7 @@
     "config":"bash scripts/configure.sh",
 
     "createuser":"node scripts/createUser.js",
+    "recreatepages":"node scripts/recreatePages.js",
 
     "test":"bash scripts/test.sh",
     "docs":"bash scripts/docs.sh",
