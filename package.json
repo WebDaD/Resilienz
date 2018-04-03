@@ -38,6 +38,7 @@
     "request":"*",
     "bcrypt":"*",
     "async":"*",
+    "sync":"*",
     "diskspace":"*",
     "nodemailer":"*",
     "uuid":"*",
