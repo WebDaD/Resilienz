@@ -13,6 +13,8 @@ if (process.argv[2] === 'pages') {
       process.exit(2)
     } else {
       var actionCounter = actions.length
+      var pageCounter = 0
+      var pageMax = 0
       console.log('Got ' + actionCounter + ' Actions')
       for (let index = 0; index < actionCounter; index++) {
         const action = actions[index]
@@ -28,12 +30,17 @@ if (process.argv[2] === 'pages') {
                   if (error) {
                     console.error(error)
                   } else {
+                    pageMax++
                     console.log('Processing Page ' + page + ' in category ' + category[0].id + ' for action ' + action.id)
                     books.createPage(action.id.toString(), category[0].id.toString(), page, action.language, '-2', false, function (error, result) {
                       if (error) {
                         console.error(error)
                       } else {
                         console.log('Page ' + page + ' for action ' + action.id + ' Done')
+                      }
+                      pageCounter++
+                      if (pageMax === pageCounter) {
+                        console.log('STC :: done')
                       }
                     })
                   }
@@ -56,7 +63,7 @@ if (process.argv[2] === 'pages') {
       console.log('Got ' + actionCounter + ' Actions')
       for (let index = 0; index < actionCounter; index++) {
         const action = actions[index]
-        books.makeBook(action.id, action.language, function (error, book) {
+        books.makeBook(action.id.toString(), action.language, function (error, book) {
           if (error) {
             console.error(error)
           } else {
@@ -64,7 +71,7 @@ if (process.argv[2] === 'pages') {
           }
           bookCounter++
           if (actionCounter === bookCounter) {
-            console.log('done')
+            console.log('STC :: done')
           }
         })
       }
