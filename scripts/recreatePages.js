@@ -6,14 +6,13 @@ var books = new Books(database, config.layouts, config.pages, config.images, con
 
 console.log('STC :: Recreating All Pages or Books')
 
-if (process.argv[1] === 'pages') {
+if (process.argv[2] === 'pages') {
   database.getActionList(function (error, actions) {
     if (error) {
       console.error(error)
       process.exit(2)
     } else {
       var actionCounter = actions.length
-      var bookCounter = 0
       console.log('Got ' + actionCounter + ' Actions')
       for (let index = 0; index < actionCounter; index++) {
         const action = actions[index]
@@ -25,12 +24,12 @@ if (process.argv[1] === 'pages') {
             if (pages.length > 0) {
               for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
                 const page = pages[pageIndex]
-                database.getCategoryByPage(page, function(error, category) {
+                database.getCategoryByPage(page, function (error, category) {
                   if (error) {
                     console.error(error)
                   } else {
-                    books.createPage(action.id, category.id, page, action.language, '-2', false, function(error, result) {
-                      if(error) {
+                    books.createPage(action.id, category.id, page, action.language, '-2', false, function (error, result) {
+                      if (error) {
                         console.error(error)
                       } else {
                         console.log('Page ' + page + ' Done')
@@ -54,17 +53,20 @@ if (process.argv[1] === 'pages') {
       var actionCounter = actions.length
       var bookCounter = 0
       console.log('Got ' + actionCounter + ' Actions')
-      books.makeBook(action.id, action.language, function (error, book) {
-        if (error) {
-          console.error(error)
-        } else {
-          console.log('Book ' + book + ' done.')
-        }
-        bookCounter++
-        if (actionCounter === bookCounter) {
-          console.log('done')
-        }
-      })
+      for (let index = 0; index < actionCounter; index++) {
+        const action = actions[index]
+        books.makeBook(action.id, action.language, function (error, book) {
+          if (error) {
+            console.error(error)
+          } else {
+            console.log('Book ' + book + ' done.')
+          }
+          bookCounter++
+          if (actionCounter === bookCounter) {
+            console.log('done')
+          }
+        })
+      }
     }
   })
 }
