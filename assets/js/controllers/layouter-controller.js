@@ -48,10 +48,11 @@
       self.onLayoutSelectCallback = function ($item, $model) {
         if (!self.final) {
           if ($item) {
-            self.pageLoading = true
             resilienzManagerDataProvider.actionSaveLayout(self.actionid, self.selectedPage, $item).then(function (something) {
               reloadLayoutPositions(function () {
-                self.renderPage(-2)
+                self.renderPage(-2, function () {
+                  self.pageLoading = true
+                })
               })
             })
           }
@@ -98,8 +99,9 @@
             }
           })
           modalInstance.result.then(function (image) {
-            position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-            self.renderPage(position.id)
+            self.renderPage(position.id, function () {
+              position.style['background-image'] = 'url(/layout/image/' + image + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+            })
           })
         }
       }
@@ -107,10 +109,11 @@
         if (!self.final) {
           position.deleting = true
           resilienzManagerDataProvider.imageDelete(position.value).then(function (something) {
-            position.style['background-image'] = 'url(/layout/image/placeholder)'
-            position.value = undefined
-            position.type = 'image'
-            self.renderPage(-1)
+            self.renderPage(-1, function () {
+              position.style['background-image'] = 'url(/layout/image/placeholder)'
+              position.value = undefined
+              position.type = 'image'
+            })
           })
         }
       }
@@ -146,9 +149,10 @@
           self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = true
           // $scope.$apply()
           resilienzManagerDataProvider.textSave(self.actionid, self.selectedPage, position.id, {'text': position.value}).then(function (something) {
-            self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
-            self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].changed = false
-            self.renderPage(self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].id)
+            self.renderPage(self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].id, function () {
+              self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].sending = false
+              self.selectedLayout.positions[parseInt($event.currentTarget.parentElement.attributes['data-position-index'].value)].changed = false
+            })
             // $scope.$apply()
           })
         }
@@ -188,11 +192,12 @@
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
         resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
           position.value = image.data
-          position.isImage = true
-          position.sending = false
-          position.deleting = false
-          position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
-          self.renderPage(position.id)
+          self.renderPage(position.id, function () {
+            position.isImage = true
+            position.sending = false
+            position.deleting = false
+            position.style['background-image'] = 'url(/layout/image/' + image.data + '?v=' + Math.floor((Math.random() * 1000) + 1) + ')'
+          })
         })
       }
       function reloadLayoutPositions (callback) {
