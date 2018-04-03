@@ -24,6 +24,7 @@ if (process.argv[2] === 'pages') {
             if (pages.length > 0) {
               for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
                 const page = pages[pageIndex].page.toString()
+                console.log('Processing Page ' + page + ' for action ' + action.id)
                 database.getCategoryByPage(page, function (error, category) {
                   if (error) {
                     console.error(error)
