@@ -38,9 +38,9 @@
               method: 'GET', url: restURL + 'positions/' + actionid + '/' + positionid + '/image'
             })
           },
-          createPage: function (actionid, category, page) {
+          createPage: function (actionid, category, page, id) {
             return $http({
-              method: 'PATCH', url: restURL + 'bookimages/' + actionid + '/' + category + '/' + page
+              method: 'PATCH', url: restURL + 'bookimages/' + actionid + '/' + category + '/' + page + '/' + id
             })
           },
           imageRescale: function (name, data, cw, ch, width, height) {
