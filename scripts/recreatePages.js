@@ -23,16 +23,16 @@ if (process.argv[2] === 'pages') {
             console.log('Got ' + pages.length + ' pages for action ' + action.id)
             if (pages.length > 0) {
               for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-                const page = pages[pageIndex].page
+                const page = pages[pageIndex].page.toString()
                 database.getCategoryByPage(page, function (error, category) {
                   if (error) {
                     console.error(error)
                   } else {
-                    books.createPage(action.id, category.id, page, action.language, '-2', false, function (error, result) {
+                    books.createPage(action.id.toString(), category.id.toString(), page, action.language, '-2', false, function (error, result) {
                       if (error) {
                         console.error(error)
                       } else {
-                        console.log('Page ' + page + ' Done')
+                        console.log('Page ' + page + ' for action ' + action.id + ' Done')
                       }
                     })
                   }
