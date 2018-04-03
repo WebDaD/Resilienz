@@ -23,7 +23,7 @@ if (process.argv[2] === 'pages') {
             console.log('Got ' + pages.length + ' pages for action ' + action.id)
             if (pages.length > 0) {
               for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-                const page = pages[pageIndex]
+                const page = pages[pageIndex].page
                 database.getCategoryByPage(page, function (error, category) {
                   if (error) {
                     console.error(error)
