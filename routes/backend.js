@@ -214,8 +214,8 @@ module.exports = function (app, database, language, login, books, config) {
       }
     })
   })
-  app.get('/positions/:actionid/:positionid/image', login.isLoggedIn(), function (req, res) {
-    database.getPositionImage(req.params.actionid, req.params.positionid, function (error, image) {
+  app.get('/positions/:actionid/:page/:positionid/image', login.isLoggedIn(), function (req, res) {
+    database.getPositionImage(req.params.actionid, req.params.positionid, req.params.page, function (error, image) {
       if (error) {
         console.error(error)
         res.status(404).end()

@@ -33,9 +33,9 @@
               method: 'GET', url: restURL + 'actions/' + actionid + '/' + page + '/layout'
             })
           },
-          getPositionImage: function (actionid, positionid) {
+          getPositionImage: function (actionid, page, positionid) {
             return $http({
-              method: 'GET', url: restURL + 'positions/' + actionid + '/' + positionid + '/image'
+              method: 'GET', url: restURL + 'positions/' + actionid + '/' + page + '/' + positionid + '/image'
             })
           },
           createPage: function (actionid, category, page, id) {

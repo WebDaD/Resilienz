@@ -190,7 +190,7 @@
       }
       self.success = function (file, response) {
         var position = self.selectedLayout.positions[parseInt(this.element.parentElement.attributes['data-position-index'].value)]
-        resilienzManagerDataProvider.getPositionImage(self.actionid, position.id).then(function (image) {
+        resilienzManagerDataProvider.getPositionImage(self.actionid, self.selectedPage, position.id).then(function (image) {
           position.value = image.data
           self.renderPage(position.id, function () {
             position.isImage = true
