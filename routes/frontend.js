@@ -47,7 +47,6 @@ module.exports = function (app, language, login) {
     var host = req.get('host')
     var hostparts = host.split('.')
     var domain = hostparts[hostparts.length - 1].trim()
-    console.log(domain)
     if (domain === 'de') {
       language.listTranslation('de', function (translations) {
         res.render('pages/index_de', {lang: translations})
