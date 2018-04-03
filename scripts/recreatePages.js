@@ -40,7 +40,7 @@ database.getActionList(function (error, actions) {
             }
           })
         }
-      } catch (e) {
+      } catch (error) {
         console.error(error)
         process.exit(2)
       }
