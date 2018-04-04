@@ -1,6 +1,8 @@
 var config = require('../config.json')
 var Database = require('../lib/database.js')
 var Books = require('../lib/books.js')
+var fs = require('fs')
+var path = require('path')
 var database = new Database(config.database)
 var books = new Books(database, config.layouts, config.pages, config.images, config.books)
 
@@ -64,6 +66,15 @@ if (process.argv[2] === 'pages') {
       console.log('Got ' + actionCounter + ' Actions')
       for (let index = 0; index < actionCounter; index++) {
         const action = actions[index]
+        if (!fs.existsSync(path.join(config.pagespath, action.id.toString(), 'tmp'))) {
+          fs.mkdirSync(path.join(config.pagespath, action.id.toString(), 'tmp'))
+        }
+        if (!fs.existsSync(path.join(config.pagespath, action.id.toString(), 'pages'))) {
+          fs.mkdirSync(path.join(config.pagespath, action.id.toString(), 'pages'))
+        }
+        if (!fs.existsSync(path.join(config.pagespath, action.id.toString(), 'book'))) {
+          fs.mkdirSync(path.join(config.pagespath, action.id.toString(), 'book'))
+        }
         books.makeBook(action.id.toString(), action.language, function (error, book) {
           if (error) {
             console.error(error)
