@@ -66,14 +66,14 @@ if (process.argv[2] === 'pages') {
       console.log('Got ' + actionCounter + ' Actions')
       for (let index = 0; index < actionCounter; index++) {
         const action = actions[index]
-        if (!fs.existsSync(path.join(config.pagespath, action.id.toString(), 'tmp'))) {
-          fs.mkdirSync(path.join(config.pagespath, action.id.toString(), 'tmp'))
+        if (!fs.existsSync(path.join(config.pages, action.id.toString(), 'tmp'))) {
+          fs.mkdirSync(path.join(config.pages, action.id.toString(), 'tmp'))
         }
-        if (!fs.existsSync(path.join(config.pagespath, action.id.toString(), 'pages'))) {
-          fs.mkdirSync(path.join(config.pagespath, action.id.toString(), 'pages'))
+        if (!fs.existsSync(path.join(config.pages, action.id.toString(), 'pages'))) {
+          fs.mkdirSync(path.join(config.pages, action.id.toString(), 'pages'))
         }
-        if (!fs.existsSync(path.join(config.pagespath, action.id.toString(), 'book'))) {
-          fs.mkdirSync(path.join(config.pagespath, action.id.toString(), 'book'))
+        if (!fs.existsSync(path.join(config.pages, action.id.toString(), 'book'))) {
+          fs.mkdirSync(path.join(config.pages, action.id.toString(), 'book'))
         }
         books.makeBook(action.id.toString(), action.language, function (error, book) {
           if (error) {
