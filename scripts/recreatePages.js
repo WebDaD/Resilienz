@@ -23,6 +23,7 @@ if (process.argv[2] === 'pages') {
             console.error(error)
           } else {
             console.log('Got ' + pages.length + ' pages for action ' + action.id)
+            pageMax += pages.length
             if (pages.length > 0) {
               for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
                 const page = pages[pageIndex].page.toString()
@@ -30,7 +31,6 @@ if (process.argv[2] === 'pages') {
                   if (error) {
                     console.error(error)
                   } else {
-                    pageMax++
                     console.log('Processing Page ' + page + ' in category ' + category[0].id + ' for action ' + action.id)
                     books.createPage(action.id.toString(), category[0].id.toString(), page, action.language, '-2', false, function (error, result) {
                       if (error) {
