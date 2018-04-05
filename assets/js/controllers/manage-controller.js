@@ -5,6 +5,7 @@
       var self = this
       self.actions = []
       self.isLoading = true
+      self.newActionComment = ''
       self.activeActionid = $rootScope.action
       resilienzManagerDataProvider.actions($rootScope.id).then(function (actions) {
         self.actions = actions.data
@@ -13,10 +14,13 @@
         console.error(error)
       })
       self.createBook = function (actionId) {
-
+        // TODO: call create book from svc, then reload this row
       }
       self.switchAction = function (actionId) {
-        
+        // TODO: call switch´Action from svc, then reload table
+      }
+      self.createAction = function () {
+        // TODO: call createAction from svc, then reload table, reset newActionComment to ''
       }
     }])
 }())

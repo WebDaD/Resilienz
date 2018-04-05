@@ -30,4 +30,11 @@
           button.btn.btn-default(ng-show="action.active == '0'" ng-click="ctrl.switchAction(action.id)" )
             i.fa.fa-book(aria-hidden="true")
             #{lang.manage_switch_action}
-
+  hr
+  form(ng-show="!ctrl.isLoading")
+    .form-group
+      label(for="newActionComment") #{lang.manage_comment}
+      input#newActionComment.form-control(type="text" placeholder="#{lang.manage_comment}" ng-model="ctrl.newActionComment")
+    button.btn.btn-primary(ng-show="!ctrl.isLoading" ng-click="ctrl.createAction()" )
+      i.fa.fa-plus(aria-hidden="true")
+      #{lang.manage_create_action}
