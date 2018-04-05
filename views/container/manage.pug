@@ -1,0 +1,5 @@
+.container
+  h1 #{lang.manage_title}
+  .spinner(ng-show="ctrl.isLoading")
+  p(ng-show="!ctrl.isLoading") #{lang.manage_text}
+  table.table(ng-show="!ctrl.isLoading")

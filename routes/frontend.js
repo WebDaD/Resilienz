@@ -23,9 +23,9 @@ module.exports = function (app, language, login) {
       res.render('container/materials', {lang: translations})
     })
   })
-  app.get('/container/finish', function (req, res) {
+  app.get('/container/manage', function (req, res) {
     language.listTranslation(req.cookies['resilienzManager-language'] || 'de', function (translations) {
-      res.render('container/finish', {lang: translations})
+      res.render('container/manage', {lang: translations})
     })
   })
   app.get('/container/layouter', function (req, res) {

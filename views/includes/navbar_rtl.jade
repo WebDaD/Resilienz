@@ -22,7 +22,7 @@ nav.navbar.navbar-default
         li(ng-show="admin" ng-class="{ active: isActive('/actions')}")
           a(href='#!/actions') Actions
         li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/finish')}")
-          a(href='#!/finish') #{lang.nav_finish}
+          a(href='#!/manage') #{lang.nav_manage}
         li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/layout')}")
           a(href='#!/layout') #{lang.nav_layout}
         li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/materials')}")

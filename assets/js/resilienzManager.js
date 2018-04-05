@@ -19,10 +19,10 @@ Dropzone.autoDiscover = false
           controllerAs: 'ctrl',
           templateUrl: 'container/layouter'
         })
-        .when('/finish', {
-          controller: 'resilienzManager-Finalize',
+        .when('/manage', {
+          controller: 'resilienzManager-Manage',
           controllerAs: 'ctrl',
-          templateUrl: 'container/finish'
+          templateUrl: 'container/manage'
         })
         .when('/users', {
           controller: 'resilienzManager-Users',
