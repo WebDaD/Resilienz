@@ -39,7 +39,7 @@
       if ($conn->connect_error) {
         die("Connection to Database failed: " . $conn->connect_error);
       }
-      $sql = "SELECT u.email, u.language, u.action_id, a.finalized, a.book FROM `userList` u, actionList a WHERE u.id = a.user_id";
+      $sql = "SELECT u.email, u.language, u.action_id, a.finalized, a.book, a.active, a.last_change, a.comment FROM `userList` u, actionList a WHERE u.id = a.user_id";
       $result = $conn->query($sql);
     ?>
     <style>
@@ -95,35 +95,37 @@
   </head>
   <body>
     <div class="container">
-      <h1>Resilienz :: Books</h1>
+      <h1>STC :: Books</h1>
       <?php if ($result->num_rows > 0):?>
       <div id="no-more-tables">
-        <table class="table table-bordered table-striped table-hover sortable">
+        <table class="table table-bordered table-condensed table-striped table-hover sortable">
           <thead>
             <tr>
-              <th data-defaultsort="desc">E-Mail</th>
+              <th data-defaultsort="desc">User - E-Mail</th>
               <th>Language</th>
-              <th>Finalized</th>
+              <th>Comment</th>
+              <th>Last Change</th>
+              <th>Active</th>
               <th>Book</th>
             </tr>
           </thead>
           <tbody>
             <?php while($row = $result->fetch_assoc()): ?>
               <tr>
-                <td data-title="E-Mail"><?php echo $row["email"];?></td>
+                <td data-title="User - E-Mail"><?php echo $row["email"];?></td>
                 <td data-title="Language"><?php echo $row["language"];?></td>
-                <td data-value="<?php echo $row["finalized"];?>" data-title="Finalized">
-                  <?php if($row["finalized"] == "1") : ?>
+                <td data-title="Comment"><?php echo $row["comment"];?></td>
+                <td data-title="Last Change"><?php echo $row["last_change"];?></td>
+                <td data-title="Active" data-value="<?php echo $row["active"];?>">
+                <?php if($row["active"] == "1") : ?>
                     <i class="fa fa-check" aria-hidden="true" style="color:green;"></i>
                   <?php else: ?>
                     &nbsp;
                   <?php endif; ?>
                 </td>
                 <td data-value="<?php echo $row["book"];?>" data-title="Book">
-                  <?php if($row["book"] == "Y") : ?>
+                  <?php if($row["book"] == "Y" || $row["book"] == "O") : ?>
                     <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download</a>
-                  <?php elseif($row["book"] == "O") : ?>
-                    <a href="https://storytellingclub.de/admin/book/<?php echo $row["action_id"];?>" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download (Old Book)</a>
                   <?php else: ?>
                       &nbsp;
                   <?php endif; ?>
