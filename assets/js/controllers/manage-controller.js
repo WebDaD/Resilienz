@@ -7,7 +7,7 @@
       self.isLoading = true
       self.newActionComment = ''
       self.activeActionid = $rootScope.action
-      resilienzManagerDataProvider.actions($rootScope.id).then(function (actions) {
+      resilienzManagerDataProvider.actionsForUser($rootScope.id).then(function (actions) {
         self.actions = actions.data
         self.isLoading = false
       }, function (error) {

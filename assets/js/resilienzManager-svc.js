@@ -23,6 +23,11 @@
               method: 'GET', url: restURL + 'actions/' + id
             })
           },
+          actionsForUser: function (id) {
+            return $http({
+              method: 'GET', url: restURL + 'actions/user/' + id
+            })
+          },
           categoriesFull: function () {
             return $http({
               method: 'GET', url: restURL + 'categories/full'

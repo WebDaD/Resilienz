@@ -82,6 +82,15 @@ module.exports = function (app, database, language, login, books, config) {
       }
     })
   })
+  app.get('/actions/user/:id', login.isLoggedIn(), function (req, res) {
+    database.getActionsForUser(req.params.id, function (error, result) {
+      if (error) {
+        res.status(503).json(error)
+      } else {
+        res.status(200).json(result)
+      }
+    })
+  })
   app.put('/actions/:id/finalize', login.isLoggedIn(), function (req, res) {
     database.actionFinalize(req.params.id, function (error, result) {
       if (error) {
