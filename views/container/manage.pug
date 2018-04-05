@@ -3,3 +3,31 @@
   .spinner(ng-show="ctrl.isLoading")
   p(ng-show="!ctrl.isLoading") #{lang.manage_text}
   table.table(ng-show="!ctrl.isLoading")
+    thead
+      tr
+        th #{lang.manage_active}
+        th #{lang.manage_comment}
+        th #{lang.manage_last_change}
+        th *
+        th *
+    tbody
+      tr(ng-repeat="action in ctrl.actions")
+        td
+          i.fa.fa-check-circle(aria-hidden="true" ng-show="action.active=='1'" style="color:green;")
+        td {{action.comment}}
+        td {{action.last_change}}
+        td
+          button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == false" ng-click="ctrl.createBook(action.id)" )
+            i.fa.fa-book(aria-hidden="true")
+            #{lang.manage_create_book}
+          button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == true" disabled="disabled")
+            i.fa.fa-cog.fa-spin(aria-hidden="true")
+            #{lang.manage_creating}
+          a(ng-href="/book/{{action.id}}" target="_blank" ng-show="action.book==='Y' && action.creating == false")
+            i.fa.fa-book(aria-hidden="true")
+            #{lang.manage_download}
+        td
+          button.btn.btn-default(ng-show="action.active == '0'" ng-click="ctrl.switchAction(action.id)" )
+            i.fa.fa-book(aria-hidden="true")
+            #{lang.manage_switch_action}
+

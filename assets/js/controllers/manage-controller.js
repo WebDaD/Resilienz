@@ -12,5 +12,11 @@
       }, function (error) {
         console.error(error)
       })
+      self.createBook = function (actionId) {
+
+      }
+      self.switchAction = function (actionId) {
+        
+      }
     }])
 }())
