@@ -18,6 +18,7 @@
       }
       self.switchAction = function (actionId) {
         // TODO: call switch´Action from svc, then reload table
+        // TODO: set rootScope Action ID and Cookie!!!
       }
       self.createAction = function () {
         // TODO: call createAction from svc, then reload table, reset newActionComment to ''
