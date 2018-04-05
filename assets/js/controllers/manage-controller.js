@@ -9,6 +9,10 @@
       self.activeActionid = $rootScope.action
       resilienzManagerDataProvider.actionsForUser($rootScope.id).then(function (actions) {
         self.actions = actions.data
+        self.actions.map(function (obj) {
+          obj.creating = false
+          return obj
+        })
         self.isLoading = false
       }, function (error) {
         console.error(error)

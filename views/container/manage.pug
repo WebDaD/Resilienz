@@ -19,22 +19,22 @@
         td
           button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == false" ng-click="ctrl.createBook(action.id)" )
             i.fa.fa-book(aria-hidden="true")
-            #{lang.manage_create_book}
+            span #{lang.manage_create_book}
           button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == true" disabled="disabled")
             i.fa.fa-cog.fa-spin(aria-hidden="true")
-            #{lang.manage_creating}
+            span #{lang.manage_creating}
           a(ng-href="/book/{{action.id}}" target="_blank" ng-show="action.book==='Y' && action.creating == false")
             i.fa.fa-book(aria-hidden="true")
-            #{lang.manage_download}
+            span #{lang.manage_download}
         td
           button.btn.btn-default(ng-show="action.active == '0'" ng-click="ctrl.switchAction(action.id)" )
             i.fa.fa-book(aria-hidden="true")
-            #{lang.manage_switch_action}
+            span #{lang.manage_switch_action}
   hr
   form(ng-show="!ctrl.isLoading")
     .form-group
       label(for="newActionComment") #{lang.manage_comment}
-      input#newActionComment.form-control(type="text" placeholder="#{lang.manage_comment}" ng-model="ctrl.newActionComment")
+      input#newActionComment.form-control(type="text" placeholder="lang.manage_comment" ng-model="ctrl.newActionComment")
     button.btn.btn-primary(ng-show="!ctrl.isLoading" ng-click="ctrl.createAction()" )
       i.fa.fa-plus(aria-hidden="true")
-      #{lang.manage_create_action}
+      span #{lang.manage_create_action}
