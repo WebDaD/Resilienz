@@ -14,7 +14,7 @@
       tr(ng-repeat="action in ctrl.actions")
         td
           i.fa.fa-check-circle(aria-hidden="true" ng-show="action.active=='1'" style="color:green;")
-        td {{action.comment || lang.manage_no_comment}}
+        td {{action.comment || #{lang.manage_no_comment}}}
         td {{action.last_change | date: 'dd.MM.yyyy HH:mm:ss'}}
         td
           button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == false" ng-click="ctrl.createBook(action.id)" )
@@ -31,10 +31,13 @@
             i.fa.fa-book(aria-hidden="true")
             span  #{lang.manage_switch_action}
   hr
-  form.form-inline(ng-show="!ctrl.isLoading")
-    .form-group
-      label(for="newActionComment") #{lang.manage_comment}
+  h2 #{lang.manage_create_action}
+  .row
+    .col-md-2 #{lang.manage_comment}
+    .col-md-8
       input#newActionComment.form-control(type="text" placeholder="{{lang.manage_comment}}" ng-model="ctrl.newActionComment")
-    button.btn.btn-primary(ng-show="!ctrl.isLoading" ng-click="ctrl.createAction()" )
-      i.fa.fa-plus(aria-hidden="true")
-      span  #{lang.manage_create_action}
+    .col-md-2
+      button.btn.btn-primary(ng-click="ctrl.createAction()" )
+        i.fa.fa-plus(aria-hidden="true")
+        span  #{lang.manage_create_action}
+      
