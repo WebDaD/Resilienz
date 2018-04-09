@@ -7,16 +7,22 @@
       self.isLoading = true
       self.newActionComment = ''
       self.activeActionid = $rootScope.action
-      resilienzManagerDataProvider.actionsForUser($rootScope.id).then(function (actions) {
-        self.actions = actions.data
-        self.actions.map(function (obj) {
-          obj.creating = false
-          return obj
+      self.reload()
+      self.reload = function () {
+        var self = this
+        self.actions = []
+        self.isLoading = true
+        resilienzManagerDataProvider.actionsForUser($rootScope.id).then(function (actions) {
+          self.actions = actions.data
+          self.actions.map(function (obj) {
+            obj.creating = false
+            return obj
+          })
+          self.isLoading = false
+        }, function (error) {
+          console.error(error)
         })
-        self.isLoading = false
-      }, function (error) {
-        console.error(error)
-      })
+      }
       self.createBook = function (actionId) {
         // TODO: call create book from svc, then reload this row
       }
