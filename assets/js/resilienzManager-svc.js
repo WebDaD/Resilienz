@@ -78,6 +78,16 @@
               method: 'PUT', url: restURL + 'book/' + id
             })
           },
+          switchToAction: function (userId, actionId) {
+            return $http({
+              method: 'PATCH', url: restURL + 'actions/' + userId + '/switch/' + actionId
+            })
+          },
+          createAction: function (userId, comment) {
+            return $http({
+              method: 'POST', url: restURL + 'actions/' + userId, data: comment
+            })
+          },
           actionSaveLayout: function (id, page, layoutId) {
             return $http({
               method: 'PUT', url: restURL + 'actions/' + id + '/' + page + '/layout', data: layoutId

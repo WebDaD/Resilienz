@@ -125,6 +125,12 @@ module.exports = function (app, database, language, login, books, config) {
       }
     })
   })
+  app.patch('/actions/:userId/switch/:actionId', login.isLoggedIn(), function (req, res) {
+    // TODO: database: switch to action ID
+  })
+  app.post('/actions/:userId/', login.isLoggedIn(), function (req, res) {
+    // TODO: database: add new action for user. comment is in body
+  })
   app.put('/book/:action_id/', login.isLoggedIn(), function (req, res) {
     books.makeBook(req.params.action_id, req.cookies['resilienzManager-language'] || 'de', function (error, path) {
       if (error) {
