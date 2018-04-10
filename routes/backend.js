@@ -135,7 +135,7 @@ module.exports = function (app, database, language, login, books, config) {
     })
   })
   app.post('/actions/:userId/', login.isLoggedIn(), function (req, res) {
-    database.addAction(req.params.userId, function (error, result) {
+    database.addAction(req.params.userId, req.body.comment, function (error, result) {
       if (error) {
         res.status(503).json(error)
       } else {
