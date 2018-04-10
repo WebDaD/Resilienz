@@ -126,10 +126,22 @@ module.exports = function (app, database, language, login, books, config) {
     })
   })
   app.patch('/actions/:userId/switch/:actionId', login.isLoggedIn(), function (req, res) {
-    // TODO: database: switch to action ID
+    database.switchAction(req.params.userId, req.params.actionId, function (error, result) {
+      if (error) {
+        res.status(503).json(error)
+      } else {
+        res.status(200).json(result)
+      }
+    })
   })
   app.post('/actions/:userId/', login.isLoggedIn(), function (req, res) {
-    // TODO: database: add new action for user. comment is in body
+    database.addAction(req.params.userId, function (error, result) {
+      if (error) {
+        res.status(503).json(error)
+      } else {
+        res.status(200).json(result)
+      }
+    })
   })
   app.put('/book/:action_id/', login.isLoggedIn(), function (req, res) {
     books.makeBook(req.params.action_id, req.cookies['resilienzManager-language'] || 'de', function (error, path) {
