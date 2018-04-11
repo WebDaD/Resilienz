@@ -5,6 +5,7 @@
       var self = this
       self.actions = []
       self.isLoading = true
+      self.actionCreating = false
       self.newActionComment = ''
       self.activeActionid = $rootScope.action
       self.reload = function () {
@@ -43,9 +44,11 @@
         })
       }
       self.createAction = function () {
+        self.actionCreating = true
         resilienzManagerDataProvider.createAction($rootScope.id, self.newActionComment).then(function (result) {
           self.newActionComment = ''
           self.reload()
+          self.actionCreating = false
         }, function (error) {
           console.error(error)
         })

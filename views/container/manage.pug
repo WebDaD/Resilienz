@@ -32,7 +32,8 @@
             span  #{lang.manage_switch_action}
   hr
   h2 #{lang.manage_create_action}
-  .row
+  .spinner(ng-show="ctrl.actionCreating")
+  .row(ng-show="!ctrl.actionCreating")
     .col-md-1 #{lang.manage_comment}
     .col-md-6
       input#newActionComment.form-control(type="text" placeholder=lang.manage_comment ng-model="ctrl.newActionComment")
