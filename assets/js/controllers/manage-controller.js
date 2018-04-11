@@ -7,7 +7,6 @@
       self.isLoading = true
       self.newActionComment = ''
       self.activeActionid = $rootScope.action
-      self.reload()
       self.reload = function () {
         var self = this
         self.actions = []
@@ -51,5 +50,6 @@
           console.error(error)
         })
       }
+      self.reload()
     }])
 }())
