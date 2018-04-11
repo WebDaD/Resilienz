@@ -43,4 +43,4 @@ ALTER TABLE `actions` ADD `comment` TEXT NULL AFTER `book`, ADD `last_change` TI
 UPDATE actions SET active = 1;
 
 CREATE OR REPLACE VIEW actionList AS
-select `u`.`email` AS `email`,`u`.`id` AS `user_id`,`l`.`name` AS `language`,`a`.`location` AS `location`,`a`.`start_time` AS `start_time`,`a`.`end_time` AS `end_time`,`a`.`finalized` AS `finalized`,`a`.`book` AS `book`, a.comment AS comment, a.last_change AS last_change, a.active AS active from ((`resilienz-test`.`user` `u` join `resilienz-test`.`languages` `l`) join `resilienz-test`.`actions` `a`) where ((`u`.`id` = `a`.`user_id`) and (`u`.`languages_id` = `l`.`id`))
+select `a`.`id` AS `action_id`, `u`.`email` AS `email`,`u`.`id` AS `user_id`,`l`.`name` AS `language`,`a`.`location` AS `location`,`a`.`start_time` AS `start_time`,`a`.`end_time` AS `end_time`,`a`.`finalized` AS `finalized`,`a`.`book` AS `book`, a.comment AS comment, a.last_change AS last_change, a.active AS active from ((`resilienz-test`.`user` `u` join `resilienz-test`.`languages` `l`) join `resilienz-test`.`actions` `a`) where ((`u`.`id` = `a`.`user_id`) and (`u`.`languages_id` = `l`.`id`))
