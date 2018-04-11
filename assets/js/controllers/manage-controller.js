@@ -34,7 +34,7 @@
         resilienzManagerDataProvider.switchToAction($rootScope.id, actionId).then(function (result) {
           if (result.data) {
             $rootScope.action = actionId
-            $cookies.set('resilienzManager-action', actionId)
+            $cookies.put('resilienzManager-action', actionId)
             self.reload()
           } else {
             console.error('Some Error')
