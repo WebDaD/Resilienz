@@ -85,7 +85,7 @@
           },
           createAction: function (userId, comment) {
             return $http({
-              method: 'POST', url: restURL + 'actions/' + userId, data: comment
+              method: 'POST', url: restURL + 'actions/' + userId, data: {comment: comment}
             })
           },
           actionSaveLayout: function (id, page, layoutId) {
