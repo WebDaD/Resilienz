@@ -1,0 +1,44 @@
+.container
+  h1 #{lang.manage_title}
+  .spinner(ng-show="ctrl.isLoading")
+  p(ng-show="!ctrl.isLoading") #{lang.manage_text}
+  table.table(ng-show="!ctrl.isLoading")
+    thead
+      tr
+        th #{lang.manage_active}
+        th #{lang.manage_comment}
+        th #{lang.manage_last_change}
+        th *
+        th *
+    tbody
+      tr(ng-repeat="action in ctrl.actions")
+        td
+          i.fa.fa-check-circle(aria-hidden="true" ng-show="action.active=='1'" style="color:green;")
+        td {{action.comment || '#{lang.manage_no_comment}'}}
+        td {{action.last_change | date: 'dd.MM.yyyy HH:mm:ss'}}
+        td
+          button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == false" ng-click="ctrl.createBook(action.id)" )
+            i.fa.fa-book(aria-hidden="true")
+            span  #{lang.manage_create_book}
+          button.btn.btn-default(ng-show="action.book!=='Y' && action.creating == true" disabled="disabled")
+            i.fa.fa-cog.fa-spin(aria-hidden="true")
+            span  #{lang.manage_creating}
+          a(ng-href="/book/{{action.id}}" target="_blank" ng-show="action.book==='Y' && action.creating == false")
+            i.fa.fa-book(aria-hidden="true")
+            span  #{lang.manage_download}
+        td
+          button.btn.btn-default(ng-show="action.active == '0'" ng-click="ctrl.switchAction(action.id)" )
+            i.fa.fa-book(aria-hidden="true")
+            span  #{lang.manage_switch_action}
+  hr
+  h2 #{lang.manage_create_action}
+  .spinner(ng-show="ctrl.actionCreating")
+  .row(ng-show="!ctrl.actionCreating")
+    .col-md-1 #{lang.manage_comment}
+    .col-md-6
+      input#newActionComment.form-control(type="text" placeholder=lang.manage_comment ng-model="ctrl.newActionComment")
+    .col-md-2
+      button.btn.btn-primary(ng-click="ctrl.createAction()" )
+        i.fa.fa-plus(aria-hidden="true")
+        span  #{lang.manage_create_action}
+      

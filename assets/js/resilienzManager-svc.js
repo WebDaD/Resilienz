@@ -23,6 +23,11 @@
               method: 'GET', url: restURL + 'actions/' + id
             })
           },
+          actionsForUser: function (id) {
+            return $http({
+              method: 'GET', url: restURL + 'actions/user/' + id
+            })
+          },
           categoriesFull: function () {
             return $http({
               method: 'GET', url: restURL + 'categories/full'
@@ -71,6 +76,16 @@
           createBook: function (id) {
             return $http({
               method: 'PUT', url: restURL + 'book/' + id
+            })
+          },
+          switchToAction: function (userId, actionId) {
+            return $http({
+              method: 'PATCH', url: restURL + 'actions/' + userId + '/switch/' + actionId
+            })
+          },
+          createAction: function (userId, comment) {
+            return $http({
+              method: 'POST', url: restURL + 'actions/' + userId, data: {comment: comment}
             })
           },
           actionSaveLayout: function (id, page, layoutId) {

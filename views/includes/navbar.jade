@@ -17,8 +17,8 @@ nav.navbar.navbar-default
           a(href='#!/materials') #{lang.nav_materials}
         li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/layout')}")
           a(href='#!/layout') #{lang.nav_layout}
-        li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/finish')}")
-          a(href='#!/finish') #{lang.nav_finish}
+        li(ng-show="username !== '' && !admin" ng-class="{ active: isActive('/manage')}")
+          a(href='#!/manage') #{lang.nav_manage}
         li(ng-show="admin" ng-class="{ active: isActive('/actions')}")
           a(href='#!/actions') Actions
         li(ng-show="admin" ng-class="{ active: isActive('/users')}")
