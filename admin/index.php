@@ -46,7 +46,8 @@
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           if (isset($results[$row->email]) && $results[$row->email]->action_id == $row->action_id) {
-            echo $row->email."<br/>";
+            echo $row."<br/>";
+            echo $row->email."<hr/>";
             // object exists in array; do nothing
           } else {
             $results_count++;
