@@ -45,13 +45,12 @@
       $results_count = 0;
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-          if (isset($results[$row->email]) && $results[$row->email]->action_id == $row->action_id) {
-            print_r($row);
-            echo $row["email"]."<hr/>";
+          if (isset($results[$row["email"].$row["action_id"]])) {
             // object exists in array; do nothing
           } else {
             $results_count++;
-            $results[$row["email"]] = $row;
+            $row["color"] = "#".substr(md5($row["email"]),0,6);
+            $results[$row["email"].$row["action_id"]] = $row;
           }
         }
       }
@@ -126,7 +125,7 @@
           </thead>
           <tbody>
             <?php foreach ($results as &$row): ?>
-              <tr>
+              <tr style="background-color:<?php echo $row["color"];?>">
                 <td data-title="User - E-Mail"><?php echo $row["email"];?></td>
                 <td data-title="Language"><?php echo $row["language"];?></td>
                 <td data-title="Comment"><?php echo $row["comment"];?></td>
