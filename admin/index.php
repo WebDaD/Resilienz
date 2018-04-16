@@ -35,6 +35,45 @@
     <meta name="theme-color" content="#008ae1"/>
     <title>Resilienz :: Admin</title>
     <?php
+
+function calcC($c) {
+  if ($c <= 0.03928) {
+      return $c / 12.92;
+  }
+  else {
+      return pow(($c + 0.055) / 1.055, 2.4);
+  }
+}
+
+function cutHex($h) {
+  return ($h[0] == "#") ? substr($h, 1, 7) : $h;
+}
+
+function hexToR($h) {
+  return hexdec(substr(cutHex($h), 0, 2));
+}
+
+function hexToG($h) {
+  return hexdec(substr(cutHex($h), 2, 4));
+}
+
+function hexToB($h) {
+  return hexdec(substr(cutHex($h), 4, 6));
+}
+
+function computeTextColor($color) {
+  $r = hexToR($color);
+  $g = hexToG($color);
+  $b = hexToB($color);
+  $uicolors = [$r / 255, $g / 255, $b / 255];
+
+
+  $c = array_map("calcC", $uicolors);
+
+  $l = 0.2126 * $c[0] + 0.7152 * $c[1] + 0.0722 * $c[2];
+  return ($l > 0.179) ? '#000000' : '#ffffff';
+}
+
       $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
       if ($conn->connect_error) {
         die("Connection to Database failed: " . $conn->connect_error);
@@ -49,7 +88,8 @@
             // object exists in array; do nothing
           } else {
             $results_count++;
-            $row["color"] = "#".substr(md5($row["email"]),0,6);
+            $row["bgcolor"] = "#".substr(md5($row["email"]),0,6);
+            $row["color"] = computeTextColor($row["bgcolor"]);
             $results[$row["email"].$row["action_id"]] = $row;
           }
         }
@@ -116,6 +156,7 @@
           <thead>
             <tr>
               <th data-defaultsort="desc">User - E-Mail</th>
+              <th>ActionID</th>
               <th>Language</th>
               <th>Comment</th>
               <th>Last Change</th>
@@ -125,8 +166,9 @@
           </thead>
           <tbody>
             <?php foreach ($results as &$row): ?>
-              <tr style="background-color:<?php echo $row["color"];?>">
+              <tr style="background-color:<?php echo $row["bgcolor"];?>;color:<?php echo $row["color"];?>">
                 <td data-title="User - E-Mail"><?php echo $row["email"];?></td>
+                <td data-title="ActionID"><?php echo $row["action_id"];?></td>
                 <td data-title="Language"><?php echo $row["language"];?></td>
                 <td data-title="Comment"><?php echo $row["comment"];?></td>
                 <td data-title="Last Change"><?php echo $row["last_change"];?></td>
