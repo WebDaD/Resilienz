@@ -51,7 +51,7 @@
             // object exists in array; do nothing
           } else {
             $results_count++;
-            $results["email"] = $row;
+            $results[$row["email"]] = $row;
           }
         }
       }
