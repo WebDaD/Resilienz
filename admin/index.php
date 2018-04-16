@@ -46,18 +46,10 @@
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           if (isset($results[$row->email]) && $results[$row->email]->action_id == $row->action_id) {
-            echo "<pre>";
-            print_r($results[$row->email]);
-            print_r($row);
-            echo "</pre><hr/>";
             // object exists in array; do nothing
           } else {
-            echo "<pre>";
-            print_r($results[$row->email]);
-            print_r($row);
-            echo "</pre><hr/>";
             $results_count++;
-            array_push($results, $row);
+            $results[$row->email] = $row;
           }
         }
       }
