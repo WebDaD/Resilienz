@@ -52,6 +52,10 @@
             echo "</pre>";
             // object exists in array; do nothing
           } else {
+            echo "<pre>";
+            print_r($results[$row->email]);
+            print_r($row);
+            echo "</pre>";
             $results_count++;
             array_push($results, $row);
           }
