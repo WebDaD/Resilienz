@@ -47,11 +47,11 @@
         while($row = $result->fetch_assoc()) {
           if (isset($results[$row->email]) && $results[$row->email]->action_id == $row->action_id) {
             print_r($row);
-            echo $row->email."<hr/>";
+            echo $row["email"]."<hr/>";
             // object exists in array; do nothing
           } else {
             $results_count++;
-            $results[$row->email] = $row;
+            $results["email"] = $row;
           }
         }
       }
