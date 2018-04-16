@@ -1,7 +1,20 @@
 INSERT INTO `strings` (`id`, `description`, `string_key`) VALUES (NULL, 'Navigation Title Manager', 'nav_manage'), (NULL, 'Title Manager', 'manage_title'), (NULL, 'Instructions for Manual', 'manage_text'),(NULL, 'Verwaltung :: Aktiv', 'manage_active'), (NULL, 'Verwaltung Kommentar zur Aktion', 'manage_comment'), (NULL, 'Verwaltung Letze Änderung der Aktion', 'manage_last_change'), (NULL, 'Verwaltung Button Erstelle Buch', 'manage_create_book'), (NULL, 'Verwaltung Information Buch wird erstellt', 'manage_creating'), (NULL, 'Verwaltung Buch downloaden', 'manage_download'), (NULL, 'Verwaltung Button Aktion wechseln', 'manage_switch_action'), (NULL, 'Verwaltung Button Aktion erstellen', 'manage_create_action'), NULL, 'Verwaltung Kein Kommentar angegeben', 'manage_no_comment');
 
 
-INSERT INTO `translations` (`languages_id`, `strings_id`, `translation`) VALUES ('1', '178', 'Verwaltung'), ('1', '179', 'Verwaltung'), ('1', '180', 'Hier können Sie die Aktionen wechseln, Bücher erstellen lassen oder diese Herunterladen.'), ('2', '178', 'Management'), ('2', '179', 'Management'), ('2', '180', 'YOu can switch books, create PDFs or download them.'), ('3', '178', 'administración'), ('3', '179', 'administración'), ('3', '180', 'Aquí puede cambiar acciones, tener libros creados o descargarlos.'), ('4', '178', 'إدارة'), ('4', '179', 'إدارة'), ('4', '180', 'هنا يمكنك تغيير الإجراءات ، أو إنشاء كتب أو تنزيلها.'),('1', '181', 'Aktiv'),
+INSERT INTO `translations` (`languages_id`, `strings_id`, `translation`) VALUES 
+('1', '178', 'Verwaltung'), 
+('1', '179', 'Verwaltung'), 
+('1', '180', 'Hier können Sie die Aktionen wechseln, Bücher erstellen lassen oder diese Herunterladen.'), 
+('2', '178', 'Management'), 
+('2', '179', 'Management'), 
+('2', '180', 'YOu can switch books, create PDFs or download them.'), 
+('3', '178', 'administración'), 
+('3', '179', 'administración'), 
+('3', '180', 'Aquí puede cambiar acciones, tener libros creados o descargarlos.'), 
+('4', '178', 'إدارة'), 
+('4', '179', 'إدارة'), 
+('4', '180', 'هنا يمكنك تغيير الإجراءات ، أو إنشاء كتب أو تنزيلها.'),
+('1', '181', 'Aktiv'),
 ('1', '182', 'Kommentar'),
 ('1', '183', 'Letzte Änderung'),
 ('1', '184', 'Buch Erstellen'),
@@ -43,4 +56,4 @@ ALTER TABLE `actions` ADD `comment` TEXT NULL AFTER `book`, ADD `last_change` TI
 UPDATE actions SET active = 1;
 
 CREATE OR REPLACE VIEW actionList AS
-select `a`.`id` AS `action_id`, `u`.`email` AS `email`,`u`.`id` AS `user_id`,`l`.`name` AS `language`,`a`.`location` AS `location`,`a`.`start_time` AS `start_time`,`a`.`end_time` AS `end_time`,`a`.`finalized` AS `finalized`,`a`.`book` AS `book`, a.comment AS comment, a.last_change AS last_change, a.active AS active from ((`resilienz-test`.`user` `u` join `resilienz-test`.`languages` `l`) join `resilienz-test`.`actions` `a`) where ((`u`.`id` = `a`.`user_id`) and (`u`.`languages_id` = `l`.`id`))
+select `a`.`id` AS `action_id`, `u`.`email` AS `email`,`u`.`id` AS `user_id`,`l`.`name` AS `language`,`a`.`location` AS `location`,`a`.`start_time` AS `start_time`,`a`.`end_time` AS `end_time`,`a`.`finalized` AS `finalized`,`a`.`book` AS `book`, a.comment AS comment, a.last_change AS last_change, a.active AS active from ((`resilienz`.`user` `u` join `resilienz`.`languages` `l`) join `resilienz`.`actions` `a`) where ((`u`.`id` = `a`.`user_id`) and (`u`.`languages_id` = `l`.`id`))

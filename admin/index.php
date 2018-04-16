@@ -41,6 +41,19 @@
       }
       $sql = "SELECT u.email, u.language, u.action_id, a.finalized, a.book, a.active, a.last_change, a.comment FROM `userList` u, actionList a WHERE u.id = a.user_id";
       $result = $conn->query($sql);
+      $results = array();
+      $results_count = 0;
+      if ($result->num_rows > 0) {
+        $results_count = $result->num_rows;
+        while($row = $result->fetch_assoc()) {
+          if (isset($results[$row->email]) && $results[$row->email]->action_id == $row->action_id) {
+            // object exists in array; do nothing
+          } else {
+            array_push($results, $row);
+          }
+        }
+      }
+      $conn->close();
     ?>
     <style>
       @media only screen and (max-width: 800px) {
@@ -95,8 +108,8 @@
   </head>
   <body>
     <div class="container">
-      <h1>STC :: Books</h1>
-      <?php if ($result->num_rows > 0):?>
+      <h1>STC :: <?php echo $results_count;?> Books</h1>
+      <?php if ($results_count > 0):?>
       <div id="no-more-tables">
         <table class="table table-bordered table-condensed table-striped table-hover sortable">
           <thead>
@@ -110,7 +123,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php while($row = $result->fetch_assoc()): ?>
+            <?php foreach ($results as &$row): ?>
               <tr>
                 <td data-title="User - E-Mail"><?php echo $row["email"];?></td>
                 <td data-title="Language"><?php echo $row["language"];?></td>
@@ -131,7 +144,7 @@
                   <?php endif; ?>
                 </td>
               </tr>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
@@ -142,6 +155,5 @@
     <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="bootstrap-sortable.js"></script>
-    <?php $conn->close(); ?>
   </body>
 </html>
