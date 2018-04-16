@@ -166,8 +166,8 @@ function computeTextColor($color) {
           </thead>
           <tbody>
             <?php foreach ($results as &$row): ?>
-              <tr style="background-color:<?php echo $row["bgcolor"];?>;color:<?php echo $row["color"];?>">
-                <td data-title="User - E-Mail"><?php echo $row["email"];?></td>
+              <tr>
+                <td data-title="User - E-Mail" style="background-color:<?php echo $row["bgcolor"];?>;color:<?php echo $row["color"];?>"><?php echo $row["email"];?></td>
                 <td data-title="ActionID"><?php echo $row["action_id"];?></td>
                 <td data-title="Language"><?php echo $row["language"];?></td>
                 <td data-title="Comment"><?php echo $row["comment"];?></td>
