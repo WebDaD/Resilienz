@@ -34,6 +34,7 @@ app.use('/docs', express.static(path.join(__dirname, 'doc')))
 
 // Add rendering Engine
 app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views'))
 
 // Add Cookie Cababilities
 app.use(cookieParser())
