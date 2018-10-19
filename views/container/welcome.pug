@@ -1,20 +1,20 @@
 .container
   h1 #{lang.welcome_title}
   p #{lang.welcome_text}
-  p #{lang.welcome_text_parental}
-  .row.row-grid(style="margin-bottom:10px;")
-    .col-md-6
-      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_parental.docx' target="_blank" download=lang.welcome_link_parental) #{lang.welcome_link_parental}
-    .col-md-6
-      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_institutions.docx' target="_blank"  download=lang.welcome_link_institutions) #{lang.welcome_link_institutions}
   p #{lang.welcome_text_part_2}
-  .row.row-grid(style="margin-bottom:10px;")
+  .row.row-grid(style="margin-bottom:40px;margin-top: -10px;")
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='/pdf/stc_manual_'+lang.key target="_blank" download=lang.intro_manual)  #{lang.intro_manual}
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='#!/materials')  #{lang.welcome_materials}
+  p #{lang.welcome_text_parental}
+  .row.row-grid(style="margin-bottom:40px;margin-top: -10px;")
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_parental.docx' target="_blank" download=lang.welcome_link_parental) #{lang.welcome_link_parental}
+    .col-md-6
+      a.btn-default.btn-lg.btn.btn-block(href='/downloads/' + lang.key + '/' + 'stc_institutions.docx' target="_blank"  download=lang.welcome_link_institutions) #{lang.welcome_link_institutions}
   p #{lang.welcome_text_bottom}
-  .row.row-grid(style="margin-bottom:10px;")
+  .row.row-grid(style="margin-bottom:40px;margin-top: -10px;")
     .col-md-6
       a.btn-default.btn-lg.btn.btn-block(href='#!/layout') #{lang.nav_layout}
     .col-md-6
