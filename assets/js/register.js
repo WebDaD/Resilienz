@@ -1,27 +1,9 @@
 /* global $, google */
 $(document).ready(function () {
-  var location = {
-    latitude: 48.1437389,
-    longitude: 11.5499916
-  }
+
   $('#register_start').datetimepicker({timepicker: false, format: 'Y-m-d'})
   $('#register_stop').datetimepicker({timepicker: false, format: 'Y-m-d'})
-  $('#register_location').locationpicker({
-    location: {
-      latitude: 48.1437389,
-      longitude: 11.5499916
-    },
-    enableAutocomplete: true,
-    markerInCenter: true,
-    mapTypeId: google.maps.MapTypeId.SATELLITE,
-    onchanged: function (currentLocation, radius, isMarkerDropped) {
-      location = currentLocation
-    },
-    inputBinding: {
-      locationNameInput: $('#register_location_text')
-    }
-  })
-  $('#register_location').css('display', 'none !important')
+
   $('.register_form').on('click', '#register_submit', function () {
     $('#register_submit').hide()
     $('#loading').show()
@@ -49,7 +31,7 @@ $(document).ready(function () {
       register_vorname: $('#register_vorname').val(),
       register_nachname: $('#register_nachname').val(),
       register_password: $.md5($('#register_password').val()),
-      register_location: location.longitude + ',' + location.latitude,
+      register_location: $('#register_location').val() || '-',
       register_start: $('#register_start').val() || '1970-01-01' + ' 00:00:00',
       register_stop: $('#register_stop').val() || '2222-12-31' + ' 00:00:00',
       captchaResponse: $('#g-recaptcha-response').val()
