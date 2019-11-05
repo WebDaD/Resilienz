@@ -16,7 +16,7 @@ if (mode === 'delete') {
     }
   })
 } else { // list users
-  database.getUsers(function(users, error) {
+  database.getUsers(function(error, users) {
     if (error) {
       console.error(error)
     } else {
